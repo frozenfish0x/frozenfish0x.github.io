@@ -242,7 +242,7 @@
             
 
   
-    <article id="post-test" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="网络工程师-网络工程师知识" class="article article-type-网络工程师  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -250,7 +250,7 @@
   
     <h1 itemprop="name">
 	
-	  <a class="article-title" href="/2023/12/01/test/" target="_blank">test</a>
+	  <a class="article-title" href="/2023/12/02/%E7%BD%91%E7%BB%9C%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%9F%A5%E8%AF%86/" target="_blank">网络工程师知识</a>
   
     </h1>
   
@@ -258,8 +258,8 @@
 
   
   
-<a href="/2023/12/01/test/" class="archive-article-date">
-        <time datetime="2023-12-01T13:14:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-12-01</time>
+<a href="/2023/12/02/%E7%BD%91%E7%BB%9C%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%9F%A5%E8%AF%86/" class="archive-article-date">
+        <time datetime="2023-12-01T16:16:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-12-02</time>
 </a>
 
   
@@ -271,7 +271,147 @@
   
   <div class="article-entry" itemprop="articleBody">
     
-    
+    <h1 id="悲哀的开始"><a href="#悲哀的开始" class="headerlink" title="悲哀的开始"></a>悲哀的开始</h1><pre><code>因为要混饭吃，没工作经验没技术（指技术不能去做一份程序相关，或者安全相关的工作，毕竟这仅仅是一个开始），于是决定找一份目前可以快速上手相关工作，所以开始学习网络工程师相关技术。此文章用来记录初级工程师知识，以及网络工程师一般要做的日常常见工作。
+(我想做网安，二进制安全。求师傅带)
+</code></pre>
+<h2 id="申明"><a href="#申明" class="headerlink" title="申明"></a>申明</h2><pre><code>因为是自己用来学习的，大部分前辈都进行了很好的总结，我会将互联网各种资料整合起来,再加上自己的理解来写这篇文章，仅供个人学习用途
+</code></pre>
+<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h2 id="常见的网络设备"><a href="#常见的网络设备" class="headerlink" title="常见的网络设备"></a>常见的网络设备</h2><h3 id="1-网络交换机"><a href="#1-网络交换机" class="headerlink" title="1.网络交换机"></a>1.网络交换机</h3><pre><code>交换机使用内容可寻址存储器(Content Addressable Memory, CAM), 因此可以记住设备所插入的端口。思科公司生产的交换机被设计可用于从小型机构到有数千台设备的大型企业网络。
+
+交换机的基本功能是利用设备的 MAC 地址（第二层）和 IP 地址（第三层）来运行，它们也能完成更为复杂的一些工作，比如包括基于 permit/deny（运行或访问）、协议及端口号（第四层），还有综合各层及其它方面的策略和规则的处理列表（porcessing lists）。
+
+早期版本的交换机又被叫做网桥。网桥查看数据帧的源端口和 MAC 地址，以建立一个表并做出转发决定。在网桥上，有相应软件来访问这个表，在交换机上，则是由硬件（专用集成电路， Application Specific Integreated Chips, ASIC）去访问 CAM 表。因此交换机可以看成是一台多端口网桥。
+
+采行交换机可以将你的网络划分成更小的、更可管理的部分（就是网段，segments）。进而允许单位内部的不同部门，比如人力资源、财务、法务等等，得以同时在各自的网段上工作，这是十分有用的，因为同一部门的设备大部分时间都是用于各自之间的通信。
+
+
+通过交换机，你还可以更好地使用 IP 电话，因为交换机端口能够通过端口为其供电（使用 PoE 接口）。基本的网络交换机用于：
+
+1.连接诸如打印机和 PC 这样的网络设备
+2.赋予网络服务器和路由器网络访问
+3.使用 VLAN 对网络进行划分
+VLAN 就是虚拟局域网。
+</code></pre>
+<h3 id="2-网络路由器"><a href="#2-网络路由器" class="headerlink" title="2.网络路由器"></a>2.网络路由器</h3><pre><code>作为一名思科工程师，你将耗费大量时间来对路由器进行安装、配置以及故障排除。为此，CCNA 大纲超过半数的内容都是用于学习路由器配置的。
+
+路由器是用于建立网络的设备。与负责同一网络上的设备相互通信的交换机不同，路由器实现不同网络上的设备之间的通信。老旧型号的路由器上只有端口，这些端口都是物理内建与其中，固定在主板上的。这样的路由器仍然时不时的可以见到，但现代网络需要路由器具备 IP 电话、交换及安全以及能够连接到不同类型电讯公司的功能。因此，路由器是模块化的了，这就是说你有路由器机架和一些空着的插槽，能够连接大量的路由或交换模块。
+</code></pre>
+<p><img src="https://ccna60d.xfoss.com/images/60days-13.png"><br><img src="https://ccna60d.xfoss.com/images/60days-4.png"><br>路由器，routers</p>
+<p><img src="https://ccna60d.xfoss.com/images/60days-5.png"><br>交换机，routers</p>
+<p><img src="https://ccna60d.xfoss.com/images/60days-6.png"><br>有防火墙的路由器</p>
+<p><img src="https://ccna60d.xfoss.com/images/60days-7.png"><br>无线路由器</p>
+<p><img src="https://ccna60d.xfoss.com/images/60days-8.png"><br>多层交换机</p>
+<p><img src="https://ccna60d.xfoss.com/images/60days-12.png"><br>防火墙</p>
+<h2 id="局域网和广域网拓扑"><a href="#局域网和广域网拓扑" class="headerlink" title="局域网和广域网拓扑"></a>局域网和广域网拓扑</h2><table>
+<thead>
+<tr>
+<th>拓扑</th>
+<th>物理</th>
+<th>逻辑</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>星形</td>
+<td>星形</td>
+<td>总线</td>
+</tr>
+<tr>
+<td>令牌环</td>
+<td>星形</td>
+<td>环形</td>
+</tr>
+<tr>
+<td>点对点</td>
+<td>总线</td>
+<td>总线</td>
+</tr>
+<tr>
+<td>FDDI</td>
+<td>环形</td>
+<td>环形</td>
+</tr>
+</tbody></table>
+<h2 id="OSI-和-TCP-模型"><a href="#OSI-和-TCP-模型" class="headerlink" title="OSI 和 TCP 模型"></a>OSI 和 TCP 模型</h2><pre><code>开放标准互连（Open Standards Interconnection, OSI）是有国际标准化组织创建的。伴随技术喷发，网络设备和网络软件行业兴起了几家巨头，包括思科、微软、Novell、IBM、惠普、苹果以及其它几家公司。每家都有自己的线缆和端口类型，允许各自的商业性协议。此时，如你从一家买路由器、另一家买交换机，又从别家买服务器，就会出现兼容性问题。
+
+有一些处理这些问题的通容办法，比如在网络上部署网关来转换不同的协议，这会导致性能上的瓶颈（比如网络慢速部分）并会令到故障排除十分困难和费时。最终，厂商们不得不达成一个在各自产品上都能工作的通用标准，一套叫做 TCP/IP 的免费协议包。最后，那些未能采行 TCP/IP 的厂商失去市场份额，走向破产。
+
+ISO 创建出 OSI 模型，以助力于各厂商就通用标准达成一致，实现厂商之间的兼容。此模型包括了将总多网络功能分解为一套逻辑分层，或通俗地称为层的东西。各层只需完成其特定的一些功能，比如说你的公司专注于防火墙，那么这些防火墙将自然地与其它厂商的设备一起工作。
+
+此模型的优势在于每件设备设计用来出色完成一个角色，而非不充分地完成多个角色。客户可以根据其解决方案选出最好的设备，而不用死栓在一家厂商那里。同时故障排除也变得更为容易，因为确定的出错可被追踪到具体的某层。
+
+OSI 模型将所有网络功能划分为七个不同的层。该层次化模型从第七层一路去往第一层。那些离用户更近、更为复杂的功能，在顶部，一直到处于底层的网络线缆规格，如同表
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>层</th>
+<th>层名</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>7</td>
+<td>应用层，Application</td>
+</tr>
+<tr>
+<td>6</td>
+<td>表示层, Presentation</td>
+</tr>
+<tr>
+<td>5</td>
+<td>会话层, Session</td>
+</tr>
+<tr>
+<td>4</td>
+<td>传输层, Transport</td>
+</tr>
+<tr>
+<td>3</td>
+<td>网络层, Network</td>
+</tr>
+<tr>
+<td>2</td>
+<td>数据链路层, Data Link</td>
+</tr>
+<tr>
+<td>1</td>
+<td>物理层, Physical</td>
+</tr>
+</tbody></table>
+<p>“<strong>A</strong>ll <strong>P</strong>eople <strong>S</strong>eem <strong>T</strong>o <strong>N</strong>eed <strong>D</strong>ata <strong>P</strong>rocessing”</p>
+<p>在数据为通过物理网络介质传输而自顶层传至底层时，数据被放入不同的逻辑数据套盒子。尽管我们常把这些数据盒子称作“包（packets）”, 实际上根据其处于 OSI 不同的层而有不同的名称。从 OSI 模型往下的数据处理，叫做封装。而往上的处理中从盒子里取出数据的过程，叫做解封装。</p>
+<h3 id="第七层-–-应用层"><a href="#第七层-–-应用层" class="headerlink" title="第七层 – 应用层"></a><strong>第七层 – 应用层</strong></h3><p>这是到你我这些终端用户最近的层。应用层并非操作系统，但它通常提供了诸如 e-mail(SMTP 以及 POP3)、web 浏览（使用 HTTP）、以及文件传输服务（使用 FTP）。应用层决定了资源的可用性。</p>
+<h3 id="第六层–表示层"><a href="#第六层–表示层" class="headerlink" title="第六层–表示层"></a><strong>第六层–表示层</strong></h3><p>表示层将数据提供给应用层。多媒体技术工作在这一层，你可以想到 MP4、JPEG、GIF 等等。而加密、解密以及数据压缩都发生在这一层。</p>
+<h3 id="第五层–会话层"><a href="#第五层–会话层" class="headerlink" title="第五层–会话层"></a><strong>第五层–会话层</strong></h3><p>会话层的角色是建立、管理及中断设备之间的会话。这些动作发生在逻辑链路上，而真正干的事情是将两个软件应用程序连接起来。SQL、RPC 以及 NFS 都工作于会话层。</p>
+<h3 id="第四层–传输层"><a href="#第四层–传输层" class="headerlink" title="第四层–传输层"></a><strong>第四层–传输层</strong></h3><p>传输层的角色是将来自更高层的数据分拆成被称为数据段（segments）的更小片。虚电路（virtual circuits）在这里建立，在设备之间能够通信之间有赖于虚电路的建立。</p>
+<p>在数据得以跨网络传输前，传输层需要确认多少数据能发往远端设备。这取决于端到端链路的速率和可靠性。如你有一条高速链路，而终端用户只有一条低速链路，数据仍然需要以较小数据块进行发送。</p>
+<p>以下是三种控制数据流的方法：</p>
+<ul>
+<li>流控 flow control</li>
+<li>窗口机制 windowing</li>
+<li>通告机制 acknowledgements</li>
+</ul>
+<h4 id="流控"><a href="#流控" class="headerlink" title="流控"></a><strong>流控</strong></h4><p>如发往接收系统的信息多于它所能处理的量时，它将请求发送系统暂停一段时间。这一般发生在一段使用宽带而另一端使用拨号上网的时候。这个用于通知其它设备停止的包叫做源抑制消息（a source quench message）。</p>
+<h4 id="窗口机制"><a href="#窗口机制" class="headerlink" title="窗口机制"></a><strong>窗口机制</strong></h4><p>窗口机制下，每个系统就能在收到应答（acknowledgement）前发送多少数据达成一致。”窗口”随着数据的传输时开时合，以维持一个持续的数据流。</p>
+<h4 id="通告机制"><a href="#通告机制" class="headerlink" title="通告机制"></a><strong>通告机制</strong></h4><p>在收到一定数量的数据段后，接收端需要就这些数据段的安全抵达和顺序正确，通告发送端。</p>
+<pre><code>这些都是在一个叫做三次握手（a three-way handshake）的过程中达成一致。你要发出一个包来建立会话。第一个包叫做同步(synchronise, SYN)包。远端设备以同步应答（a synchronise acknowledgement, SYN-ACK）包予以回应。第三步的应答包（acknowledgement, ACK）的发出标志着会话的建立。这都是通过 TCP 业务完成的。
+
+传输层包含了好几个协议，其中最熟知的是传输控制协议（Tranmission Control Protocol, TCP）和用户数据报协议（User Datagram Protocol, UDP）, 它们都是 TCP/IP 协议包的组成部分。这个协议包因为是互联网所使用的标准而相当出名。TCP 是面向连接的协议。它使用了三次握手、窗口机制以及其它技巧来保证数据安全地到达其目的地。有许多协议都使用了 TCP， 比如 Telnet、HTTPS 以及 FTP（尽管 FTP 位于应用层，它确实使用了 TCP）。
+
+UDP 是一个无连接协议（a connectionless protocol）。它在对数据包进行编号后就发往目的地了。它绝不会管这些数据包是否安全抵达，也绝不会在发送数据包前建立一条连接。在数据不是那么重要，应用开发者觉得信息总是可以在未能到达目的地时重新发送时，往往采用 UDP。
+
+那么为什么要用到 UDP 呢？ TCP 协议本身会消耗许多网络的带宽，甚至在数据还没发送时，为建立其连接，也要往复发送很多流量。这都会耗去一些宝贵的时间和网络资源。UDP 数据包比起 TCP 包要小很多，在无需真正可靠连接时，它是是否有用的。使用到 UDP 的协议有 TFTP 等。
+</code></pre>
+<h3 id="第三层-–-网络层"><a href="#第三层-–-网络层" class="headerlink" title="第三层 – 网络层"></a><strong>第三层 – 网络层</strong></h3><pre><code>网络层接手来自传输层的数据段，将其拆分为叫做数据包的更小单位。许多网络工程师不管在 OSI 的哪层，都把数据叫做包，这也是可以的。但是，请记住，技术上说只有在网络层，才可以叫包。
+
+网络层必须确定从一个网络到另一网络的最优路径；为此，路由器工作在该层。路由器在此采用逻辑寻址，而 TCP/IP 的寻址方式是 IP 寻址，稍后会讲到。
+</code></pre>
+<h3 id="第二层–数据链路层"><a href="#第二层–数据链路层" class="headerlink" title="第二层–数据链路层"></a><strong>第二层–数据链路层</strong></h3><pre><code>数据链路层将数据包拆分成帧这种更小的单位。二层交换机工作在这层，使用硬件地址，或是 MAC 地址，它们之所以能够更快地交换流量，是因为无需查看 IP 地址和路由表。广域网协议工作在第二层，包括 HDLC、ISDN 以及 PPP。以太网也是第二层的。
+
+为了向其上下两层提供接口，数据链路层又分了两个子层，分别是逻辑链路控制子层（the Logical Link Control, LLC）, 以及介质访问控制子层（ the Media Access Control, MAC）。逻辑链路控制子层与网络层交互，介质访问控制子层与物理层交互。
+</code></pre>
+<h3 id="第一层–物理层"><a href="#第一层–物理层" class="headerlink" title="第一层–物理层"></a><strong>第一层–物理层</strong></h3><pre><code>在这层上，帧被转换为位，以将其放到线路上。这些位是由电脉冲构成，读作“开”“关”位，或是二进制的 1 和 0。集线器工作于此层，在这里你会找到线缆规格，比如 RJ45。
+</code></pre>
+
     
 
     
@@ -286,7 +426,7 @@
 
     
     <p class="article-more-link">
-      <a class="article-more-a" href="/2023/12/01/test/">展开全文 >></a>
+      <a class="article-more-a" href="/2023/12/02/%E7%BD%91%E7%BB%9C%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%9F%A5%E8%AF%86/">展开全文 >></a>
     </p>
     
 
