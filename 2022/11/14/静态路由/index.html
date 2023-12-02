@@ -20,7 +20,7 @@
 <meta property="og:image" content="https://ccna60d.xfoss.com/images/1101.png">
 <meta property="og:image" content="https://ccna60d.xfoss.com/images/1102.png">
 <meta property="article:published_time" content="2022-11-13T16:01:03.000Z">
-<meta property="article:modified_time" content="2023-11-26T20:11:53.749Z">
+<meta property="article:modified_time" content="2023-12-02T12:28:05.302Z">
 <meta property="article:author" content="frozenfish">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://ccna60d.xfoss.com/images/1101.png">
@@ -51,6 +51,9 @@
   
 
 
+  
+    <script src="/lib/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
   
 
 </head>
@@ -299,6 +302,7 @@
 <p>配置一条静态路由（见下图11.1）需要以下这些命令。</p>
 <p>network address&#x2F;prefix mask<br>address or exit interface<br>distance (optional)<br>这里是一个这些命令使用的实例。</p>
 <p>RouterA(config)#ip route network prefix mask {address | interface} [distance]</p>
+<span id="more"></span>
 <p>静态路由示例网络</p>
 <p><img src="https://ccna60d.xfoss.com/images/1101.png"><br>图11.1 – 静态路由示例网络</p>
 <p>要加入上面网络的一条静态路由，就要在左边的路由器上写出下面这行配置。</p>
@@ -342,26 +346,6 @@
 
     
 
-    
-    <div class="declare"> 
-      <ul class="post-copyright">
-        <li>
-          <strong>本文作者：</strong>
-          frozenfish
-        </li>
-        <li>
-          <strong>本文链接：</strong>
-          <a href="http://example.com/2022/11/14/静态路由/" title="静态路由" target="_blank">http://example.com/2022/11/14/静态路由/</a>
-        </li>
-        
-        <li>
-          <strong>版权声明： </strong>
-          
-          本博客所有文章除特别声明外，均采用 <a href="https://github.com/JoeyBling/hexo-theme-yilia-plus/blob/master/LICENSE" rel="external nofollow" target="_blank">MIT</a> 许可协议。转载请注明出处！
-        </li>
-        
-      </ul>
-    </div>
     
 
   </div>
@@ -464,6 +448,19 @@
         </div>
         
         
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    目录，不存在的…
+                    </div>
+                </span>
+            </div>
+        </div>
+        
     </div>
 </aside>
 
@@ -535,23 +532,6 @@
 
 
 <!--  -->
-
-<script>
-  /* 标签页标题切换 */
-  var originTitle = document.title;
-  var titleTime;
-  document.addEventListener("visibilitychange", function () {
-    if (document.hidden) {
-      document.title = "二刺螈真恶心" + originTitle;
-      clearTimeout(titleTime);
-    } else {
-      document.title = "二刺螈就是这样的 " + originTitle;
-      titleTime = setTimeout(function () {
-        document.title = originTitle;
-      }, 2000);
-    }
-  });
-</script>
 
 
     

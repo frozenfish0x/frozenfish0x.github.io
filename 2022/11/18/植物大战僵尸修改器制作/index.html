@@ -18,7 +18,7 @@
 <meta property="og:description" content="基址偏移表部分参考: 公布我所找到的所有基址及各种功能实现方法 基址 0x00355E0C 阳光 +868 +5578 金钱 +950 +50 花肥 +950 +220 巧克力 +950 +250 树肥 +950 +258 树高 +950 +11C 杀虫剂 +950 +224 卡槽数 +868 +15C +24 卡槽栏 +868 +15C +5C 此后每个植物栏相隔0x50 植物当前冷却值 +86">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-11-17T16:01:03.000Z">
-<meta property="article:modified_time" content="2023-11-26T20:16:27.618Z">
+<meta property="article:modified_time" content="2023-12-02T12:31:03.882Z">
 <meta property="article:author" content="frozenfish">
 <meta name="twitter:card" content="summary">
   
@@ -48,6 +48,9 @@
   
 
 
+  
+    <script src="/lib/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
   
 
 </head>
@@ -293,22 +296,25 @@
   <div class="article-entry" itemprop="articleBody">
     
     <p>基址偏移表<br>部分参考: 公布我所找到的所有基址及各种功能实现方法</p>
-<p>基址 0x00355E0C</p>
-<p>阳光 +868 +5578</p>
-<p>金钱 +950 +50</p>
-<p>花肥 +950 +220</p>
-<p>巧克力 +950 +250</p>
-<p>树肥 +950 +258</p>
-<p>树高 +950 +11C</p>
-<p>杀虫剂 +950 +224</p>
-<p>卡槽数 +868 +15C +24</p>
-<p>卡槽栏 +868 +15C +5C 此后每个植物栏相隔0x50</p>
-<p>植物当前冷却值 +868 +15C +4C 此后每个植物冷却相隔0x50</p>
-<p>植物冷却值上限 +868 +15C +50 此后每个植物冷却上限相隔0x50</p>
-<p>植物当前数量 +868 +D4</p>
-<p>植物种植函数EBP +868</p>
-<p>僵尸当前数量 +868 +B8</p>
-<p>僵尸种植函数EBP +868 +178</p>
+<pre><code>基址 0x00355E0C
+阳光 +868 +5578
+金钱 +950 +50
+花肥 +950 +220
+巧克力 +950 +250
+树肥 +950 +258
+树高 +950 +11C
+杀虫剂 +950 +224
+卡槽数 +868 +15C +24
+卡槽栏 +868 +15C +5C 此后每个植物栏相隔0x50
+植物当前冷却值 +868 +15C +4C 此后每个植物冷却相隔0x50
+植物冷却值上限 +868 +15C +50 此后每个植物冷却上限相隔0x50
+植物当前数量 +868 +D4
+植物种植函数EBP +868
+僵尸当前数量 +868 +B8
+僵尸种植函数EBP +868 +178
+</code></pre>
+<span id="more"></span>
+
 <p>常规项目<br>根据变量的变化使用CE寻找,找到之后再通过指针扫描寻找可用的基址</p>
 <p>阳光 内存实际值&#x3D;游戏显示值</p>
 <p>智慧树高度 内存实际值&#x3D;游戏显示值</p>
@@ -1116,26 +1122,6 @@ case DLL_PROCESS_ATTACH:
     
 
     
-    <div class="declare"> 
-      <ul class="post-copyright">
-        <li>
-          <strong>本文作者：</strong>
-          frozenfish
-        </li>
-        <li>
-          <strong>本文链接：</strong>
-          <a href="http://example.com/2022/11/18/植物大战僵尸修改器制作/" title="植物大战僵尸修改器制作" target="_blank">http://example.com/2022/11/18/植物大战僵尸修改器制作/</a>
-        </li>
-        
-        <li>
-          <strong>版权声明： </strong>
-          
-          本博客所有文章除特别声明外，均采用 <a href="https://github.com/JoeyBling/hexo-theme-yilia-plus/blob/master/LICENSE" rel="external nofollow" target="_blank">MIT</a> 许可协议。转载请注明出处！
-        </li>
-        
-      </ul>
-    </div>
-    
 
   </div>
   <div class="article-info article-info-index">
@@ -1237,6 +1223,19 @@ case DLL_PROCESS_ATTACH:
         </div>
         
         
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    目录，不存在的…
+                    </div>
+                </span>
+            </div>
+        </div>
+        
     </div>
 </aside>
 
@@ -1308,23 +1307,6 @@ case DLL_PROCESS_ATTACH:
 
 
 <!--  -->
-
-<script>
-  /* 标签页标题切换 */
-  var originTitle = document.title;
-  var titleTime;
-  document.addEventListener("visibilitychange", function () {
-    if (document.hidden) {
-      document.title = "二刺螈真恶心" + originTitle;
-      clearTimeout(titleTime);
-    } else {
-      document.title = "二刺螈就是这样的 " + originTitle;
-      titleTime = setTimeout(function () {
-        document.title = originTitle;
-      }, 2000);
-    }
-  });
-</script>
 
 
     

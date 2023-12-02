@@ -18,7 +18,7 @@
 <meta property="og:description" content="开放最短路径优先Open Shortest Path First 开放最短路径优先，是一个开放标准的链路状态路由协议（an open-standard Link State routing protocol）。所有链路状态路由协议都是对链路状态进行通告。当链路状态路由器开始在某条网络链路上运作时，逻辑网络的相关信息就被添加到路由器的本地链路状态数据库(Link State Database, LS">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-11-15T16:01:03.000Z">
-<meta property="article:modified_time" content="2023-11-26T20:12:30.764Z">
+<meta property="article:modified_time" content="2023-12-02T12:27:48.406Z">
 <meta property="article:author" content="frozenfish">
 <meta name="twitter:card" content="summary">
   
@@ -48,6 +48,9 @@
   
 
 
+  
+    <script src="/lib/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
   
 
 </head>
@@ -295,6 +298,7 @@
     <p>开放最短路径优先<br>Open Shortest Path First</p>
 <p>开放最短路径优先，是一个开放标准的链路状态路由协议（an open-standard Link State routing protocol）。所有链路状态路由协议都是对链路状态进行通告。当链路状态路由器开始在某条网络链路上运作时，逻辑网络的相关信息就被添加到路由器的本地链路状态数据库(Link State Database, LSDB)中。该本地路由器此时在其运作链路上，发出Hello数据包，以确定出是否有其它链路状态路由器也在其各自接口上运行着链路状态路由协议。OSPF直接运行在 IP 协议上，使用 IP 下编号为89号的协议。</p>
 <p>OSPF概述及基础知识<br>OSPF Overview and Fundamentals</p>
+<span id="more"></span>
 <p>人们为 OSPF 撰写了多个请求评议（Requests for Comments, RFCs)。在本小节，将通过一些 OSPF 有关的最常见的几个 RFCs ，来了解一下 OSPF 的历史。 OSPF 工作组成立于1987年，自成立以后，该工作组发布了为数众多的 RFCs 。下面列出了 OSPF 有关的一些最常见的 RFCs 。</p>
 <p>RFC 1131 – OSPF规格，OSPF Specification<br>RFC 1584 – OSPF的多播扩展, Multicast Extensions to OSPF<br>RFC 1587 – OSPF的 NSSA 选项，the OSPF NSSA Option<br>RFC 1850 – OSPF版本2的管理信息库，OSPF Version 2 Management Informaiton Base<br>RFC 2328 – OSPF版本2<br>RFC 2740 – OSPF版本3<br>RFC 1131对 OSPF 的第一次迭代（the first iteration of OSPF）进行了说明, 而应用在明确该协议是否工作的早期测试中。</p>
 <p>RFC 1584为 OSPF 提供了对 IP 多播流量的支持扩展。这通常被称为多播 OSPF （Multicast OSPF, MOSPF）。但该标准不常用到，而最重要的是思科不支持该标准。</p>
@@ -379,26 +383,6 @@
 
     
 
-    
-    <div class="declare"> 
-      <ul class="post-copyright">
-        <li>
-          <strong>本文作者：</strong>
-          frozenfish
-        </li>
-        <li>
-          <strong>本文链接：</strong>
-          <a href="http://example.com/2022/11/16/ospf详解/" title="ospf" target="_blank">http://example.com/2022/11/16/ospf详解/</a>
-        </li>
-        
-        <li>
-          <strong>版权声明： </strong>
-          
-          本博客所有文章除特别声明外，均采用 <a href="https://github.com/JoeyBling/hexo-theme-yilia-plus/blob/master/LICENSE" rel="external nofollow" target="_blank">MIT</a> 许可协议。转载请注明出处！
-        </li>
-        
-      </ul>
-    </div>
     
 
   </div>
@@ -501,6 +485,19 @@
         </div>
         
         
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    目录，不存在的…
+                    </div>
+                </span>
+            </div>
+        </div>
+        
     </div>
 </aside>
 
@@ -572,23 +569,6 @@
 
 
 <!--  -->
-
-<script>
-  /* 标签页标题切换 */
-  var originTitle = document.title;
-  var titleTime;
-  document.addEventListener("visibilitychange", function () {
-    if (document.hidden) {
-      document.title = "二刺螈真恶心" + originTitle;
-      clearTimeout(titleTime);
-    } else {
-      document.title = "二刺螈就是这样的 " + originTitle;
-      titleTime = setTimeout(function () {
-        document.title = originTitle;
-      }, 2000);
-    }
-  });
-</script>
 
 
     
