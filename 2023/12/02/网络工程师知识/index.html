@@ -25,7 +25,7 @@
 <meta property="og:image" content="https://ccna60d.xfoss.com/images/60days-8.png">
 <meta property="og:image" content="https://ccna60d.xfoss.com/images/60days-12.png">
 <meta property="article:published_time" content="2023-12-01T16:16:43.000Z">
-<meta property="article:modified_time" content="2023-12-02T12:26:44.671Z">
+<meta property="article:modified_time" content="2023-12-02T12:55:31.968Z">
 <meta property="article:author" content="frozenfish">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://ccna60d.xfoss.com/images/60days-13.png">
@@ -283,7 +283,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">3.1k字</span>
+      <span class="post-count">4.1k字</span>
     </span>
   </span>
 
@@ -292,7 +292,7 @@
     <span class="post-meta-item-icon">
       <i class="icon-book icon"></i>
       <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">10分</span>
+      <span class="post-count">14分</span>
     </span>
   </span>
 </div>
@@ -440,10 +440,111 @@ UDP 是一个无连接协议（a connectionless protocol）。它在对数据包
 </code></pre>
 <h3 id="第二层–数据链路层"><a href="#第二层–数据链路层" class="headerlink" title="第二层–数据链路层"></a><strong>第二层–数据链路层</strong></h3><pre><code>数据链路层将数据包拆分成帧这种更小的单位。二层交换机工作在这层，使用硬件地址，或是 MAC 地址，它们之所以能够更快地交换流量，是因为无需查看 IP 地址和路由表。广域网协议工作在第二层，包括 HDLC、ISDN 以及 PPP。以太网也是第二层的。
 
-为了向其上下两层提供接口，数据链路层又分了两个子层，分别是逻辑链路控制子层（the Logical Link Control, LLC）, 以及介质访问控制子层（ the Media Access Control, MAC）。逻辑链路控制子层与网络层交互，介质访问控制子层与物理层交互。
+为了向其上下两层提供接口-，数据链路层又分了两个子层，分别是逻辑链路控制子层（the Logical Link Control, LLC）, 以及介质访问控制子层（ the Media Access Control, MAC）。逻辑链路控制子层与网络层交互，介质访问控制子层与物理层交互。
 </code></pre>
 <h3 id="第一层–物理层"><a href="#第一层–物理层" class="headerlink" title="第一层–物理层"></a><strong>第一层–物理层</strong></h3><pre><code>在这层上，帧被转换为位，以将其放到线路上。这些位是由电脉冲构成，读作“开”“关”位，或是二进制的 1 和 0。集线器工作于此层，在这里你会找到线缆规格，比如 RJ45。
 </code></pre>
+<h3 id="OSI故障排查"><a href="#OSI故障排查" class="headerlink" title="OSI故障排查"></a><strong>OSI故障排查</strong></h3><pre><code>在对你的网络进行故障排除时，采用层次化方法是十分有效的。至此，你唯一要明确的是从哪个方向上运用 OSI 协议栈，是自顶向下呢，还是自底往上，抑或采用分而治之、各个击破方法，这又涉及到聚焦网络的那些部分。
+
+我建议在初期采用自底向上的方法，对于通常处在较低的层上的问题，比如因为线缆松掉或破损、或者配置了不正确的 IP 地址时，你无需浪费时间在检查应用上。在你有更多经验后，在处理某些故障现象时采用各个击破方法会更为快速。在从底层往上处理问题时，你大概会做下面这些事情：
+
+第一层 -- 所有线缆都恰当地插入到端口了吗? 还是有的松掉了？ 网线头已经弯掉或是磨损了吗？如果网线有问题，设备上的指示灯会呈黄色，而非正常的绿色。是有人没有往接口上配置正确的速率吗？以太网端口速率有被设置正确吗？接口有开放给网络管理员以使用吗？
+
+第二层 -- 接口有采用正确的协议，比如 Ethernet/PPP/HDLC, 以便能够与另一端保持一致吗？
+
+第三层 -- 接口有使用正确的 IP 地址以及子网掩码？
+
+第四层 -- 有使用正确的路由协议吗？从路由器通告的网络是正确的吗？
+</code></pre>
+<h2 id="TCP-IP、DoD-模型"><a href="#TCP-IP、DoD-模型" class="headerlink" title="TCP&#x2F;IP、DoD 模型"></a>TCP&#x2F;IP、DoD 模型</h2><p>TCP&#x2F;IP 模型是另一个框架，作为 OSI 模型的替代。它是由 高级防务研究项目署（the Defense Advanced Research Projects Agency，DARPA）创建的四层或五层模型。它就是为人熟知的国防部模型。自顶向下的四层分别是：</p>
+<pre><code>4 - 应用, Application [Telnet/FTP/DNS/RIP]
+3 - 传输/主机到主机，Transport/Host-to-Host [UDP/TCP/ICMP]
+2 - 互联网/网际网络, Internet or Internetwork [IPSec/IP]
+1 - 链路/网络接口，Link/Network Interface [Frame Relay/Ethernet/ATM]
+</code></pre>
+<p>TCP&#x2F;IP 模型已由四层更新为五层，所以你会在考试中被问到有关五层 TCP 模型（a five-layered TCP model）的问题。较高的层离用户较近，而较低的层描述了其它系统交互时所采用的技术或协议。五层 TCP 模型如下所示：</p>
+<pre><code>5 - 应用, Application [Telnet/FTP/DNS/RIP]
+4 - 传输/主机到主机，Transport/Host-to-Host [UDP/TCP/ICMP]
+3 - 网络层，Network [IPSec/IP]
+2 - 数据链路层，Data Link [Ethernet/Frame Relay/PPP]
+1 - 链路/网络接口/物理，Link/Network Interface/Physical [Bits on the wire]
+</code></pre>
+<p>五层的 TCP 模型具有更细的粒度，能更精确地表示数据放在线路之前所发生的事情。比如在第二层处，进行了数据封装以及寻址（如数据链路寻址）。考试中思科偏向选择五层模型。</p>
+<p>数据会如同上述的 OSI 模型那样在自应用层往物理层的途中进行封装，如表 所示：</p>
+<table>
+<thead>
+<tr>
+<th>应用，Application</th>
+<th>仍未封装的数据，</th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>传输，Transport</td>
+<td>将 TCP 头部添加到数据上，TCP header added to the data</td>
+<td><strong>段</strong>，Segment</td>
+</tr>
+<tr>
+<td>网络，Network</td>
+<td>IP 头部被添加上去（包括 IP 地址）, IP header added(including IP address)</td>
+<td><strong>包</strong>，Packet</td>
+</tr>
+<tr>
+<td>数据链路，Data Link</td>
+<td>添加数据链路头部（数据链路地址）, Data Link header added(Data Link address)</td>
+<td><strong>帧</strong>，Frame</td>
+</tr>
+<tr>
+<td>物理，Physical</td>
+<td>转变成电信号, Turned into electrical signals</td>
+<td>线路上的<strong>位</strong>，Bits on the wire</td>
+</tr>
+</tbody></table>
+<p>你可能会被问及 TCP&#x2F;IP 模型与 OSI 模型的对应关系。如表 所示：</p>
+<table>
+<thead>
+<tr>
+<th>层号，Layer #</th>
+<th>OSI 模型</th>
+<th>TCP 模型</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>7</td>
+<td>应用, Application</td>
+<td>应用, Application</td>
+</tr>
+<tr>
+<td>6</td>
+<td>表示, Presentation</td>
+<td>应用, Application</td>
+</tr>
+<tr>
+<td>5</td>
+<td>会话, Session</td>
+<td>应用, Application</td>
+</tr>
+<tr>
+<td>4</td>
+<td>传输, Transport</td>
+<td>主机到主机, Host to Host</td>
+</tr>
+<tr>
+<td>3</td>
+<td>网络, Network</td>
+<td>网际网络, Internetwork</td>
+</tr>
+<tr>
+<td>2</td>
+<td>数据链路, Data Link</td>
+<td>网络接口, Network Interface</td>
+</tr>
+<tr>
+<td>1</td>
+<td>物理, Physical</td>
+<td>网络接口, Network Interface</td>
+</tr>
+</tbody></table>
 
     
 
@@ -558,7 +659,7 @@ UDP 是一个无连接协议（a connectionless protocol）。它在对数据包
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%82%B2%E5%93%80%E7%9A%84%E5%BC%80%E5%A7%8B"><span class="toc-number">1.</span> <span class="toc-text">悲哀的开始</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%B3%E6%98%8E"><span class="toc-number">1.1.</span> <span class="toc-text">申明</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%AD%A3%E6%96%87"><span class="toc-number">2.</span> <span class="toc-text">正文</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E7%9A%84%E7%BD%91%E7%BB%9C%E8%AE%BE%E5%A4%87"><span class="toc-number">2.1.</span> <span class="toc-text">常见的网络设备</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E7%BD%91%E7%BB%9C%E4%BA%A4%E6%8D%A2%E6%9C%BA"><span class="toc-number">2.1.1.</span> <span class="toc-text">1.网络交换机</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E7%BD%91%E7%BB%9C%E8%B7%AF%E7%94%B1%E5%99%A8"><span class="toc-number">2.1.2.</span> <span class="toc-text">2.网络路由器</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B1%80%E5%9F%9F%E7%BD%91%E5%92%8C%E5%B9%BF%E5%9F%9F%E7%BD%91%E6%8B%93%E6%89%91"><span class="toc-number">2.2.</span> <span class="toc-text">局域网和广域网拓扑</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#OSI-%E5%92%8C-TCP-%E6%A8%A1%E5%9E%8B"><span class="toc-number">2.3.</span> <span class="toc-text">OSI 和 TCP 模型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%83%E5%B1%82-%E2%80%93-%E5%BA%94%E7%94%A8%E5%B1%82"><span class="toc-number">2.3.1.</span> <span class="toc-text">第七层 – 应用层</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E5%85%AD%E5%B1%82%E2%80%93%E8%A1%A8%E7%A4%BA%E5%B1%82"><span class="toc-number">2.3.2.</span> <span class="toc-text">第六层–表示层</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%BA%94%E5%B1%82%E2%80%93%E4%BC%9A%E8%AF%9D%E5%B1%82"><span class="toc-number">2.3.3.</span> <span class="toc-text">第五层–会话层</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E5%9B%9B%E5%B1%82%E2%80%93%E4%BC%A0%E8%BE%93%E5%B1%82"><span class="toc-number">2.3.4.</span> <span class="toc-text">第四层–传输层</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B5%81%E6%8E%A7"><span class="toc-number">2.3.4.1.</span> <span class="toc-text">流控</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AA%97%E5%8F%A3%E6%9C%BA%E5%88%B6"><span class="toc-number">2.3.4.2.</span> <span class="toc-text">窗口机制</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%80%9A%E5%91%8A%E6%9C%BA%E5%88%B6"><span class="toc-number">2.3.4.3.</span> <span class="toc-text">通告机制</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E5%B1%82-%E2%80%93-%E7%BD%91%E7%BB%9C%E5%B1%82"><span class="toc-number">2.3.5.</span> <span class="toc-text">第三层 – 网络层</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E5%B1%82%E2%80%93%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82"><span class="toc-number">2.3.6.</span> <span class="toc-text">第二层–数据链路层</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E5%B1%82%E2%80%93%E7%89%A9%E7%90%86%E5%B1%82"><span class="toc-number">2.3.7.</span> <span class="toc-text">第一层–物理层</span></a></li></ol></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%82%B2%E5%93%80%E7%9A%84%E5%BC%80%E5%A7%8B"><span class="toc-number">1.</span> <span class="toc-text">悲哀的开始</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%B3%E6%98%8E"><span class="toc-number">1.1.</span> <span class="toc-text">申明</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%AD%A3%E6%96%87"><span class="toc-number">2.</span> <span class="toc-text">正文</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E7%9A%84%E7%BD%91%E7%BB%9C%E8%AE%BE%E5%A4%87"><span class="toc-number">2.1.</span> <span class="toc-text">常见的网络设备</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E7%BD%91%E7%BB%9C%E4%BA%A4%E6%8D%A2%E6%9C%BA"><span class="toc-number">2.1.1.</span> <span class="toc-text">1.网络交换机</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E7%BD%91%E7%BB%9C%E8%B7%AF%E7%94%B1%E5%99%A8"><span class="toc-number">2.1.2.</span> <span class="toc-text">2.网络路由器</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B1%80%E5%9F%9F%E7%BD%91%E5%92%8C%E5%B9%BF%E5%9F%9F%E7%BD%91%E6%8B%93%E6%89%91"><span class="toc-number">2.2.</span> <span class="toc-text">局域网和广域网拓扑</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#OSI-%E5%92%8C-TCP-%E6%A8%A1%E5%9E%8B"><span class="toc-number">2.3.</span> <span class="toc-text">OSI 和 TCP 模型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%83%E5%B1%82-%E2%80%93-%E5%BA%94%E7%94%A8%E5%B1%82"><span class="toc-number">2.3.1.</span> <span class="toc-text">第七层 – 应用层</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E5%85%AD%E5%B1%82%E2%80%93%E8%A1%A8%E7%A4%BA%E5%B1%82"><span class="toc-number">2.3.2.</span> <span class="toc-text">第六层–表示层</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%BA%94%E5%B1%82%E2%80%93%E4%BC%9A%E8%AF%9D%E5%B1%82"><span class="toc-number">2.3.3.</span> <span class="toc-text">第五层–会话层</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E5%9B%9B%E5%B1%82%E2%80%93%E4%BC%A0%E8%BE%93%E5%B1%82"><span class="toc-number">2.3.4.</span> <span class="toc-text">第四层–传输层</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B5%81%E6%8E%A7"><span class="toc-number">2.3.4.1.</span> <span class="toc-text">流控</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AA%97%E5%8F%A3%E6%9C%BA%E5%88%B6"><span class="toc-number">2.3.4.2.</span> <span class="toc-text">窗口机制</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%80%9A%E5%91%8A%E6%9C%BA%E5%88%B6"><span class="toc-number">2.3.4.3.</span> <span class="toc-text">通告机制</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E5%B1%82-%E2%80%93-%E7%BD%91%E7%BB%9C%E5%B1%82"><span class="toc-number">2.3.5.</span> <span class="toc-text">第三层 – 网络层</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E5%B1%82%E2%80%93%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82"><span class="toc-number">2.3.6.</span> <span class="toc-text">第二层–数据链路层</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E5%B1%82%E2%80%93%E7%89%A9%E7%90%86%E5%B1%82"><span class="toc-number">2.3.7.</span> <span class="toc-text">第一层–物理层</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#OSI%E6%95%85%E9%9A%9C%E6%8E%92%E6%9F%A5"><span class="toc-number">2.3.8.</span> <span class="toc-text">OSI故障排查</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TCP-IP%E3%80%81DoD-%E6%A8%A1%E5%9E%8B"><span class="toc-number">2.4.</span> <span class="toc-text">TCP&#x2F;IP、DoD 模型</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
