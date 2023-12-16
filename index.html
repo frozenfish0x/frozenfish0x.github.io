@@ -435,7 +435,138 @@ win7之后使用的密码
 <pre><code>aes，des，rc4
 都是非对称加密。印度密钥，密文特质与base64类似
 </code></pre>
-<pre><code>
+<p>大小写敏感</p>
+<pre><code>base64 通常以=结尾、1-9 a-f
+</code></pre>
+<pre><code>url 通常以=结尾、1-9 a-f 通常以%数字字母分割 
+</code></pre>
+<pre><code>编码
+
+
+gbk，utf-8
+</code></pre>
+<h4 id="颜文字加密：aaencode"><a href="#颜文字加密：aaencode" class="headerlink" title="颜文字加密：aaencode"></a>颜文字加密：aaencode</h4><pre><code>jother： +()[]&#123;&#125;
+jsfuck是和jother很像。少了&#123;&#125;
+</code></pre>
+<h4 id="图片里包含文件的技术"><a href="#图片里包含文件的技术" class="headerlink" title="图片里包含文件的技术"></a>图片里包含文件的技术</h4><h1 id="3-判断操作系统"><a href="#3-判断操作系统" class="headerlink" title="3.判断操作系统"></a>3.判断操作系统</h1><h2 id="ttl"><a href="#ttl" class="headerlink" title="ttl"></a>ttl</h2><pre><code>WINDOWS NT/2000   TTL：128
+WINDOWS 95/98     TTL：32
+UNIX              TTL：255
+LINUX             TTL：64
+WIN7          	  TTL：64
+</code></pre>
+<p>nmap使用技术可以具体了解判定方法</p>
+<h1 id="4-数据库判定"><a href="#4-数据库判定" class="headerlink" title="4.数据库判定"></a>4.数据库判定</h1><p>​	端口扫描</p>
+<pre><code>mysql 3306
+
+oracle 1521
+
+sql server 1433
+
+db2 5000
+</code></pre>
+<h1 id="5-主动打点和被动打点"><a href="#5-主动打点和被动打点" class="headerlink" title="5.主动打点和被动打点"></a>5.主动打点和被动打点</h1><pre><code>主动式信息打点：主动使用工具、主动发起测试流量等
+被动式信息打点：调用接口获取信息等
+</code></pre>
+<h1 id="6-收集"><a href="#6-收集" class="headerlink" title="6.收集"></a>6.收集</h1><ul>
+<li><h2 id="操作系统"><a href="#操作系统" class="headerlink" title="操作系统"></a>操作系统</h2></li>
+<li><h2 id="脚本语言"><a href="#脚本语言" class="headerlink" title="脚本语言"></a>脚本语言</h2></li>
+<li><h2 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h2></li>
+<li><h2 id="源码名称"><a href="#源码名称" class="headerlink" title="源码名称"></a>源码名称</h2></li>
+</ul>
+<h1 id="7-泄露原码（cms找不到的情况）"><a href="#7-泄露原码（cms找不到的情况）" class="headerlink" title="7.泄露原码（cms找不到的情况）"></a>7.泄露原码（cms找不到的情况）</h1><h2 id="git和svn"><a href="#git和svn" class="headerlink" title="git和svn"></a>git和svn</h2><pre><code>githack原理
+   .git
+svnhack原理
+   .svn
+</code></pre>
+<h2 id="目录备份"><a href="#目录备份" class="headerlink" title="目录备份"></a>目录备份</h2><pre><code>目录扫描秒了
+</code></pre>
+<h2 id="DsStore"><a href="#DsStore" class="headerlink" title="DsStore"></a>DsStore</h2><pre><code>mac的上传软件
+ds_store
+</code></pre>
+<h2 id="PHP源码泄露"><a href="#PHP源码泄露" class="headerlink" title="PHP源码泄露"></a>PHP源码泄露</h2><pre><code>java有maven
+node.js有npm
+php有composer
+   composer.json配置文件
+         里面有配置信息。插件。中间件信息
+</code></pre>
+<h2 id="WEB-INF-web-xml"><a href="#WEB-INF-web-xml" class="headerlink" title="WEB-INF&#x2F;web.xml"></a>WEB-INF&#x2F;web.xml</h2><pre><code>web-inf 是java的web应用安全目录，要是想访问文件。必须在web.xml文件对要访问的文件进行映射 
+</code></pre>
+<h1 id="8-信息收集"><a href="#8-信息收集" class="headerlink" title="8.信息收集"></a>8.信息收集</h1><p>github的readme邮箱，版权声明。域名常用搜索。</p>
+<h1 id="9。端口扫描"><a href="#9。端口扫描" class="headerlink" title="9。端口扫描"></a>9。端口扫描</h1><ol>
+<li>网络架构。</li>
+<li>内网资产，内网协议</li>
+<li>阻碍信息，cdn，waf。负载，防火墙。</li>
+<li>端口（1-65535）</li>
+</ol>
+<pre><code>nmap 协议。端口扫描。防火墙识别
+masscan 协议，端口扫描、
+</code></pre>
+<h1 id="10-端口渗透"><a href="#10-端口渗透" class="headerlink" title="10.端口渗透"></a>10.端口渗透</h1><h1 id="11-c段-旁注"><a href="#11-c段-旁注" class="headerlink" title="11.c段&#x2F;旁注"></a>11.c段&#x2F;旁注</h1><h2 id="旁注"><a href="#旁注" class="headerlink" title="旁注"></a>旁注</h2><pre><code>171.40.78.44
+www.123.com
+www.44.com
+www.54454.com
+</code></pre>
+<h2 id="c段"><a href="#c段" class="headerlink" title="c段"></a>c段</h2><pre><code>然后用ip反查查看绑定域名。可以进去看看资产
+同网段渗透
+</code></pre>
+<h1 id="cdn判断"><a href="#cdn判断" class="headerlink" title="cdn判断"></a>cdn判断</h1><pre><code>超级ping。全国各地ping一下秒了
+</code></pre>
+<h1 id="waf判断"><a href="#waf判断" class="headerlink" title="waf判断"></a>waf判断</h1><p><a target="_blank" rel="noopener" href="https://www.wangan.com/p/11v71302b8c5ab87">https://www.wangan.com/p/11v71302b8c5ab87</a></p>
+<pre><code>工具
+ wafw00f
+</code></pre>
+<h1 id="负载均衡"><a href="#负载均衡" class="headerlink" title="负载均衡"></a>负载均衡</h1><pre><code>工具：
+    lbd
+</code></pre>
+<h1 id="cdn绕过"><a href="#cdn绕过" class="headerlink" title="cdn绕过"></a>cdn绕过</h1><pre><code>1.子域名查询。有些子域名没有加速cdn
+比如你直接访问 www.baidu.com
+他如果没买*.baidu.com
+那么访问test.baidu.com
+      baidu.com都会暴露真实ip
+2.利用网站漏洞暴露真实ip
+3.历史dns记录
+4.MX
+5.国外请求(仅限中国大陆策略下)
+    全球cdn查询:tools.ipip.net
+    找冷们cdn。他一定不会部署cdn
+6.zmap
+7.网络空间搜索引擎：
+    zoomeye。fofa、shodan
+8.部分加速的就可以看网络请求包
+</code></pre>
+<h2 id=""><a href="#" class="headerlink" title=""></a></h2><pre><code>漏洞&amp;遗留文件
+    像是有些配置文件。比如phpInfo.php里面就会配置ip地址.从而得知真实ip，适用于没有内网网卡。
+</code></pre>
+<pre><code>1.传统访问：访问域名-&gt;dns-&gt;目标主机
+2.cdn瑞克派：访问域名-&gt;cdn-&gt;
+3.访问域名-&gt;-&gt;
+4. 主动邮件配合备案
+    让对方服务器主动发邮件给你（注册、找回密码等功能）
+5.抓APP包: 
+    有时候网站使用了CDN，但是可能其APP没有使用，那么通过抓取APP的数据包有可能得出真实的IP地址
+6.国外第三方测试CDN网站（结合了几种方法于一身）
+    https://get-site-ip.com/
+7.查看历史解析IP
+    https://site.ip138.com/
+    https://viewdns.info/
+8.全网扫描FuckCDN(没有办法的办法)
+    厂商查询：
+        https://tools.ipip.net/cdn.php
+    IP库筛地址段
+        https://www.cz88.net/geo-public //IP库资源,要下载客户端
+    全网扫描：
+        https://github.com/Tai7sy/fuckcdn
+9.ssrf漏洞
+    想办法让对方主机访问你，你自己弄个web服务，监听个端口，记录日志。
+    然后通过漏洞·让对方访问你，于是就得到ip&#39;了
+</code></pre>
+<h3 id="牛逼的工具"><a href="#牛逼的工具" class="headerlink" title="牛逼的工具"></a>牛逼的工具</h3><p>​	<a href="">get-site-ip.com</a></p>
+<h1 id="正向连接和反向连接"><a href="#正向连接和反向连接" class="headerlink" title="正向连接和反向连接"></a>正向连接和反向连接</h1><h2 id="正向连接"><a href="#正向连接" class="headerlink" title="正向连接"></a><strong>正向连接</strong></h2><p>​		</p>
+<pre><code>正向连接是受害主机监听一个端口，由控制主机主动去连接受害主机的过程，适用于受害主机具有[公网ip](https://so.csdn.net/so/search?q=公网ip&amp;spm=1001.2101.3001.7020)的情况下。例如下面，受害主机具有公网ip，被控主机kali可以通过ip地址访问到受害主机，所以能够使用正相连接来控制受害主机。
+</code></pre>
+<h2 id="反向连接"><a href="#反向连接" class="headerlink" title="反向连接"></a><strong>反向连接</strong></h2><pre><code>反向连接是控制主机监听一个端口，由受害主机反向去连接控制主机的过程，适用于受害主机出网（或出网且没有公网ip）的情况。例如，受害主机是一台位于内网，并且没有公网ip且能访问互联网的主机，控制主机无法直接通过ip地址访问到受害主机。所以此时需要在控制主机上监听一个端口，让受害机主动连接控制主机，从而实现对控制主机的控制。
+
+由于正向连接是被攻击者主动连接攻击者，所以不受防火墙策略的限制
 </code></pre>
 
     
