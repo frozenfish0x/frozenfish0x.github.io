@@ -329,83 +329,6 @@
 
 
   
-    <article id="post-problem" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2023/12/17/problem/" target="_blank">problem</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2023/12/17/problem/" class="archive-article-date">
-        <time datetime="2023-12-16T18:42:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-12-17</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <ul>
-<li><input disabled="" type="checkbox"> 2020&#x2F;12&#x2F;16    		fuckcdn原理，全网扫描cdn。哪天有时间可以研究一下，全网cdn扫描的源码。fuckcdn的意语言我没学过，找个c的研究，。或者去youtube或谷歌找相关技术文章。国内没有详细的讲解</li>
-</ul>
-
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2023/12/17/problem/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-web安全day1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1064,6 +987,85 @@ Ipconfig/flushdns 清除dns解析记录
     
     <p class="article-more-link">
       <a class="article-more-a" href="/2023/11/27/%E8%A7%A3%E5%86%B3Sourcetree%E6%8E%A8github%E4%B8%8D%E5%81%9C%E5%BC%B9%E7%99%BB%E5%BD%95%E7%AA%97Logon-failed-use-ctrl-c-to-cancel-basi/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="逆向-深入理解dll注入" class="article article-type-逆向  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2022/12/01/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3dll%E6%B3%A8%E5%85%A5/" target="_blank">深入理解dll注入</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2022/12/01/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3dll%E6%B3%A8%E5%85%A5/" class="archive-article-date">
+        <time datetime="2022-11-30T20:17:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-12-01</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p>DLL注入是指向运行中的其它进程强制插入特定的DLL文件。从技术细节来说，DLL注入命令其它进程自行调用LoadLibrary()API，加载用户指定的DLL文件。DLL注入与一般DLL加载的区别在于，加载的目标进程是其自身或其他进程。</p>
+<p>可以看到，test.dll已被强制插入进程(本来notepad并不会加载test.dll)。加载到某一进程中的test.dll与已经加载到某一进程中的dll一样，拥有访问notepad.exe进程内存的权限。</p>
+<p>DLL被加载到进程后会自动运行DLLMain()函数，用户可以把想执行的代码放到DLLMain()函数，<br>每当加载DLL时，添加的代码就会得到执行。利用这种特性可以修复程序Bug以及添加新功能<br>DllMain 函数是DLL模块的默认 入口点。当Windows加载DLL模块时调用这一函数。<br>系统首先调用全局对象的 构造函数，然后调用 全局函数DLLMain。<br>DLLMain 函数不仅在将DLL链接加载到进程时被调用，在DLL模块与进程分离时（以及其它时候）也被调用。<br>
+    
+    <a class="article-more-a" href="/2022/12/01/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3dll%E6%B3%A8%E5%85%A5/#more">more >></a>
+    
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2022/12/01/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3dll%E6%B3%A8%E5%85%A5/">展开全文 >></a>
     </p>
     
 
