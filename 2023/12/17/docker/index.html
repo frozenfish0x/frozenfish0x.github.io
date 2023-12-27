@@ -1,21 +1,21 @@
 <!DOCTYPE html>
-<html lang=zh>
+<html lang=en>
 <head>
     <!-- so meta -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
-    <meta name="description" content="1.dockerDocker 通常用来做什么 应用分发、部署，方便传播给他人安装。特别是开源软件和提供私有部署的应用 快速安装测试&#x2F;学习软件，用完就丢（类似小程序），不把时间浪费在安装软件上。例如 Redis &#x2F; MongoDB &#x2F; ElasticSearch &#x2F; ELK 多个版本软件共存，不污染系统，例如 Python2、Python3，Redis4.0，Redis5.0 Windows 上体验">
+    <meta name="description" content="1.docker12345Docker 通常用来做什么应用分发、部署，方便传播给他人安装。特别是开源软件和提供私有部署的应用快速安装测试&#x2F;学习软件，用完就丢（类似小程序），不把时间浪费在安装软件上。例如 Redis &#x2F; MongoDB &#x2F; ElasticSearch &#x2F; ELK多个版本软件共存，不污染系统，例如 Python2、Python3，Redis4.0，Redis5.0Windows 上体">
 <meta property="og:type" content="article">
 <meta property="og:title" content="docker">
 <meta property="og:url" content="http://example.com/2023/12/17/docker/index.html">
-<meta property="og:site_name" content="frozenfish">
-<meta property="og:description" content="1.dockerDocker 通常用来做什么 应用分发、部署，方便传播给他人安装。特别是开源软件和提供私有部署的应用 快速安装测试&#x2F;学习软件，用完就丢（类似小程序），不把时间浪费在安装软件上。例如 Redis &#x2F; MongoDB &#x2F; ElasticSearch &#x2F; ELK 多个版本软件共存，不污染系统，例如 Python2、Python3，Redis4.0，Redis5.0 Windows 上体验">
-<meta property="og:locale" content="zh_CN">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="1.docker12345Docker 通常用来做什么应用分发、部署，方便传播给他人安装。特别是开源软件和提供私有部署的应用快速安装测试&#x2F;学习软件，用完就丢（类似小程序），不把时间浪费在安装软件上。例如 Redis &#x2F; MongoDB &#x2F; ElasticSearch &#x2F; ELK多个版本软件共存，不污染系统，例如 Python2、Python3，Redis4.0，Redis5.0Windows 上体">
+<meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-12-17T11:08:03.000Z">
 <meta property="article:modified_time" content="2023-12-24T17:52:37.754Z">
-<meta property="article:author" content="frozenfish">
+<meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
     
     
@@ -60,20 +60,20 @@
 <body class="max-width mx-auto px3 ltr">
     
       <div id="header-post">
-  <a id="menu-icon" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
-  <a id="menu-icon-tablet" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
-  <a id="top-icon-tablet" href="#" aria-label="顶部" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
   <span id="menu">
     <span id="nav">
       <ul>
         <!--
-       --><li><a href="/">首页</a></li><!--
+       --><li><a href="/">Home</a></li><!--
      --><!--
-       --><li><a href="/about/">关于</a></li><!--
+       --><li><a href="/about/">About</a></li><!--
      --><!--
-       --><li><a href="/archives/">归档</a></li><!--
+       --><li><a href="/archives/">Writing</a></li><!--
      --><!--
-       --><li><a target="_blank" rel="noopener" href="http://github.com/probberechts">项目</a></li><!--
+       --><li><a target="_blank" rel="noopener" href="http://github.com/probberechts">Projects</a></li><!--
      -->
       </ul>
     </span>
@@ -81,18 +81,18 @@
     <span id="actions">
       <ul>
         
-        <li><a class="icon" aria-label="上一篇" href="/2023/12/23/dns%E8%A7%A3%E6%9E%90%E8%BF%87%E7%A8%8B/"><i class="fa-solid fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Previous post" href="/2023/12/23/dns%E8%A7%A3%E6%9E%90%E8%BF%87%E7%A8%8B/"><i class="fa-solid fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
         
         
-        <li><a class="icon" aria-label="下一篇" href="/2023/12/17/php%E5%BC%80%E5%8F%91/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Next post" href="/2023/12/17/php%E5%BC%80%E5%8F%91/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
         
-        <li><a class="icon" aria-label="返回顶部" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
-        <li><a class="icon" aria-label="分享文章" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
       </ul>
-      <span id="i-prev" class="info" style="display:none;">上一篇</span>
-      <span id="i-next" class="info" style="display:none;">下一篇</span>
-      <span id="i-top" class="info" style="display:none;">返回顶部</span>
-      <span id="i-share" class="info" style="display:none;">分享文章</span>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
     </span>
     <br/>
     <div id="share" style="display: none">
@@ -106,12 +106,7 @@
   <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2023/12/17/docker/&title=docker"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
   <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2023/12/17/docker/&title=docker"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
   <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2023/12/17/docker/&title=docker"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2023/12/17/docker/&name=docker&description=&lt;h1 id=&#34;1-docker&#34;&gt;&lt;a href=&#34;#1-docker&#34; class=&#34;headerlink&#34; title=&#34;1.docker&#34;&gt;&lt;/a&gt;1.docker&lt;/h1&gt;&lt;pre&gt;&lt;code&gt;Docker 通常用来做什么
-应用分发、部署，方便传播给他人安装。特别是开源软件和提供私有部署的应用
-快速安装测试/学习软件，用完就丢（类似小程序），不把时间浪费在安装软件上。例如 Redis / MongoDB / ElasticSearch / ELK
-多个版本软件共存，不污染系统，例如 Python2、Python3，Redis4.0，Redis5.0
-Windows 上体验/学习各种 Linux 系统
-&lt;/code&gt;&lt;/pre&gt;"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2023/12/17/docker/&name=docker&description=&lt;h1 id=&#34;1-docker&#34;&gt;&lt;a href=&#34;#1-docker&#34; class=&#34;headerlink&#34; title=&#34;1.docker&#34;&gt;&lt;/a&gt;1.docker&lt;/h1&gt;&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;Docker 通常用来做什么&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;应用分发、部署，方便传播给他人安装。特别是开源软件和提供私有部署的应用&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;快速安装测试/学习软件，用完就丢（类似小程序），不把时间浪费在安装软件上。例如 Redis / MongoDB / ElasticSearch / ELK&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;多个版本软件共存，不污染系统，例如 Python2、Python3，Redis4.0，Redis5.0&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;Windows 上体验/学习各种 Linux 系统&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
   <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2023/12/17/docker/&t=docker"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
 </ul>
 
@@ -139,7 +134,7 @@ Windows 上体验/学习各种 Linux 系统
 
     <div class="meta">
       <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
-        <span class="p-name" itemprop="name">frozenfish</span>
+        <span class="p-name" itemprop="name">John Doe</span>
       </span>
       
     <div class="postdate">
@@ -159,39 +154,31 @@ Windows 上体验/学习各种 Linux 系统
   
 
   <div class="content e-content" itemprop="articleBody">
-    <h1 id="1-docker"><a href="#1-docker" class="headerlink" title="1.docker"></a>1.docker</h1><pre><code>Docker 通常用来做什么
-应用分发、部署，方便传播给他人安装。特别是开源软件和提供私有部署的应用
-快速安装测试/学习软件，用完就丢（类似小程序），不把时间浪费在安装软件上。例如 Redis / MongoDB / ElasticSearch / ELK
-多个版本软件共存，不污染系统，例如 Python2、Python3，Redis4.0，Redis5.0
-Windows 上体验/学习各种 Linux 系统
-</code></pre>
+    <h1 id="1-docker"><a href="#1-docker" class="headerlink" title="1.docker"></a>1.docker</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Docker 通常用来做什么</span><br><span class="line">应用分发、部署，方便传播给他人安装。特别是开源软件和提供私有部署的应用</span><br><span class="line">快速安装测试/学习软件，用完就丢（类似小程序），不把时间浪费在安装软件上。例如 Redis / MongoDB / ElasticSearch / ELK</span><br><span class="line">多个版本软件共存，不污染系统，例如 Python2、Python3，Redis4.0，Redis5.0</span><br><span class="line">Windows 上体验/学习各种 Linux 系统</span><br></pre></td></tr></table></figure>
 <span id="more"></span>
 
 
-<h1 id="2-安装-使用"><a href="#2-安装-使用" class="headerlink" title="2.安装&amp;使用"></a>2.安装&amp;使用</h1><pre><code class="shell">sudo pacman -S docker
- sudo systemctl start docker
-sudo systemctl enable docker
+<h1 id="2-安装-使用"><a href="#2-安装-使用" class="headerlink" title="2.安装&amp;使用"></a>2.安装&amp;使用</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S docker</span><br><span class="line"> sudo systemctl start docker</span><br><span class="line">sudo systemctl enable docker</span><br><span class="line"></span><br><span class="line">测试</span><br><span class="line">sudo docker run hello-world</span><br></pre></td></tr></table></figure>
 
-测试
-sudo docker run hello-world
-</code></pre>
+
+
 <h1 id="普通人使用需要掌握知识："><a href="#普通人使用需要掌握知识：" class="headerlink" title="普通人使用需要掌握知识："></a>普通人使用需要掌握知识：</h1><p>docker-comple什么的他是docker的一件启动容器功能。这个软件可以一件话快速部署容器，并且出现问题后可以立刻使用此软件立刻创建其他容器。</p>
 <p>docker需要固定持久化的目录。用来存储数据。</p>
 <p>docker拉去镜像 </p>
-<pre><code>docker pull
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull</span><br></pre></td></tr></table></figure>
+
 <p>docker 查看容器</p>
-<pre><code>docker ps
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker ps</span><br></pre></td></tr></table></figure>
+
 <p>docker 查看镜像</p>
-<pre><code>docker image
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker image</span><br></pre></td></tr></table></figure>
+
 <p>docker 删除容器</p>
-<pre><code>docker rm 名字或id
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker rm 名字或id</span><br></pre></td></tr></table></figure>
+
 <p>docker创建虚拟网络</p>
-<pre><code>docker network create 具体参数请查阅文档
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker network create 具体参数请查阅文档</span><br></pre></td></tr></table></figure>
+
 <p>docker每个容器内部环境都不同，独立隔离。docker有内部端口和外部端口映射这么一说。docker十分方便。文件存储在哪。即使挂了重启挂在同杨目录也能起来服务</p>
 <p>docker 不是虚拟机。完全不一样的底层，</p>
 <p>问题，今天我在使用docker安装openwrt时出现虚拟化的环境影响到宿主，十年老开发表示这属于很怪的问题，</p>
@@ -215,13 +202,13 @@ sudo docker run hello-world
     <div id="nav-footer" style="display: none">
       <ul>
         
-          <li><a href="/">首页</a></li>
+          <li><a href="/">Home</a></li>
         
-          <li><a href="/about/">关于</a></li>
+          <li><a href="/about/">About</a></li>
         
-          <li><a href="/archives/">归档</a></li>
+          <li><a href="/archives/">Writing</a></li>
         
-          <li><a target="_blank" rel="noopener" href="http://github.com/probberechts">项目</a></li>
+          <li><a target="_blank" rel="noopener" href="http://github.com/probberechts">Projects</a></li>
         
       </ul>
     </div>
@@ -244,24 +231,19 @@ sudo docker run hello-world
   <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2023/12/17/docker/&title=docker"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
   <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2023/12/17/docker/&title=docker"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
   <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2023/12/17/docker/&title=docker"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2023/12/17/docker/&name=docker&description=&lt;h1 id=&#34;1-docker&#34;&gt;&lt;a href=&#34;#1-docker&#34; class=&#34;headerlink&#34; title=&#34;1.docker&#34;&gt;&lt;/a&gt;1.docker&lt;/h1&gt;&lt;pre&gt;&lt;code&gt;Docker 通常用来做什么
-应用分发、部署，方便传播给他人安装。特别是开源软件和提供私有部署的应用
-快速安装测试/学习软件，用完就丢（类似小程序），不把时间浪费在安装软件上。例如 Redis / MongoDB / ElasticSearch / ELK
-多个版本软件共存，不污染系统，例如 Python2、Python3，Redis4.0，Redis5.0
-Windows 上体验/学习各种 Linux 系统
-&lt;/code&gt;&lt;/pre&gt;"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2023/12/17/docker/&name=docker&description=&lt;h1 id=&#34;1-docker&#34;&gt;&lt;a href=&#34;#1-docker&#34; class=&#34;headerlink&#34; title=&#34;1.docker&#34;&gt;&lt;/a&gt;1.docker&lt;/h1&gt;&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;Docker 通常用来做什么&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;应用分发、部署，方便传播给他人安装。特别是开源软件和提供私有部署的应用&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;快速安装测试/学习软件，用完就丢（类似小程序），不把时间浪费在安装软件上。例如 Redis / MongoDB / ElasticSearch / ELK&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;多个版本软件共存，不污染系统，例如 Python2、Python3，Redis4.0，Redis5.0&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;Windows 上体验/学习各种 Linux 系统&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
   <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2023/12/17/docker/&t=docker"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
 
     <div id="actions-footer">
-        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
         
-          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> TOC</a>
         
-        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
-        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
     </div>
 
   </div>
@@ -274,19 +256,19 @@ Windows 上体验/学习各种 Linux 系统
     
     
     2016-2023
-    frozenfish
+    John Doe
   </div>
   <div class="footer-right">
     <nav>
       <ul>
         <!--
-       --><li><a href="/">首页</a></li><!--
+       --><li><a href="/">Home</a></li><!--
      --><!--
-       --><li><a href="/about/">关于</a></li><!--
+       --><li><a href="/about/">About</a></li><!--
      --><!--
-       --><li><a href="/archives/">归档</a></li><!--
+       --><li><a href="/archives/">Writing</a></li><!--
      --><!--
-       --><li><a target="_blank" rel="noopener" href="http://github.com/probberechts">项目</a></li><!--
+       --><li><a target="_blank" rel="noopener" href="http://github.com/probberechts">Projects</a></li><!--
      -->
       </ul>
     </nav>
@@ -316,7 +298,7 @@ Windows 上体验/学习各种 Linux 系统
   <script type="text/javascript">
   $(function() {
     // copy-btn HTML
-    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板！\">";
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
     btn += '<i class="fa-regular fa-clone"></i>';
     btn += '</span>';
     // mount it!
@@ -327,7 +309,7 @@ Windows 上体验/学习各种 Linux 系统
       }
     });
     clip.on('success', function(e) {
-      e.trigger.setAttribute('aria-label', "复制成功！");
+      e.trigger.setAttribute('aria-label', "Copied!");
       e.clearSelection();
     })
   })

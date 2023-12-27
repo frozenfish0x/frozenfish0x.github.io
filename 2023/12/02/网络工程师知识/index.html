@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang=zh>
+<html lang=en>
 <head>
     <!-- so meta -->
     <meta charset="utf-8">
@@ -10,9 +10,9 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="网络工程师知识">
 <meta property="og:url" content="http://example.com/2023/12/02/%E7%BD%91%E7%BB%9C%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%9F%A5%E8%AF%86/index.html">
-<meta property="og:site_name" content="frozenfish">
+<meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="因为要混饭吃，被迫学习网络知识，顺便了解一下物理的网络结构  申明因为是自己用来学习的，大部分前辈都进行了很好的总结，我会将互联网各种资料整合起来,再加上自己的理解来写这篇文章，仅供个人学习用途  正文常见的网络设备1.网络交换机交换机使用内容可寻址存储器(Content Addressable Memory, CAM), 因此可以记住设备所插入的端口。思科公司生产的交换机被设计可用于从小型机构到">
-<meta property="og:locale" content="zh_CN">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://ccna60d.xfoss.com/images/60days-13.png">
 <meta property="og:image" content="https://ccna60d.xfoss.com/images/60days-4.png">
 <meta property="og:image" content="https://ccna60d.xfoss.com/images/60days-5.png">
@@ -24,7 +24,7 @@
 <meta property="og:image" content="https://img-blog.csdnimg.cn/454d9d289acf4136bdbe4a18755f1eac.png">
 <meta property="article:published_time" content="2023-12-01T16:16:43.000Z">
 <meta property="article:modified_time" content="2023-12-24T10:15:57.239Z">
-<meta property="article:author" content="frozenfish">
+<meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://ccna60d.xfoss.com/images/60days-13.png">
     
@@ -70,20 +70,20 @@
 <body class="max-width mx-auto px3 ltr">
     
       <div id="header-post">
-  <a id="menu-icon" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
-  <a id="menu-icon-tablet" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
-  <a id="top-icon-tablet" href="#" aria-label="顶部" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
   <span id="menu">
     <span id="nav">
       <ul>
         <!--
-       --><li><a href="/">首页</a></li><!--
+       --><li><a href="/">Home</a></li><!--
      --><!--
-       --><li><a href="/about/">关于</a></li><!--
+       --><li><a href="/about/">About</a></li><!--
      --><!--
-       --><li><a href="/archives/">归档</a></li><!--
+       --><li><a href="/archives/">Writing</a></li><!--
      --><!--
-       --><li><a target="_blank" rel="noopener" href="http://github.com/probberechts">项目</a></li><!--
+       --><li><a target="_blank" rel="noopener" href="http://github.com/probberechts">Projects</a></li><!--
      -->
       </ul>
     </span>
@@ -91,18 +91,18 @@
     <span id="actions">
       <ul>
         
-        <li><a class="icon" aria-label="上一篇" href="/2023/12/02/%E5%85%B3%E4%BA%8Ehexo%E4%B8%BB%E9%A2%98%E4%BF%AE%E6%94%B9/"><i class="fa-solid fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Previous post" href="/2023/12/02/%E5%85%B3%E4%BA%8Ehexo%E4%B8%BB%E9%A2%98%E4%BF%AE%E6%94%B9/"><i class="fa-solid fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
         
         
-        <li><a class="icon" aria-label="下一篇" href="/2023/12/01/%E8%AE%BF%E9%97%AE%E7%99%BE%E5%BA%A6%E8%87%AA%E5%8A%A8%E8%B7%B3%E8%BD%ACgithub/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Next post" href="/2023/12/01/%E8%AE%BF%E9%97%AE%E7%99%BE%E5%BA%A6%E8%87%AA%E5%8A%A8%E8%B7%B3%E8%BD%ACgithub/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
         
-        <li><a class="icon" aria-label="返回顶部" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
-        <li><a class="icon" aria-label="分享文章" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
       </ul>
-      <span id="i-prev" class="info" style="display:none;">上一篇</span>
-      <span id="i-next" class="info" style="display:none;">下一篇</span>
-      <span id="i-top" class="info" style="display:none;">返回顶部</span>
-      <span id="i-share" class="info" style="display:none;">分享文章</span>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
     </span>
     <br/>
     <div id="share" style="display: none">
@@ -163,7 +163,7 @@ VLAN 就是虚拟局域网。
 
     <div class="meta">
       <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
-        <span class="p-name" itemprop="name">frozenfish</span>
+        <span class="p-name" itemprop="name">John Doe</span>
       </span>
       
     <div class="postdate">
@@ -243,16 +243,8 @@ VLAN 就是虚拟局域网。
 <td>环形</td>
 </tr>
 </tbody></table>
-<h2 id="OSI-和-TCP-模型"><a href="#OSI-和-TCP-模型" class="headerlink" title="OSI 和 TCP 模型"></a>OSI 和 TCP 模型</h2><pre><code>开放标准互连（Open Standards Interconnection, OSI）是有国际标准化组织创建的。伴随技术喷发，网络设备和网络软件行业兴起了几家巨头，包括思科、微软、Novell、IBM、惠普、苹果以及其它几家公司。每家都有自己的线缆和端口类型，允许各自的商业性协议。此时，如你从一家买路由器、另一家买交换机，又从别家买服务器，就会出现兼容性问题。
+<h2 id="OSI-和-TCP-模型"><a href="#OSI-和-TCP-模型" class="headerlink" title="OSI 和 TCP 模型"></a>OSI 和 TCP 模型</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">开放标准互连（Open Standards Interconnection, OSI）是有国际标准化组织创建的。伴随技术喷发，网络设备和网络软件行业兴起了几家巨头，包括思科、微软、Novell、IBM、惠普、苹果以及其它几家公司。每家都有自己的线缆和端口类型，允许各自的商业性协议。此时，如你从一家买路由器、另一家买交换机，又从别家买服务器，就会出现兼容性问题。</span><br><span class="line"></span><br><span class="line">有一些处理这些问题的通容办法，比如在网络上部署网关来转换不同的协议，这会导致性能上的瓶颈（比如网络慢速部分）并会令到故障排除十分困难和费时。最终，厂商们不得不达成一个在各自产品上都能工作的通用标准，一套叫做 TCP/IP 的免费协议包。最后，那些未能采行 TCP/IP 的厂商失去市场份额，走向破产。</span><br><span class="line"></span><br><span class="line">ISO 创建出 OSI 模型，以助力于各厂商就通用标准达成一致，实现厂商之间的兼容。此模型包括了将总多网络功能分解为一套逻辑分层，或通俗地称为层的东西。各层只需完成其特定的一些功能，比如说你的公司专注于防火墙，那么这些防火墙将自然地与其它厂商的设备一起工作。</span><br><span class="line"></span><br><span class="line">此模型的优势在于每件设备设计用来出色完成一个角色，而非不充分地完成多个角色。客户可以根据其解决方案选出最好的设备，而不用死栓在一家厂商那里。同时故障排除也变得更为容易，因为确定的出错可被追踪到具体的某层。</span><br><span class="line"></span><br><span class="line">OSI 模型将所有网络功能划分为七个不同的层。该层次化模型从第七层一路去往第一层。那些离用户更近、更为复杂的功能，在顶部，一直到处于底层的网络线缆规格，如同表</span><br></pre></td></tr></table></figure>
 
-有一些处理这些问题的通容办法，比如在网络上部署网关来转换不同的协议，这会导致性能上的瓶颈（比如网络慢速部分）并会令到故障排除十分困难和费时。最终，厂商们不得不达成一个在各自产品上都能工作的通用标准，一套叫做 TCP/IP 的免费协议包。最后，那些未能采行 TCP/IP 的厂商失去市场份额，走向破产。
-
-ISO 创建出 OSI 模型，以助力于各厂商就通用标准达成一致，实现厂商之间的兼容。此模型包括了将总多网络功能分解为一套逻辑分层，或通俗地称为层的东西。各层只需完成其特定的一些功能，比如说你的公司专注于防火墙，那么这些防火墙将自然地与其它厂商的设备一起工作。
-
-此模型的优势在于每件设备设计用来出色完成一个角色，而非不充分地完成多个角色。客户可以根据其解决方案选出最好的设备，而不用死栓在一家厂商那里。同时故障排除也变得更为容易，因为确定的出错可被追踪到具体的某层。
-
-OSI 模型将所有网络功能划分为七个不同的层。该层次化模型从第七层一路去往第一层。那些离用户更近、更为复杂的功能，在顶部，一直到处于底层的网络线缆规格，如同表
-</code></pre>
 <table>
 <thead>
 <tr>
@@ -305,49 +297,24 @@ OSI 模型将所有网络功能划分为七个不同的层。该层次化模型�
 <h4 id="流控"><a href="#流控" class="headerlink" title="流控"></a><strong>流控</strong></h4><p>如发往接收系统的信息多于它所能处理的量时，它将请求发送系统暂停一段时间。这一般发生在一段使用宽带而另一端使用拨号上网的时候。这个用于通知其它设备停止的包叫做源抑制消息（a source quench message）。</p>
 <h4 id="窗口机制"><a href="#窗口机制" class="headerlink" title="窗口机制"></a><strong>窗口机制</strong></h4><p>窗口机制下，每个系统就能在收到应答（acknowledgement）前发送多少数据达成一致。”窗口”随着数据的传输时开时合，以维持一个持续的数据流。</p>
 <h4 id="通告机制"><a href="#通告机制" class="headerlink" title="通告机制"></a><strong>通告机制</strong></h4><p>在收到一定数量的数据段后，接收端需要就这些数据段的安全抵达和顺序正确，通告发送端。</p>
-<pre><code>这些都是在一个叫做三次握手（a three-way handshake）的过程中达成一致。你要发出一个包来建立会话。第一个包叫做同步(synchronise, SYN)包。远端设备以同步应答（a synchronise acknowledgement, SYN-ACK）包予以回应。第三步的应答包（acknowledgement, ACK）的发出标志着会话的建立。这都是通过 TCP 业务完成的。
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">这些都是在一个叫做三次握手（a three-way handshake）的过程中达成一致。你要发出一个包来建立会话。第一个包叫做同步(synchronise, SYN)包。远端设备以同步应答（a synchronise acknowledgement, SYN-ACK）包予以回应。第三步的应答包（acknowledgement, ACK）的发出标志着会话的建立。这都是通过 TCP 业务完成的。</span><br><span class="line"></span><br><span class="line">传输层包含了好几个协议，其中最熟知的是传输控制协议（Tranmission Control Protocol, TCP）和用户数据报协议（User Datagram Protocol, UDP）, 它们都是 TCP/IP 协议包的组成部分。这个协议包因为是互联网所使用的标准而相当出名。TCP 是面向连接的协议。它使用了三次握手、窗口机制以及其它技巧来保证数据安全地到达其目的地。有许多协议都使用了 TCP， 比如 Telnet、HTTPS 以及 FTP（尽管 FTP 位于应用层，它确实使用了 TCP）。</span><br><span class="line"></span><br><span class="line">UDP 是一个无连接协议（a connectionless protocol）。它在对数据包进行编号后就发往目的地了。它绝不会管这些数据包是否安全抵达，也绝不会在发送数据包前建立一条连接。在数据不是那么重要，应用开发者觉得信息总是可以在未能到达目的地时重新发送时，往往采用 UDP。</span><br><span class="line"></span><br><span class="line">那么为什么要用到 UDP 呢？ TCP 协议本身会消耗许多网络的带宽，甚至在数据还没发送时，为建立其连接，也要往复发送很多流量。这都会耗去一些宝贵的时间和网络资源。UDP 数据包比起 TCP 包要小很多，在无需真正可靠连接时，它是是否有用的。使用到 UDP 的协议有 TFTP 等。</span><br></pre></td></tr></table></figure>
 
-传输层包含了好几个协议，其中最熟知的是传输控制协议（Tranmission Control Protocol, TCP）和用户数据报协议（User Datagram Protocol, UDP）, 它们都是 TCP/IP 协议包的组成部分。这个协议包因为是互联网所使用的标准而相当出名。TCP 是面向连接的协议。它使用了三次握手、窗口机制以及其它技巧来保证数据安全地到达其目的地。有许多协议都使用了 TCP， 比如 Telnet、HTTPS 以及 FTP（尽管 FTP 位于应用层，它确实使用了 TCP）。
+<h3 id="第三层-–-网络层"><a href="#第三层-–-网络层" class="headerlink" title="第三层 – 网络层"></a><strong>第三层 – 网络层</strong></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">网络层接手来自传输层的数据段，将其拆分为叫做数据包的更小单位。许多网络工程师不管在 OSI 的哪层，都把数据叫做包，这也是可以的。但是，请记住，技术上说只有在网络层，才可以叫包。</span><br><span class="line"></span><br><span class="line">网络层必须确定从一个网络到另一网络的最优路径；为此，路由器工作在该层。路由器在此采用逻辑寻址，而 TCP/IP 的寻址方式是 IP 寻址，稍后会讲到。</span><br></pre></td></tr></table></figure>
 
-UDP 是一个无连接协议（a connectionless protocol）。它在对数据包进行编号后就发往目的地了。它绝不会管这些数据包是否安全抵达，也绝不会在发送数据包前建立一条连接。在数据不是那么重要，应用开发者觉得信息总是可以在未能到达目的地时重新发送时，往往采用 UDP。
+<h3 id="第二层–数据链路层"><a href="#第二层–数据链路层" class="headerlink" title="第二层–数据链路层"></a><strong>第二层–数据链路层</strong></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">数据链路层将数据包拆分成帧这种更小的单位。二层交换机工作在这层，使用硬件地址，或是 MAC 地址，它们之所以能够更快地交换流量，是因为无需查看 IP 地址和路由表。广域网协议工作在第二层，包括 HDLC、ISDN 以及 PPP。以太网也是第二层的。</span><br><span class="line"></span><br><span class="line">为了向其上下两层提供接口-，数据链路层又分了两个子层，分别是逻辑链路控制子层（the Logical Link Control, LLC）, 以及介质访问控制子层（ the Media Access Control, MAC）。逻辑链路控制子层与网络层交互，介质访问控制子层与物理层交互。</span><br></pre></td></tr></table></figure>
 
-那么为什么要用到 UDP 呢？ TCP 协议本身会消耗许多网络的带宽，甚至在数据还没发送时，为建立其连接，也要往复发送很多流量。这都会耗去一些宝贵的时间和网络资源。UDP 数据包比起 TCP 包要小很多，在无需真正可靠连接时，它是是否有用的。使用到 UDP 的协议有 TFTP 等。
-</code></pre>
-<h3 id="第三层-–-网络层"><a href="#第三层-–-网络层" class="headerlink" title="第三层 – 网络层"></a><strong>第三层 – 网络层</strong></h3><pre><code>网络层接手来自传输层的数据段，将其拆分为叫做数据包的更小单位。许多网络工程师不管在 OSI 的哪层，都把数据叫做包，这也是可以的。但是，请记住，技术上说只有在网络层，才可以叫包。
 
-网络层必须确定从一个网络到另一网络的最优路径；为此，路由器工作在该层。路由器在此采用逻辑寻址，而 TCP/IP 的寻址方式是 IP 寻址，稍后会讲到。
-</code></pre>
-<h3 id="第二层–数据链路层"><a href="#第二层–数据链路层" class="headerlink" title="第二层–数据链路层"></a><strong>第二层–数据链路层</strong></h3><pre><code>数据链路层将数据包拆分成帧这种更小的单位。二层交换机工作在这层，使用硬件地址，或是 MAC 地址，它们之所以能够更快地交换流量，是因为无需查看 IP 地址和路由表。广域网协议工作在第二层，包括 HDLC、ISDN 以及 PPP。以太网也是第二层的。
 
-为了向其上下两层提供接口-，数据链路层又分了两个子层，分别是逻辑链路控制子层（the Logical Link Control, LLC）, 以及介质访问控制子层（ the Media Access Control, MAC）。逻辑链路控制子层与网络层交互，介质访问控制子层与物理层交互。
-</code></pre>
-<h3 id="第一层–物理层"><a href="#第一层–物理层" class="headerlink" title="第一层–物理层"></a><strong>第一层–物理层</strong></h3><pre><code>在这层上，帧被转换为位，以将其放到线路上。这些位是由电脉冲构成，读作“开”“关”位，或是二进制的 1 和 0。集线器工作于此层，在这里你会找到线缆规格，比如 RJ45。
-</code></pre>
-<h3 id="OSI故障排查"><a href="#OSI故障排查" class="headerlink" title="OSI故障排查"></a><strong>OSI故障排查</strong></h3><pre><code>在对你的网络进行故障排除时，采用层次化方法是十分有效的。至此，你唯一要明确的是从哪个方向上运用 OSI 协议栈，是自顶向下呢，还是自底往上，抑或采用分而治之、各个击破方法，这又涉及到聚焦网络的那些部分。
+<h3 id="第一层–物理层"><a href="#第一层–物理层" class="headerlink" title="第一层–物理层"></a><strong>第一层–物理层</strong></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">在这层上，帧被转换为位，以将其放到线路上。这些位是由电脉冲构成，读作“开”“关”位，或是二进制的 1 和 0。集线器工作于此层，在这里你会找到线缆规格，比如 RJ45。</span><br></pre></td></tr></table></figure>
 
-我建议在初期采用自底向上的方法，对于通常处在较低的层上的问题，比如因为线缆松掉或破损、或者配置了不正确的 IP 地址时，你无需浪费时间在检查应用上。在你有更多经验后，在处理某些故障现象时采用各个击破方法会更为快速。在从底层往上处理问题时，你大概会做下面这些事情：
+<h3 id="OSI故障排查"><a href="#OSI故障排查" class="headerlink" title="OSI故障排查"></a><strong>OSI故障排查</strong></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">在对你的网络进行故障排除时，采用层次化方法是十分有效的。至此，你唯一要明确的是从哪个方向上运用 OSI 协议栈，是自顶向下呢，还是自底往上，抑或采用分而治之、各个击破方法，这又涉及到聚焦网络的那些部分。</span><br><span class="line"></span><br><span class="line">我建议在初期采用自底向上的方法，对于通常处在较低的层上的问题，比如因为线缆松掉或破损、或者配置了不正确的 IP 地址时，你无需浪费时间在检查应用上。在你有更多经验后，在处理某些故障现象时采用各个击破方法会更为快速。在从底层往上处理问题时，你大概会做下面这些事情：</span><br><span class="line"></span><br><span class="line">第一层 -- 所有线缆都恰当地插入到端口了吗? 还是有的松掉了？ 网线头已经弯掉或是磨损了吗？如果网线有问题，设备上的指示灯会呈黄色，而非正常的绿色。是有人没有往接口上配置正确的速率吗？以太网端口速率有被设置正确吗？接口有开放给网络管理员以使用吗？</span><br><span class="line"></span><br><span class="line">第二层 -- 接口有采用正确的协议，比如 Ethernet/PPP/HDLC, 以便能够与另一端保持一致吗？</span><br><span class="line"></span><br><span class="line">第三层 -- 接口有使用正确的 IP 地址以及子网掩码？</span><br><span class="line"></span><br><span class="line">第四层 -- 有使用正确的路由协议吗？从路由器通告的网络是正确的吗？</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-第一层 -- 所有线缆都恰当地插入到端口了吗? 还是有的松掉了？ 网线头已经弯掉或是磨损了吗？如果网线有问题，设备上的指示灯会呈黄色，而非正常的绿色。是有人没有往接口上配置正确的速率吗？以太网端口速率有被设置正确吗？接口有开放给网络管理员以使用吗？
-
-第二层 -- 接口有采用正确的协议，比如 Ethernet/PPP/HDLC, 以便能够与另一端保持一致吗？
-
-第三层 -- 接口有使用正确的 IP 地址以及子网掩码？
-
-第四层 -- 有使用正确的路由协议吗？从路由器通告的网络是正确的吗？
-</code></pre>
 <h2 id="TCP-IP、DoD-模型"><a href="#TCP-IP、DoD-模型" class="headerlink" title="TCP&#x2F;IP、DoD 模型"></a>TCP&#x2F;IP、DoD 模型</h2><p>TCP&#x2F;IP 模型是另一个框架，作为 OSI 模型的替代。它是由 高级防务研究项目署（the Defense Advanced Research Projects Agency，DARPA）创建的四层或五层模型。它就是为人熟知的国防部模型。自顶向下的四层分别是：</p>
-<pre><code>4 - 应用, Application [Telnet/FTP/DNS/RIP]
-3 - 传输/主机到主机，Transport/Host-to-Host [UDP/TCP/ICMP]
-2 - 互联网/网际网络, Internet or Internetwork [IPSec/IP]
-1 - 链路/网络接口，Link/Network Interface [Frame Relay/Ethernet/ATM]
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">4 - 应用, Application [Telnet/FTP/DNS/RIP]</span><br><span class="line">3 - 传输/主机到主机，Transport/Host-to-Host [UDP/TCP/ICMP]</span><br><span class="line">2 - 互联网/网际网络, Internet or Internetwork [IPSec/IP]</span><br><span class="line">1 - 链路/网络接口，Link/Network Interface [Frame Relay/Ethernet/ATM]</span><br></pre></td></tr></table></figure>
+
 <p>TCP&#x2F;IP 模型已由四层更新为五层，所以你会在考试中被问到有关五层 TCP 模型（a five-layered TCP model）的问题。较高的层离用户较近，而较低的层描述了其它系统交互时所采用的技术或协议。五层 TCP 模型如下所示：</p>
-<pre><code>5 - 应用, Application [Telnet/FTP/DNS/RIP]
-4 - 传输/主机到主机，Transport/Host-to-Host [UDP/TCP/ICMP]
-3 - 网络层，Network [IPSec/IP]
-2 - 数据链路层，Data Link [Ethernet/Frame Relay/PPP]
-1 - 链路/网络接口/物理，Link/Network Interface/Physical [Bits on the wire]
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">5 - 应用, Application [Telnet/FTP/DNS/RIP]</span><br><span class="line">4 - 传输/主机到主机，Transport/Host-to-Host [UDP/TCP/ICMP]</span><br><span class="line">3 - 网络层，Network [IPSec/IP]</span><br><span class="line">2 - 数据链路层，Data Link [Ethernet/Frame Relay/PPP]</span><br><span class="line">1 - 链路/网络接口/物理，Link/Network Interface/Physical [Bits on the wire]</span><br></pre></td></tr></table></figure>
+
 <p>五层的 TCP 模型具有更细的粒度，能更精确地表示数据放在线路之前所发生的事情。比如在第二层处，进行了数据封装以及寻址（如数据链路寻址）。考试中思科偏向选择五层模型。</p>
 <p>数据会如同上述的 OSI 模型那样在自应用层往物理层的途中进行封装，如表 所示：</p>
 <table>
@@ -436,1008 +403,105 @@ UDP 是一个无连接协议（a connectionless protocol）。它在对数据包
 <li><p>vtp虚拟局域网中继协议</p>
 </li>
 <li><p>故障排查：</p>
-<pre><code>VLAN 故障排除基础， Basic VLAN Troubleshooting
-VLANs 是一种相当直观的交换机特性，它很少需要进行故障排除。你所发现的问题，大部分都是人为配置错误。在第 15 天的课程中，我们会详细讲到二层故障排除。而一些常见的涉及 VLAN 的问题有这些。
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line">VLAN 故障排除基础， Basic VLAN Troubleshooting</span><br><span class="line">VLANs 是一种相当直观的交换机特性，它很少需要进行故障排除。你所发现的问题，大部分都是人为配置错误。在第 15 天的课程中，我们会详细讲到二层故障排除。而一些常见的涉及 VLAN 的问题有这些。</span><br><span class="line"></span><br><span class="line">VLAN 间路由无效，Inter-VLAN routing not working: 检查交换机之间的链路、路由器都是正确设置的，以及相关的 VLANs 允许通过且未被修剪（参照 “VTP 修剪” 部分）。show interface trunk 命令将提供所需信息。还要检查路由器子接口有配置了正确的封方式和 VLAN，同时子接口的 IP 地址是那些主机的默认网关。</span><br><span class="line">无法创建 VLANs， VLANs cannot be created: 检查交换机的 VTP 模式是否被设置成了 “client”。在 VTP 模式为 “client” 时，是不能创建 VLANs 的。另一个重要原因是交换机所允许的 VLANs 编号。show vtp status 命令将提供所需的信息（参看下的“中继和 VTP 故障排除”部分）。</span><br><span class="line">同一 VLAN 中的主机之间不能通信，Hosts within the same VLAN cannot reach each other: 重要的是某 VLAN 中的主机都要有一个属于同一子网的 IP 地址。如子网不同，它们之间就无法通信。另一个需要考虑的原因是这些主机是否都是连接到同一台交换机上。如它们不是连接到同一交换机，就要确保交换机之间的中继链路工作正常，还要确保该 VLAN 未在允许清单中被排除/被修剪[ensure that the trunk links(s) between the switches is/are working correctly and that the VLAN is not excluded/not pruned from the allowed list]。show interface trunk 命令将给出有关该中继链路的所需信息。</span><br><span class="line">中继和 VTP 故障排除，Troubleshooting Trunking and VTP</span><br><span class="line">下面是一些问题实例机器可能的解决方法。</span><br><span class="line"></span><br><span class="line">中继宕掉？</span><br><span class="line">接口务必要是 up/up</span><br><span class="line">中继链路两端的封装方式要匹配</span><br><span class="line">SwitchA#show interface fa1/1 switchport</span><br><span class="line">Name: Fa1/1</span><br><span class="line">Switchport: Enabled</span><br><span class="line">Administrative Mode: trunk</span><br><span class="line">Operational Mode: trunk</span><br><span class="line">Administrative Trunking Encapsulation: dot1q</span><br><span class="line">Operational Trunking Encapsulation: dot1q</span><br><span class="line">Negotiation of Trunking: Disabled</span><br><span class="line">Access Mode VLAN: 0 ((Inactive))</span><br><span class="line">VLAN 信息未有传输</span><br><span class="line">该 VLAN 在中继链路上阻塞了吗</span><br><span class="line">Switch#show interface trunk</span><br><span class="line"></span><br><span class="line">VTP 信息无法到达 VTP 客户端</span><br><span class="line">VTP 域名称密码正确吗？</span><br><span class="line">show vtp status / show vtp password</span><br><span class="line"></span><br><span class="line">在增加一台新的交换机后，所有 VTP 信息都变动了</span><br><span class="line"></span><br><span class="line">总是客户端模式加入新的交换机（但请查看上面的有关“配置修订号（the configuration revision number）”的提示）</span><br><span class="line">服务器模式将通告新信息</span><br><span class="line">VTP 修剪无效</span><br><span class="line"></span><br><span class="line">中间是否有一台透明交换机？</span><br><span class="line">该 VLAN 允许通过该中继链路？</span><br><span class="line">VLAN 间路由故障排除， Troubleshooting Inter-VLAN Routing</span><br><span class="line">VLAN 间路由故障可以多种形式出现，尤其是考虑在该过程中涉及多种设备（交换机、路由器等）。通过下面给出的适当故障排除方法论，你就能够将问题孤立在某台特定设备上，接着再其对应到一个错误配置的具体特性。</span><br><span class="line"></span><br><span class="line">从连通性立足点上看，下面这些情事都应该检查一下。</span><br><span class="line"></span><br><span class="line">检查一下终端主机连接了正确的交换机端口</span><br><span class="line">检查一下正确的交换机端口连接了正确的路由器端口（如使用了一台路由器做 VLAN 间路由）</span><br><span class="line">检查一下在此过程中所涉及到的每个端口承载的是正确的 VLANs</span><br><span class="line">连接终端站的那些端口，通常是被分配到一个特定 VLAN 的接入端口</span><br><span class="line">而将交换机连接至路由器的那些端口，则通常是中继端口</span><br><span class="line">在确认设备之间的连通性无误后，逻辑上下一步就是检查二层配置了，以所配置的中继端口上的封装方式开始, 这通常是作为首选的 802.1Q 封装方式。接着就要确保中继链路两端都是配置了同样的封装方式。</span><br><span class="line"></span><br><span class="line">可用于查看封类型的一些命令有以下这些。</span><br><span class="line"></span><br><span class="line">show interface trunk</span><br><span class="line">show interface &lt;number&gt; switchport</span><br><span class="line">这里有个输出示例。</span><br><span class="line"></span><br><span class="line">Cat-3550-1#show interfaces trunk</span><br><span class="line">Port        Mode        Encapsulation       Status      Native vlan</span><br><span class="line">Fa0/1       on          802.1q              trunking    1</span><br><span class="line">Fa0/2       on          802.1q              trunking    1</span><br><span class="line">Port        Vlans allowed on trunk</span><br><span class="line">Fa0/1       1,10,20,30,40,50</span><br><span class="line">Fa0/2       1-99,201-4094</span><br><span class="line">命令 show interface trunk 提供的另一重要细节是中继状态。从中继状态可以看出中继是否形成，同时在链路两端都要检查中继状态。如果接口未处于“中继”模式，那么接口的运行模式（on, auto, 等）是最重要的检查项，以弄清接口能否允许与链路另一端形成中继态（a trunking state）。</span><br><span class="line"></span><br><span class="line">中继端口上另外一个需要检查的重要元素便是原生 VLAN。原生 VLAN 错误配置可能带来功能缺失，抑或安全问题。中继链路的两端的原生 VLAN 需要匹配。</span><br><span class="line"></span><br><span class="line">假如在完成二层检查任务后，VLAN 间路由问题仍然存在，你就可以继续进行三层配置检查了。依据用于实现 VLAN 间路由的三层设备，可能会在下列设备上进行配置及配置检查。</span><br><span class="line"></span><br><span class="line">多层交换机，multilayer switch</span><br><span class="line">路由器 -- 物理接口， router -- physical interfaces</span><br><span class="line">路由器 -- 子接口，router -- subinterfaces</span><br><span class="line">三层设备上应该检查一下其各接口（或者交换机虚拟接口，SVI）都有分配的正确的子网，同时如有必要，你还应检查一下路由协议。通常情况下，各个 VLAN 都有分配不同的子网，所以你应确保你未曾错误配置了接口。而为检查此项，你可以对特定物理接口、子接口或是 SVI，使用 show interface 命令。</span><br></pre></td></tr></table></figure>
 
-VLAN 间路由无效，Inter-VLAN routing not working: 检查交换机之间的链路、路由器都是正确设置的，以及相关的 VLANs 允许通过且未被修剪（参照 “VTP 修剪” 部分）。show interface trunk 命令将提供所需信息。还要检查路由器子接口有配置了正确的封方式和 VLAN，同时子接口的 IP 地址是那些主机的默认网关。
-无法创建 VLANs， VLANs cannot be created: 检查交换机的 VTP 模式是否被设置成了 “client”。在 VTP 模式为 “client” 时，是不能创建 VLANs 的。另一个重要原因是交换机所允许的 VLANs 编号。show vtp status 命令将提供所需的信息（参看下的“中继和 VTP 故障排除”部分）。
-同一 VLAN 中的主机之间不能通信，Hosts within the same VLAN cannot reach each other: 重要的是某 VLAN 中的主机都要有一个属于同一子网的 IP 地址。如子网不同，它们之间就无法通信。另一个需要考虑的原因是这些主机是否都是连接到同一台交换机上。如它们不是连接到同一交换机，就要确保交换机之间的中继链路工作正常，还要确保该 VLAN 未在允许清单中被排除/被修剪[ensure that the trunk links(s) between the switches is/are working correctly and that the VLAN is not excluded/not pruned from the allowed list]。show interface trunk 命令将给出有关该中继链路的所需信息。
-中继和 VTP 故障排除，Troubleshooting Trunking and VTP
-下面是一些问题实例机器可能的解决方法。
-
-中继宕掉？
-接口务必要是 up/up
-中继链路两端的封装方式要匹配
-SwitchA#show interface fa1/1 switchport
-Name: Fa1/1
-Switchport: Enabled
-Administrative Mode: trunk
-Operational Mode: trunk
-Administrative Trunking Encapsulation: dot1q
-Operational Trunking Encapsulation: dot1q
-Negotiation of Trunking: Disabled
-Access Mode VLAN: 0 ((Inactive))
-VLAN 信息未有传输
-该 VLAN 在中继链路上阻塞了吗
-Switch#show interface trunk
-
-VTP 信息无法到达 VTP 客户端
-VTP 域名称密码正确吗？
-show vtp status / show vtp password
-
-在增加一台新的交换机后，所有 VTP 信息都变动了
-
-总是客户端模式加入新的交换机（但请查看上面的有关“配置修订号（the configuration revision number）”的提示）
-服务器模式将通告新信息
-VTP 修剪无效
-
-中间是否有一台透明交换机？
-该 VLAN 允许通过该中继链路？
-VLAN 间路由故障排除， Troubleshooting Inter-VLAN Routing
-VLAN 间路由故障可以多种形式出现，尤其是考虑在该过程中涉及多种设备（交换机、路由器等）。通过下面给出的适当故障排除方法论，你就能够将问题孤立在某台特定设备上，接着再其对应到一个错误配置的具体特性。
-
-从连通性立足点上看，下面这些情事都应该检查一下。
-
-检查一下终端主机连接了正确的交换机端口
-检查一下正确的交换机端口连接了正确的路由器端口（如使用了一台路由器做 VLAN 间路由）
-检查一下在此过程中所涉及到的每个端口承载的是正确的 VLANs
-连接终端站的那些端口，通常是被分配到一个特定 VLAN 的接入端口
-而将交换机连接至路由器的那些端口，则通常是中继端口
-在确认设备之间的连通性无误后，逻辑上下一步就是检查二层配置了，以所配置的中继端口上的封装方式开始, 这通常是作为首选的 802.1Q 封装方式。接着就要确保中继链路两端都是配置了同样的封装方式。
-
-可用于查看封类型的一些命令有以下这些。
-
-show interface trunk
-show interface &lt;number&gt; switchport
-这里有个输出示例。
-
-Cat-3550-1#show interfaces trunk
-Port        Mode        Encapsulation       Status      Native vlan
-Fa0/1       on          802.1q              trunking    1
-Fa0/2       on          802.1q              trunking    1
-Port        Vlans allowed on trunk
-Fa0/1       1,10,20,30,40,50
-Fa0/2       1-99,201-4094
-命令 show interface trunk 提供的另一重要细节是中继状态。从中继状态可以看出中继是否形成，同时在链路两端都要检查中继状态。如果接口未处于“中继”模式，那么接口的运行模式（on, auto, 等）是最重要的检查项，以弄清接口能否允许与链路另一端形成中继态（a trunking state）。
-
-中继端口上另外一个需要检查的重要元素便是原生 VLAN。原生 VLAN 错误配置可能带来功能缺失，抑或安全问题。中继链路的两端的原生 VLAN 需要匹配。
-
-假如在完成二层检查任务后，VLAN 间路由问题仍然存在，你就可以继续进行三层配置检查了。依据用于实现 VLAN 间路由的三层设备，可能会在下列设备上进行配置及配置检查。
-
-多层交换机，multilayer switch
-路由器 -- 物理接口， router -- physical interfaces
-路由器 -- 子接口，router -- subinterfaces
-三层设备上应该检查一下其各接口（或者交换机虚拟接口，SVI）都有分配的正确的子网，同时如有必要，你还应检查一下路由协议。通常情况下，各个 VLAN 都有分配不同的子网，所以你应确保你未曾错误配置了接口。而为检查此项，你可以对特定物理接口、子接口或是 SVI，使用 show interface 命令。
-</code></pre>
 <h1 id="2-总述-2"><a href="#2-总述-2" class="headerlink" title="2.总述&#x3D;&#x3D;&#x3D;2"></a>2.总述&#x3D;&#x3D;&#x3D;2</h1><p>安全相关</p>
 <ol>
 <li><p>物理访问防护</p>
 </li>
 <li><p>访问台访问</p>
-<pre><code>控制台访问
-控制台接口是设计用于提供到路由器的物理访问的，以完成路由器的初始设置及灾难恢复。任何能取得控制台访问的人，都能够完全擦出或是重新配置这些文件，因此，控制台接口应有一个口令进行保护，可以简单地添加一个口令，也可以为其添加一个本地用户名和口令，如下面所示。
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">控制台访问</span><br><span class="line">控制台接口是设计用于提供到路由器的物理访问的，以完成路由器的初始设置及灾难恢复。任何能取得控制台访问的人，都能够完全擦出或是重新配置这些文件，因此，控制台接口应有一个口令进行保护，可以简单地添加一个口令，也可以为其添加一个本地用户名和口令，如下面所示。</span><br><span class="line"></span><br><span class="line">只添加一个口令即可</span><br><span class="line">Router(config)#line console 0</span><br><span class="line">Router(config-line)#password cisco</span><br><span class="line">Router(config-line)#login</span><br><span class="line">为控制台添加一个本地用户名和口令组合</span><br><span class="line"></span><br><span class="line">Router(config)#username paul password cisco</span><br><span class="line">Router(config)#line console 0</span><br><span class="line">Router(config-line)#login local</span><br><span class="line">你还可以为控制台（以及虚拟终端）线路创建一个超时值，如此就可以在确定的时间过后断开连接。默认的超时是5分钟。</span><br><span class="line"></span><br><span class="line">Router(config)#line console 0</span><br><span class="line">Router(config-line)#exec-timeout ?</span><br><span class="line">    &lt;0-35791&gt;   Timeout in minutes</span><br><span class="line">Router(config-line)#exec-timeout 2 ?</span><br><span class="line">    &lt;0-2147483&gt; Timeout in seconds</span><br><span class="line">    &lt;cr&gt;</span><br><span class="line">Router(config-line)#exec-timeout 2 30</span><br><span class="line">Router(config-line)#</span><br></pre></td></tr></table></figure>
 
-只添加一个口令即可
-Router(config)#line console 0
-Router(config-line)#password cisco
-Router(config-line)#login
-为控制台添加一个本地用户名和口令组合
 
-Router(config)#username paul password cisco
-Router(config)#line console 0
-Router(config-line)#login local
-你还可以为控制台（以及虚拟终端）线路创建一个超时值，如此就可以在确定的时间过后断开连接。默认的超时是5分钟。
-
-Router(config)#line console 0
-Router(config-line)#exec-timeout ?
-    &lt;0-35791&gt;   Timeout in minutes
-Router(config-line)#exec-timeout 2 ?
-    &lt;0-2147483&gt; Timeout in seconds
-    &lt;cr&gt;
-Router(config-line)#exec-timeout 2 30
-Router(config-line)#
-</code></pre>
 </li>
 <li><p><a target="_blank" rel="noopener" href="https://ccna60d.xfoss.com/d04-Router-and-Switch-Security.html#%E8%BF%9C%E7%A8%8B%E7%99%BB%E9%99%86%E8%AE%BF%E9%97%AEtelnet-access">远程登陆访问，Telnet Access</a></p>
-<pre><code>在某人给远程登陆或者说虚拟终端线路添加了口令之前，你实际上是不能远程登陆进一台路由器的。同样，你可以给虚拟终端线路添加一个口令，或是告诉路由器去查找一个本地用户名及口令组合（该组合可以在配置文件中，或是存储在一台 RADIUS/TACACS 服务器上），如下面所示。
-
-Router(config-line)#line vty 0 15
-Router(config-line)#password cisco
-Router(config-line)#login   ← or login local
-下面的输出是自某台路由器到另一台的远程登陆会话。当你获得远程登陆访问时，你可以看到主机名发生了改变。注意在你输入口令时，它看不到。
-
-Router1#telnet 192.168.1.2
-Trying 192.168.1.2 ...Open
-User Access Verification
-Username: paul
-Password:
-Router2&gt;
-而如你有一个安全版 IOS 镜像，则可以将路由器配置为仅允许安全壳访问，而不是远程登陆访问。这样做的好处在于所有数据都是加密了的。如你在启用安全壳后，再次使用远程登时，连接将被终止。
-
-Router1(config)#line vty 0 15
-Router1(config-line)#transport input ssh
-Router2#telnet 192.168.1.2
-Trying 192.168.1.2 ...Open
-[Connection to 192.168.1.2 closed by foreign host]
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">在某人给远程登陆或者说虚拟终端线路添加了口令之前，你实际上是不能远程登陆进一台路由器的。同样，你可以给虚拟终端线路添加一个口令，或是告诉路由器去查找一个本地用户名及口令组合（该组合可以在配置文件中，或是存储在一台 RADIUS/TACACS 服务器上），如下面所示。</span><br><span class="line"></span><br><span class="line">Router(config-line)#line vty 0 15</span><br><span class="line">Router(config-line)#password cisco</span><br><span class="line">Router(config-line)#login   ← or login local</span><br><span class="line">下面的输出是自某台路由器到另一台的远程登陆会话。当你获得远程登陆访问时，你可以看到主机名发生了改变。注意在你输入口令时，它看不到。</span><br><span class="line"></span><br><span class="line">Router1#telnet 192.168.1.2</span><br><span class="line">Trying 192.168.1.2 ...Open</span><br><span class="line">User Access Verification</span><br><span class="line">Username: paul</span><br><span class="line">Password:</span><br><span class="line">Router2&gt;</span><br><span class="line">而如你有一个安全版 IOS 镜像，则可以将路由器配置为仅允许安全壳访问，而不是远程登陆访问。这样做的好处在于所有数据都是加密了的。如你在启用安全壳后，再次使用远程登时，连接将被终止。</span><br><span class="line"></span><br><span class="line">Router1(config)#line vty 0 15</span><br><span class="line">Router1(config-line)#transport input ssh</span><br><span class="line">Router2#telnet 192.168.1.2</span><br><span class="line">Trying 192.168.1.2 ...Open</span><br><span class="line">[Connection to 192.168.1.2 closed by foreign host]</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><a target="_blank" rel="noopener" href="https://ccna60d.xfoss.com/d04-Router-and-Switch-Security.html#%E4%BD%BF%E8%83%BD%E6%A8%A1%E5%BC%8F%E4%BF%9D%E6%8A%A4protecting-enable-mode">使能模式保护，Protecting Enable Mode</a></p>
-<pre><code>使能模式（enable mode）取得路由器的配置访问，因此你会想要保护该模式。你可以配置一个使能秘密（an enable secret）或使能口令（an enable password）。实际上，使能秘密和使能口令是可以同时有的，但这是一个坏主意。
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">使能模式（enable mode）取得路由器的配置访问，因此你会想要保护该模式。你可以配置一个使能秘密（an enable secret）或使能口令（an enable password）。实际上，使能秘密和使能口令是可以同时有的，但这是一个坏主意。</span><br><span class="line"></span><br><span class="line">使能口令是未加密的，所以在路由器配置中可以看到。而使能秘密有 5 级加密(level 5 encryption, MD5)，难于破解。自 15.0(1）S 后的较新 IOS 版本中，还可以使用比 MD5 加密高级的 4 级加密（level 4 encryption, SHA256）, 5 级加密最终会不赞成使用。你可以给使能口令加上命令 service password-encryption, 但因为此方式使用 7 级加密(level 7 encryption, 比如，低安全性；思科称其为“背后安全性，over the shoulder security”, 因其仅需某人从你背后偷看并记住一个稍难的词组，便可以用网上的 7 级口令解密工具予以破解)，而很容易被破解。下面的输出中可以看到 7 级与 5 级加密文本。</span><br><span class="line"></span><br><span class="line">Router(config)#enable password cisco</span><br><span class="line">Router(config)#exit</span><br><span class="line">Router#show run</span><br><span class="line">enable password cisco</span><br><span class="line">Router(config)#enable password cisco</span><br><span class="line">Router(config)#service password-encryption</span><br><span class="line">Router#show run</span><br><span class="line">enable password 7 0822455D0A16</span><br><span class="line">Router(config)#enable secret cisco</span><br><span class="line">Router(config)#exit</span><br><span class="line">Router#show run</span><br><span class="line">enable secret 5 $1$mERr$hx5rVt7rPNoS4wqbXKX7m0</span><br><span class="line">记住如你忘记了使能口令，你将不得不对路由器或交换机进行一下口令恢复操作。请用 Google 搜索你所使用的型号，因为型号不同其口令恢复过程也不一样。对于路由器来说，涉及</span><br><span class="line"></span><br><span class="line">设备重启，以及</span><br><span class="line">在重启过程中按下指定的中断键盘按键</span><br><span class="line">再设置配置寄存器（the configuration register）以跳过启动配置文件（通常将配置寄存器设置为 0x2142）</span><br><span class="line">接着要执行一个 copy start-config running-config 命令</span><br><span class="line">此时，就可以创建新的口令了。</span><br><span class="line"></span><br><span class="line">而对交换机来说，口令恢复过程会有一点复杂（请再次用 Google 搜索你用到的具体交换机型号），但也可以通过一个小把戏实现口令恢复 -- 在给交换机上电时，按住 MODE 按钮8秒钟。交换机将以空白配置启动，而上一次的启动配置(the last startup configuration)将保存在 flash 中的 config.text.renamed 文件里头，所以该文件可复制用于运行配置(running configuration)，然后用其它口令对其进行修改。</span><br></pre></td></tr></table></figure>
 
-使能口令是未加密的，所以在路由器配置中可以看到。而使能秘密有 5 级加密(level 5 encryption, MD5)，难于破解。自 15.0(1）S 后的较新 IOS 版本中，还可以使用比 MD5 加密高级的 4 级加密（level 4 encryption, SHA256）, 5 级加密最终会不赞成使用。你可以给使能口令加上命令 service password-encryption, 但因为此方式使用 7 级加密(level 7 encryption, 比如，低安全性；思科称其为“背后安全性，over the shoulder security”, 因其仅需某人从你背后偷看并记住一个稍难的词组，便可以用网上的 7 级口令解密工具予以破解)，而很容易被破解。下面的输出中可以看到 7 级与 5 级加密文本。
 
-Router(config)#enable password cisco
-Router(config)#exit
-Router#show run
-enable password cisco
-Router(config)#enable password cisco
-Router(config)#service password-encryption
-Router#show run
-enable password 7 0822455D0A16
-Router(config)#enable secret cisco
-Router(config)#exit
-Router#show run
-enable secret 5 $1$mERr$hx5rVt7rPNoS4wqbXKX7m0
-记住如你忘记了使能口令，你将不得不对路由器或交换机进行一下口令恢复操作。请用 Google 搜索你所使用的型号，因为型号不同其口令恢复过程也不一样。对于路由器来说，涉及
-
-设备重启，以及
-在重启过程中按下指定的中断键盘按键
-再设置配置寄存器（the configuration register）以跳过启动配置文件（通常将配置寄存器设置为 0x2142）
-接着要执行一个 copy start-config running-config 命令
-此时，就可以创建新的口令了。
-
-而对交换机来说，口令恢复过程会有一点复杂（请再次用 Google 搜索你用到的具体交换机型号），但也可以通过一个小把戏实现口令恢复 -- 在给交换机上电时，按住 MODE 按钮8秒钟。交换机将以空白配置启动，而上一次的启动配置(the last startup configuration)将保存在 flash 中的 config.text.renamed 文件里头，所以该文件可复制用于运行配置(running configuration)，然后用其它口令对其进行修改。
-</code></pre>
 </li>
 <li><p><a target="_blank" rel="noopener" href="https://ccna60d.xfoss.com/d04-Router-and-Switch-Security.html#%E7%94%A8%E6%88%B7%E8%AE%BF%E9%97%AE%E9%98%B2%E6%8A%A4protecting-user-access">用户访问防护，Protecting User Access</a></p>
-<pre><code>思科 IOS 提供对用户的单独用户名及口令，同时对所能够使用的命令进行清单限制的能力。这在分层次网络支持时是有用的。下列输出中给出了一个示例。
-
-RouterA#config term
-Enter configuration commands, one per line. End with CNTL/Z.
-RouterA(config)#username paul password cisco
-RouterA(config)#username stuart password hello
-RouterA(config)#username davie password football
-RouterA(config)#line vty 0 4
-RouterA(config-line)#login local
-RouterA(config-line)#exit
-RouterA(config)#exit
-你可在路由器上指派不同用户帐号的访问级别。比如，你也许打算那些初级网络团队成员仅能使用一些基本的故障排除命。你还有必要记住思科路由器有口令安全的两种模式（two modes of password security），用户模式（Exec mode）和特权模式（Enable mode）。
-
-思科路由器有可供配置的 16 种（0 到 15）不同特权级别，其中 15 级是完全的访问权限，如下所示。
-
-RouterA#conf t
-Enter configuration commands, one per line. End with CNTL/Z.
-RouterA(config)#username support privilege 4 password soccer
-    LINE Initial keywords of the command to modify
-RouterA(config)#privilege exec level 4 ping
-RouterA(config)#privilege exec level 4 traceroute
-RouterA(config)#privilege exec level 4 show ip interface brief
-RouterA(config)#line console 0
-RouterA(config-line)#password basketball
-RouterA(config-line)#login local ←  password is needed
-RouterA(config-line)#^z
-支持那人在登入到路由器并尝试进入配置模式时，此命令及其它命令将不可用且无效，也不能看到。
-
-RouterA con0 is now available
-Press RETURN to get started.
-User Access Verification
-Username: support
-Password:
-RouterA#config t ←  not allowed to use this
-            ^
-% Invalid input detected at ‘^’ marker.
-你可在路由器提示符下查看默认的不同特权级别(the default privilege levels)。
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">思科 IOS 提供对用户的单独用户名及口令，同时对所能够使用的命令进行清单限制的能力。这在分层次网络支持时是有用的。下列输出中给出了一个示例。</span><br><span class="line"></span><br><span class="line">RouterA#config term</span><br><span class="line">Enter configuration commands, one per line. End with CNTL/Z.</span><br><span class="line">RouterA(config)#username paul password cisco</span><br><span class="line">RouterA(config)#username stuart password hello</span><br><span class="line">RouterA(config)#username davie password football</span><br><span class="line">RouterA(config)#line vty 0 4</span><br><span class="line">RouterA(config-line)#login local</span><br><span class="line">RouterA(config-line)#exit</span><br><span class="line">RouterA(config)#exit</span><br><span class="line">你可在路由器上指派不同用户帐号的访问级别。比如，你也许打算那些初级网络团队成员仅能使用一些基本的故障排除命。你还有必要记住思科路由器有口令安全的两种模式（two modes of password security），用户模式（Exec mode）和特权模式（Enable mode）。</span><br><span class="line"></span><br><span class="line">思科路由器有可供配置的 16 种（0 到 15）不同特权级别，其中 15 级是完全的访问权限，如下所示。</span><br><span class="line"></span><br><span class="line">RouterA#conf t</span><br><span class="line">Enter configuration commands, one per line. End with CNTL/Z.</span><br><span class="line">RouterA(config)#username support privilege 4 password soccer</span><br><span class="line">    LINE Initial keywords of the command to modify</span><br><span class="line">RouterA(config)#privilege exec level 4 ping</span><br><span class="line">RouterA(config)#privilege exec level 4 traceroute</span><br><span class="line">RouterA(config)#privilege exec level 4 show ip interface brief</span><br><span class="line">RouterA(config)#line console 0</span><br><span class="line">RouterA(config-line)#password basketball</span><br><span class="line">RouterA(config-line)#login local ←  password is needed</span><br><span class="line">RouterA(config-line)#^z</span><br><span class="line">支持那人在登入到路由器并尝试进入配置模式时，此命令及其它命令将不可用且无效，也不能看到。</span><br><span class="line"></span><br><span class="line">RouterA con0 is now available</span><br><span class="line">Press RETURN to get started.</span><br><span class="line">User Access Verification</span><br><span class="line">Username: support</span><br><span class="line">Password:</span><br><span class="line">RouterA#config t ←  not allowed to use this</span><br><span class="line">            ^</span><br><span class="line">% Invalid input detected at ‘^’ marker.</span><br><span class="line">你可在路由器提示符下查看默认的不同特权级别(the default privilege levels)。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Router&gt;show privilege</span><br><span class="line">Current privilege level is 1</span><br><span class="line">Router&gt;en</span><br><span class="line">Router#show priv</span><br><span class="line">Router#show privilege</span><br><span class="line">Current privilege level is 15</span><br><span class="line">Router#</span><br></pre></td></tr></table></figure>
 
 
-Router&gt;show privilege
-Current privilege level is 1
-Router&gt;en
-Router#show priv
-Router#show privilege
-Current privilege level is 15
-Router#
-</code></pre>
 </li>
 <li><p><a target="_blank" rel="noopener" href="https://ccna60d.xfoss.com/d04-Router-and-Switch-Security.html#%E6%9B%B4%E6%96%B0-ios-updating-the-ios">更新 IOS， updating the IOS</a></p>
-<pre><code>公认地，更新 IOS 有时会将漏洞或故障引入你的网络中，因此，如你有与思科公司有个技术支持合同（a TAC contract, Technical Assistance Centre, TAC), 那么最好的做法就是依据思科公司的建议来做。一般来讲，保持 IOS 版本最新是高度推荐的做法。藉由更新 IOS， 你能得到下面这些好处。
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">公认地，更新 IOS 有时会将漏洞或故障引入你的网络中，因此，如你有与思科公司有个技术支持合同（a TAC contract, Technical Assistance Centre, TAC), 那么最好的做法就是依据思科公司的建议来做。一般来讲，保持 IOS 版本最新是高度推荐的做法。藉由更新 IOS， 你能得到下面这些好处。</span><br><span class="line"></span><br><span class="line">修正已知的软件缺陷，fixed known bugs</span><br><span class="line">解决安全隐患，cloese security vulnerabilities</span><br><span class="line">提供特性强化及 IOS 能力提升，Offers enhanced features and IOS capabilities</span><br></pre></td></tr></table></figure>
 
-修正已知的软件缺陷，fixed known bugs
-解决安全隐患，cloese security vulnerabilities
-提供特性强化及 IOS 能力提升，Offers enhanced features and IOS capabilities
-</code></pre>
+
 </li>
 <li><p><a target="_blank" rel="noopener" href="https://ccna60d.xfoss.com/d04-Router-and-Switch-Security.html#%E8%B7%AF%E7%94%B1%E5%99%A8%E6%97%A5%E5%BF%97%E8%AE%B0%E5%BD%95router-logging">路由器日志记录，Router Logging</a></p>
-<pre><code>路由器提供事件记录的能力。它们可将日志消息照你的意愿，发送到屏幕或某台服务器。你应该记录路由器消息，而又有8个可用的日志记录严重程度级别（考试要求你知道这些不同的级别），如下面输出中的粗体字所示。
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">路由器提供事件记录的能力。它们可将日志消息照你的意愿，发送到屏幕或某台服务器。你应该记录路由器消息，而又有8个可用的日志记录严重程度级别（考试要求你知道这些不同的级别），如下面输出中的粗体字所示。</span><br><span class="line"></span><br><span class="line">logging buffered ?</span><br><span class="line">`&lt;0-7&gt;`Logging severity level</span><br><span class="line">alerts—Immediate action needed (severity=1)</span><br><span class="line">critical—Critical conditions (severity=2)</span><br><span class="line">debugging—Debugging messages (severity=7)</span><br><span class="line">emergencies—System is unusable (severity=0)</span><br><span class="line">errors—Error conditions (severity=3)</span><br><span class="line">informational—Informational messages (severity=6)</span><br><span class="line">notifications—Normal but significant conditions (severity=5)</span><br><span class="line">warnings—Warning conditions (severity=4)</span><br><span class="line">而你有可以将这些日志消息发往几个不同的地方。</span><br><span class="line"></span><br><span class="line">Router(config)#logging ?</span><br><span class="line">    A.B.C.D     IP address of the logging host</span><br><span class="line">    buffered    Set buffered logging parameters</span><br><span class="line">    console     Set console logging parameters</span><br><span class="line">    host        Set syslog server IP address and parameters</span><br><span class="line">    on          Enable logging to all enabled destinations</span><br><span class="line">    trap        Set syslog server logging level</span><br><span class="line">    userinfo    Enable logging of user info on privileged mode enabling</span><br><span class="line">日志消息通常会在你经由控制台进入到路由器时，显示在屏幕上。而这可能会在你敲入配置命令时多少有些烦人。这里就有个在我输入一个命令（加了下划线的那条）时，被一条控制台日志消息(a console logging message)给中断了的例子。</span><br><span class="line"></span><br><span class="line">Router(config)#int f0/1</span><br><span class="line">Router(config-if)#no shut</span><br><span class="line">Router(config-if)#end</span><br><span class="line">Router#</span><br><span class="line">*Jun 27 02:06:59.951: %SYS-5-CONFIG_I: Configured from console by console &lt;u&gt;show ver&lt;/u&gt;</span><br><span class="line">*Jun 27 02:07:01.151: %LINK-3-UPDOWN: Interface FastEthernet0/1, changed state to up</span><br><span class="line">此时你既可以用命令 no logging console 关闭日志消息输出，也可以用 logging synchronous 命令将它们设置为无中断（not interrupt）， logging synchronous 命令会重新输入在被日志消息中断之前，你所输入的那行命令。logging synchronous 命令在虚拟终端线路上也是可用的。</span><br><span class="line"></span><br><span class="line">Router(config)#line con 0</span><br><span class="line">Router(config-line)#logging synchronous</span><br><span class="line">Router(config-line)#</span><br><span class="line">Router(config-line)#exit</span><br><span class="line">Router(config)#int f0/1</span><br><span class="line">Router(config-if)#shut</span><br><span class="line">Router(config-if)#exit</span><br><span class="line">Router(config)#</span><br><span class="line">*Jun 27 02:12:46.143: %LINK-5-CHANGED: Interface FastEthernet0/1, changed state to</span><br><span class="line">administratively down</span><br><span class="line">Router(config)#exit</span><br><span class="line">这里值得一提的是，在你经由 Telnet (或 SSH) 进入到路由器时，你是不会看到控制台输的。如你想在此时看到日志消息，执行 terminal monitor 命令即可。</span><br></pre></td></tr></table></figure>
 
-logging buffered ?
-`&lt;0-7&gt;`Logging severity level
-alerts—Immediate action needed (severity=1)
-critical—Critical conditions (severity=2)
-debugging—Debugging messages (severity=7)
-emergencies—System is unusable (severity=0)
-errors—Error conditions (severity=3)
-informational—Informational messages (severity=6)
-notifications—Normal but significant conditions (severity=5)
-warnings—Warning conditions (severity=4)
-而你有可以将这些日志消息发往几个不同的地方。
 
-Router(config)#logging ?
-    A.B.C.D     IP address of the logging host
-    buffered    Set buffered logging parameters
-    console     Set console logging parameters
-    host        Set syslog server IP address and parameters
-    on          Enable logging to all enabled destinations
-    trap        Set syslog server logging level
-    userinfo    Enable logging of user info on privileged mode enabling
-日志消息通常会在你经由控制台进入到路由器时，显示在屏幕上。而这可能会在你敲入配置命令时多少有些烦人。这里就有个在我输入一个命令（加了下划线的那条）时，被一条控制台日志消息(a console logging message)给中断了的例子。
-
-Router(config)#int f0/1
-Router(config-if)#no shut
-Router(config-if)#end
-Router#
-*Jun 27 02:06:59.951: %SYS-5-CONFIG_I: Configured from console by console &lt;u&gt;show ver&lt;/u&gt;
-*Jun 27 02:07:01.151: %LINK-3-UPDOWN: Interface FastEthernet0/1, changed state to up
-此时你既可以用命令 no logging console 关闭日志消息输出，也可以用 logging synchronous 命令将它们设置为无中断（not interrupt）， logging synchronous 命令会重新输入在被日志消息中断之前，你所输入的那行命令。logging synchronous 命令在虚拟终端线路上也是可用的。
-
-Router(config)#line con 0
-Router(config-line)#logging synchronous
-Router(config-line)#
-Router(config-line)#exit
-Router(config)#int f0/1
-Router(config-if)#shut
-Router(config-if)#exit
-Router(config)#
-*Jun 27 02:12:46.143: %LINK-5-CHANGED: Interface FastEthernet0/1, changed state to
-administratively down
-Router(config)#exit
-这里值得一提的是，在你经由 Telnet (或 SSH) 进入到路由器时，你是不会看到控制台输的。如你想在此时看到日志消息，执行 terminal monitor 命令即可。
-</code></pre>
 </li>
 <li><p><a target="_blank" rel="noopener" href="https://ccna60d.xfoss.com/d04-Router-and-Switch-Security.html#%E7%AE%80%E5%8D%95%E7%BD%91%E7%BB%9C%E7%AE%A1%E7%90%86%E5%8D%8F%E8%AE%AEsimple-network-management-protocol-snmp">简单网络管理协议，Simple Network Management Protocol, SNMP</a></p>
-<pre><code>SNMP 是一种可用于远程管理网络的服务。它由一台网络管理员维护、运行了 SNMP 管理软件的中心工作站，及包括路由器、交换机及服务器等的，各台网络设备上的小文件（代理，agents）构成。
-
-包括 HP、Cisco、IBM 及 SolarWinds 等的几家厂商，都有设计 SNMP 软件。也有很多开发源代码版本的 SNMP 软件可用。这类软件允许你监测设备的带宽及活动情况，比如登陆活动以及端口状态等。
-
-运用 SNMP， 你可以远程地配置或是关闭端口和设备。你也可以将其配置在某些条件触发时，诸如出现高带宽或是端口宕掉时，发出警告消息。我们会在第 40 天来讲 SNMP 的细节，因为 SNMP 是 ICND2 大纲的部分。
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">SNMP 是一种可用于远程管理网络的服务。它由一台网络管理员维护、运行了 SNMP 管理软件的中心工作站，及包括路由器、交换机及服务器等的，各台网络设备上的小文件（代理，agents）构成。</span><br><span class="line"></span><br><span class="line">包括 HP、Cisco、IBM 及 SolarWinds 等的几家厂商，都有设计 SNMP 软件。也有很多开发源代码版本的 SNMP 软件可用。这类软件允许你监测设备的带宽及活动情况，比如登陆活动以及端口状态等。</span><br><span class="line"></span><br><span class="line">运用 SNMP， 你可以远程地配置或是关闭端口和设备。你也可以将其配置在某些条件触发时，诸如出现高带宽或是端口宕掉时，发出警告消息。我们会在第 40 天来讲 SNMP 的细节，因为 SNMP 是 ICND2 大纲的部分。</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><a target="_blank" rel="noopener" href="https://ccna60d.xfoss.com/d04-Router-and-Switch-Security.html#%E5%8A%A0%E5%9B%BA%E4%BA%A4%E6%8D%A2%E6%9C%BAsecuring-the-switch">加固交换机，Securing the Switch</a></p>
-<pre><code>阻止远程登陆访问，Prevent Telnet Access
-远程登陆流量以明文方式发送口令，这就是说，可轻易地在配置中读取口令，或是有人接到你的网络上，那么就能通过网络嗅探软件查看到口令。
-
-默认情况下，远程登陆实际上是关闭的（也就是说，你需要为其设置一个口令，也可选择设置一个用户名，来让其工作）。不过，如你仍想要有对管理端口的远程访问的话，你可使用命令 transport input ssh, 开启到交换机的 SSH 通信，这已在前面讨论过了。
-
-Farai 说 -- “所有虚拟终端线路下，命令 transport input all 是默认开启的，而其它线路的 transport input none 命令是默认开启的。”
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">阻止远程登陆访问，Prevent Telnet Access</span><br><span class="line">远程登陆流量以明文方式发送口令，这就是说，可轻易地在配置中读取口令，或是有人接到你的网络上，那么就能通过网络嗅探软件查看到口令。</span><br><span class="line"></span><br><span class="line">默认情况下，远程登陆实际上是关闭的（也就是说，你需要为其设置一个口令，也可选择设置一个用户名，来让其工作）。不过，如你仍想要有对管理端口的远程访问的话，你可使用命令 transport input ssh, 开启到交换机的 SSH 通信，这已在前面讨论过了。</span><br><span class="line"></span><br><span class="line">Farai 说 -- “所有虚拟终端线路下，命令 transport input all 是默认开启的，而其它线路的 transport input none 命令是默认开启的。”</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><a target="_blank" rel="noopener" href="https://ccna60d.xfoss.com/d04-Router-and-Switch-Security.html#%E5%BC%80%E5%90%AF-ssh-enable-ssh">开启 SSH， Enable SSH</a></p>
-<pre><code>尽可能地采用 SSH 而不是 Telnet 及 SNMP 来访问你的交换机。SSH 表示安全壳(secure shell), 令到某网络上的两台设备之间信息的安全交换。SSH 采用公钥加密法（pubic-key cryptography）来认证连接设备。Telnet 及 SNMP 版本 1 和 2 都是未加密的，易受包嗅探（packet sniffing）的影响， SNMP 版本 3 提供了保密性 -- 数据包有加密以防止恶意源窃取数据（snooping by an unauthorised source）。
-
-要开启 SSH， 你需要有一个支持加密的 IOS 版本。一种快速找出 IOS 镜像是否支持加密的方法是执 show version 命令。查找镜像文件名中有无 k9 字样，或者在思科系统公司的安全性声明中查找有关字句。
-
-Switch#sh version
-Cisco IOS Software, C3560 Software (C3560-ADVIPSERVICES K9-M), Version
-12.2(35)SE1, RELEASE SOFTWARE (fc1)
-Copyright (c) 1986-2006 by Cisco Systems, Inc.
-Compiled Tue 19-Dec-06 10:54 by antonio
-Image text-base: 0x00003000, data-base: 0x01362CA0
-ROM: Bootstrap program is C3560 boot loader
-BOOTLDR: C3560 Boot Loader (C3560-HBOOT-M) Version 12.2(25r)SEC, RELEASE
-SOFTWARE (fc4)
-Switch uptime is 1 hour, 8 minutes
-System returned to ROM by power-on
-
-System image file is “flash:/c3560-advipservicesk9-mz.122-35.SE1.bin”
-
-This product contains cryptographic features and is subject to United States and local
-country laws governing import, export, transfer and use. Delivery of Cisco cryptographic
-products does not imply third-party authority to import, export, distribute or use
-encryption. Importers, exporters, distributors and users are responsible for compliance
-with U.S. and local country laws. By using this product you agree to comply with
-applicable laws and regulations. If you are unable to comply with U.S. and local laws,
-return this product immediately. A summary of U.S. laws governing Cisco cryptographic
-products may be found at:
-http://www.cisco.com/wwl/export/crypto/tool/stqrg.html
-If you require further assistance please contact us by sending email to export@cisco.com.
---More-
-注意: 如你没有带有安全特性版本的 IOS，你就必须为此付费购买。
-
-为建立加密连接，你需要在交换机上创建一对公钥和私钥（a private/public key, 见下面）。在连接时，你这边使用公钥加密数据，交换机将会使用它的私钥来解密数据。而在认证时，使用你所选择的用户名/口令组合。下一个问题是，要设置交换机的主机名和域名（hostname and domain name）, 因为在创建公钥/私钥对时，会用到主机名.域名命名法（hostname.domainname nomenclature）。显然，在命名主机名和域名时，将其命名为能够代表系统的有意义名字，是好的做法。
-
-首先，你要给交换机一个与默认主机名 Switch 不一样的主机名。接着，添加其域名（该域名通常与 Windows 活动目录的 FQDN 一致）。这时就可以创建用于秘密的密钥（the crypto key）了。系数/模量（the modulus） 是指你所希望使用的密钥的长度，取值范围是 360 到 2048, 后者具有最高的安全性；高于 1024 位的模量就认为是安全的了。此时，交换机上的 SSH 就已经开启了。
-
-有一些 SSH 相关的维护命令需要输入。ip ssh time-out 60 命令会将任何空闲 60 秒的 SSH 连接置为超时。而命令 ip ssh authentication-retries 2 则会在认证失败两次的 SSH 连接重置为初始状态。此设置并不会阻止用户建立新的连接并重试认证。设置过程如下所示。
-
-Switch(config)#hostname SwitchOne
-SwitchOne(config)#ip domain-name mydomain.com
-SwitchOne(config)#crypto key generate rsa
-Enter modulus: 1024
-SwitchOne(config)#ip ssh time-out 60
-SwitchOne(config)#ip ssh authentication-retries 2
-可使用命令 ip ssh version 2 开启 SSH 版本2。让我们看看其中一个密钥。在这个实例中，该密钥是为 HTTPS 生成的。因为其是在开启 HTTPS 时自动生成的，所以其名称也会自动产生。
-
-firewall#show crypto key mypubkey rsa
-Key name: HTTPS_SS_CERT_KEYPAIR.server
-Temporary key
-Usage: Encryption Key
-Key is not exportable.
-Key Data:
-306C300D 06092A86 4886F70D 01010105 00035B00 30580251 00C41B63 8EF294A1
-DC0F7378 7EF410F6 6254750F 475DAD71 4E1CD15E 1D9086A8 BD175433 1302F403
-2FD22F82 C311769F 9C75B7D2 1E50D315 EFA0E940 DF44AD5A F717BF17 A3CEDBE1
-A6A2D601 45F313B6 6B020301 0001
-要验证交换机上的 SSH 开启，输入以下命令。
-
-Switch#show ip ssh
-SSH Enabled - version 1.99
-Authentication timeout: 120 secs; Authentication retries: 2
-Switch#
-而用一个简单的命令，就可以关闭 HTTP 访问。
-
-Switch(config)#no ip http server
-查看交换机上 HTTP 服务器的状态。
-
-Switch#show ip http server status
-HTTP server status: Disabled
-HTTP server port: 80
-HTTP server authentication method: enable
-HTTP server access class: 0
-HTTP server base path: flash:html
-Maximum number of concurrent server connections allowed: 16
-Server idle time-out: 180 secondsServer life time-out: 180 seconds
-Maximum number of requests allowed on a connection: 25
-HTTP server active session modules: ALL
-HTTP secure server capability: Present
-HTTP secure server status: Enabled
-HTTP secure server port: 443
-HTTP secure server ciphersuite: 3des-ede-cbc-sha des-cbc-sha rc4-128-md5 rc4-12
-HTTP secure server client authentication: Disabled
-HTTP secure server trustpoint:
-HTTP secure server active session modules: ALL
-还可以在 VTY 线路上应用控制列表（an access control list, ACL）。在第9天的课程将会讲到。
-
-设置使能秘密口令，Set an Enable Secret Password
-全局配置模式允许用户对交换机或路由器进行配置，还可以擦除配置，以及重置口令。你务必要设置一个口令或秘密口令来保护此模式，而这实际上是为阻止用户闯过（get past）用户模式。一般口令在路由器配置文件中会显示出来，而 enable secret 口令则会进行加密。
-
-上面已经提到，你实际上可以在交换机或路由器上同时设置使能口令（a password）和使能秘密口令（enable secret password）,但这会带来混乱。所以请只设置使能秘密口令就好。下面的配置文件演示了通过在命令前键入 do 关键字，而无需回到特权模式，就可执行该命令的情形。
-
-Switch1(config)#enable password cisco
-Switch1(config)#do show run
-Building configuration...
-Current configuration: 1144 bytes
-hostname Switch1
-enable password cisco
-Farai 补充道 -- “你可以使用 service password-encryption 命令，对使能口令 enable password 进行 7 级加密。”
-
-通过在命令前加上 no 关键字后再次执行该命令，可以擦除配置文件中的大多数行。上面 Farai 提到的使用 service password-encryption 命令是毫无作用的，因为这个方法仅提供了弱加密（7 级）， 而下面的秘密口令（the secret password）则有着强加密（MD5）。
-
-
-Switch1(config)#no enable password
-Switch1(config)#enable secret cisco
-Switch1(config)#do show run
-Building configuration...
-Current configuration: 1169 bytes
-hostname Switch1
-enable secret 5 $1$mERr$hx5rVt7rPNoS4wqbXKX7m0 [strong level 5 password]
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br></pre></td><td class="code"><pre><span class="line">尽可能地采用 SSH 而不是 Telnet 及 SNMP 来访问你的交换机。SSH 表示安全壳(secure shell), 令到某网络上的两台设备之间信息的安全交换。SSH 采用公钥加密法（pubic-key cryptography）来认证连接设备。Telnet 及 SNMP 版本 1 和 2 都是未加密的，易受包嗅探（packet sniffing）的影响， SNMP 版本 3 提供了保密性 -- 数据包有加密以防止恶意源窃取数据（snooping by an unauthorised source）。</span><br><span class="line"></span><br><span class="line">要开启 SSH， 你需要有一个支持加密的 IOS 版本。一种快速找出 IOS 镜像是否支持加密的方法是执 show version 命令。查找镜像文件名中有无 k9 字样，或者在思科系统公司的安全性声明中查找有关字句。</span><br><span class="line"></span><br><span class="line">Switch#sh version</span><br><span class="line">Cisco IOS Software, C3560 Software (C3560-ADVIPSERVICES K9-M), Version</span><br><span class="line">12.2(35)SE1, RELEASE SOFTWARE (fc1)</span><br><span class="line">Copyright (c) 1986-2006 by Cisco Systems, Inc.</span><br><span class="line">Compiled Tue 19-Dec-06 10:54 by antonio</span><br><span class="line">Image text-base: 0x00003000, data-base: 0x01362CA0</span><br><span class="line">ROM: Bootstrap program is C3560 boot loader</span><br><span class="line">BOOTLDR: C3560 Boot Loader (C3560-HBOOT-M) Version 12.2(25r)SEC, RELEASE</span><br><span class="line">SOFTWARE (fc4)</span><br><span class="line">Switch uptime is 1 hour, 8 minutes</span><br><span class="line">System returned to ROM by power-on</span><br><span class="line"></span><br><span class="line">System image file is “flash:/c3560-advipservicesk9-mz.122-35.SE1.bin”</span><br><span class="line"></span><br><span class="line">This product contains cryptographic features and is subject to United States and local</span><br><span class="line">country laws governing import, export, transfer and use. Delivery of Cisco cryptographic</span><br><span class="line">products does not imply third-party authority to import, export, distribute or use</span><br><span class="line">encryption. Importers, exporters, distributors and users are responsible for compliance</span><br><span class="line">with U.S. and local country laws. By using this product you agree to comply with</span><br><span class="line">applicable laws and regulations. If you are unable to comply with U.S. and local laws,</span><br><span class="line">return this product immediately. A summary of U.S. laws governing Cisco cryptographic</span><br><span class="line">products may be found at:</span><br><span class="line">http://www.cisco.com/wwl/export/crypto/tool/stqrg.html</span><br><span class="line">If you require further assistance please contact us by sending email to export@cisco.com.</span><br><span class="line">--More-</span><br><span class="line">注意: 如你没有带有安全特性版本的 IOS，你就必须为此付费购买。</span><br><span class="line"></span><br><span class="line">为建立加密连接，你需要在交换机上创建一对公钥和私钥（a private/public key, 见下面）。在连接时，你这边使用公钥加密数据，交换机将会使用它的私钥来解密数据。而在认证时，使用你所选择的用户名/口令组合。下一个问题是，要设置交换机的主机名和域名（hostname and domain name）, 因为在创建公钥/私钥对时，会用到主机名.域名命名法（hostname.domainname nomenclature）。显然，在命名主机名和域名时，将其命名为能够代表系统的有意义名字，是好的做法。</span><br><span class="line"></span><br><span class="line">首先，你要给交换机一个与默认主机名 Switch 不一样的主机名。接着，添加其域名（该域名通常与 Windows 活动目录的 FQDN 一致）。这时就可以创建用于秘密的密钥（the crypto key）了。系数/模量（the modulus） 是指你所希望使用的密钥的长度，取值范围是 360 到 2048, 后者具有最高的安全性；高于 1024 位的模量就认为是安全的了。此时，交换机上的 SSH 就已经开启了。</span><br><span class="line"></span><br><span class="line">有一些 SSH 相关的维护命令需要输入。ip ssh time-out 60 命令会将任何空闲 60 秒的 SSH 连接置为超时。而命令 ip ssh authentication-retries 2 则会在认证失败两次的 SSH 连接重置为初始状态。此设置并不会阻止用户建立新的连接并重试认证。设置过程如下所示。</span><br><span class="line"></span><br><span class="line">Switch(config)#hostname SwitchOne</span><br><span class="line">SwitchOne(config)#ip domain-name mydomain.com</span><br><span class="line">SwitchOne(config)#crypto key generate rsa</span><br><span class="line">Enter modulus: 1024</span><br><span class="line">SwitchOne(config)#ip ssh time-out 60</span><br><span class="line">SwitchOne(config)#ip ssh authentication-retries 2</span><br><span class="line">可使用命令 ip ssh version 2 开启 SSH 版本2。让我们看看其中一个密钥。在这个实例中，该密钥是为 HTTPS 生成的。因为其是在开启 HTTPS 时自动生成的，所以其名称也会自动产生。</span><br><span class="line"></span><br><span class="line">firewall#show crypto key mypubkey rsa</span><br><span class="line">Key name: HTTPS_SS_CERT_KEYPAIR.server</span><br><span class="line">Temporary key</span><br><span class="line">Usage: Encryption Key</span><br><span class="line">Key is not exportable.</span><br><span class="line">Key Data:</span><br><span class="line">306C300D 06092A86 4886F70D 01010105 00035B00 30580251 00C41B63 8EF294A1</span><br><span class="line">DC0F7378 7EF410F6 6254750F 475DAD71 4E1CD15E 1D9086A8 BD175433 1302F403</span><br><span class="line">2FD22F82 C311769F 9C75B7D2 1E50D315 EFA0E940 DF44AD5A F717BF17 A3CEDBE1</span><br><span class="line">A6A2D601 45F313B6 6B020301 0001</span><br><span class="line">要验证交换机上的 SSH 开启，输入以下命令。</span><br><span class="line"></span><br><span class="line">Switch#show ip ssh</span><br><span class="line">SSH Enabled - version 1.99</span><br><span class="line">Authentication timeout: 120 secs; Authentication retries: 2</span><br><span class="line">Switch#</span><br><span class="line">而用一个简单的命令，就可以关闭 HTTP 访问。</span><br><span class="line"></span><br><span class="line">Switch(config)#no ip http server</span><br><span class="line">查看交换机上 HTTP 服务器的状态。</span><br><span class="line"></span><br><span class="line">Switch#show ip http server status</span><br><span class="line">HTTP server status: Disabled</span><br><span class="line">HTTP server port: 80</span><br><span class="line">HTTP server authentication method: enable</span><br><span class="line">HTTP server access class: 0</span><br><span class="line">HTTP server base path: flash:html</span><br><span class="line">Maximum number of concurrent server connections allowed: 16</span><br><span class="line">Server idle time-out: 180 secondsServer life time-out: 180 seconds</span><br><span class="line">Maximum number of requests allowed on a connection: 25</span><br><span class="line">HTTP server active session modules: ALL</span><br><span class="line">HTTP secure server capability: Present</span><br><span class="line">HTTP secure server status: Enabled</span><br><span class="line">HTTP secure server port: 443</span><br><span class="line">HTTP secure server ciphersuite: 3des-ede-cbc-sha des-cbc-sha rc4-128-md5 rc4-12</span><br><span class="line">HTTP secure server client authentication: Disabled</span><br><span class="line">HTTP secure server trustpoint:</span><br><span class="line">HTTP secure server active session modules: ALL</span><br><span class="line">还可以在 VTY 线路上应用控制列表（an access control list, ACL）。在第9天的课程将会讲到。</span><br><span class="line"></span><br><span class="line">设置使能秘密口令，Set an Enable Secret Password</span><br><span class="line">全局配置模式允许用户对交换机或路由器进行配置，还可以擦除配置，以及重置口令。你务必要设置一个口令或秘密口令来保护此模式，而这实际上是为阻止用户闯过（get past）用户模式。一般口令在路由器配置文件中会显示出来，而 enable secret 口令则会进行加密。</span><br><span class="line"></span><br><span class="line">上面已经提到，你实际上可以在交换机或路由器上同时设置使能口令（a password）和使能秘密口令（enable secret password）,但这会带来混乱。所以请只设置使能秘密口令就好。下面的配置文件演示了通过在命令前键入 do 关键字，而无需回到特权模式，就可执行该命令的情形。</span><br><span class="line"></span><br><span class="line">Switch1(config)#enable password cisco</span><br><span class="line">Switch1(config)#do show run</span><br><span class="line">Building configuration...</span><br><span class="line">Current configuration: 1144 bytes</span><br><span class="line">hostname Switch1</span><br><span class="line">enable password cisco</span><br><span class="line">Farai 补充道 -- “你可以使用 service password-encryption 命令，对使能口令 enable password 进行 7 级加密。”</span><br><span class="line"></span><br><span class="line">通过在命令前加上 no 关键字后再次执行该命令，可以擦除配置文件中的大多数行。上面 Farai 提到的使用 service password-encryption 命令是毫无作用的，因为这个方法仅提供了弱加密（7 级）， 而下面的秘密口令（the secret password）则有着强加密（MD5）。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Switch1(config)#no enable password</span><br><span class="line">Switch1(config)#enable secret cisco</span><br><span class="line">Switch1(config)#do show run</span><br><span class="line">Building configuration...</span><br><span class="line">Current configuration: 1169 bytes</span><br><span class="line">hostname Switch1</span><br><span class="line">enable secret 5 $1$mERr$hx5rVt7rPNoS4wqbXKX7m0 [strong level 5 password]</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><a target="_blank" rel="noopener" href="https://ccna60d.xfoss.com/d04-Router-and-Switch-Security.html#%E6%9C%8D%E5%8A%A1services">服务，Services</a></p>
-<pre><code>你总是应该关闭那些你不会用到的服务。思科已经在关闭那些不安全和很少用到的服务和协议上做得很好了；尽管如此，你可能会要因明确这点而亲自关闭它们。同样也会有一些服务是有帮助的。多数服务可在全局配置模式中的 service 命令下找到。
-
-Switch(config)# service ?
-compress-config         Compress the configuration file
-config                  TFTP load config files
-counters                Control aging of interface counters
-dhcp                    Enable DHCP server and relay agent
-disable-ip-fast-frag    Disable IP particle-based fast fragmentation
-exec-callback           Enable EXEC callback
-exec-wait               Delay EXEC startup on noisy lines
-finger                  Allow responses to finger requests
-hide-telnet-addresses   Hide destination addresses in telnet command
-linenumber              enable line number banner for each exec
-nagle                   Enable Nagle’s congestion control algorithm
-old-slip-prompts        Allow old scripts to operate with slip/ppp
-pad                     Enable PAD commands
-password-encryption     Encrypt system passwords
-password-recovery       Disable password recovery
-prompt                  Enable mode specific prompt
-pt-vty-logging          Log significant VTY-Async events
-sequence-numbers        Stamp logger messages with a sequence number
-slave-log               Enable log capability of slave IPs
-tcp-keepalives-in       Generate keepalives on idle incoming network
-    connections
-tcp-keepalives-out      Generate keepalives on idle outgoing network
-    connections
-tcp-small-servers       Enable small TCP servers (e.g., ECHO)
-telnet-zeroidle         Set TCP window 0 when connection is idle
-timestamps              Timestamp debug/log messages
-udp-small-servers       Enable small UDP servers (e.g., ECHO)
-一般来讲，有下列的这些最常见的要开启或关闭的服务。其各自的说明在中括号里。
-
-no service pad [数据包组装程序/分拆程序，在异步组网中有使用；很少使用到]
-no service config [阻止交换机从网络获取其配置文件]
-no service finger [关闭 finger 服务器；很少用到]
-no ip icmp redirect [组织 ICMP 重定向，而 ICMP 重定向可被用于路由器投毒]
-no ip finger [关闭 finger 服务的另一种方式]
-no ip gratuitous-arps [关闭此服务以阻止中间人攻击（man-in-the-middle attacks）]
-no ip source-route [关闭由用户提供到目的地的逐跳路由(user-provided hop-by-hop routing to destination)]
-service sequence-numbers [在每条日志记录中，分配给其一个编号，同时此编号序列增加]
-service tcp-keepalive-in [防止路由器将挂起的管理会话一直保持开启，prevents the router from keeping hung management sessions open]
-service tcp-keepalive-out [与 sevice tcp-keepalive-in 功能一样]
-no service upp-small-servers [关闭 echo, chargen, discard, daytime 等功能，这些功能很少用到]
-no service tcp-small-servers [关闭 echo, chargen, discard 等功能，这些功能很少用到]
-service timestamps debug datetime localtime show-timezone [在调试模式下（in debug mode）, 将每个记录的数据包，使用本地时间，打上日期和时间的时间戳，并显示时区]
-service timestamps log datetime localtime show-timezone [在非调试模式下（not in debug mode）, 将每个记录的数据包，使用本地时间，打上日期和时间的时间戳，并显示时区 -- 这服务在查看日志文件非常有用，尤其是在时钟设置正确的情况下]
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">你总是应该关闭那些你不会用到的服务。思科已经在关闭那些不安全和很少用到的服务和协议上做得很好了；尽管如此，你可能会要因明确这点而亲自关闭它们。同样也会有一些服务是有帮助的。多数服务可在全局配置模式中的 service 命令下找到。</span><br><span class="line"></span><br><span class="line">Switch(config)# service ?</span><br><span class="line">compress-config         Compress the configuration file</span><br><span class="line">config                  TFTP load config files</span><br><span class="line">counters                Control aging of interface counters</span><br><span class="line">dhcp                    Enable DHCP server and relay agent</span><br><span class="line">disable-ip-fast-frag    Disable IP particle-based fast fragmentation</span><br><span class="line">exec-callback           Enable EXEC callback</span><br><span class="line">exec-wait               Delay EXEC startup on noisy lines</span><br><span class="line">finger                  Allow responses to finger requests</span><br><span class="line">hide-telnet-addresses   Hide destination addresses in telnet command</span><br><span class="line">linenumber              enable line number banner for each exec</span><br><span class="line">nagle                   Enable Nagle’s congestion control algorithm</span><br><span class="line">old-slip-prompts        Allow old scripts to operate with slip/ppp</span><br><span class="line">pad                     Enable PAD commands</span><br><span class="line">password-encryption     Encrypt system passwords</span><br><span class="line">password-recovery       Disable password recovery</span><br><span class="line">prompt                  Enable mode specific prompt</span><br><span class="line">pt-vty-logging          Log significant VTY-Async events</span><br><span class="line">sequence-numbers        Stamp logger messages with a sequence number</span><br><span class="line">slave-log               Enable log capability of slave IPs</span><br><span class="line">tcp-keepalives-in       Generate keepalives on idle incoming network</span><br><span class="line">    connections</span><br><span class="line">tcp-keepalives-out      Generate keepalives on idle outgoing network</span><br><span class="line">    connections</span><br><span class="line">tcp-small-servers       Enable small TCP servers (e.g., ECHO)</span><br><span class="line">telnet-zeroidle         Set TCP window 0 when connection is idle</span><br><span class="line">timestamps              Timestamp debug/log messages</span><br><span class="line">udp-small-servers       Enable small UDP servers (e.g., ECHO)</span><br><span class="line">一般来讲，有下列的这些最常见的要开启或关闭的服务。其各自的说明在中括号里。</span><br><span class="line"></span><br><span class="line">no service pad [数据包组装程序/分拆程序，在异步组网中有使用；很少使用到]</span><br><span class="line">no service config [阻止交换机从网络获取其配置文件]</span><br><span class="line">no service finger [关闭 finger 服务器；很少用到]</span><br><span class="line">no ip icmp redirect [组织 ICMP 重定向，而 ICMP 重定向可被用于路由器投毒]</span><br><span class="line">no ip finger [关闭 finger 服务的另一种方式]</span><br><span class="line">no ip gratuitous-arps [关闭此服务以阻止中间人攻击（man-in-the-middle attacks）]</span><br><span class="line">no ip source-route [关闭由用户提供到目的地的逐跳路由(user-provided hop-by-hop routing to destination)]</span><br><span class="line">service sequence-numbers [在每条日志记录中，分配给其一个编号，同时此编号序列增加]</span><br><span class="line">service tcp-keepalive-in [防止路由器将挂起的管理会话一直保持开启，prevents the router from keeping hung management sessions open]</span><br><span class="line">service tcp-keepalive-out [与 sevice tcp-keepalive-in 功能一样]</span><br><span class="line">no service upp-small-servers [关闭 echo, chargen, discard, daytime 等功能，这些功能很少用到]</span><br><span class="line">no service tcp-small-servers [关闭 echo, chargen, discard 等功能，这些功能很少用到]</span><br><span class="line">service timestamps debug datetime localtime show-timezone [在调试模式下（in debug mode）, 将每个记录的数据包，使用本地时间，打上日期和时间的时间戳，并显示时区]</span><br><span class="line">service timestamps log datetime localtime show-timezone [在非调试模式下（not in debug mode）, 将每个记录的数据包，使用本地时间，打上日期和时间的时间戳，并显示时区 -- 这服务在查看日志文件非常有用，尤其是在时钟设置正确的情况下]</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><a target="_blank" rel="noopener" href="https://ccna60d.xfoss.com/d04-Router-and-Switch-Security.html#%E4%BF%AE%E6%94%B9%E5%8E%9F%E7%94%9F-vlan-change-the-native-vlan">修改原生 VLAN， Change the Native VLAN</a></p>
-<pre><code>交换机使用原生 VLAN 来承载那些特定的协议流量，诸如思科发现协议（Cisco Discovery Protocol, CDP）、VLAN 中继协议（VLAN Trunking Protocol, VTP）、端口聚合协议（Port Aggregation Protocol, PAgP），以及动态中继协议（Dynamic Trunking Protocol, DTP）等协议信息。默认原生 VLAN 总是 VLAN 1; 但原生 VLAN 是可以手动设置为任何有效 VLAN 编号（除开 0 和 4096, 因为这些 VLAN 编号处于 VLANs 的保留范围）。
-
-你可以使用下面输出中演示的命令（在每个接口下执行的），来查看原生 VLAN。
-
-Switch#show interfaces FastEthernet0/1 switchport
-Name: Fa0/1
-Switchport: Enabled
-Administrative Mode: trunk
-Operational Mode: trunk
-Administrative Trunking Encapsulation: dot1q
-Operational Trunking Encapsulation: dot1q
-Negotiation of Trunking: On
-Access Mode VLAN: 1 (default)
-Trunking Native Mode VLAN: 1 (default)
-Voice VLAN: none
-将端口放入 VLAN 1 被认为是一种安全漏洞（a security vulnerability）, 允许黑客取得网络资源的访问。为减轻此问题，避免任何主机放入 VLAN 1 是一种明智可取的做法。同时也可将所有中继接口上的原生 VLAN 修改为某个未使用的 VLAN。
-
-Switch(config-if)#switchport trunk native vlan 888
-
-注意： 这是 CCNA 大纲中的一个关键目标（one of the key objectives）, 所以务必牢记。
-
-你还可以用下面的命令，来阻止原生 VLAN 上的数据通过中继链路。
-
-Switch(config-if)#switchport trunk allowed vlan remove 888
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">交换机使用原生 VLAN 来承载那些特定的协议流量，诸如思科发现协议（Cisco Discovery Protocol, CDP）、VLAN 中继协议（VLAN Trunking Protocol, VTP）、端口聚合协议（Port Aggregation Protocol, PAgP），以及动态中继协议（Dynamic Trunking Protocol, DTP）等协议信息。默认原生 VLAN 总是 VLAN 1; 但原生 VLAN 是可以手动设置为任何有效 VLAN 编号（除开 0 和 4096, 因为这些 VLAN 编号处于 VLANs 的保留范围）。</span><br><span class="line"></span><br><span class="line">你可以使用下面输出中演示的命令（在每个接口下执行的），来查看原生 VLAN。</span><br><span class="line"></span><br><span class="line">Switch#show interfaces FastEthernet0/1 switchport</span><br><span class="line">Name: Fa0/1</span><br><span class="line">Switchport: Enabled</span><br><span class="line">Administrative Mode: trunk</span><br><span class="line">Operational Mode: trunk</span><br><span class="line">Administrative Trunking Encapsulation: dot1q</span><br><span class="line">Operational Trunking Encapsulation: dot1q</span><br><span class="line">Negotiation of Trunking: On</span><br><span class="line">Access Mode VLAN: 1 (default)</span><br><span class="line">Trunking Native Mode VLAN: 1 (default)</span><br><span class="line">Voice VLAN: none</span><br><span class="line">将端口放入 VLAN 1 被认为是一种安全漏洞（a security vulnerability）, 允许黑客取得网络资源的访问。为减轻此问题，避免任何主机放入 VLAN 1 是一种明智可取的做法。同时也可将所有中继接口上的原生 VLAN 修改为某个未使用的 VLAN。</span><br><span class="line"></span><br><span class="line">Switch(config-if)#switchport trunk native vlan 888</span><br><span class="line"></span><br><span class="line">注意： 这是 CCNA 大纲中的一个关键目标（one of the key objectives）, 所以务必牢记。</span><br><span class="line"></span><br><span class="line">你还可以用下面的命令，来阻止原生 VLAN 上的数据通过中继链路。</span><br><span class="line"></span><br><span class="line">Switch(config-if)#switchport trunk allowed vlan remove 888</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><a target="_blank" rel="noopener" href="https://ccna60d.xfoss.com/d04-Router-and-Switch-Security.html#%E4%BF%AE%E6%94%B9%E7%AE%A1%E7%90%86-vlan-change-the-management-vlan">修改管理 VLAN, Change the Management VLAN</a></p>
-<pre><code>给交换机配置一个 IP 地址，以实现为管理目的而远程登陆到其上，也是可以的。这又叫做交换机虚拟接口（Switch Virtual Interface, SVI）。将该管理访问做到除 VLAN 1 之外的其它 VLAN 上，是一种明智的预防措施，如下面的输出所示。
-
-
-Switch(config)#vlan 3
-Switch(config-vlan)#interface vlan3
-%LINK-5-CHANGED: Interface Vlan3, changed state to up
-Switch(config-if)#ip address 192.168.1.1 255.255.255.0
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">给交换机配置一个 IP 地址，以实现为管理目的而远程登陆到其上，也是可以的。这又叫做交换机虚拟接口（Switch Virtual Interface, SVI）。将该管理访问做到除 VLAN 1 之外的其它 VLAN 上，是一种明智的预防措施，如下面的输出所示。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Switch(config)#vlan 3</span><br><span class="line">Switch(config-vlan)#interface vlan3</span><br><span class="line">%LINK-5-CHANGED: Interface Vlan3, changed state to up</span><br><span class="line">Switch(config-if)#ip address 192.168.1.1 255.255.255.0</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><a target="_blank" rel="noopener" href="https://ccna60d.xfoss.com/d04-Router-and-Switch-Security.html#%E5%85%B3%E9%97%AD-cdp-turn-off-cdp">关闭 CDP, Turn Off CDP</a></p>
-<pre><code>后面会讲到思科发现协议（Cisco Discovery Protocol, CDP）, 但在这里，你要知道，在大多数的路由器和交换机上的每个接口下，该协议都是打开的，这也是通行的做法，其功能是发现路由器或交换机上连接的思科设备。你可能不打算让其它思科设备看到你的网络设备的信息，那么就可以关掉这个服务，至少应该在那些你的网络边缘上的，连接其它公司或者 ISP 的那些设备上关闭 CDP。
-
-Farai 指出 -- “CDP 在比如 ASR 路由器的所有平台上默认都未开启。”
-
-在下面的输出中，你能看到一台连接我的交换机的路由器，在我执行 show cdp neighbor detail 命令时，其能看见哪些基本信息。
-
-Router#show cdp neighbor detail
-Device ID: Switch1
-Entry address(es):
-Platform: Cisco 2960, Capabilities: Switch
-Interface: FastEthernet0/0, Port ID (outgoing port): FastEthernet0/2
-Holdtime: 176
-Version :
-Cisco Internetwork Operating System Software
-IOS (tm) C2960 Software (C2960-I6Q4L2-M), Version 12.1(22)EA4, RELEASE SOFTWARE(fc1)
-Copyright (c) 1986-2005 by Cisco Systems, Inc.
-Compiled Wed 18-May-05 22:31 by jharirba
-advertisement version: 2
-Duplex: full
-Router#
-下面的命令将对整个设备关闭 CDP。
-
-
-Switch1(config)#no cdp run
-而要对某个特定接口关闭 CDP， 执行以下命令。
-
-Switch1(config)#int FastEthernet0/2
-Switch1(config-if)#no cdp enable
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">后面会讲到思科发现协议（Cisco Discovery Protocol, CDP）, 但在这里，你要知道，在大多数的路由器和交换机上的每个接口下，该协议都是打开的，这也是通行的做法，其功能是发现路由器或交换机上连接的思科设备。你可能不打算让其它思科设备看到你的网络设备的信息，那么就可以关掉这个服务，至少应该在那些你的网络边缘上的，连接其它公司或者 ISP 的那些设备上关闭 CDP。</span><br><span class="line"></span><br><span class="line">Farai 指出 -- “CDP 在比如 ASR 路由器的所有平台上默认都未开启。”</span><br><span class="line"></span><br><span class="line">在下面的输出中，你能看到一台连接我的交换机的路由器，在我执行 show cdp neighbor detail 命令时，其能看见哪些基本信息。</span><br><span class="line"></span><br><span class="line">Router#show cdp neighbor detail</span><br><span class="line">Device ID: Switch1</span><br><span class="line">Entry address(es):</span><br><span class="line">Platform: Cisco 2960, Capabilities: Switch</span><br><span class="line">Interface: FastEthernet0/0, Port ID (outgoing port): FastEthernet0/2</span><br><span class="line">Holdtime: 176</span><br><span class="line">Version :</span><br><span class="line">Cisco Internetwork Operating System Software</span><br><span class="line">IOS (tm) C2960 Software (C2960-I6Q4L2-M), Version 12.1(22)EA4, RELEASE SOFTWARE(fc1)</span><br><span class="line">Copyright (c) 1986-2005 by Cisco Systems, Inc.</span><br><span class="line">Compiled Wed 18-May-05 22:31 by jharirba</span><br><span class="line">advertisement version: 2</span><br><span class="line">Duplex: full</span><br><span class="line">Router#</span><br><span class="line">下面的命令将对整个设备关闭 CDP。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Switch1(config)#no cdp run</span><br><span class="line">而要对某个特定接口关闭 CDP， 执行以下命令。</span><br><span class="line"></span><br><span class="line">Switch1(config)#int FastEthernet0/2</span><br><span class="line">Switch1(config-if)#no cdp enable</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><a target="_blank" rel="noopener" href="https://ccna60d.xfoss.com/d04-Router-and-Switch-Security.html#%E6%B7%BB%E5%8A%A0%E6%A8%AA%E5%B9%85%E6%B6%88%E6%81%AFadd-a-banner-message">添加横幅消息，Add a Banner Message</a></p>
-<pre><code>横幅消息将于某用户登入路由器或交换机时显示出来。其并不会提供任何实质性的安全，但会显示你设置的警告信息。在下面的配置中，我选择的是 “Y” 字母作为界定符（delimiting character）, 界定符用以告诉路由器，我已输完消息文字。
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">横幅消息将于某用户登入路由器或交换机时显示出来。其并不会提供任何实质性的安全，但会显示你设置的警告信息。在下面的配置中，我选择的是 “Y” 字母作为界定符（delimiting character）, 界定符用以告诉路由器，我已输完消息文字。</span><br><span class="line"></span><br><span class="line">Switch1(config)#banner motd Y</span><br><span class="line">Enter TEXT message. End with the character ‘Y’.</span><br><span class="line">KEEP OUT OR YOU WILL REGRET IT Y</span><br><span class="line">Switch1(config)#</span><br><span class="line">在我从交换机登入到路由器时，我能看到横幅消息。错在选择了 “Y” 作为界定符，因为它割除了我的消息文字。</span><br><span class="line"></span><br><span class="line">Router#telnet 192.168.1.3</span><br><span class="line">Trying 192.168.1.3 ...Open</span><br><span class="line">KEEP OUT OR</span><br><span class="line">横幅消息可以是以下这些。</span><br><span class="line"></span><br><span class="line">在用户看到登陆提示符之前显示出来 -- MOTD（message of the day）</span><br><span class="line">在用户看到登陆提示符之前显示出来 -- Login</span><br><span class="line">在登陆提示符之后显示给用户 -- Exec （在你打算对未授权用户隐藏的信息）</span><br><span class="line">在本书中，横幅消息作为一些实验的组成部分。我建议你掌握全部三种类型横幅消息，并以登入路由器的方式来测试它们。依据你所用的平台和 IOS，会有不同的选择。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Router(config)#banner ?</span><br><span class="line">    LINE                c banner-text c, where ‘c’ is a delimiting character</span><br><span class="line">    exec                Set EXEC process creation banner</span><br><span class="line">    incoming            Set incoming terminal line banner</span><br><span class="line">    login               Set login banner</span><br><span class="line">    motd                Set Message of the Day banner</span><br><span class="line">    prompt-timeout      Set Message for login authentication timeout</span><br><span class="line">    slip-ppp            Set Message for SLIP/PPP</span><br></pre></td></tr></table></figure>
 
-Switch1(config)#banner motd Y
-Enter TEXT message. End with the character ‘Y’.
-KEEP OUT OR YOU WILL REGRET IT Y
-Switch1(config)#
-在我从交换机登入到路由器时，我能看到横幅消息。错在选择了 “Y” 作为界定符，因为它割除了我的消息文字。
-
-Router#telnet 192.168.1.3
-Trying 192.168.1.3 ...Open
-KEEP OUT OR
-横幅消息可以是以下这些。
-
-在用户看到登陆提示符之前显示出来 -- MOTD（message of the day）
-在用户看到登陆提示符之前显示出来 -- Login
-在登陆提示符之后显示给用户 -- Exec （在你打算对未授权用户隐藏的信息）
-在本书中，横幅消息作为一些实验的组成部分。我建议你掌握全部三种类型横幅消息，并以登入路由器的方式来测试它们。依据你所用的平台和 IOS，会有不同的选择。
-
-
-Router(config)#banner ?
-    LINE                c banner-text c, where ‘c’ is a delimiting character
-    exec                Set EXEC process creation banner
-    incoming            Set incoming terminal line banner
-    login               Set login banner
-    motd                Set Message of the Day banner
-    prompt-timeout      Set Message for login authentication timeout
-    slip-ppp            Set Message for SLIP/PPP
-</code></pre>
-<pre><code>说实话这书的翻译太烂了。什么安全壳
-What is the banner message?
-Banner Message
-Banner messages are responses that are displayed to the user on top of the chat window/screen. A banner can be shown as a response for the following actions: Executing a command. Performing an action on a message (Message Action)
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">说实话这书的翻译太烂了。什么安全壳</span><br><span class="line">What is the banner message?</span><br><span class="line">Banner Message</span><br><span class="line">Banner messages are responses that are displayed to the user on top of the chat window/screen. A banner can be shown as a response for the following actions: Executing a command. Performing an action on a message (Message Action)</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><a target="_blank" rel="noopener" href="https://ccna60d.xfoss.com/d04-Router-and-Switch-Security.html#%E8%AE%BE%E7%BD%AE-vtp-%E5%8F%A3%E4%BB%A4-set-a-vtp-password">设置 VTP 口令， Set a VTP Password</a></p>
-<pre><code>VTP 确保网络上交换机之间传输的是精确的 VLAN 信息。而为了保护 VLAN 信息的更新，你应该在交换机上加入 VTP 口令（该 VTP 域中所有交换机上的 VTP 口令都应一致）， 如下面输出演示的那样。
-
-
-Switch1(config)#vtp domain 60days
-Changing VTP domain name from NULL to 60days
-Switch1(config)#vtp password cisco
-Setting device VLAN database password to cisco
-Switch1(config)#
-</code></pre>
-</li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">VTP 确保网络上交换机之间传输的是精确的 VLAN 信息。而为了保护 VLAN 信息的更新，你应该在交换机上加入 VTP 口令（该 VTP 域中所有交换机上的 VTP 口令都应一致）， 如下面输出演示的那样。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Switch1(config)#vtp domain 60days</span><br><span class="line">Changing VTP domain name from NULL to 60days</span><br><span class="line">Switch1(config)#vtp password cisco</span><br><span class="line">Setting device VLAN database password to cisco</span><br><span class="line">Switch1(config)#</span><br></pre></td></tr></table></figure></li>
 </ol>
 </li>
 </ol>
 <p>​	17.<a target="_blank" rel="noopener" href="https://ccna60d.xfoss.com/d04-Router-and-Switch-Security.html#%E9%99%90%E5%AE%9A-vlan-%E4%BF%A1%E6%81%AF-restrict-vlan-infaomation">限定 VLAN 信息， Restrict VLAN Infaomation</a></p>
-<pre><code>默认下的交换机允许所有 VLANs 通过中继链路。你将其修改为指定 VLANs 才能通过中继链路。如下面的输出所示。
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">默认下的交换机允许所有 VLANs 通过中继链路。你将其修改为指定 VLANs 才能通过中继链路。如下面的输出所示。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Switch1(config)#int FastEthernet0/4</span><br><span class="line">Switch1(config-if)#switchport mode trunk</span><br><span class="line">Switch1(config-if)#switchport trunk allowed vlan ?</span><br><span class="line">    WORD        VLAN IDs of the allowed VLANs when this port is in trunking mode</span><br><span class="line">    add         add VLANs to the current list</span><br><span class="line">    all         all VLANs</span><br><span class="line">    except      all VLANs except the following</span><br><span class="line">    none        no VLANs</span><br><span class="line">    remove      remove VLANs from the current list</span><br><span class="line">Switch1(config-if)#switchport trunk allowed vlan 7-12</span><br><span class="line">Switch1#show interface trunk</span><br><span class="line">Port        Mode    Encapsulation   Status      Native vlan</span><br><span class="line">Fa0/4       on      802.1q          trunking    1</span><br><span class="line">Port        Vlans allowed on trunk</span><br><span class="line">Fa0/4       7-12</span><br></pre></td></tr></table></figure>
 
+<h3 id="18-端口因出错关闭后的恢复功能，Error-Disable-Recovery"><a href="#18-端口因出错关闭后的恢复功能，Error-Disable-Recovery" class="headerlink" title="18.端口因出错关闭后的恢复功能，Error Disable Recovery"></a>18.<a target="_blank" rel="noopener" href="https://ccna60d.xfoss.com/d04-Router-and-Switch-Security.html#%E7%AB%AF%E5%8F%A3%E5%9B%A0%E5%87%BA%E9%94%99%E5%85%B3%E9%97%AD%E5%90%8E%E7%9A%84%E6%81%A2%E5%A4%8D%E5%8A%9F%E8%83%BDerror-disable-recovery">端口因出错关闭后的恢复功能，Error Disable Recovery</a></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">默认下的交换机允许所有 VLANs 通过中继链路。你将其修改为指定 VLANs 才能通过中继链路。如下面的输出所示。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Switch1(config)#int FastEthernet0/4</span><br><span class="line">Switch1(config-if)#switchport mode trunk</span><br><span class="line">Switch1(config-if)#switchport trunk allowed vlan ?</span><br><span class="line">    WORD        VLAN IDs of the allowed VLANs when this port is in trunking mode</span><br><span class="line">    add         add VLANs to the current list</span><br><span class="line">    all         all VLANs</span><br><span class="line">    except      all VLANs except the following</span><br><span class="line">    none        no VLANs</span><br><span class="line">    remove      remove VLANs from the current list</span><br><span class="line">Switch1(config-if)#switchport trunk allowed vlan 7-12</span><br><span class="line">Switch1#show interface trunk</span><br><span class="line">Port        Mode    Encapsulation   Status      Native vlan</span><br><span class="line">Fa0/4       on      802.1q          trunking    1</span><br><span class="line">Port        Vlans allowed on trunk</span><br><span class="line">Fa0/4       7-12</span><br></pre></td></tr></table></figure>
 
-Switch1(config)#int FastEthernet0/4
-Switch1(config-if)#switchport mode trunk
-Switch1(config-if)#switchport trunk allowed vlan ?
-    WORD        VLAN IDs of the allowed VLANs when this port is in trunking mode
-    add         add VLANs to the current list
-    all         all VLANs
-    except      all VLANs except the following
-    none        no VLANs
-    remove      remove VLANs from the current list
-Switch1(config-if)#switchport trunk allowed vlan 7-12
-Switch1#show interface trunk
-Port        Mode    Encapsulation   Status      Native vlan
-Fa0/4       on      802.1q          trunking    1
-Port        Vlans allowed on trunk
-Fa0/4       7-12
-</code></pre>
-<h3 id="18-端口因出错关闭后的恢复功能，Error-Disable-Recovery"><a href="#18-端口因出错关闭后的恢复功能，Error-Disable-Recovery" class="headerlink" title="18.端口因出错关闭后的恢复功能，Error Disable Recovery"></a>18.<a target="_blank" rel="noopener" href="https://ccna60d.xfoss.com/d04-Router-and-Switch-Security.html#%E7%AB%AF%E5%8F%A3%E5%9B%A0%E5%87%BA%E9%94%99%E5%85%B3%E9%97%AD%E5%90%8E%E7%9A%84%E6%81%A2%E5%A4%8D%E5%8A%9F%E8%83%BDerror-disable-recovery">端口因出错关闭后的恢复功能，Error Disable Recovery</a></h3><pre><code>默认下的交换机允许所有 VLANs 通过中继链路。你将其修改为指定 VLANs 才能通过中继链路。如下面的输出所示。
+<h3 id="限定-VLAN-信息，-Restrict-VLAN-Infaomation"><a href="#限定-VLAN-信息，-Restrict-VLAN-Infaomation" class="headerlink" title="限定 VLAN 信息， Restrict VLAN Infaomation"></a><a target="_blank" rel="noopener" href="https://ccna60d.xfoss.com/d04-Router-and-Switch-Security.html#%E9%99%90%E5%AE%9A-vlan-%E4%BF%A1%E6%81%AF-restrict-vlan-infaomation">限定 VLAN 信息， Restrict VLAN Infaomation</a></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">默认下的交换机允许所有 VLANs 通过中继链路。你将其修改为指定 VLANs 才能通过中继链路。如下面的输出所示。</span><br><span class="line"></span><br><span class="line">Switch1(config)#int FastEthernet0/4</span><br><span class="line">Switch1(config-if)#switchport mode trunk</span><br><span class="line">Switch1(config-if)#switchport trunk allowed vlan ?</span><br><span class="line">    WORD        VLAN IDs of the allowed VLANs when this port is in trunking mode</span><br><span class="line">    add         add VLANs to the current list</span><br><span class="line">    all         all VLANs</span><br><span class="line">    except      all VLANs except the following</span><br><span class="line">    none        no VLANs</span><br><span class="line">    remove      remove VLANs from the current list</span><br><span class="line">Switch1(config-if)#switchport trunk allowed vlan 7-12</span><br><span class="line">Switch1#show interface trunk</span><br><span class="line">Port        Mode    Encapsulation   Status      Native vlan</span><br><span class="line">Fa0/4       on      802.1q          trunking    1</span><br><span class="line">Port        Vlans allowed on trunk</span><br><span class="line">Fa0/4       7-12</span><br></pre></td></tr></table></figure>
 
+<h3 id="端口因出错关闭后的恢复功能，Error-Disable-Recovery"><a href="#端口因出错关闭后的恢复功能，Error-Disable-Recovery" class="headerlink" title="端口因出错关闭后的恢复功能，Error Disable Recovery"></a><a target="_blank" rel="noopener" href="https://ccna60d.xfoss.com/d04-Router-and-Switch-Security.html#%E7%AB%AF%E5%8F%A3%E5%9B%A0%E5%87%BA%E9%94%99%E5%85%B3%E9%97%AD%E5%90%8E%E7%9A%84%E6%81%A2%E5%A4%8D%E5%8A%9F%E8%83%BDerror-disable-recovery">端口因出错关闭后的恢复功能，Error Disable Recovery</a></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line">由一系列的事件导致的，思科交换机将其端口置为一种特别的关闭模式（a special diabled mode）, 叫做出错关闭（err-disabled）。此特性简单来讲，由于在某个特定端口上发生某种错误后，该端口就被关闭了。错误可能有多种原因，之最常见的就是出现触发了某项端口安全策略（a port security policy）。在某个未授权用户尝试连接到某个交换机端口时，这是通常的做法，它阻止那些违规设备访问网络。</span><br><span class="line"></span><br><span class="line">出错关闭端口(an err-disabled port）看起来会是这样的。</span><br><span class="line"></span><br><span class="line">Switch# show interface f0/1</span><br><span class="line">FastEthernet0/1 is down, line protocol is down [err-disabled]</span><br><span class="line">.....</span><br><span class="line">而为了重新使用（re-activate）某个出错关闭接口，以在该接口上执行 shutdown 及 no shutdown 命令的人工干预是必要的, 网络工程师们俗称此操作为端口弹跳(a bouncing the port)。但是，某些情形要求从原端口状态自动恢复过来，而不是等到管理员手动开启该端口。此出错关闭回复模式，通过将交换机配置为在依引发通信失败事件的不同，而不同的一段时间后，自动重新打开出错关闭端口的方式，来发挥作用。区分通信失败事件，提供了出错关闭恢复功能所监测事件上的粒度（granularity）控制。</span><br><span class="line"></span><br><span class="line">完成该功能设置的命令是 errdisable recovery cause, 在全局路由器配置模式下输入。</span><br><span class="line"></span><br><span class="line">Switch(config)#errdisable recovery cause ?</span><br><span class="line">    all         Enable timer to recover from all causes</span><br><span class="line">    bpduguard   Enable timer to recover from bpdu-guard error disable state</span><br><span class="line">    dtp-flap    Enable timer to recover from dtp-flap error disable state</span><br><span class="line">    link-flap   Enable timer to recover from link-flap error disable state</span><br><span class="line">    pagp-flap   Enable timer to recover from pagp-flap error disable state</span><br><span class="line">    rootguard   Enable timer to recover from root-guard error disable state</span><br><span class="line">    udld        Enable timer to recover from udld error disable state</span><br><span class="line">......</span><br><span class="line">errdisable recovery cause 命令依设备型号会有所不同，但最常见的参数有这些。</span><br><span class="line"></span><br><span class="line">all</span><br><span class="line">arp-inspection</span><br><span class="line">bpduguard</span><br><span class="line">dhcp-rate-limit</span><br><span class="line">link-flap</span><br><span class="line">psecure-violation</span><br><span class="line">security-violation</span><br><span class="line">storm-control</span><br><span class="line">udld</span><br><span class="line">多数平台上端口自动恢复的默认时间是 300 秒，此时间可以用全局配置命令 errdisable recovery interval 手动修改。</span><br><span class="line"></span><br><span class="line">Switch(config)#errdisable recovery interval ?</span><br><span class="line">    &lt;30-86400&gt;  timer-interval(sec)</span><br><span class="line">而命令 show errdisable recovery 命令则会提供有关出错关闭恢复功能（the err-disable recovery function）激活了的那些特性的细节信息，以及受到监测的接口，并包含了接口重新开启剩余时间。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Switch#show errdisable recovery</span><br><span class="line">ErrDisable Reason           Timer Status</span><br><span class="line">-----------------           --------------</span><br><span class="line">arp-inspection              Disabled</span><br><span class="line">bpduguard                   Disabled</span><br><span class="line">channel-misconfig           Disabled</span><br><span class="line">dhcp-rate-limit             Disabled</span><br><span class="line">dtp-flap                    Disabled</span><br><span class="line">gbic-invalid                Disabled</span><br><span class="line">inline-power                Disabled</span><br><span class="line">l2ptguard                   Disabled</span><br><span class="line">link-flap                   Disabled</span><br><span class="line">mac-limit                   Disabled</span><br><span class="line">link-monitor-failure        Disabled</span><br><span class="line">loopback                    Disabled</span><br><span class="line">oam-remote-failure          Disabled</span><br><span class="line">pagp-flap                   Disabled</span><br><span class="line">port-mode-failure           Disabled</span><br><span class="line">psecure-violation           Enabled</span><br><span class="line">security-violation          Disabled</span><br><span class="line">sfp-config-mismatch         Disabled</span><br><span class="line">storm-control               Disabled</span><br><span class="line">udld                        Disabled</span><br><span class="line">unicast-flood               Disabled</span><br><span class="line">vmps                        Disabled</span><br><span class="line">Timer interval: 300 seconds</span><br><span class="line">Interfaces that will be enabled at the next timeout:</span><br><span class="line">Interface           Errdisable reason           Time left(sec)</span><br><span class="line">---------           -----------------           --------------</span><br><span class="line">Fa0/0               psecure-violation           193</span><br></pre></td></tr></table></figure>
 
-Switch1(config)#int FastEthernet0/4
-Switch1(config-if)#switchport mode trunk
-Switch1(config-if)#switchport trunk allowed vlan ?
-    WORD        VLAN IDs of the allowed VLANs when this port is in trunking mode
-    add         add VLANs to the current list
-    all         all VLANs
-    except      all VLANs except the following
-    none        no VLANs
-    remove      remove VLANs from the current list
-Switch1(config-if)#switchport trunk allowed vlan 7-12
-Switch1#show interface trunk
-Port        Mode    Encapsulation   Status      Native vlan
-Fa0/4       on      802.1q          trunking    1
-Port        Vlans allowed on trunk
-Fa0/4       7-12
-</code></pre>
-<h3 id="限定-VLAN-信息，-Restrict-VLAN-Infaomation"><a href="#限定-VLAN-信息，-Restrict-VLAN-Infaomation" class="headerlink" title="限定 VLAN 信息， Restrict VLAN Infaomation"></a><a target="_blank" rel="noopener" href="https://ccna60d.xfoss.com/d04-Router-and-Switch-Security.html#%E9%99%90%E5%AE%9A-vlan-%E4%BF%A1%E6%81%AF-restrict-vlan-infaomation">限定 VLAN 信息， Restrict VLAN Infaomation</a></h3><pre><code>默认下的交换机允许所有 VLANs 通过中继链路。你将其修改为指定 VLANs 才能通过中继链路。如下面的输出所示。
+<h3 id="外部认证方式，External-Authentication-Methods"><a href="#外部认证方式，External-Authentication-Methods" class="headerlink" title="外部认证方式，External Authentication Methods"></a><a target="_blank" rel="noopener" href="https://ccna60d.xfoss.com/d04-Router-and-Switch-Security.html#%E5%A4%96%E9%83%A8%E8%AE%A4%E8%AF%81%E6%96%B9%E5%BC%8Fexternal-authentication-methods">外部认证方式，External Authentication Methods</a></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">与本地存储不同，你可以采用一台通常运行了 AAA 或 TACACS+ 的服务器来存储用户名和口令。这么做的优势在于，你无需在每台路由器和交换机上都手动输入用户名和口令。而是将其存储在服务器的数据库中。</span><br><span class="line"></span><br><span class="line">TACACS+ 表示“加强版终端访问控制器访问控制系统（Terminal Access Controller Access Control System Plus, TACACS+）”。它是一个思科专有协议，使用 TCP 49 号端口。TACACS+ 提供了经由一台或多台 TACACS+ 中心服务器，对包含路由器及网络介入服务器等网络设备的访问控制。</span><br><span class="line"></span><br><span class="line">拨入用户远端认证服务（Remote Authentication Dial-In User Service, RADIUS）, 是一套分布式网络安全系统，用以确保网络远程访问的安全性，同时它又是一个使用 UDP 的客户端/服务器协议（a client/server protocol）。RADIUS 是开放标准。</span><br><span class="line"></span><br><span class="line">如你拥有 TACACS+ 或者 RADIUS，那么你可能希望开启认证、授权和记账（Authentication, Authorization, and Accounting, AAA）。AAA 是安装在一台服务器上的，它监测着网络的一个用户帐号数据库。用户访问、协议、连接，以及断开原因，及其它很多特性都能被监测到。</span><br><span class="line"></span><br><span class="line">路由器和交换机可被设置为在某用户尝试登入时查询服务器。服务器此时来验证用户。CCNA 考试不要求你去配置这些协议。</span><br></pre></td></tr></table></figure>
 
-Switch1(config)#int FastEthernet0/4
-Switch1(config-if)#switchport mode trunk
-Switch1(config-if)#switchport trunk allowed vlan ?
-    WORD        VLAN IDs of the allowed VLANs when this port is in trunking mode
-    add         add VLANs to the current list
-    all         all VLANs
-    except      all VLANs except the following
-    none        no VLANs
-    remove      remove VLANs from the current list
-Switch1(config-if)#switchport trunk allowed vlan 7-12
-Switch1#show interface trunk
-Port        Mode    Encapsulation   Status      Native vlan
-Fa0/4       on      802.1q          trunking    1
-Port        Vlans allowed on trunk
-Fa0/4       7-12
-</code></pre>
-<h3 id="端口因出错关闭后的恢复功能，Error-Disable-Recovery"><a href="#端口因出错关闭后的恢复功能，Error-Disable-Recovery" class="headerlink" title="端口因出错关闭后的恢复功能，Error Disable Recovery"></a><a target="_blank" rel="noopener" href="https://ccna60d.xfoss.com/d04-Router-and-Switch-Security.html#%E7%AB%AF%E5%8F%A3%E5%9B%A0%E5%87%BA%E9%94%99%E5%85%B3%E9%97%AD%E5%90%8E%E7%9A%84%E6%81%A2%E5%A4%8D%E5%8A%9F%E8%83%BDerror-disable-recovery">端口因出错关闭后的恢复功能，Error Disable Recovery</a></h3><pre><code>由一系列的事件导致的，思科交换机将其端口置为一种特别的关闭模式（a special diabled mode）, 叫做出错关闭（err-disabled）。此特性简单来讲，由于在某个特定端口上发生某种错误后，该端口就被关闭了。错误可能有多种原因，之最常见的就是出现触发了某项端口安全策略（a port security policy）。在某个未授权用户尝试连接到某个交换机端口时，这是通常的做法，它阻止那些违规设备访问网络。
+<h3 id="路由器时钟及-NTP，-Router-Clock-and-NTP"><a href="#路由器时钟及-NTP，-Router-Clock-and-NTP" class="headerlink" title="路由器时钟及 NTP， Router Clock and NTP"></a><a target="_blank" rel="noopener" href="https://ccna60d.xfoss.com/d04-Router-and-Switch-Security.html#%E8%B7%AF%E7%94%B1%E5%99%A8%E6%97%B6%E9%92%9F%E5%8F%8A-ntp-router-clock-and-ntp">路由器时钟及 NTP， Router Clock and NTP</a></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">交换机上的时间经常被忽略；但它却是重要的。在你遇到安全入侵（security violations）、SNMP 问题（SNMP traps）, 或者事件记录时，会用到时间戳。如交换机上的时间不正确，就会难于找出时间发生的时间。举个例子，让我们看看下面的交换机，并检查一下它的时间。</span><br><span class="line"></span><br><span class="line">Switch#show clock</span><br><span class="line">*23:09:45.773 UTC Tue Mar 2 1993</span><br><span class="line">该时间是不准确的，所以我们要修改一下。但首先，我们要设置一些属性值。</span><br><span class="line"></span><br><span class="line">clock timezone CST -6</span><br><span class="line">clock summer-time CDT recurring</span><br><span class="line">clock summer-time CST recurring 2 Sun Mar 2:00 1 Sun Nov 2:00</span><br><span class="line">首先，我们设置时区（the time zone）。我是位于中部时区（the Central time zone）， 比 GMT 要早 6 个小时。接着告诉交换机夏令时（时间变化，the time change）是循环的。最后设置夏令时具体是什么。此时，我们就可以设置时间和日期了。</span><br><span class="line"></span><br><span class="line">Switch#clock set 14:55:05 June 19 2007</span><br><span class="line">Switch#</span><br><span class="line">1d23h: %SYS-6-CLOCKUPDATE: System clock has been updated from 17:26:01 CST</span><br><span class="line">Tue Mar 2 1993 to 14:55:05 CST Tue Jun 19 2007, configured from console by console.</span><br><span class="line">Switch#show clock</span><br><span class="line">14:55:13.858 CST Tue Jun 19 2007</span><br><span class="line">请注意，时钟设置实在使能模式（Enable mode），而不是配置模式下。除了手动设置时钟外，你可以使用网络时间协议（Network Time Protocol, NTP）。它让你可将交换机的时钟与某台原子钟（an atomic clock）同步，保证非常精确的时间。</span><br><span class="line"></span><br><span class="line">Switch(config)#ntp server 134.84.84.84 prefer</span><br><span class="line">Switch(config)#ntp server 209.184.112.199</span><br><span class="line">使用下面的两个命令，你可以查看时钟是否已经和 NTP 源保持同步。</span><br><span class="line"></span><br><span class="line">Switch#show ntp associations</span><br><span class="line">Switch#show ntp status</span><br><span class="line">在第 40 天中，我们会涉及更多有关 NTP 的内容。</span><br><span class="line"></span><br><span class="line">关闭未用到的那些端口，Shut Down Unused Ports</span><br><span class="line">未使用的，或者说“空起的”那些没有任何网络设备的端口，因为某人会插入一条网线并将未授权设备连接到网络，而引发安全威胁。这会导致一些安全问题，包括。</span><br><span class="line"></span><br><span class="line">网络未能如同与其的那样运作</span><br><span class="line">网络信息暴露于外部人员</span><br><span class="line">这就是为何你要关闭路由器、交换机及其它网络设备上，所有未使用端口的原因。依据具体设备，关闭状态可能是端口默认的状态，但你仍要对此进行验证。</span><br><span class="line"></span><br><span class="line">而关闭端口是通过在接口配置模式下使用 shutdown 命令完成的。</span><br><span class="line"></span><br><span class="line">Switch#conf t</span><br><span class="line">Switch(config)#int fa0/0</span><br><span class="line">Switch(config-if)#shutdown</span><br><span class="line">验证某端口处于关闭状态有多种方法，其一就是使用 show ip interface brief 命令。</span><br><span class="line"></span><br><span class="line">Router(config-if)#do show ip interface brief</span><br><span class="line">Interface           IP-Address  OK? Method  Status                  Protocol</span><br><span class="line">FastEthernet0/0     unassigned  YES unset   administratively down   down</span><br><span class="line">FastEthernet0/1     unassigned  YES unset   administratively down   down</span><br><span class="line">请注意，管理性关闭状态就是说该端口是手工关闭的。验证关闭状态的另一方法是使用 show interface 命令。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Router#show interface fa0/0</span><br><span class="line">FastEthernet0/0 is administratively down, line protocol is down</span><br><span class="line">    Hardware is Gt96k FE, address is c200.27c8.0000 (bia c200.27c8.0000)</span><br><span class="line">    MTU 1500 bytes, BW 10000 Kbit/sec, DLY 1000 usec,</span><br><span class="line">......</span><br><span class="line">思科发现协议， Cisco Discovery Protocol, CDP</span><br></pre></td></tr></table></figure>
 
-出错关闭端口(an err-disabled port）看起来会是这样的。
-
-Switch# show interface f0/1
-FastEthernet0/1 is down, line protocol is down [err-disabled]
-.....
-而为了重新使用（re-activate）某个出错关闭接口，以在该接口上执行 shutdown 及 no shutdown 命令的人工干预是必要的, 网络工程师们俗称此操作为端口弹跳(a bouncing the port)。但是，某些情形要求从原端口状态自动恢复过来，而不是等到管理员手动开启该端口。此出错关闭回复模式，通过将交换机配置为在依引发通信失败事件的不同，而不同的一段时间后，自动重新打开出错关闭端口的方式，来发挥作用。区分通信失败事件，提供了出错关闭恢复功能所监测事件上的粒度（granularity）控制。
-
-完成该功能设置的命令是 errdisable recovery cause, 在全局路由器配置模式下输入。
-
-Switch(config)#errdisable recovery cause ?
-    all         Enable timer to recover from all causes
-    bpduguard   Enable timer to recover from bpdu-guard error disable state
-    dtp-flap    Enable timer to recover from dtp-flap error disable state
-    link-flap   Enable timer to recover from link-flap error disable state
-    pagp-flap   Enable timer to recover from pagp-flap error disable state
-    rootguard   Enable timer to recover from root-guard error disable state
-    udld        Enable timer to recover from udld error disable state
-......
-errdisable recovery cause 命令依设备型号会有所不同，但最常见的参数有这些。
-
-all
-arp-inspection
-bpduguard
-dhcp-rate-limit
-link-flap
-psecure-violation
-security-violation
-storm-control
-udld
-多数平台上端口自动恢复的默认时间是 300 秒，此时间可以用全局配置命令 errdisable recovery interval 手动修改。
-
-Switch(config)#errdisable recovery interval ?
-    &lt;30-86400&gt;  timer-interval(sec)
-而命令 show errdisable recovery 命令则会提供有关出错关闭恢复功能（the err-disable recovery function）激活了的那些特性的细节信息，以及受到监测的接口，并包含了接口重新开启剩余时间。
-
-
-Switch#show errdisable recovery
-ErrDisable Reason           Timer Status
------------------           --------------
-arp-inspection              Disabled
-bpduguard                   Disabled
-channel-misconfig           Disabled
-dhcp-rate-limit             Disabled
-dtp-flap                    Disabled
-gbic-invalid                Disabled
-inline-power                Disabled
-l2ptguard                   Disabled
-link-flap                   Disabled
-mac-limit                   Disabled
-link-monitor-failure        Disabled
-loopback                    Disabled
-oam-remote-failure          Disabled
-pagp-flap                   Disabled
-port-mode-failure           Disabled
-psecure-violation           Enabled
-security-violation          Disabled
-sfp-config-mismatch         Disabled
-storm-control               Disabled
-udld                        Disabled
-unicast-flood               Disabled
-vmps                        Disabled
-Timer interval: 300 seconds
-Interfaces that will be enabled at the next timeout:
-Interface           Errdisable reason           Time left(sec)
----------           -----------------           --------------
-Fa0/0               psecure-violation           193
-</code></pre>
-<h3 id="外部认证方式，External-Authentication-Methods"><a href="#外部认证方式，External-Authentication-Methods" class="headerlink" title="外部认证方式，External Authentication Methods"></a><a target="_blank" rel="noopener" href="https://ccna60d.xfoss.com/d04-Router-and-Switch-Security.html#%E5%A4%96%E9%83%A8%E8%AE%A4%E8%AF%81%E6%96%B9%E5%BC%8Fexternal-authentication-methods">外部认证方式，External Authentication Methods</a></h3><pre><code>与本地存储不同，你可以采用一台通常运行了 AAA 或 TACACS+ 的服务器来存储用户名和口令。这么做的优势在于，你无需在每台路由器和交换机上都手动输入用户名和口令。而是将其存储在服务器的数据库中。
-
-TACACS+ 表示“加强版终端访问控制器访问控制系统（Terminal Access Controller Access Control System Plus, TACACS+）”。它是一个思科专有协议，使用 TCP 49 号端口。TACACS+ 提供了经由一台或多台 TACACS+ 中心服务器，对包含路由器及网络介入服务器等网络设备的访问控制。
-
-拨入用户远端认证服务（Remote Authentication Dial-In User Service, RADIUS）, 是一套分布式网络安全系统，用以确保网络远程访问的安全性，同时它又是一个使用 UDP 的客户端/服务器协议（a client/server protocol）。RADIUS 是开放标准。
-
-如你拥有 TACACS+ 或者 RADIUS，那么你可能希望开启认证、授权和记账（Authentication, Authorization, and Accounting, AAA）。AAA 是安装在一台服务器上的，它监测着网络的一个用户帐号数据库。用户访问、协议、连接，以及断开原因，及其它很多特性都能被监测到。
-
-路由器和交换机可被设置为在某用户尝试登入时查询服务器。服务器此时来验证用户。CCNA 考试不要求你去配置这些协议。
-</code></pre>
-<h3 id="路由器时钟及-NTP，-Router-Clock-and-NTP"><a href="#路由器时钟及-NTP，-Router-Clock-and-NTP" class="headerlink" title="路由器时钟及 NTP， Router Clock and NTP"></a><a target="_blank" rel="noopener" href="https://ccna60d.xfoss.com/d04-Router-and-Switch-Security.html#%E8%B7%AF%E7%94%B1%E5%99%A8%E6%97%B6%E9%92%9F%E5%8F%8A-ntp-router-clock-and-ntp">路由器时钟及 NTP， Router Clock and NTP</a></h3><pre><code>交换机上的时间经常被忽略；但它却是重要的。在你遇到安全入侵（security violations）、SNMP 问题（SNMP traps）, 或者事件记录时，会用到时间戳。如交换机上的时间不正确，就会难于找出时间发生的时间。举个例子，让我们看看下面的交换机，并检查一下它的时间。
-
-Switch#show clock
-*23:09:45.773 UTC Tue Mar 2 1993
-该时间是不准确的，所以我们要修改一下。但首先，我们要设置一些属性值。
-
-clock timezone CST -6
-clock summer-time CDT recurring
-clock summer-time CST recurring 2 Sun Mar 2:00 1 Sun Nov 2:00
-首先，我们设置时区（the time zone）。我是位于中部时区（the Central time zone）， 比 GMT 要早 6 个小时。接着告诉交换机夏令时（时间变化，the time change）是循环的。最后设置夏令时具体是什么。此时，我们就可以设置时间和日期了。
-
-Switch#clock set 14:55:05 June 19 2007
-Switch#
-1d23h: %SYS-6-CLOCKUPDATE: System clock has been updated from 17:26:01 CST
-Tue Mar 2 1993 to 14:55:05 CST Tue Jun 19 2007, configured from console by console.
-Switch#show clock
-14:55:13.858 CST Tue Jun 19 2007
-请注意，时钟设置实在使能模式（Enable mode），而不是配置模式下。除了手动设置时钟外，你可以使用网络时间协议（Network Time Protocol, NTP）。它让你可将交换机的时钟与某台原子钟（an atomic clock）同步，保证非常精确的时间。
-
-Switch(config)#ntp server 134.84.84.84 prefer
-Switch(config)#ntp server 209.184.112.199
-使用下面的两个命令，你可以查看时钟是否已经和 NTP 源保持同步。
-
-Switch#show ntp associations
-Switch#show ntp status
-在第 40 天中，我们会涉及更多有关 NTP 的内容。
-
-关闭未用到的那些端口，Shut Down Unused Ports
-未使用的，或者说“空起的”那些没有任何网络设备的端口，因为某人会插入一条网线并将未授权设备连接到网络，而引发安全威胁。这会导致一些安全问题，包括。
-
-网络未能如同与其的那样运作
-网络信息暴露于外部人员
-这就是为何你要关闭路由器、交换机及其它网络设备上，所有未使用端口的原因。依据具体设备，关闭状态可能是端口默认的状态，但你仍要对此进行验证。
-
-而关闭端口是通过在接口配置模式下使用 shutdown 命令完成的。
-
-Switch#conf t
-Switch(config)#int fa0/0
-Switch(config-if)#shutdown
-验证某端口处于关闭状态有多种方法，其一就是使用 show ip interface brief 命令。
-
-Router(config-if)#do show ip interface brief
-Interface           IP-Address  OK? Method  Status                  Protocol
-FastEthernet0/0     unassigned  YES unset   administratively down   down
-FastEthernet0/1     unassigned  YES unset   administratively down   down
-请注意，管理性关闭状态就是说该端口是手工关闭的。验证关闭状态的另一方法是使用 show interface 命令。
-
-
-Router#show interface fa0/0
-FastEthernet0/0 is administratively down, line protocol is down
-    Hardware is Gt96k FE, address is c200.27c8.0000 (bia c200.27c8.0000)
-    MTU 1500 bytes, BW 10000 Kbit/sec, DLY 1000 usec,
-......
-思科发现协议， Cisco Discovery Protocol, CDP
-</code></pre>
 <p><a target="_blank" rel="noopener" href="https://ccna60d.xfoss.com/d04-Router-and-Switch-Security.html#%E6%80%9D%E7%A7%91%E5%8F%91%E7%8E%B0%E5%8D%8F%E8%AE%AE-cisco-discovery-protocol-cdp">思科发现协议， Cisco Discovery Protocol, CDP</a></p>
-<pre><code>现在来讨论思科发现协议正是时候。
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line">现在来讨论思科发现协议正是时候。</span><br><span class="line"></span><br><span class="line">CDP 因为其在做出任何配置之前，就提供了一种发现有关网络设备信息的方法，而是一个热门的考试考点。它是一直非常有用的故障排除工具；但它又带来了安全威胁。</span><br><span class="line"></span><br><span class="line">CDP 是一个思科专有协议，也就是说它只运行在思科设备上。它是一种二层服务, 设备用它来通告和接收那些直接连接设备的基本信息。IEEE 版本的 CDP 叫做链路层发现协议（Link Layer Discovery Protocol, LLDP）, CCNA 大纲并不包含此内容。</span><br><span class="line"></span><br><span class="line">因为 CDP 是一种二层服务，所以它并不需要配置有 IP 地址来交换信息。只需开启接口就行。如有配置 IP 地址，该 IP 地址也会包含进 CDP 消息中。</span><br><span class="line"></span><br><span class="line">CDP 作为非常强大的故障排除工具，考试中要求你掌握如何来使用它。图 4.1 展示了 Router 0 的 CDP 输出。请设想一下在没有拓扑图（topology diagram）的情况下，你要对此网络进行故障排除的情形。</span><br><span class="line"></span><br><span class="line">Router 0 的 CDP 输出</span><br><span class="line"></span><br><span class="line">图 4.1 -- Router 0 的 CDP 输出</span><br><span class="line"></span><br><span class="line">下列配置输入，正是图 4.1 中的。</span><br><span class="line"></span><br><span class="line">Router0#show cdp neighbors</span><br><span class="line">Capability Codes: R - Router, T - Trans Bridge, B - Source Route Bridge, S - Switch, H -</span><br><span class="line">Host, I - IGMP, r - Repeater, P - Phone</span><br><span class="line">Device ID   Local Interface Holdtime    Capability  Platform    Port</span><br><span class="line">Switch      Fas 0/0         165         S           2960        Fas 0/1</span><br><span class="line">Router      Fas 0/1         169         R           C1841       Fas 0/0</span><br><span class="line">Router0#</span><br><span class="line">在上述命令的后面加上 detail 命令，你可以看到更多信息。</span><br><span class="line"></span><br><span class="line">Router0#show cdp neighbors detail</span><br><span class="line">Device ID: Switch</span><br><span class="line">Entry address(es):</span><br><span class="line">Platform: cisco 2960, Capabilities: Switch</span><br><span class="line">Interface: FastEthernet0/0, Port ID (outgoing port): FastEthernet0/1</span><br><span class="line">Holdtime: 178</span><br><span class="line">Version :</span><br><span class="line">Cisco IOS Software, C2960 Software (C2960-LANBASE-M), Version 12.2(25)FX, RELEASE</span><br><span class="line">SOFTWARE (fc1)</span><br><span class="line">Copyright (c) 1986-2005 by Cisco Systems, Inc.</span><br><span class="line">Compiled Wed 12-Oct-05 22:05 by pt_team</span><br><span class="line">advertisement version: 2</span><br><span class="line">Duplex: full</span><br><span class="line">---------------------------</span><br><span class="line">Device ID: Router</span><br><span class="line">Entry address(es):</span><br><span class="line">    IP address : 192.168.1.2</span><br><span class="line">Platform: cisco C1841, Capabilities: Router</span><br><span class="line">Interface: FastEthernet0/1, Port ID (outgoing port): FastEthernet0/0</span><br><span class="line">Holdtime: 122</span><br><span class="line">Version :</span><br><span class="line">Cisco IOS Software, 1841 Software (C1841-ADVIPSERVICESK9-M), Version 12.4(15)T1, RELEASE</span><br><span class="line">SOFTWARE (fc2)</span><br><span class="line">Technical Support: http://www.cisco.com/techsupport</span><br><span class="line">Copyright (c) 1986-2007 by Cisco Systems, Inc.</span><br><span class="line">Compiled Wed 18-Jul-07 04:52 by pt_team</span><br><span class="line">advertisement version: 2</span><br><span class="line">Duplex: full</span><br><span class="line">现在你可以看到 IOS 版本、型号、IP 地址以及其它信息。记住现在你仍未在 Router 0 上配置 IP 地址。</span><br><span class="line"></span><br><span class="line">前面我们已经讲过怎样在整台设备或仅在某个接口上关闭 CDP 了。而另两个有关命令是显示设备有关 CDP 的协议信息的 show cdp 命令，以及通过输入设备名称来查看某台具设备信息的 show cdp entry &lt;Router&gt; 命令。建议在今天要配置的实验中花些时间，来查看 CDP 的众多输出。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Router0#show cdp</span><br><span class="line">Global CDP information:</span><br><span class="line">    Sending CDP packets every 60 seconds</span><br><span class="line">    Sending a holdtime value of 180 seconds</span><br><span class="line">    Sending CDPv2 advertisements is enabled</span><br><span class="line">Router0#show cdp ?</span><br><span class="line">  entry       Information for specific neighbor entry</span><br><span class="line">  interface   CDP interface status and configuration</span><br><span class="line">  neighbors   CDP neighbor entries</span><br><span class="line">  traffic     CDP statistics</span><br><span class="line">  |           Output modifiers</span><br><span class="line">  &lt;cr&gt;</span><br></pre></td></tr></table></figure>
 
-CDP 因为其在做出任何配置之前，就提供了一种发现有关网络设备信息的方法，而是一个热门的考试考点。它是一直非常有用的故障排除工具；但它又带来了安全威胁。
+<h2 id="交换机端口安全，Switch-Port-Security"><a href="#交换机端口安全，Switch-Port-Security" class="headerlink" title="交换机端口安全，Switch Port Security"></a><a target="_blank" rel="noopener" href="https://ccna60d.xfoss.com/d04-Router-and-Switch-Security.html#%E4%BA%A4%E6%8D%A2%E6%9C%BA%E7%AB%AF%E5%8F%A3%E5%AE%89%E5%85%A8switch-port-security">交换机端口安全，Switch Port Security</a></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">端口安全特性，是通过限制某个特定端口或是接口能够学习到的 MAC 地址数目，来保护交换机端口安全，并最终确保内容可寻址存储器（Content Addressable Memory, CAM）表的安全的一项，Catalyst 交换机的有力特性。具备了端安全特性，交换机就能够维护一张用于明确哪个 MAC 地址（或哪些地址），可以接入哪些本地交换机端口的表格。此外，交换机同样可以配置为仅允许在任何给定的端口上学习到指定数量的 MAC 地址。端口安全如图 4.2 所示。</span><br><span class="line"></span><br><span class="line">注：关于CAM的更多信息，请参考 CAM (Content Addressable Memory) VS TCAM (Ternary Content Addressable Memory)。</span><br><span class="line"></span><br><span class="line">&quot;端口安全的运作&quot;</span><br><span class="line"></span><br><span class="line">图 4.2 -- 端口安全的运作</span><br><span class="line"></span><br><span class="line">图 4.2 展示了在某台 Catalyst 交换机上，通过端口安全特性配置的 4 个端口，它们都只允许单一 MAC 地址接入。从 1 号到 3 号端口连接的 MAC 地址与端口安全所允许的地址匹配。在没有其它过滤的情况下，这些主机就能够经由其各自交换机端口转发流量。而端口 4 上所配置的是允许 AAAA.0000.0004 MAC 地址，但所接入的 MAC 地址却是 BBBB.0000.0001。因为主机 MAC 地址与所允许的 MAC 不一样，端口安全（port security）将在端口上做出如同管理员所设定的适当动作。这些有效端口安全动(the valid port security actions)作将在接下来的部分详细说明。</span><br><span class="line"></span><br><span class="line">端口安全特性设计用于保护交换局域网（the switched LAN）免受两种主要的攻击方式。这两种方式在下的小节讲到。</span><br><span class="line"></span><br><span class="line">CAM 表溢出攻击， CAM table overflow attacks</span><br><span class="line">MAC 欺骗攻击， MAC spoofing attacks</span><br></pre></td></tr></table></figure>
 
-CDP 是一个思科专有协议，也就是说它只运行在思科设备上。它是一种二层服务, 设备用它来通告和接收那些直接连接设备的基本信息。IEEE 版本的 CDP 叫做链路层发现协议（Link Layer Discovery Protocol, LLDP）, CCNA 大纲并不包含此内容。
+<h3 id="CAM-表溢出攻击"><a href="#CAM-表溢出攻击" class="headerlink" title="CAM 表溢出攻击"></a><a target="_blank" rel="noopener" href="https://ccna60d.xfoss.com/d04-Router-and-Switch-Security.html#cam-%E8%A1%A8%E6%BA%A2%E5%87%BA%E6%94%BB%E5%87%BB">CAM 表溢出攻击</a></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">交换机的 CAM 表是一些存储位置，这些存储位置包含了物理端口上的那些 MAC 地址，及其 VLAN 参数。交换机 CAM 表中动态学习到的内容，或者说 MAC 地址表，可通过命令 show mac-address-table dynamic 查看到，如下面的输出所示。</span><br><span class="line"></span><br><span class="line">VTP-Server-1#show mac-address-table dynamic</span><br><span class="line">            Mac Address Table</span><br><span class="line">-------------------------------------------</span><br><span class="line">Vlan    Mac Address         Type        Ports</span><br><span class="line">----    -----------         --------    -----</span><br><span class="line">   2    000c.cea7.f3a0      DYNAMIC     Fa0/1</span><br><span class="line">   2    0013.1986.0a20      DYNAMIC     Fa0/2</span><br><span class="line">   6    0004.c16f.8741      DYNAMIC     Fa0/3</span><br><span class="line">   6    0030.803f.ea81      DYNAMIC     Fa0/4</span><br><span class="line">   8    0004.c16f.8742      DYNAMIC     Fa0/5</span><br><span class="line">   8    0030.803f.ea82      DYNAMIC     Fa0/6</span><br><span class="line">Total Mac Addresses for this criterion: 6</span><br><span class="line">如同所有的计算装置一样，交换机的存储资源也是有限的。这就意味着 CAM 表的存储空间是固定的，已分配好的。CAM 表溢出攻击（CAM table overflow attacks）将此限制作为目标，用大量随机生成的无效源及目的 MAC 地址灌入交换机，直到填满 CAM 表，此时交换机就无法接收新的 CAM 表条目了。在此情况下，交换机成为了一台集线器，只能开始简单地将新近接收的帧广播到其上的所有接口（同一 VLAN 中的），就是将该 VLAN 变成了一个大的广播域。</span><br><span class="line"></span><br><span class="line">对 CAM 表的攻击易于开展，因为有着像 MACOF 及 DSNIFF 等常见的工具可用于实施这样的行为。而增加 VLANs 的数目（此举减少了广播域的尺寸），可有助于降低 CAM 表攻击的影响，在交换机上配置端口安全特性，是推荐的安全方案。</span><br><span class="line"></span><br><span class="line">MAC 欺骗攻击，MAC Spoofing Attacks</span><br><span class="line">MAC 地址欺骗，用于冒充某个源 MAC 地址，以达到扮演网络上的其它主机或设备的目的。冒充（spoofing）就是伪装成或扮着是并非你本人的某个人。MAC 地址欺骗的主要目的是扰乱交换机，令到其以为某台同一主机连接到两个端口上，这就导致交换机尝试同时将帧转发给受信任的主机和攻击者。图 4.3 展示了连接4 台不同网络主机的交换机的 CAM 表。</span><br><span class="line"></span><br><span class="line">&quot;交换机 CAM 表的建立&quot;</span><br><span class="line"></span><br><span class="line">图 4.3 中, 交换机允许正常，根据 CAM 表条目，它知道连接至其端口上的所有设备的 MAC 地址。而基于当前的 CAM 表，如 4 号主机想要发给 2 号主机一个帧，交换机就会简单地将该帧转发出它的 FastEthernet 0/2 接口，而前往 2 号主机。</span><br><span class="line"></span><br><span class="line">现在，假设 1 号主机被某个想要接收所有发往 2 号主机流量的攻击者入侵了。则经由 MAC 地址欺骗，攻击者精心构建出使用 2 号主机源地址的以太网帧。在交换机收到该帧后，它记下该源地址，并重写 CAM 表中 2 号主机所对应的条目，将其指向 FastEthernet 0/1 端口，而不是 2 号主机所真正连接的 FastEthernet 0/2。此概念如图 4.4 所示。</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-因为 CDP 是一种二层服务，所以它并不需要配置有 IP 地址来交换信息。只需开启接口就行。如有配置 IP 地址，该 IP 地址也会包含进 CDP 消息中。
+<h3 id="MAC-欺骗攻击，MAC-Spoofing-Attacks"><a href="#MAC-欺骗攻击，MAC-Spoofing-Attacks" class="headerlink" title="MAC 欺骗攻击，MAC Spoofing Attacks"></a><a target="_blank" rel="noopener" href="https://ccna60d.xfoss.com/d04-Router-and-Switch-Security.html#mac-%E6%AC%BA%E9%AA%97%E6%94%BB%E5%87%BBmac-spoofing-attacks">MAC 欺骗攻击，MAC Spoofing Attacks</a></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">MAC 地址欺骗，用于冒充某个源 MAC 地址，以达到扮演网络上的其它主机或设备的目的。冒充（spoofing）就是伪装成或扮着是并非你本人的某个人。MAC 地址欺骗的主要目的是扰乱交换机，令到其以为某台同一主机连接到两个端口上，这就导致交换机尝试同时将帧转发给受信任的主机和攻击者。图 4.3 展示了连接4 台不同网络主机的交换机的 CAM 表。</span><br><span class="line"></span><br><span class="line">&quot;交换机 CAM 表的建立&quot;</span><br><span class="line"></span><br><span class="line">图 4.3 中, 交换机允许正常，根据 CAM 表条目，它知道连接至其端口上的所有设备的 MAC 地址。而基于当前的 CAM 表，如 4 号主机想要发给 2 号主机一个帧，交换机就会简单地将该帧转发出它的 FastEthernet 0/2 接口，而前往 2 号主机。</span><br><span class="line"></span><br><span class="line">现在，假设 1 号主机被某个想要接收所有发往 2 号主机流量的攻击者入侵了。则经由 MAC 地址欺骗，攻击者精心构建出使用 2 号主机源地址的以太网帧。在交换机收到该帧后，它记下该源地址，并重写 CAM 表中 2 号主机所对应的条目，将其指向 FastEthernet 0/1 端口，而不是 2 号主机所真正连接的 FastEthernet 0/2。此概念如图 4.4 所示。</span><br><span class="line"></span><br><span class="line">![&quot;MAC 地址欺骗&quot;](images/0404.png width=800)</span><br><span class="line"></span><br><span class="line">根据图 4.4, 在 3 号主机或 4 号主机尝试将帧发给 2 号主机时，交换机会将这些帧转发出 FastEthernet 0/1, 到 1 号主机，因为 CAM 表已被 MAC 地址欺骗攻击投毒。在 2 号主机发出另一个帧时，交换机再次从 FastEthernet 0/2 了解其 MAC 地址, 并再度将 CAM 表条目重写，以反应出该变化。结果就出现 2 号主机与 1 号主机之间就谁保有此 MAC 地址的拔河。</span><br><span class="line"></span><br><span class="line">此外，这也将扰乱交换机，造成反复的重写 MAC 地址表条目，引发在合法主机（也就是 2 号主机）上的拒绝服务攻击（Denial of Service , DoS）。而假如假冒的 MAC 地址数目很高，MAC 地址欺骗攻击还将对持续重写其 CAM 表的交换机的性能造成严重影响。应用端口安全(implementing port security)，可以减轻 MAC 地址欺骗攻击的影响。</span><br></pre></td></tr></table></figure>
 
-CDP 作为非常强大的故障排除工具，考试中要求你掌握如何来使用它。图 4.1 展示了 Router 0 的 CDP 输出。请设想一下在没有拓扑图（topology diagram）的情况下，你要对此网络进行故障排除的情形。
+<h3 id="地址安全的端口安全，Port-Security-Secure-Addresses"><a href="#地址安全的端口安全，Port-Security-Secure-Addresses" class="headerlink" title="地址安全的端口安全，Port Security Secure Addresses"></a><a target="_blank" rel="noopener" href="https://ccna60d.xfoss.com/d04-Router-and-Switch-Security.html#%E5%9C%B0%E5%9D%80%E5%AE%89%E5%85%A8%E7%9A%84%E7%AB%AF%E5%8F%A3%E5%AE%89%E5%85%A8port-security-secure-addresses">地址安全的端口安全，Port Security Secure Addresses</a></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">经由端口安全特性，我们可以指定特定 MAC 才被允许访问某个交换机端口，同时限制某个单一交换机端口所支持的 MAC 地址数目。以下本节所说明的几种端口安全应用方式。</span><br><span class="line"></span><br><span class="line">静态 MAC 地址保全, Static secure MAC addresses</span><br><span class="line">动态 MAC 地址保全, Dynamic secure MAC addresses</span><br><span class="line">粘滞 MAC 地址保全, Sticky secure MAC addresses</span><br><span class="line">静态 MAC 地址保全是由网络管理员静态配置，并存储在 MAC 地址表中，同时还保存在交换机配置文件里。当将静态 MAC 地址保全指派给某个安全端口时，交换机不会转发那些源地址与所配置的静态安全 MAC 地址不匹配的帧。</span><br><span class="line"></span><br><span class="line">动态 MAC 地址保全，是交换机所学习到的，存储在 MAC 地址表中。与静态 MAC 地址安全不同，在交换机重启或断电后，动态安全 MAC 地址条目会从交换机中移除。在交换机再次启动时，这些地址要再次习得。</span><br><span class="line"></span><br><span class="line">粘滞的 MAC 地址保全，是静态和动态 MAC 地址保全的结合。地址可动态习得，也可静态配置，存储在 MAC 地址表中，也保存在交换机配置文件里。这就意味着在交换机关闭或是重启后，它无需再次动态发现 MAC 地址，因为这些 MAC 地址已经保存在配置文件中了（如你有保存允许的配置）。</span><br></pre></td></tr></table></figure>
 
-Router 0 的 CDP 输出
+<h3 id="动作的端口安全，Port-Security-Actions"><a href="#动作的端口安全，Port-Security-Actions" class="headerlink" title="动作的端口安全，Port Security Actions"></a><a target="_blank" rel="noopener" href="https://ccna60d.xfoss.com/d04-Router-and-Switch-Security.html#%E5%8A%A8%E4%BD%9C%E7%9A%84%E7%AB%AF%E5%8F%A3%E5%AE%89%E5%85%A8port-security-actions">动作的端口安全，Port Security Actions</a></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">一旦开启了端口安全，管理员就可定义出在出现违反端口安全事件后，交换机所采取的动作了。思科 IOS 软件允许管理员指定 4 种在出现冲突时所采取的不同动作。</span><br><span class="line"></span><br><span class="line">保护，Protect</span><br><span class="line">关闭（默认动作）, Shutdown(default)</span><br><span class="line">限制，Restrict</span><br><span class="line">关闭 VLAN （超出 CCNA 大纲）, Shutdown VLAN(outside of the CCNA syllabus)</span><br><span class="line">保护动作选项强制端口进入受保护端口模式（Protected Port mode）。此模式下，交换机会简单地丢弃所有源地址不明的单播和多播帧（simply discard all Unicast or Multicast frames with unknown source MAC addresses）。而在交换机被配置为保护某端口时，当其以受保护端口模式运行时，不会发出通知，这就意味着由处于此模式下的交换机端口阻止所有流量时，管理员是无法获知的。</span><br><span class="line"></span><br><span class="line">关闭动作选项则是在出现违反端口安全后，将某端口置于某种错误关闭状态（an err-disabled state）。在此配置动作被用到时，交换机上相应端口的 LED 同时被关闭。而在关闭模式下，交换机发出一条 SNMP trap (浅谈 Linux 系统中的 SNMP trap), 以及一条 syslog 消息，同时冲突计数器会增大。这个选项是接口配置了端口安全时的默认动作。</span><br><span class="line"></span><br><span class="line">限制动作选项是在安全 MAC 地址数目到达管理员为该端口所定义的最大限制时，用于丢弃那些带有不明 MAC 地址的数据包。此模式下，交换机会持续限制额外的那些 MAC 地址发出帧，直到移除对那些安全 MAC 地址数目的限制，或直到所允许的最大地址数目得以增加。和关闭工作选项一样，交换机也会发出一条 SNMP trap 及一条 syslog 消息，同时冲突计数器会增加。</span><br><span class="line"></span><br><span class="line">关闭 VLAN 动作选项跟关闭动作选项类似；不过此选项是关闭某个 VLAN, 而不是某个交换机端口。此配置可能会应用在那些指派了多个 VLAN， 诸如语音 VLAN 和数据 VLAN， 的端口上，以及交换机的中继链路上。</span><br></pre></td></tr></table></figure>
 
-图 4.1 -- Router 0 的 CDP 输出
+<h3 id="端口安全配置，-Configuring-Port-Security"><a href="#端口安全配置，-Configuring-Port-Security" class="headerlink" title="端口安全配置， Configuring Port Security"></a><a target="_blank" rel="noopener" href="https://ccna60d.xfoss.com/d04-Router-and-Switch-Security.html#%E7%AB%AF%E5%8F%A3%E5%AE%89%E5%85%A8%E9%85%8D%E7%BD%AE-configuring-port-security">端口安全配置， Configuring Port Security</a></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">在配置端口安全之前，建议将交换机端口静态配置为二层接入端口（端口安全只能配置为静态接入端口或中继端口上，不能配置在动态端口上）。此配置如下面的输出所示。</span><br><span class="line"></span><br><span class="line">VTP-Server-1(config)#interface FastEthernet0/1</span><br><span class="line">VTP-Server-1(config-if)#switchport</span><br><span class="line">VTP-Server-1(config-if)#switchport mode access</span><br><span class="line">注意: 在诸如 Catalyst 2950 及 Catalyst 2960 系列的二层交换机上无需 switchport 命令。而在比如 Catalyst 3750、Catalyst 4500 以及 Catalyst 6500 系列等的多层交换机上， 它是要要到的。</span><br><span class="line"></span><br><span class="line">默认情况下，端口安全是关闭的；但可通过接口配置命令 switchport port-security [mac-address &#123;mac-address&#125; [vlan &#123;vlan-id | &#123;access | voice&#125;&#125;] | mac-address &#123;sticky&#125; [mac-address | vlan &#123;vlan-id | &#123;access | voice&#125;&#125;] [maximum &#123;value&#125; [vlan &#123;vlan-list | &#123;access | voice&#125;&#125;]] 予以开启。表 4.1 说明了该命令的这些选项。</span><br><span class="line"></span><br><span class="line">关键字	说明</span><br><span class="line">mac-address &#123;mac-address&#125;	此关键字用于指定一个静态保全 MAC 地址。你还可以加入不超过配置的最大数目的其它安全 MAC 地址。</span><br><span class="line">vlan &#123;vlan id&#125;	此关键字应只使用在某个中继端口上，以指定 VLAN ID 和 MAC 地址。如没有指定 VLAN ID，就使用原生 VLAN。</span><br><span class="line">vlan &#123;access&#125;	此关键字应只用在某个接入端口上，以指定该 VLAN 作为接入 VLAN。</span><br><span class="line">vlan &#123;voice&#125;	此关键字应只用在某个接入端口上, 用以知道该 VLAN 作为一个语音 VLAN。而只有在该特定端口上配置了语音 VLAN 时，该选项才可用。</span><br><span class="line">mac-address &#123;sticky&#125; [mac-address]	此关键字用于在特定接口上开启动态或地址粘滞学习（used to enable dynamic or sticky learning），或者为其配置一个静态安全 MAC 地址。</span><br><span class="line">maxium &#123;value&#125;	此关键字用于指定某个接口上可以学到的安全地址的最大数目。默认是 1。</span><br></pre></td></tr></table></figure>
 
-下列配置输入，正是图 4.1 中的。
+<h3 id="静态安全地址配置，-Configuring-Static-Secure-MAC-Addresses"><a href="#静态安全地址配置，-Configuring-Static-Secure-MAC-Addresses" class="headerlink" title="静态安全地址配置， Configuring Static Secure MAC Addresses"></a><a target="_blank" rel="noopener" href="https://ccna60d.xfoss.com/d04-Router-and-Switch-Security.html#%E9%9D%99%E6%80%81%E5%AE%89%E5%85%A8%E5%9C%B0%E5%9D%80%E9%85%8D%E7%BD%AE-configuring-static-secure-mac-addresses">静态安全地址配置， Configuring Static Secure MAC Addresses</a></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">下面的输出演示了怎样在某个接口上开启端口安全，以及在某个交换机接入端口上配置一个静态安全 MAC 地址 001f:3c59:d63b。</span><br><span class="line"></span><br><span class="line">VTP-Server-1(config)#interface GigabitEthernet0/2</span><br><span class="line">VTP-Server-1(config-if)#switchport</span><br><span class="line">VTP-Server-1(config-if)#switchport mode access</span><br><span class="line">VTP-Server-1(config-if)#switchport port-security</span><br><span class="line">VTP-Server-1(config-if)#switchport port-security mac-address 001f.3c59.d63b</span><br><span class="line">下面的输出演示了怎样在某个接口上开启端口安全，并在某个交换机中继端口的 VLAN 5 中配置一个静态安全 MAC 地址 001f:3c59:d63b。</span><br><span class="line"></span><br><span class="line">VTP-Server-1(config)#interface GigabitEthernet0/2</span><br><span class="line">VTP-Server-1(config-if)#switchport</span><br><span class="line">VTP-Server-1(config-if)#switchport trunk encapsulation dot1q</span><br><span class="line">VTP-Server-1(config-if)#switchport mode trunk</span><br><span class="line">VTP-Server-1(config-if)#switchport port-security</span><br><span class="line">VTP-Server-1(config-if)#switchport port-security mac-address 001f.3c59.d63b vlan 5</span><br><span class="line">而下面的输出则演示了如何在某个接口上开启端口安全，并在某个交换机接入端口的 VLAN 5(数据 VLAN） 和 VLAN 7(语音 VLAN），分别配置一个静态安全 MAC 地址 001f:3c59:5555 和 001f:3c59:7777。</span><br><span class="line"></span><br><span class="line">VTP-Server-1(config)#interface GigabitEthernet0/2</span><br><span class="line">VTP-Server-1(config-if)#switchport</span><br><span class="line">VTP-Server-1(config-if)#switchport mode access</span><br><span class="line">VTP-Server-1(config-if)#switchport access vlan 5</span><br><span class="line">VTP-Server-1(config-if)#switchport voice vlan 7</span><br><span class="line">VTP-Server-1(config-if)#switchport port-security</span><br><span class="line">VTP-Server-1(config-if)#switchport port-security maximum 2</span><br><span class="line">VTP-Server-1(config-if)#switchport port-security mac-address 001f.3c59.5555 vlan access</span><br><span class="line">VTP-Server-1(config-if)#switchport port-security mac-address 001f.3c59.7777 vlan voice</span><br><span class="line">记住在某个同时配置了语音 VLAN 和数据 VLAN 的接口上开启端口安全时，该端口上的最大允许安全地址数应设置为 2，这一点非常重要。这又是通过包含在上面输出中的接口配置命令 switchport port-security maxium 2 完成的。</span><br><span class="line"></span><br><span class="line">两个 MAC 地址中的一个由 IP 电话使用，交换机在语音 VLAN 上学到此地址。另一个由可连接在 IP 电话上的主机（比如 PC）所使用。交换机将在数据 VLAN 上学到这个 MAC 地址。</span><br></pre></td></tr></table></figure>
 
-Router0#show cdp neighbors
-Capability Codes: R - Router, T - Trans Bridge, B - Source Route Bridge, S - Switch, H -
-Host, I - IGMP, r - Repeater, P - Phone
-Device ID   Local Interface Holdtime    Capability  Platform    Port
-Switch      Fas 0/0         165         S           2960        Fas 0/1
-Router      Fas 0/1         169         R           C1841       Fas 0/0
-Router0#
-在上述命令的后面加上 detail 命令，你可以看到更多信息。
+<h3 id="静态安全地址配置的验证，Verifying-Static-Secure-MAC-Address-Configuration"><a href="#静态安全地址配置的验证，Verifying-Static-Secure-MAC-Address-Configuration" class="headerlink" title="静态安全地址配置的验证，Verifying Static Secure MAC Address Configuration"></a><a target="_blank" rel="noopener" href="https://ccna60d.xfoss.com/d04-Router-and-Switch-Security.html#%E9%9D%99%E6%80%81%E5%AE%89%E5%85%A8%E5%9C%B0%E5%9D%80%E9%85%8D%E7%BD%AE%E7%9A%84%E9%AA%8C%E8%AF%81verifying-static-secure-mac-address-configuration">静态安全地址配置的验证，Verifying Static Secure MAC Address Configuration</a></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">同过执行 show port-security 命令，可以验证全局端口安全配置参数（global port security configuration parameters）。下面展示了默认值下的此命令的打印输出。</span><br><span class="line"></span><br><span class="line">VTP-Server-1#show port-security</span><br><span class="line">Secure Port MaxSecureAddr  CurrentAddr SecurityViolation   Security Action</span><br><span class="line">           (Count)        (Count)      (Count)</span><br><span class="line">-------------------------------------------------------</span><br><span class="line">Gi0/2       1               1             0               Shutdown</span><br><span class="line">------------------------------------------------------------------</span><br><span class="line">Total Addresses in System : 1</span><br><span class="line">Max Addresses limit in System : 1024</span><br><span class="line">如同上面的输出中所见到的那样，默认情况下，每个端口上仅允许一个安全 MAC 地址。此外，在出现冲突事件时的默认动作就是关闭端口。粗体文本表明，已知仅有一个安全地址，就是配置在接口上的静态地址。经由执行 show port-security interface [name] 亦可确认同样的参数，如下面的输出所示。</span><br><span class="line"></span><br><span class="line">VTP-Server-1#show port-security interface gi0/2</span><br><span class="line">Port Security : Enabled</span><br><span class="line">Port status : SecureUp</span><br><span class="line">Violation mode : Shutdown</span><br><span class="line">Maximum MAC Addresses : 1</span><br><span class="line">Total MAC Addresses : 1</span><br><span class="line">Configured MAC Addresses : 1</span><br><span class="line">Sticky MAC Addresses : 0</span><br><span class="line">Aging time : 0 mins</span><br><span class="line">Aging type : Absolute</span><br><span class="line">SecureStatic address aging : Disabled</span><br><span class="line">Security Violation count : 0</span><br><span class="line">注意： 在我们进一步学习本章内容的过程中，将会详细介绍对上面的输出中其它默认参数的修改。</span><br><span class="line"></span><br><span class="line">而要查看该端口上具体配置的静态安全 MAC 地址，就要用到 show port-security address 或者 show running-config interface [name] 命令了。以下输出演示了 show port-security address。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">VTP-Server-1#show port-security address</span><br><span class="line">          Secure Mac Address Table</span><br><span class="line">-------------------------------------------------------------------</span><br><span class="line">Vlan    Mac Address       Type                 Ports   Remaining Age</span><br><span class="line">                                                          (mins)</span><br><span class="line">----    -----------       ----                 -----   -----------</span><br><span class="line">   1    001f.3c59.d63b    SecureConfigured     Gi0/2       -</span><br><span class="line">--------------------------------------------------------------------</span><br><span class="line">Total Addresses in System : 1</span><br><span class="line">Max Addresses limit in System : 1024</span><br></pre></td></tr></table></figure>
 
-Router0#show cdp neighbors detail
-Device ID: Switch
-Entry address(es):
-Platform: cisco 2960, Capabilities: Switch
-Interface: FastEthernet0/0, Port ID (outgoing port): FastEthernet0/1
-Holdtime: 178
-Version :
-Cisco IOS Software, C2960 Software (C2960-LANBASE-M), Version 12.2(25)FX, RELEASE
-SOFTWARE (fc1)
-Copyright (c) 1986-2005 by Cisco Systems, Inc.
-Compiled Wed 12-Oct-05 22:05 by pt_team
-advertisement version: 2
-Duplex: full
----------------------------
-Device ID: Router
-Entry address(es):
-    IP address : 192.168.1.2
-Platform: cisco C1841, Capabilities: Router
-Interface: FastEthernet0/1, Port ID (outgoing port): FastEthernet0/0
-Holdtime: 122
-Version :
-Cisco IOS Software, 1841 Software (C1841-ADVIPSERVICESK9-M), Version 12.4(15)T1, RELEASE
-SOFTWARE (fc2)
-Technical Support: http://www.cisco.com/techsupport
-Copyright (c) 1986-2007 by Cisco Systems, Inc.
-Compiled Wed 18-Jul-07 04:52 by pt_team
-advertisement version: 2
-Duplex: full
-现在你可以看到 IOS 版本、型号、IP 地址以及其它信息。记住现在你仍未在 Router 0 上配置 IP 地址。
+<h3 id="动态安全-MAC-地址的配置，Configuring-Dynamic-Secure-MAC-Address"><a href="#动态安全-MAC-地址的配置，Configuring-Dynamic-Secure-MAC-Address" class="headerlink" title="动态安全 MAC 地址的配置，Configuring Dynamic Secure MAC Address"></a><a target="_blank" rel="noopener" href="https://ccna60d.xfoss.com/d04-Router-and-Switch-Security.html#%E5%8A%A8%E6%80%81%E5%AE%89%E5%85%A8-mac-%E5%9C%B0%E5%9D%80%E7%9A%84%E9%85%8D%E7%BD%AEconfiguring-dynamic-secure-mac-address">动态安全 MAC 地址的配置，Configuring Dynamic Secure MAC Address</a></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">默认情况下，当某个端口的端口安全开启时，该端口无需管理员做任何配置，就会动态学习并将学习到的 MAC 地址设为安全 MAC 地址。而要令到该端口学到不止一个 MAC 地址并将它们设为安全 MAC 地址，就要使用命令 switchport port-security maxium [number]。记住 [number] 关键字是依平台而定的，在不同的思科 Catalyst 交换机型号上会有所不同。</span><br><span class="line"></span><br><span class="line">&quot;现实场景&quot;</span><br><span class="line"></span><br><span class="line">现实场景部署，Real-World Implementation</span><br><span class="line"></span><br><span class="line">在使用思科 Catalyst 3750 交换机的生产网络中，事先确定下来某台特定交换机的用途，总是一个好主意，接着就可以通过全局配置命令（global configuration command） sdm prefer &#123;access | default | dual-ipv4-ipv6 &#123;default | routing | vlan&#125; | routing | vlan&#125; [desktop], 选定恰当的交换机数据库（Switch Database Management, SDM）模板。</span><br><span class="line"></span><br><span class="line">各个 SDM 模板以支持正在或即将用到的那些特性的最优方式，来分配系统资源。默认的 SDM 模板则是尝试在各项特性间提供一种平衡。因此，会影响其它各项特性和功能的最大性能值。一个例子就是在采行端口安全时，所能学到或配置上的安全 MAC 地址最大可能数会减少。</span><br><span class="line"></span><br><span class="line">下面的输出演示了怎样将交换机端口，接口 GigabitEthernet0/2, 配置为动态学习并将至多两个 MAC 地址设为安全 MAC 地址。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">VTP-Server-1(config)#interface GigabitEthernet0/2</span><br><span class="line">VTP-Server-1(config-if)#switchport</span><br><span class="line">VTP-Server-1(config-if)#switchport mode access</span><br><span class="line">VTP-Server-1(config-if)#switchport port-security</span><br><span class="line">VTP-Server-1(config-if)#switchport port-security maximum 2</span><br></pre></td></tr></table></figure>
 
-前面我们已经讲过怎样在整台设备或仅在某个接口上关闭 CDP 了。而另两个有关命令是显示设备有关 CDP 的协议信息的 show cdp 命令，以及通过输入设备名称来查看某台具设备信息的 show cdp entry &lt;Router&gt; 命令。建议在今天要配置的实验中花些时间，来查看 CDP 的众多输出。
-
-
-Router0#show cdp
-Global CDP information:
-    Sending CDP packets every 60 seconds
-    Sending a holdtime value of 180 seconds
-    Sending CDPv2 advertisements is enabled
-Router0#show cdp ?
-  entry       Information for specific neighbor entry
-  interface   CDP interface status and configuration
-  neighbors   CDP neighbor entries
-  traffic     CDP statistics
-  |           Output modifiers
-  &lt;cr&gt;
-</code></pre>
-<h2 id="交换机端口安全，Switch-Port-Security"><a href="#交换机端口安全，Switch-Port-Security" class="headerlink" title="交换机端口安全，Switch Port Security"></a><a target="_blank" rel="noopener" href="https://ccna60d.xfoss.com/d04-Router-and-Switch-Security.html#%E4%BA%A4%E6%8D%A2%E6%9C%BA%E7%AB%AF%E5%8F%A3%E5%AE%89%E5%85%A8switch-port-security">交换机端口安全，Switch Port Security</a></h2><pre><code>端口安全特性，是通过限制某个特定端口或是接口能够学习到的 MAC 地址数目，来保护交换机端口安全，并最终确保内容可寻址存储器（Content Addressable Memory, CAM）表的安全的一项，Catalyst 交换机的有力特性。具备了端安全特性，交换机就能够维护一张用于明确哪个 MAC 地址（或哪些地址），可以接入哪些本地交换机端口的表格。此外，交换机同样可以配置为仅允许在任何给定的端口上学习到指定数量的 MAC 地址。端口安全如图 4.2 所示。
-
-注：关于CAM的更多信息，请参考 CAM (Content Addressable Memory) VS TCAM (Ternary Content Addressable Memory)。
-
-&quot;端口安全的运作&quot;
-
-图 4.2 -- 端口安全的运作
-
-图 4.2 展示了在某台 Catalyst 交换机上，通过端口安全特性配置的 4 个端口，它们都只允许单一 MAC 地址接入。从 1 号到 3 号端口连接的 MAC 地址与端口安全所允许的地址匹配。在没有其它过滤的情况下，这些主机就能够经由其各自交换机端口转发流量。而端口 4 上所配置的是允许 AAAA.0000.0004 MAC 地址，但所接入的 MAC 地址却是 BBBB.0000.0001。因为主机 MAC 地址与所允许的 MAC 不一样，端口安全（port security）将在端口上做出如同管理员所设定的适当动作。这些有效端口安全动(the valid port security actions)作将在接下来的部分详细说明。
-
-端口安全特性设计用于保护交换局域网（the switched LAN）免受两种主要的攻击方式。这两种方式在下的小节讲到。
-
-CAM 表溢出攻击， CAM table overflow attacks
-MAC 欺骗攻击， MAC spoofing attacks
-</code></pre>
-<h3 id="CAM-表溢出攻击"><a href="#CAM-表溢出攻击" class="headerlink" title="CAM 表溢出攻击"></a><a target="_blank" rel="noopener" href="https://ccna60d.xfoss.com/d04-Router-and-Switch-Security.html#cam-%E8%A1%A8%E6%BA%A2%E5%87%BA%E6%94%BB%E5%87%BB">CAM 表溢出攻击</a></h3><pre><code>交换机的 CAM 表是一些存储位置，这些存储位置包含了物理端口上的那些 MAC 地址，及其 VLAN 参数。交换机 CAM 表中动态学习到的内容，或者说 MAC 地址表，可通过命令 show mac-address-table dynamic 查看到，如下面的输出所示。
-
-VTP-Server-1#show mac-address-table dynamic
-            Mac Address Table
--------------------------------------------
-Vlan    Mac Address         Type        Ports
-----    -----------         --------    -----
-   2    000c.cea7.f3a0      DYNAMIC     Fa0/1
-   2    0013.1986.0a20      DYNAMIC     Fa0/2
-   6    0004.c16f.8741      DYNAMIC     Fa0/3
-   6    0030.803f.ea81      DYNAMIC     Fa0/4
-   8    0004.c16f.8742      DYNAMIC     Fa0/5
-   8    0030.803f.ea82      DYNAMIC     Fa0/6
-Total Mac Addresses for this criterion: 6
-如同所有的计算装置一样，交换机的存储资源也是有限的。这就意味着 CAM 表的存储空间是固定的，已分配好的。CAM 表溢出攻击（CAM table overflow attacks）将此限制作为目标，用大量随机生成的无效源及目的 MAC 地址灌入交换机，直到填满 CAM 表，此时交换机就无法接收新的 CAM 表条目了。在此情况下，交换机成为了一台集线器，只能开始简单地将新近接收的帧广播到其上的所有接口（同一 VLAN 中的），就是将该 VLAN 变成了一个大的广播域。
-
-对 CAM 表的攻击易于开展，因为有着像 MACOF 及 DSNIFF 等常见的工具可用于实施这样的行为。而增加 VLANs 的数目（此举减少了广播域的尺寸），可有助于降低 CAM 表攻击的影响，在交换机上配置端口安全特性，是推荐的安全方案。
-
-MAC 欺骗攻击，MAC Spoofing Attacks
-MAC 地址欺骗，用于冒充某个源 MAC 地址，以达到扮演网络上的其它主机或设备的目的。冒充（spoofing）就是伪装成或扮着是并非你本人的某个人。MAC 地址欺骗的主要目的是扰乱交换机，令到其以为某台同一主机连接到两个端口上，这就导致交换机尝试同时将帧转发给受信任的主机和攻击者。图 4.3 展示了连接4 台不同网络主机的交换机的 CAM 表。
-
-&quot;交换机 CAM 表的建立&quot;
-
-图 4.3 中, 交换机允许正常，根据 CAM 表条目，它知道连接至其端口上的所有设备的 MAC 地址。而基于当前的 CAM 表，如 4 号主机想要发给 2 号主机一个帧，交换机就会简单地将该帧转发出它的 FastEthernet 0/2 接口，而前往 2 号主机。
-
-现在，假设 1 号主机被某个想要接收所有发往 2 号主机流量的攻击者入侵了。则经由 MAC 地址欺骗，攻击者精心构建出使用 2 号主机源地址的以太网帧。在交换机收到该帧后，它记下该源地址，并重写 CAM 表中 2 号主机所对应的条目，将其指向 FastEthernet 0/1 端口，而不是 2 号主机所真正连接的 FastEthernet 0/2。此概念如图 4.4 所示。
-
-</code></pre>
-<h3 id="MAC-欺骗攻击，MAC-Spoofing-Attacks"><a href="#MAC-欺骗攻击，MAC-Spoofing-Attacks" class="headerlink" title="MAC 欺骗攻击，MAC Spoofing Attacks"></a><a target="_blank" rel="noopener" href="https://ccna60d.xfoss.com/d04-Router-and-Switch-Security.html#mac-%E6%AC%BA%E9%AA%97%E6%94%BB%E5%87%BBmac-spoofing-attacks">MAC 欺骗攻击，MAC Spoofing Attacks</a></h3><pre><code>MAC 地址欺骗，用于冒充某个源 MAC 地址，以达到扮演网络上的其它主机或设备的目的。冒充（spoofing）就是伪装成或扮着是并非你本人的某个人。MAC 地址欺骗的主要目的是扰乱交换机，令到其以为某台同一主机连接到两个端口上，这就导致交换机尝试同时将帧转发给受信任的主机和攻击者。图 4.3 展示了连接4 台不同网络主机的交换机的 CAM 表。
-
-&quot;交换机 CAM 表的建立&quot;
-
-图 4.3 中, 交换机允许正常，根据 CAM 表条目，它知道连接至其端口上的所有设备的 MAC 地址。而基于当前的 CAM 表，如 4 号主机想要发给 2 号主机一个帧，交换机就会简单地将该帧转发出它的 FastEthernet 0/2 接口，而前往 2 号主机。
-
-现在，假设 1 号主机被某个想要接收所有发往 2 号主机流量的攻击者入侵了。则经由 MAC 地址欺骗，攻击者精心构建出使用 2 号主机源地址的以太网帧。在交换机收到该帧后，它记下该源地址，并重写 CAM 表中 2 号主机所对应的条目，将其指向 FastEthernet 0/1 端口，而不是 2 号主机所真正连接的 FastEthernet 0/2。此概念如图 4.4 所示。
-
-![&quot;MAC 地址欺骗&quot;](images/0404.png width=800)
-
-根据图 4.4, 在 3 号主机或 4 号主机尝试将帧发给 2 号主机时，交换机会将这些帧转发出 FastEthernet 0/1, 到 1 号主机，因为 CAM 表已被 MAC 地址欺骗攻击投毒。在 2 号主机发出另一个帧时，交换机再次从 FastEthernet 0/2 了解其 MAC 地址, 并再度将 CAM 表条目重写，以反应出该变化。结果就出现 2 号主机与 1 号主机之间就谁保有此 MAC 地址的拔河。
-
-此外，这也将扰乱交换机，造成反复的重写 MAC 地址表条目，引发在合法主机（也就是 2 号主机）上的拒绝服务攻击（Denial of Service , DoS）。而假如假冒的 MAC 地址数目很高，MAC 地址欺骗攻击还将对持续重写其 CAM 表的交换机的性能造成严重影响。应用端口安全(implementing port security)，可以减轻 MAC 地址欺骗攻击的影响。
-</code></pre>
-<h3 id="地址安全的端口安全，Port-Security-Secure-Addresses"><a href="#地址安全的端口安全，Port-Security-Secure-Addresses" class="headerlink" title="地址安全的端口安全，Port Security Secure Addresses"></a><a target="_blank" rel="noopener" href="https://ccna60d.xfoss.com/d04-Router-and-Switch-Security.html#%E5%9C%B0%E5%9D%80%E5%AE%89%E5%85%A8%E7%9A%84%E7%AB%AF%E5%8F%A3%E5%AE%89%E5%85%A8port-security-secure-addresses">地址安全的端口安全，Port Security Secure Addresses</a></h3><pre><code>经由端口安全特性，我们可以指定特定 MAC 才被允许访问某个交换机端口，同时限制某个单一交换机端口所支持的 MAC 地址数目。以下本节所说明的几种端口安全应用方式。
-
-静态 MAC 地址保全, Static secure MAC addresses
-动态 MAC 地址保全, Dynamic secure MAC addresses
-粘滞 MAC 地址保全, Sticky secure MAC addresses
-静态 MAC 地址保全是由网络管理员静态配置，并存储在 MAC 地址表中，同时还保存在交换机配置文件里。当将静态 MAC 地址保全指派给某个安全端口时，交换机不会转发那些源地址与所配置的静态安全 MAC 地址不匹配的帧。
-
-动态 MAC 地址保全，是交换机所学习到的，存储在 MAC 地址表中。与静态 MAC 地址安全不同，在交换机重启或断电后，动态安全 MAC 地址条目会从交换机中移除。在交换机再次启动时，这些地址要再次习得。
-
-粘滞的 MAC 地址保全，是静态和动态 MAC 地址保全的结合。地址可动态习得，也可静态配置，存储在 MAC 地址表中，也保存在交换机配置文件里。这就意味着在交换机关闭或是重启后，它无需再次动态发现 MAC 地址，因为这些 MAC 地址已经保存在配置文件中了（如你有保存允许的配置）。
-</code></pre>
-<h3 id="动作的端口安全，Port-Security-Actions"><a href="#动作的端口安全，Port-Security-Actions" class="headerlink" title="动作的端口安全，Port Security Actions"></a><a target="_blank" rel="noopener" href="https://ccna60d.xfoss.com/d04-Router-and-Switch-Security.html#%E5%8A%A8%E4%BD%9C%E7%9A%84%E7%AB%AF%E5%8F%A3%E5%AE%89%E5%85%A8port-security-actions">动作的端口安全，Port Security Actions</a></h3><pre><code>一旦开启了端口安全，管理员就可定义出在出现违反端口安全事件后，交换机所采取的动作了。思科 IOS 软件允许管理员指定 4 种在出现冲突时所采取的不同动作。
-
-保护，Protect
-关闭（默认动作）, Shutdown(default)
-限制，Restrict
-关闭 VLAN （超出 CCNA 大纲）, Shutdown VLAN(outside of the CCNA syllabus)
-保护动作选项强制端口进入受保护端口模式（Protected Port mode）。此模式下，交换机会简单地丢弃所有源地址不明的单播和多播帧（simply discard all Unicast or Multicast frames with unknown source MAC addresses）。而在交换机被配置为保护某端口时，当其以受保护端口模式运行时，不会发出通知，这就意味着由处于此模式下的交换机端口阻止所有流量时，管理员是无法获知的。
-
-关闭动作选项则是在出现违反端口安全后，将某端口置于某种错误关闭状态（an err-disabled state）。在此配置动作被用到时，交换机上相应端口的 LED 同时被关闭。而在关闭模式下，交换机发出一条 SNMP trap (浅谈 Linux 系统中的 SNMP trap), 以及一条 syslog 消息，同时冲突计数器会增大。这个选项是接口配置了端口安全时的默认动作。
-
-限制动作选项是在安全 MAC 地址数目到达管理员为该端口所定义的最大限制时，用于丢弃那些带有不明 MAC 地址的数据包。此模式下，交换机会持续限制额外的那些 MAC 地址发出帧，直到移除对那些安全 MAC 地址数目的限制，或直到所允许的最大地址数目得以增加。和关闭工作选项一样，交换机也会发出一条 SNMP trap 及一条 syslog 消息，同时冲突计数器会增加。
-
-关闭 VLAN 动作选项跟关闭动作选项类似；不过此选项是关闭某个 VLAN, 而不是某个交换机端口。此配置可能会应用在那些指派了多个 VLAN， 诸如语音 VLAN 和数据 VLAN， 的端口上，以及交换机的中继链路上。
-</code></pre>
-<h3 id="端口安全配置，-Configuring-Port-Security"><a href="#端口安全配置，-Configuring-Port-Security" class="headerlink" title="端口安全配置， Configuring Port Security"></a><a target="_blank" rel="noopener" href="https://ccna60d.xfoss.com/d04-Router-and-Switch-Security.html#%E7%AB%AF%E5%8F%A3%E5%AE%89%E5%85%A8%E9%85%8D%E7%BD%AE-configuring-port-security">端口安全配置， Configuring Port Security</a></h3><pre><code>在配置端口安全之前，建议将交换机端口静态配置为二层接入端口（端口安全只能配置为静态接入端口或中继端口上，不能配置在动态端口上）。此配置如下面的输出所示。
-
-VTP-Server-1(config)#interface FastEthernet0/1
-VTP-Server-1(config-if)#switchport
-VTP-Server-1(config-if)#switchport mode access
-注意: 在诸如 Catalyst 2950 及 Catalyst 2960 系列的二层交换机上无需 switchport 命令。而在比如 Catalyst 3750、Catalyst 4500 以及 Catalyst 6500 系列等的多层交换机上， 它是要要到的。
-
-默认情况下，端口安全是关闭的；但可通过接口配置命令 switchport port-security [mac-address &#123;mac-address&#125; [vlan &#123;vlan-id | &#123;access | voice&#125;&#125;] | mac-address &#123;sticky&#125; [mac-address | vlan &#123;vlan-id | &#123;access | voice&#125;&#125;] [maximum &#123;value&#125; [vlan &#123;vlan-list | &#123;access | voice&#125;&#125;]] 予以开启。表 4.1 说明了该命令的这些选项。
-
-关键字	说明
-mac-address &#123;mac-address&#125;	此关键字用于指定一个静态保全 MAC 地址。你还可以加入不超过配置的最大数目的其它安全 MAC 地址。
-vlan &#123;vlan id&#125;	此关键字应只使用在某个中继端口上，以指定 VLAN ID 和 MAC 地址。如没有指定 VLAN ID，就使用原生 VLAN。
-vlan &#123;access&#125;	此关键字应只用在某个接入端口上，以指定该 VLAN 作为接入 VLAN。
-vlan &#123;voice&#125;	此关键字应只用在某个接入端口上, 用以知道该 VLAN 作为一个语音 VLAN。而只有在该特定端口上配置了语音 VLAN 时，该选项才可用。
-mac-address &#123;sticky&#125; [mac-address]	此关键字用于在特定接口上开启动态或地址粘滞学习（used to enable dynamic or sticky learning），或者为其配置一个静态安全 MAC 地址。
-maxium &#123;value&#125;	此关键字用于指定某个接口上可以学到的安全地址的最大数目。默认是 1。
-</code></pre>
-<h3 id="静态安全地址配置，-Configuring-Static-Secure-MAC-Addresses"><a href="#静态安全地址配置，-Configuring-Static-Secure-MAC-Addresses" class="headerlink" title="静态安全地址配置， Configuring Static Secure MAC Addresses"></a><a target="_blank" rel="noopener" href="https://ccna60d.xfoss.com/d04-Router-and-Switch-Security.html#%E9%9D%99%E6%80%81%E5%AE%89%E5%85%A8%E5%9C%B0%E5%9D%80%E9%85%8D%E7%BD%AE-configuring-static-secure-mac-addresses">静态安全地址配置， Configuring Static Secure MAC Addresses</a></h3><pre><code>下面的输出演示了怎样在某个接口上开启端口安全，以及在某个交换机接入端口上配置一个静态安全 MAC 地址 001f:3c59:d63b。
-
-VTP-Server-1(config)#interface GigabitEthernet0/2
-VTP-Server-1(config-if)#switchport
-VTP-Server-1(config-if)#switchport mode access
-VTP-Server-1(config-if)#switchport port-security
-VTP-Server-1(config-if)#switchport port-security mac-address 001f.3c59.d63b
-下面的输出演示了怎样在某个接口上开启端口安全，并在某个交换机中继端口的 VLAN 5 中配置一个静态安全 MAC 地址 001f:3c59:d63b。
-
-VTP-Server-1(config)#interface GigabitEthernet0/2
-VTP-Server-1(config-if)#switchport
-VTP-Server-1(config-if)#switchport trunk encapsulation dot1q
-VTP-Server-1(config-if)#switchport mode trunk
-VTP-Server-1(config-if)#switchport port-security
-VTP-Server-1(config-if)#switchport port-security mac-address 001f.3c59.d63b vlan 5
-而下面的输出则演示了如何在某个接口上开启端口安全，并在某个交换机接入端口的 VLAN 5(数据 VLAN） 和 VLAN 7(语音 VLAN），分别配置一个静态安全 MAC 地址 001f:3c59:5555 和 001f:3c59:7777。
-
-VTP-Server-1(config)#interface GigabitEthernet0/2
-VTP-Server-1(config-if)#switchport
-VTP-Server-1(config-if)#switchport mode access
-VTP-Server-1(config-if)#switchport access vlan 5
-VTP-Server-1(config-if)#switchport voice vlan 7
-VTP-Server-1(config-if)#switchport port-security
-VTP-Server-1(config-if)#switchport port-security maximum 2
-VTP-Server-1(config-if)#switchport port-security mac-address 001f.3c59.5555 vlan access
-VTP-Server-1(config-if)#switchport port-security mac-address 001f.3c59.7777 vlan voice
-记住在某个同时配置了语音 VLAN 和数据 VLAN 的接口上开启端口安全时，该端口上的最大允许安全地址数应设置为 2，这一点非常重要。这又是通过包含在上面输出中的接口配置命令 switchport port-security maxium 2 完成的。
-
-两个 MAC 地址中的一个由 IP 电话使用，交换机在语音 VLAN 上学到此地址。另一个由可连接在 IP 电话上的主机（比如 PC）所使用。交换机将在数据 VLAN 上学到这个 MAC 地址。
-</code></pre>
-<h3 id="静态安全地址配置的验证，Verifying-Static-Secure-MAC-Address-Configuration"><a href="#静态安全地址配置的验证，Verifying-Static-Secure-MAC-Address-Configuration" class="headerlink" title="静态安全地址配置的验证，Verifying Static Secure MAC Address Configuration"></a><a target="_blank" rel="noopener" href="https://ccna60d.xfoss.com/d04-Router-and-Switch-Security.html#%E9%9D%99%E6%80%81%E5%AE%89%E5%85%A8%E5%9C%B0%E5%9D%80%E9%85%8D%E7%BD%AE%E7%9A%84%E9%AA%8C%E8%AF%81verifying-static-secure-mac-address-configuration">静态安全地址配置的验证，Verifying Static Secure MAC Address Configuration</a></h3><pre><code>同过执行 show port-security 命令，可以验证全局端口安全配置参数（global port security configuration parameters）。下面展示了默认值下的此命令的打印输出。
-
-VTP-Server-1#show port-security
-Secure Port MaxSecureAddr  CurrentAddr SecurityViolation   Security Action
-           (Count)        (Count)      (Count)
--------------------------------------------------------
-Gi0/2       1               1             0               Shutdown
-------------------------------------------------------------------
-Total Addresses in System : 1
-Max Addresses limit in System : 1024
-如同上面的输出中所见到的那样，默认情况下，每个端口上仅允许一个安全 MAC 地址。此外，在出现冲突事件时的默认动作就是关闭端口。粗体文本表明，已知仅有一个安全地址，就是配置在接口上的静态地址。经由执行 show port-security interface [name] 亦可确认同样的参数，如下面的输出所示。
-
-VTP-Server-1#show port-security interface gi0/2
-Port Security : Enabled
-Port status : SecureUp
-Violation mode : Shutdown
-Maximum MAC Addresses : 1
-Total MAC Addresses : 1
-Configured MAC Addresses : 1
-Sticky MAC Addresses : 0
-Aging time : 0 mins
-Aging type : Absolute
-SecureStatic address aging : Disabled
-Security Violation count : 0
-注意： 在我们进一步学习本章内容的过程中，将会详细介绍对上面的输出中其它默认参数的修改。
-
-而要查看该端口上具体配置的静态安全 MAC 地址，就要用到 show port-security address 或者 show running-config interface [name] 命令了。以下输出演示了 show port-security address。
-
-
-VTP-Server-1#show port-security address
-          Secure Mac Address Table
--------------------------------------------------------------------
-Vlan    Mac Address       Type                 Ports   Remaining Age
-                                                          (mins)
-----    -----------       ----                 -----   -----------
-   1    001f.3c59.d63b    SecureConfigured     Gi0/2       -
---------------------------------------------------------------------
-Total Addresses in System : 1
-Max Addresses limit in System : 1024
-</code></pre>
-<h3 id="动态安全-MAC-地址的配置，Configuring-Dynamic-Secure-MAC-Address"><a href="#动态安全-MAC-地址的配置，Configuring-Dynamic-Secure-MAC-Address" class="headerlink" title="动态安全 MAC 地址的配置，Configuring Dynamic Secure MAC Address"></a><a target="_blank" rel="noopener" href="https://ccna60d.xfoss.com/d04-Router-and-Switch-Security.html#%E5%8A%A8%E6%80%81%E5%AE%89%E5%85%A8-mac-%E5%9C%B0%E5%9D%80%E7%9A%84%E9%85%8D%E7%BD%AEconfiguring-dynamic-secure-mac-address">动态安全 MAC 地址的配置，Configuring Dynamic Secure MAC Address</a></h3><pre><code>默认情况下，当某个端口的端口安全开启时，该端口无需管理员做任何配置，就会动态学习并将学习到的 MAC 地址设为安全 MAC 地址。而要令到该端口学到不止一个 MAC 地址并将它们设为安全 MAC 地址，就要使用命令 switchport port-security maxium [number]。记住 [number] 关键字是依平台而定的，在不同的思科 Catalyst 交换机型号上会有所不同。
-
-&quot;现实场景&quot;
-
-现实场景部署，Real-World Implementation
-
-在使用思科 Catalyst 3750 交换机的生产网络中，事先确定下来某台特定交换机的用途，总是一个好主意，接着就可以通过全局配置命令（global configuration command） sdm prefer &#123;access | default | dual-ipv4-ipv6 &#123;default | routing | vlan&#125; | routing | vlan&#125; [desktop], 选定恰当的交换机数据库（Switch Database Management, SDM）模板。
-
-各个 SDM 模板以支持正在或即将用到的那些特性的最优方式，来分配系统资源。默认的 SDM 模板则是尝试在各项特性间提供一种平衡。因此，会影响其它各项特性和功能的最大性能值。一个例子就是在采行端口安全时，所能学到或配置上的安全 MAC 地址最大可能数会减少。
-
-下面的输出演示了怎样将交换机端口，接口 GigabitEthernet0/2, 配置为动态学习并将至多两个 MAC 地址设为安全 MAC 地址。
-
-
-VTP-Server-1(config)#interface GigabitEthernet0/2
-VTP-Server-1(config-if)#switchport
-VTP-Server-1(config-if)#switchport mode access
-VTP-Server-1(config-if)#switchport port-security
-VTP-Server-1(config-if)#switchport port-security maximum 2
-</code></pre>
 <h3 id="验证动态-MAC-地址保全，Verifying-Dynamic-Secure-MAC-Addressed"><a href="#验证动态-MAC-地址保全，Verifying-Dynamic-Secure-MAC-Addressed" class="headerlink" title="验证动态 MAC 地址保全，Verifying Dynamic Secure MAC Addressed"></a><a target="_blank" rel="noopener" href="https://ccna60d.xfoss.com/d04-Router-and-Switch-Security.html#%E9%AA%8C%E8%AF%81%E5%8A%A8%E6%80%81-mac-%E5%9C%B0%E5%9D%80%E4%BF%9D%E5%85%A8verifying-dynamic-secure-mac-addressed">验证动态 MAC 地址保全，Verifying Dynamic Secure MAC Addressed</a></h3><p><a target="_blank" rel="noopener" href="https://ccna60d.xfoss.com/d04-Router-and-Switch-Security.html#%E9%85%8D%E7%BD%AE%E4%BF%9D%E5%85%A8-mac-%E5%9C%B0%E5%9D%80%E7%B2%98%E6%BB%9Econfiguring-sticky-secure-mac-addresses">配置保全 MAC 地址粘滞，Configuring Sticky Secure MAC Addresses</a></p>
 <p><a target="_blank" rel="noopener" href="https://ccna60d.xfoss.com/d04-Router-and-Switch-Security.html#%E9%85%8D%E7%BD%AE%E7%AB%AF%E5%8F%A3%E5%AE%89%E5%85%A8%E5%86%B2%E7%AA%81%E7%9A%84%E5%8A%A8%E4%BD%9C-configuring-the-port-security-violation-action">配置端口安全冲突的动作， Configuring the Port Security Violation Action</a></p>
 <p><a target="_blank" rel="noopener" href="https://ccna60d.xfoss.com/d04-Router-and-Switch-Security.html#%E5%AF%B9%E7%AB%AF%E5%8F%A3%E5%AE%89%E5%85%A8%E5%86%B2%E7%AA%81%E5%8A%A8%E4%BD%9C%E7%9A%84%E9%AA%8C%E8%AF%81verifying-the-port-security-violation-action">对端口安全冲突动作的验证，Verifying the Port Security Violation Action</a></p>
@@ -1484,67 +548,10 @@ VTP-Server-1(config-if)#switchport port-security maximum 2
 </tr>
 </tbody></table>
 <p>ip规则</p>
-<h2 id="a-bc类地址"><a href="#a-bc类地址" class="headerlink" title="a,bc类地址"></a>a,bc类地址</h2><pre><code>在 IPv4 刚推出时，其地址就分成了不同类别。不同地址类别依其需求而分配给各家机构。机构越大，地址类别就越大。不同地址类别又指定了相应字母，从A到E。A 类地址保留给最大的一些网络。而A类地址的前8个二进制位可以是从1到126的数。此举的原因在于其前 8 位的首位必须是0。而当前8位中有了第一位的0时，那么剩下的值就只能是1到126了。也就是下面这样。
+<h2 id="a-bc类地址"><a href="#a-bc类地址" class="headerlink" title="a,bc类地址"></a>a,bc类地址</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">在 IPv4 刚推出时，其地址就分成了不同类别。不同地址类别依其需求而分配给各家机构。机构越大，地址类别就越大。不同地址类别又指定了相应字母，从A到E。A 类地址保留给最大的一些网络。而A类地址的前8个二进制位可以是从1到126的数。此举的原因在于其前 8 位的首位必须是0。而当前8位中有了第一位的0时，那么剩下的值就只能是1到126了。也就是下面这样。</span><br><span class="line"></span><br><span class="line">0000 0001 = 1</span><br><span class="line"></span><br><span class="line">0111 1111 = 127</span><br><span class="line"></span><br><span class="line">在网络中，是不可以有全0地址的。在加入其它三个8位二进制数后，就可以看到A类地址的全貌了。就像下面的那样。</span><br><span class="line"></span><br><span class="line">10.1.1.1</span><br><span class="line"></span><br><span class="line">120.2.3.4</span><br><span class="line"></span><br><span class="line">126.200.133.1</span><br><span class="line"></span><br><span class="line">这些都是A类地址，因为它们都是在1到126的范围内。127不是 IP 地址所允许的数字；127.0.0.1实际上用于在设备上测试TCP/IP是否正常。</span><br><span class="line"></span><br><span class="line">B类地址前8位二进制数的头两位则必须是 10 。这就意味着前8位二进制数值处于128到191之间，也就是下面这样。</span><br><span class="line">1000 0000 = 128</span><br><span class="line"></span><br><span class="line">1011 1111 = 191</span><br><span class="line"></span><br><span class="line">对于C类地址来说，前8位二进制数的头三位必需为110, 那么地址就在192到223之间，也就是下面这样。</span><br><span class="line"></span><br><span class="line">1100 0000 = 192</span><br><span class="line"></span><br><span class="line">1101 1111 = 223</span><br><span class="line"></span><br><span class="line">D类地址用于多播（multicasting, directed broadcasting, 受导向的广播），而E类地址则仅用于实验用途。</span><br><span class="line"></span><br><span class="line">D类地址用于多播（multicasting, directed broadcasting, 受导向的广播），而E类地址则仅用于实验用途。</span><br></pre></td></tr></table></figure>
 
-0000 0001 = 1
+<h1 id="子网掩码初步，Subnet-Mask-Primer"><a href="#子网掩码初步，Subnet-Mask-Primer" class="headerlink" title="子网掩码初步，Subnet Mask Primer"></a><a target="_blank" rel="noopener" href="https://ccna60d.xfoss.com/d05-IP-Addressing.html#%E5%AD%90%E7%BD%91%E6%8E%A9%E7%A0%81%E5%88%9D%E6%AD%A5subnet-mask-primer">子网掩码初步，Subnet Mask Primer</a></h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">先前提到过 IP 地址用于区分网络的部分以及用于区分网络上主机地址的部分。子网掩码的作用就是确立此两部分。难点就在于并不总是能仅仅看一眼子网掩码，就能知道 IP 地址的网络部分和主机部分。这需要实践，且对于那些更难的地址，你就必须要动手计算出来（或是使用某个子网计算程序来作弊）。</span><br><span class="line"></span><br><span class="line">就算未曾将网络划分成更小的部分，你仍需采用为用到的每个地址应用一个子网掩码。而上面提到的地址类，它们都有一个默认的子网掩码，如同下面这样。</span><br><span class="line"></span><br><span class="line">A类地址 = 255.0.0.0 B类地址 = 255.255.0.0 C类地址 = 255.255.255.0</span><br><span class="line"></span><br><span class="line">在二进制位开启时，网络就知道该位是用作网络地址，而不是网络上的主机地址，如下表所示。</span><br><span class="line"></span><br><span class="line">-	-	-	-</span><br><span class="line">192	168	12	2</span><br><span class="line">255	255	255	0</span><br><span class="line">网络位	网络位	网络位	主机位</span><br><span class="line">上面的地址表明 192.168.12 是网络地址，2 是该网络上的一台主机。再者，任何以192.168.12开头的 IP 地址，都是在同一网络上的。而在看看前8位的数字，以及该默认的子网掩码，就知道这是一个C类网络。</span><br><span class="line"></span><br><span class="line">请记住早前提到的规则：主机所不能使用的那些网络号，那么下面的这些网络号就不能为设备所使用了。</span><br><span class="line"></span><br><span class="line">10.0.0.0</span><br><span class="line"></span><br><span class="line">174.12.0.0</span><br><span class="line"></span><br><span class="line">192.168.2.0</span><br><span class="line"></span><br><span class="line">另一规则是你不能使用各个网络或子网上的广播地址。某广播地址是前往网络上所有设备，那么，逻辑上就不能为设备所使用了。广播地址就是将所有主机位开启的地址，像下面这样。</span><br><span class="line"></span><br><span class="line">10.255.255.255</span><br><span class="line"></span><br><span class="line">192.168.1.255</span><br><span class="line"></span><br><span class="line">在上面的例子中，主机部分的所有二进制位都是打开的。</span><br></pre></td></tr></table></figure>
 
-0111 1111 = 127
-
-在网络中，是不可以有全0地址的。在加入其它三个8位二进制数后，就可以看到A类地址的全貌了。就像下面的那样。
-
-10.1.1.1
-
-120.2.3.4
-
-126.200.133.1
-
-这些都是A类地址，因为它们都是在1到126的范围内。127不是 IP 地址所允许的数字；127.0.0.1实际上用于在设备上测试TCP/IP是否正常。
-
-B类地址前8位二进制数的头两位则必须是 10 。这就意味着前8位二进制数值处于128到191之间，也就是下面这样。
-1000 0000 = 128
-
-1011 1111 = 191
-
-对于C类地址来说，前8位二进制数的头三位必需为110, 那么地址就在192到223之间，也就是下面这样。
-
-1100 0000 = 192
-
-1101 1111 = 223
-
-D类地址用于多播（multicasting, directed broadcasting, 受导向的广播），而E类地址则仅用于实验用途。
-
-D类地址用于多播（multicasting, directed broadcasting, 受导向的广播），而E类地址则仅用于实验用途。
-</code></pre>
-<h1 id="子网掩码初步，Subnet-Mask-Primer"><a href="#子网掩码初步，Subnet-Mask-Primer" class="headerlink" title="子网掩码初步，Subnet Mask Primer"></a><a target="_blank" rel="noopener" href="https://ccna60d.xfoss.com/d05-IP-Addressing.html#%E5%AD%90%E7%BD%91%E6%8E%A9%E7%A0%81%E5%88%9D%E6%AD%A5subnet-mask-primer">子网掩码初步，Subnet Mask Primer</a></h1><pre><code>先前提到过 IP 地址用于区分网络的部分以及用于区分网络上主机地址的部分。子网掩码的作用就是确立此两部分。难点就在于并不总是能仅仅看一眼子网掩码，就能知道 IP 地址的网络部分和主机部分。这需要实践，且对于那些更难的地址，你就必须要动手计算出来（或是使用某个子网计算程序来作弊）。
-
-就算未曾将网络划分成更小的部分，你仍需采用为用到的每个地址应用一个子网掩码。而上面提到的地址类，它们都有一个默认的子网掩码，如同下面这样。
-
-A类地址 = 255.0.0.0 B类地址 = 255.255.0.0 C类地址 = 255.255.255.0
-
-在二进制位开启时，网络就知道该位是用作网络地址，而不是网络上的主机地址，如下表所示。
-
--	-	-	-
-192	168	12	2
-255	255	255	0
-网络位	网络位	网络位	主机位
-上面的地址表明 192.168.12 是网络地址，2 是该网络上的一台主机。再者，任何以192.168.12开头的 IP 地址，都是在同一网络上的。而在看看前8位的数字，以及该默认的子网掩码，就知道这是一个C类网络。
-
-请记住早前提到的规则：主机所不能使用的那些网络号，那么下面的这些网络号就不能为设备所使用了。
-
-10.0.0.0
-
-174.12.0.0
-
-192.168.2.0
-
-另一规则是你不能使用各个网络或子网上的广播地址。某广播地址是前往网络上所有设备，那么，逻辑上就不能为设备所使用了。广播地址就是将所有主机位开启的地址，像下面这样。
-
-10.255.255.255
-
-192.168.1.255
-
-在上面的例子中，主机部分的所有二进制位都是打开的。
-</code></pre>
 <h1 id="NAT-基础，NAT-Basics"><a href="#NAT-基础，NAT-Basics" class="headerlink" title="NAT 基础，NAT Basics"></a><a target="_blank" rel="noopener" href="https://ccna60d.xfoss.com/d06-NAT.html#nat-%E5%9F%BA%E7%A1%80nat-basics">NAT 基础，NAT Basics</a></h1><p>NAT概述</p>
 <p>NAT（Network Address Translation），网络地址转换</p>
 <ul>
@@ -1595,10 +602,8 @@ A类地址 = 255.0.0.0 B类地址 = 255.255.0.0 C类地址 = 255.255.255.0
 <li>企业内部有一个 web 服务器，私有IP地址 192.168.10.10&#x2F;24</li>
 <li>希望互联网用户，通过浏览器，访问公网地址 100.1.1.20 ，就可以获得我们公司内部的 web 服务器的网站</li>
 </ul>
-<h2 id="nat故障排查"><a href="#nat故障排查" class="headerlink" title="nat故障排查"></a>nat故障排查</h2><pre><code>NAT 故障中十次有九次，都是由于路由器管理员忘记了把ip nat outside或ip nat inside命令加到路由器接口上。事实上，几乎总是存在这个问题！接下来最频繁的错误包括不正确的 ACL ，以及某个拼写错误的地址池名称（地址池是区分大小写的）。
+<h2 id="nat故障排查"><a href="#nat故障排查" class="headerlink" title="nat故障排查"></a>nat故障排查</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">NAT 故障中十次有九次，都是由于路由器管理员忘记了把ip nat outside或ip nat inside命令加到路由器接口上。事实上，几乎总是存在这个问题！接下来最频繁的错误包括不正确的 ACL ，以及某个拼写错误的地址池名称（地址池是区分大小写的）。</span><br><span class="line"></span><br><span class="line">使用命令debug ip nat [detailed]，可以在路由器上对 NAT 转换进行调试，又可以使用命令sh ip nat translations，来查看 NAT 地址池。</span><br></pre></td></tr></table></figure>
 
-使用命令debug ip nat [detailed]，可以在路由器上对 NAT 转换进行调试，又可以使用命令sh ip nat translations，来查看 NAT 地址池。
-</code></pre>
 <h2 id="数据包从内网到外网"><a href="#数据包从内网到外网" class="headerlink" title="数据包从内网到外网"></a>数据包从内网到外网</h2><ul>
 <li><ul>
 <li>怎么转换：私有→公有</li>
@@ -1628,10 +633,8 @@ A类地址 = 255.0.0.0 B类地址 = 255.255.0.0 C类地址 = 255.255.255.0
 <h2 id="history"><a href="#history" class="headerlink" title="history"></a>history</h2><p>在Tim Berners-Lee爵士于<code>1989</code>年发明 WWW 时，他无法预测到该技术对世界的巨大影响。个人计算机曾经贵得高攀不起，此外，除非能够负担得起昂贵的 WAN 连接费用，否则就没有方便的长距离通信方法。那时也没有大家共同遵循的通信模型。</p>
 <p>那时，某些事需要一些变化，以 IP 这种新型分址标准的的形式，变革发生了。业界从犯下的大量失误中终有收获，并在对商业需求的回应下， IETF 早在<code>1998</code>年就发布了众多 IPv6 标准中最早的一些标准。</p>
 <p>并不会有一个日期，能够整个地从 IPv4 转变为 IPv6 ；而是网络将会逐渐地变为同时运行 IPv4 和IPv6, 并最终 IPv4 会滚粗。当下，全部互联网流量的近<code>1%</code>运行在 IPv6 上（来源：Yves Poppe, IPv6 – A 2012 Report Card）。</p>
-<h2 id="IPv6下的ICMP"><a href="#IPv6下的ICMP" class="headerlink" title="IPv6下的ICMP"></a><a target="_blank" rel="noopener" href="https://ccna60d.xfoss.com/d07-IPv6.html#ipv6%E4%B8%8B%E7%9A%84icmp">IPv6下的ICMP</a></h2><pre><code>ICMPv6是IPv6的基础协议之一，用于向源节点传递报文转发的信息或者错误。
-协议类型号（Next Header）：58
-ICMPv6除了提供IPv4功能之外，还提供了邻居发现、无状态地址配置、重复地址检测、PMTU发现等等
-</code></pre>
+<h2 id="IPv6下的ICMP"><a href="#IPv6下的ICMP" class="headerlink" title="IPv6下的ICMP"></a><a target="_blank" rel="noopener" href="https://ccna60d.xfoss.com/d07-IPv6.html#ipv6%E4%B8%8B%E7%9A%84icmp">IPv6下的ICMP</a></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ICMPv6是IPv6的基础协议之一，用于向源节点传递报文转发的信息或者错误。</span><br><span class="line">协议类型号（Next Header）：58</span><br><span class="line">ICMPv6除了提供IPv4功能之外，还提供了邻居发现、无状态地址配置、重复地址检测、PMTU发现等等</span><br></pre></td></tr></table></figure>
+
 <h3 id="ICMPv6报头字段"><a href="#ICMPv6报头字段" class="headerlink" title="ICMPv6报头字段"></a>ICMPv6报头字段</h3><p><img src="https://img-blog.csdnimg.cn/88eb8b9953ef42c1aa0cb01a6b7cbe4f.png" alt="在这里插入图片描述"><br>Type：表明消息的类型，0至127表示差错报文类型，128至255表示消息报文类型。<br>Code：表示此消息类型细分的类型。<br>Checksum：表示ICMPv6报文的校验和。</p>
 <h2 id="错误报文"><a href="#错误报文" class="headerlink" title="错误报文"></a>错误报文</h2><h4 id="目的不可达错误报文："><a href="#目的不可达错误报文：" class="headerlink" title="目的不可达错误报文："></a>目的不可达错误报文：</h4><p>在IPv6节点转发IPv6报文过程中，当设备发现目的地址不可达时，就会向发送报文的源节点发送ICMPv6目的不可达错误报文，同时携带错误报文的具体原因。</p>
 <h4 id="数据包过大错误报文："><a href="#数据包过大错误报文：" class="headerlink" title="数据包过大错误报文："></a>数据包过大错误报文：</h4><p>在IPv6节点转发IPv6报文过程中，发现报文超过出接口的链路MTU时，则向发送报文的源节点发送ICMPv6数据包过大错误报文，其中携带出接口的链路MTU值。数据包过大错误报文是Path MTU发现机制的基础。</p>
@@ -1688,13 +691,13 @@ ICMPv6除了提供IPv4功能之外，还提供了邻居发现、无状态地址�
     <div id="nav-footer" style="display: none">
       <ul>
         
-          <li><a href="/">首页</a></li>
+          <li><a href="/">Home</a></li>
         
-          <li><a href="/about/">关于</a></li>
+          <li><a href="/about/">About</a></li>
         
-          <li><a href="/archives/">归档</a></li>
+          <li><a href="/archives/">Writing</a></li>
         
-          <li><a target="_blank" rel="noopener" href="http://github.com/probberechts">项目</a></li>
+          <li><a target="_blank" rel="noopener" href="http://github.com/probberechts">Projects</a></li>
         
       </ul>
     </div>
@@ -1743,12 +746,12 @@ VLAN 就是虚拟局域网。
     </div>
 
     <div id="actions-footer">
-        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
         
-          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> TOC</a>
         
-        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
-        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
     </div>
 
   </div>
@@ -1761,19 +764,19 @@ VLAN 就是虚拟局域网。
     
     
     2016-2023
-    frozenfish
+    John Doe
   </div>
   <div class="footer-right">
     <nav>
       <ul>
         <!--
-       --><li><a href="/">首页</a></li><!--
+       --><li><a href="/">Home</a></li><!--
      --><!--
-       --><li><a href="/about/">关于</a></li><!--
+       --><li><a href="/about/">About</a></li><!--
      --><!--
-       --><li><a href="/archives/">归档</a></li><!--
+       --><li><a href="/archives/">Writing</a></li><!--
      --><!--
-       --><li><a target="_blank" rel="noopener" href="http://github.com/probberechts">项目</a></li><!--
+       --><li><a target="_blank" rel="noopener" href="http://github.com/probberechts">Projects</a></li><!--
      -->
       </ul>
     </nav>
@@ -1803,7 +806,7 @@ VLAN 就是虚拟局域网。
   <script type="text/javascript">
   $(function() {
     // copy-btn HTML
-    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板！\">";
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
     btn += '<i class="fa-regular fa-clone"></i>';
     btn += '</span>';
     // mount it!
@@ -1814,7 +817,7 @@ VLAN 就是虚拟局域网。
       }
     });
     clip.on('success', function(e) {
-      e.trigger.setAttribute('aria-label', "复制成功！");
+      e.trigger.setAttribute('aria-label', "Copied!");
       e.clearSelection();
     })
   })
