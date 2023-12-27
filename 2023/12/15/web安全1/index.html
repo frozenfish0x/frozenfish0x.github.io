@@ -1,158 +1,335 @@
-<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>web安全day1 | Hexo</title><meta name="author" content="John Doe"><meta name="copyright" content="{&quot;start_year&quot;:2016,&quot;end_year&quot;:null}"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="1.Nc瑞士军刀使用详解1.tcp监听123456789101112131415tcp监听nc可以作为server端启动一个tcp的监听，默认情况下下面监听的是一个tcp的端口nc -l -p 9999客户端测试1、在B机器上telnet A机器此端口，如下显示表示B机器可以访问A机器此端口telnet 10.0.1.161 99992、B机器上也可以使用nmap扫描A机器的此端口nmap 10.">
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="1.Nc瑞士军刀使用详解1.tcp监听123456789101112131415tcp监听nc可以作为server端启动一个tcp的监听，默认情况下下面监听的是一个tcp的端口nc -l -p 9999客户端测试1、在B机器上telnet A机器此端口，如下显示表示B机器可以访问A机器此端口telnet 10.0.1.161 99992、B机器上也可以使用nmap扫描A机器的此端口nmap 10.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="web安全day1">
 <meta property="og:url" content="http://example.com/2023/12/15/web%E5%AE%89%E5%85%A81/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="1.Nc瑞士军刀使用详解1.tcp监听123456789101112131415tcp监听nc可以作为server端启动一个tcp的监听，默认情况下下面监听的是一个tcp的端口nc -l -p 9999客户端测试1、在B机器上telnet A机器此端口，如下显示表示B机器可以访问A机器此端口telnet 10.0.1.161 99992、B机器上也可以使用nmap扫描A机器的此端口nmap 10.">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png">
 <meta property="article:published_time" content="2023-12-15T15:47:33.000Z">
 <meta property="article:modified_time" content="2023-12-25T18:39:55.839Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2023/12/15/web%E5%AE%89%E5%85%A81/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
-  root: '/',
-  algolia: undefined,
-  localSearch: undefined,
-  translate: undefined,
-  noticeOutdate: undefined,
-  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
-  copy: {
-    success: 'Copy Successful',
-    error: 'Copy Error',
-    noSupport: 'Browser Not Supported'
-  },
-  relativeDate: {
-    homepage: false,
-    post: false
-  },
-  runtime: '',
-  dateSuffix: {
-    just: 'Just now',
-    min: 'minutes ago',
-    hour: 'hours ago',
-    day: 'days ago',
-    month: 'months ago'
-  },
-  copyright: undefined,
-  lightbox: 'fancybox',
-  Snackbar: undefined,
-  infinitegrid: {
-    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
-    buttonText: 'Load More'
-  },
-  isPhotoFigcaption: false,
-  islazyload: false,
-  isAnchor: false,
-  percent: {
-    toc: true,
-    rightside: false,
-  },
-  autoDarkmode: false
-}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
-  title: 'web安全day1',
-  isPost: true,
-  isHome: false,
-  isHighlightShrink: false,
-  isToc: true,
-  postUpdate: '2023-12-26 02:39:55'
-}</script><script>(win=>{
-      win.saveToLocal = {
-        set: (key, value, ttl) => {
-          if (ttl === 0) return
-          const now = Date.now()
-          const expiry = now + ttl * 86400000
-          const item = {
-            value,
-            expiry
-          }
-          localStorage.setItem(key, JSON.stringify(item))
-        },
-      
-        get: key => {
-          const itemStr = localStorage.getItem(key)
-      
-          if (!itemStr) {
-            return undefined
-          }
-          const item = JSON.parse(itemStr)
-          const now = Date.now()
-      
-          if (now > item.expiry) {
-            localStorage.removeItem(key)
-            return undefined
-          }
-          return item.value
-        }
-      }
-    
-      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
-        const script = document.createElement('script')
-        script.src = url
-        script.async = true
-        script.onerror = reject
-        script.onload = script.onreadystatechange = function() {
-          const loadState = this.readyState
-          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
-          script.onload = script.onreadystatechange = null
-          resolve()
-        }
 
-        Object.keys(attr).forEach(key => {
-          script.setAttribute(key, attr[key])
-        })
 
-        document.head.appendChild(script)
-      })
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://example.com/2023/12/15/web安全1/"/>
+
+
+
+
+
+  <title>web安全day1 | Hexo</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
     
-      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
-        const link = document.createElement('link')
-        link.rel = 'stylesheet'
-        link.href = url
-        if (id) link.id = id
-        link.onerror = reject
-        link.onload = link.onreadystatechange = function() {
-          const loadState = this.readyState
-          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
-          link.onload = link.onreadystatechange = null
-          resolve()
-        }
-        document.head.appendChild(link)
-      })
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
     
-      win.activateDarkMode = () => {
-        document.documentElement.setAttribute('data-theme', 'dark')
-        if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
-        }
-      }
-      win.activateLightMode = () => {
-        document.documentElement.setAttribute('data-theme', 'light')
-        if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
-        }
-      }
-      const t = saveToLocal.get('theme')
-    
-        if (t === 'dark') activateDarkMode()
-        else if (t === 'light') activateLightMode()
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
       
-      const asideStatus = saveToLocal.get('aside-status')
-      if (asideStatus !== undefined) {
-        if (asideStatus === 'hide') {
-          document.documentElement.classList.add('hide-aside')
-        } else {
-          document.documentElement.classList.remove('hide-aside')
-        }
-      }
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
     
-      const detectApple = () => {
-        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
-          document.documentElement.classList.add('apple')
-        }
-      }
-      detectApple()
-    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">41</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><hr class="custom-hr"/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="Hexo"><span class="site-name">Hexo</span></a></span><div id="menus"><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">web安全day1</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2023-12-15T15:47:33.000Z" title="Created 2023-12-15 23:47:33">2023-12-15</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2023-12-25T18:39:55.839Z" title="Updated 2023-12-26 02:39:55">2023-12-26</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="web安全day1"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="1-Nc瑞士军刀使用详解"><a href="#1-Nc瑞士军刀使用详解" class="headerlink" title="1.Nc瑞士军刀使用详解"></a>1.Nc瑞士军刀使用详解</h1><h2 id="1-tcp监听"><a href="#1-tcp监听" class="headerlink" title="1.tcp监听"></a>1.tcp监听</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">tcp监听</span><br><span class="line">nc可以作为server端启动一个tcp的监听，默认情况下下面监听的是一个tcp的端口</span><br><span class="line">nc -l -p 9999</span><br><span class="line">客户端测试</span><br><span class="line">1、在B机器上telnet A机器此端口，如下显示表示B机器可以访问A机器此端口</span><br><span class="line">telnet 10.0.1.161 9999</span><br><span class="line">2、B机器上也可以使用nmap扫描A机器的此端口</span><br><span class="line">nmap 10.0.1.161 -p9999</span><br><span class="line">3、使用nc命令作为客户端工具进行端口探测</span><br><span class="line">nc -vz -w 2 10.0.1.161 9999</span><br><span class="line">（-v可视化，-z扫描时不发送数据，-w超时几秒，后面跟数字）</span><br><span class="line">服务端会自动关闭监听。</span><br><span class="line">4、nc可以扫描连续端口，这个作用非常重要。常常可以用来扫描服务器端口，然后给服务器安全加固</span><br><span class="line">在客户端B机器上扫描连续的两个端口，如下</span><br><span class="line">nc -vzw 2 10.0.1.161 9998-9999</span><br></pre></td></tr></table></figure>
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/12/15/web%E5%AE%89%E5%85%A81/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">web安全day1</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2023-12-15T23:47:33+08:00">
+                2023-12-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="1-Nc瑞士军刀使用详解"><a href="#1-Nc瑞士军刀使用详解" class="headerlink" title="1.Nc瑞士军刀使用详解"></a>1.Nc瑞士军刀使用详解</h1><h2 id="1-tcp监听"><a href="#1-tcp监听" class="headerlink" title="1.tcp监听"></a>1.tcp监听</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">tcp监听</span><br><span class="line">nc可以作为server端启动一个tcp的监听，默认情况下下面监听的是一个tcp的端口</span><br><span class="line">nc -l -p 9999</span><br><span class="line">客户端测试</span><br><span class="line">1、在B机器上telnet A机器此端口，如下显示表示B机器可以访问A机器此端口</span><br><span class="line">telnet 10.0.1.161 9999</span><br><span class="line">2、B机器上也可以使用nmap扫描A机器的此端口</span><br><span class="line">nmap 10.0.1.161 -p9999</span><br><span class="line">3、使用nc命令作为客户端工具进行端口探测</span><br><span class="line">nc -vz -w 2 10.0.1.161 9999</span><br><span class="line">（-v可视化，-z扫描时不发送数据，-w超时几秒，后面跟数字）</span><br><span class="line">服务端会自动关闭监听。</span><br><span class="line">4、nc可以扫描连续端口，这个作用非常重要。常常可以用来扫描服务器端口，然后给服务器安全加固</span><br><span class="line">在客户端B机器上扫描连续的两个端口，如下</span><br><span class="line">nc -vzw 2 10.0.1.161 9998-9999</span><br></pre></td></tr></table></figure>
 
 <h2 id="2-传文件"><a href="#2-传文件" class="headerlink" title="2.传文件"></a>2.传文件</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">方法1，先启动接收命令</span><br><span class="line">使用nc传输文件还是比较方便的，因为不用scp和rsync那种输入密码的操作了</span><br><span class="line">把A机器上的一个rpm文件发送到B机器上</span><br><span class="line">需注意操作次序，receiver先侦听端口，sender向receiver所在机器的该端口发送数据。 </span><br><span class="line">步骤1，先在B机器上启动一个接收文件的监听，格式如下</span><br><span class="line">意思是把赖在9995端口接收到的数据都写到file文件里（这里文件名随意取）</span><br><span class="line">格式：nc -l port &gt;file</span><br><span class="line">nc -l -p 9995 &gt;zabbix.rpm</span><br><span class="line">步骤2，在A机器上往B机器的9995端口发送数据，把下面rpm包发送过去</span><br><span class="line">nc 10.0.1.162 9995 &lt; zabbix-release-2.4-1.el6.noarch.rpm</span><br><span class="line">方法2，先启动发送命令</span><br><span class="line">步骤1，先在B机器上，启动发送文件命令</span><br><span class="line">下面命令表示通过本地的9992端口发送test.mv文件</span><br><span class="line">nc -l -p 9992 &lt;test.mv</span><br><span class="line">步骤2，A机器上连接B机器，取接收文件</span><br><span class="line">下面命令表示通过连接B机器的9992端口接收文件，并把文件存到本目录下，文件名为test2.mv</span><br><span class="line">nc 10.0.1.162 9992 &gt;test2.mv</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
@@ -270,4 +447,333 @@
 
 <h3 id="idea手动反编译内在搜索"><a href="#idea手动反编译内在搜索" class="headerlink" title="idea手动反编译内在搜索"></a>idea手动反编译内在搜索</h3><h3 id="安卓修改大师"><a href="#安卓修改大师" class="headerlink" title="安卓修改大师"></a>安卓修改大师</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">可以连接真机去抓包</span><br></pre></td></tr></table></figure>
 
-</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href="http://example.com">John Doe</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="http://example.com/2023/12/15/web%E5%AE%89%E5%85%A81/">http://example.com/2023/12/15/web%E5%AE%89%E5%85%A81/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/12/17/php%E5%BC%80%E5%8F%91/" title="php开发"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">Previous</div><div class="prev_info">php开发</div></div></a></div><div class="next-post pull-right"><a href="/2023/12/11/linux%E8%BF%90%E7%BB%B4%E6%8A%80%E6%9C%AF/" title="linux运维技术"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">Next</div><div class="next_info">linux运维技术</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">John Doe</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">41</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Contents</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-Nc%E7%91%9E%E5%A3%AB%E5%86%9B%E5%88%80%E4%BD%BF%E7%94%A8%E8%AF%A6%E8%A7%A3"><span class="toc-number">1.</span> <span class="toc-text">1.Nc瑞士军刀使用详解</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-tcp%E7%9B%91%E5%90%AC"><span class="toc-number">1.1.</span> <span class="toc-text">1.tcp监听</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E4%BC%A0%E6%96%87%E4%BB%B6"><span class="toc-number">1.2.</span> <span class="toc-text">2.传文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-nc%E5%8F%8D%E5%BC%B9shell"><span class="toc-number">1.3.</span> <span class="toc-text">3.nc反弹shell</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E5%8A%A0%E8%A7%A3%E5%AF%86"><span class="toc-number">2.</span> <span class="toc-text">2.加解密</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A2%9C%E6%96%87%E5%AD%97%E5%8A%A0%E5%AF%86%EF%BC%9Aaaencode"><span class="toc-number">2.0.0.1.</span> <span class="toc-text">颜文字加密：aaencode</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9B%BE%E7%89%87%E9%87%8C%E5%8C%85%E5%90%AB%E6%96%87%E4%BB%B6%E7%9A%84%E6%8A%80%E6%9C%AF"><span class="toc-number">2.0.0.2.</span> <span class="toc-text">图片里包含文件的技术</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E5%88%A4%E6%96%AD%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F"><span class="toc-number">3.</span> <span class="toc-text">3.判断操作系统</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#ttl"><span class="toc-number">3.1.</span> <span class="toc-text">ttl</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-%E6%95%B0%E6%8D%AE%E5%BA%93%E5%88%A4%E5%AE%9A"><span class="toc-number">4.</span> <span class="toc-text">4.数据库判定</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-%E4%B8%BB%E5%8A%A8%E6%89%93%E7%82%B9%E5%92%8C%E8%A2%AB%E5%8A%A8%E6%89%93%E7%82%B9"><span class="toc-number">5.</span> <span class="toc-text">5.主动打点和被动打点</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6-%E6%94%B6%E9%9B%86"><span class="toc-number">6.</span> <span class="toc-text">6.收集</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F"><span class="toc-number">6.1.</span> <span class="toc-text">操作系统</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%84%9A%E6%9C%AC%E8%AF%AD%E8%A8%80"><span class="toc-number">6.2.</span> <span class="toc-text">脚本语言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">6.3.</span> <span class="toc-text">数据库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%BA%90%E7%A0%81%E5%90%8D%E7%A7%B0"><span class="toc-number">6.4.</span> <span class="toc-text">源码名称</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#7-%E6%B3%84%E9%9C%B2%E5%8E%9F%E7%A0%81%EF%BC%88cms%E6%89%BE%E4%B8%8D%E5%88%B0%E7%9A%84%E6%83%85%E5%86%B5%EF%BC%89"><span class="toc-number">7.</span> <span class="toc-text">7.泄露原码（cms找不到的情况）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#git%E5%92%8Csvn"><span class="toc-number">7.1.</span> <span class="toc-text">git和svn</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%AE%E5%BD%95%E5%A4%87%E4%BB%BD"><span class="toc-number">7.2.</span> <span class="toc-text">目录备份</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DsStore"><span class="toc-number">7.3.</span> <span class="toc-text">DsStore</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PHP%E6%BA%90%E7%A0%81%E6%B3%84%E9%9C%B2"><span class="toc-number">7.4.</span> <span class="toc-text">PHP源码泄露</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#WEB-INF-web-xml"><span class="toc-number">7.5.</span> <span class="toc-text">WEB-INF&#x2F;web.xml</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#8-%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86"><span class="toc-number">8.</span> <span class="toc-text">8.信息收集</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#9%E3%80%82%E7%AB%AF%E5%8F%A3%E6%89%AB%E6%8F%8F"><span class="toc-number">9.</span> <span class="toc-text">9。端口扫描</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#10-%E7%AB%AF%E5%8F%A3%E6%B8%97%E9%80%8F"><span class="toc-number">10.</span> <span class="toc-text">10.端口渗透</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#11-c%E6%AE%B5-%E6%97%81%E6%B3%A8"><span class="toc-number">11.</span> <span class="toc-text">11.c段&#x2F;旁注</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%81%E6%B3%A8"><span class="toc-number">11.1.</span> <span class="toc-text">旁注</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#c%E6%AE%B5"><span class="toc-number">11.2.</span> <span class="toc-text">c段</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#cdn%E5%88%A4%E6%96%AD"><span class="toc-number">12.</span> <span class="toc-text">cdn判断</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#waf%E5%88%A4%E6%96%AD"><span class="toc-number">13.</span> <span class="toc-text">waf判断</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1"><span class="toc-number">13.1.</span> <span class="toc-text">负载均衡</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#cdn%E7%BB%95%E8%BF%87"><span class="toc-number">14.</span> <span class="toc-text">cdn绕过</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">14.1.</span> <span class="toc-text"></span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%9B%E9%80%BC%E7%9A%84%E5%B7%A5%E5%85%B7"><span class="toc-number">14.1.1.</span> <span class="toc-text">牛逼的工具</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%BE%E5%88%B0cdn%E5%90%8E%E5%92%8B%E5%8A%9E%EF%BC%9F"><span class="toc-number">14.1.2.</span> <span class="toc-text">找到cdn后咋办？</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%AD%A3%E5%90%91%E8%BF%9E%E6%8E%A5%E5%92%8C%E5%8F%8D%E5%90%91%E8%BF%9E%E6%8E%A5"><span class="toc-number">15.</span> <span class="toc-text">正向连接和反向连接</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%A3%E5%90%91%E8%BF%9E%E6%8E%A5"><span class="toc-number">15.1.</span> <span class="toc-text">正向连接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%8D%E5%90%91%E8%BF%9E%E6%8E%A5"><span class="toc-number">15.2.</span> <span class="toc-text">反向连接</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%80%86%E5%90%91%E6%96%B9%E5%90%91"><span class="toc-number">16.</span> <span class="toc-text">逆向方向</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90-%E6%8A%93%E5%8C%85%E5%88%86%E6%9E%90"><span class="toc-number">16.1.</span> <span class="toc-text">代码分析&amp;抓包分析</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B7%A5%E5%85%B7"><span class="toc-number">17.</span> <span class="toc-text">工具</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%85%E5%9C%A8%E6%90%9C%E7%B4%A2%EF%BC%9A"><span class="toc-number">17.1.</span> <span class="toc-text">内在搜索：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#appinfoScanner%E8%87%AA%E5%8A%A8%E5%8F%8D%E7%BC%96%E8%AF%91"><span class="toc-number">17.1.1.</span> <span class="toc-text">appinfoScanner自动反编译</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#idea%E6%89%8B%E5%8A%A8%E5%8F%8D%E7%BC%96%E8%AF%91%E5%86%85%E5%9C%A8%E6%90%9C%E7%B4%A2"><span class="toc-number">17.1.2.</span> <span class="toc-text">idea手动反编译内在搜索</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E5%8D%93%E4%BF%AE%E6%94%B9%E5%A4%A7%E5%B8%88"><span class="toc-number">17.1.3.</span> <span class="toc-text">安卓修改大师</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><div class="content"><a class="title" href="/2023/12/26/csrf/" title="csrf">csrf</a><time datetime="2023-12-25T18:01:50.000Z" title="Created 2023-12-26 02:01:50">2023-12-26</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="/2023/12/26/http%E8%AF%B7%E6%B1%82%E8%B5%B0%E7%A7%81/" title="http请求走私">http请求走私</a><time datetime="2023-12-25T18:01:50.000Z" title="Created 2023-12-26 02:01:50">2023-12-26</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="/2023/12/26/ssrf/" title="ssrf">ssrf</a><time datetime="2023-12-25T18:01:50.000Z" title="Created 2023-12-26 02:01:50">2023-12-26</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="/2023/12/26/sql%E6%B3%A8%E5%85%A5%E8%AF%A6%E8%A7%A3%E7%AC%94%E8%AE%B0/" title="sql注入">sql注入</a><time datetime="2023-12-25T18:01:50.000Z" title="Created 2023-12-26 02:01:50">2023-12-26</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="/2023/12/26/web%20cahe%E6%AC%BA%E9%AA%97%E6%94%BB%E5%87%BB/" title="webcache欺骗攻击">webcache欺骗攻击</a><time datetime="2023-12-25T18:01:50.000Z" title="Created 2023-12-26 02:01:50">2023-12-26</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By John Doe</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2023/12/11/linux%E8%BF%90%E7%BB%B4%E6%8A%80%E6%9C%AF/" rel="next" title="linux运维技术">
+                <i class="fa fa-chevron-left"></i> linux运维技术
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2023/12/17/php%E5%BC%80%E5%8F%91/" rel="prev" title="php开发">
+                php开发 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="" />
+          <p class="site-author-name" itemprop="name"></p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">41</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-Nc%E7%91%9E%E5%A3%AB%E5%86%9B%E5%88%80%E4%BD%BF%E7%94%A8%E8%AF%A6%E8%A7%A3"><span class="nav-number">1.</span> <span class="nav-text">1.Nc瑞士军刀使用详解</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-tcp%E7%9B%91%E5%90%AC"><span class="nav-number">1.1.</span> <span class="nav-text">1.tcp监听</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E4%BC%A0%E6%96%87%E4%BB%B6"><span class="nav-number">1.2.</span> <span class="nav-text">2.传文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-nc%E5%8F%8D%E5%BC%B9shell"><span class="nav-number">1.3.</span> <span class="nav-text">3.nc反弹shell</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-%E5%8A%A0%E8%A7%A3%E5%AF%86"><span class="nav-number">2.</span> <span class="nav-text">2.加解密</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A2%9C%E6%96%87%E5%AD%97%E5%8A%A0%E5%AF%86%EF%BC%9Aaaencode"><span class="nav-number">2.0.0.1.</span> <span class="nav-text">颜文字加密：aaencode</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9B%BE%E7%89%87%E9%87%8C%E5%8C%85%E5%90%AB%E6%96%87%E4%BB%B6%E7%9A%84%E6%8A%80%E6%9C%AF"><span class="nav-number">2.0.0.2.</span> <span class="nav-text">图片里包含文件的技术</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-%E5%88%A4%E6%96%AD%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F"><span class="nav-number">3.</span> <span class="nav-text">3.判断操作系统</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ttl"><span class="nav-number">3.1.</span> <span class="nav-text">ttl</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-%E6%95%B0%E6%8D%AE%E5%BA%93%E5%88%A4%E5%AE%9A"><span class="nav-number">4.</span> <span class="nav-text">4.数据库判定</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-%E4%B8%BB%E5%8A%A8%E6%89%93%E7%82%B9%E5%92%8C%E8%A2%AB%E5%8A%A8%E6%89%93%E7%82%B9"><span class="nav-number">5.</span> <span class="nav-text">5.主动打点和被动打点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6-%E6%94%B6%E9%9B%86"><span class="nav-number">6.</span> <span class="nav-text">6.收集</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F"><span class="nav-number">6.1.</span> <span class="nav-text">操作系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%84%9A%E6%9C%AC%E8%AF%AD%E8%A8%80"><span class="nav-number">6.2.</span> <span class="nav-text">脚本语言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">6.3.</span> <span class="nav-text">数据库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%BA%90%E7%A0%81%E5%90%8D%E7%A7%B0"><span class="nav-number">6.4.</span> <span class="nav-text">源码名称</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7-%E6%B3%84%E9%9C%B2%E5%8E%9F%E7%A0%81%EF%BC%88cms%E6%89%BE%E4%B8%8D%E5%88%B0%E7%9A%84%E6%83%85%E5%86%B5%EF%BC%89"><span class="nav-number">7.</span> <span class="nav-text">7.泄露原码（cms找不到的情况）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#git%E5%92%8Csvn"><span class="nav-number">7.1.</span> <span class="nav-text">git和svn</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%AE%E5%BD%95%E5%A4%87%E4%BB%BD"><span class="nav-number">7.2.</span> <span class="nav-text">目录备份</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DsStore"><span class="nav-number">7.3.</span> <span class="nav-text">DsStore</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PHP%E6%BA%90%E7%A0%81%E6%B3%84%E9%9C%B2"><span class="nav-number">7.4.</span> <span class="nav-text">PHP源码泄露</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#WEB-INF-web-xml"><span class="nav-number">7.5.</span> <span class="nav-text">WEB-INF&#x2F;web.xml</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#8-%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86"><span class="nav-number">8.</span> <span class="nav-text">8.信息收集</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#9%E3%80%82%E7%AB%AF%E5%8F%A3%E6%89%AB%E6%8F%8F"><span class="nav-number">9.</span> <span class="nav-text">9。端口扫描</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#10-%E7%AB%AF%E5%8F%A3%E6%B8%97%E9%80%8F"><span class="nav-number">10.</span> <span class="nav-text">10.端口渗透</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#11-c%E6%AE%B5-%E6%97%81%E6%B3%A8"><span class="nav-number">11.</span> <span class="nav-text">11.c段&#x2F;旁注</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%97%81%E6%B3%A8"><span class="nav-number">11.1.</span> <span class="nav-text">旁注</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#c%E6%AE%B5"><span class="nav-number">11.2.</span> <span class="nav-text">c段</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#cdn%E5%88%A4%E6%96%AD"><span class="nav-number">12.</span> <span class="nav-text">cdn判断</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#waf%E5%88%A4%E6%96%AD"><span class="nav-number">13.</span> <span class="nav-text">waf判断</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1"><span class="nav-number">13.1.</span> <span class="nav-text">负载均衡</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#cdn%E7%BB%95%E8%BF%87"><span class="nav-number">14.</span> <span class="nav-text">cdn绕过</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">14.1.</span> <span class="nav-text"></span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%89%9B%E9%80%BC%E7%9A%84%E5%B7%A5%E5%85%B7"><span class="nav-number">14.1.1.</span> <span class="nav-text">牛逼的工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%BE%E5%88%B0cdn%E5%90%8E%E5%92%8B%E5%8A%9E%EF%BC%9F"><span class="nav-number">14.1.2.</span> <span class="nav-text">找到cdn后咋办？</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%AD%A3%E5%90%91%E8%BF%9E%E6%8E%A5%E5%92%8C%E5%8F%8D%E5%90%91%E8%BF%9E%E6%8E%A5"><span class="nav-number">15.</span> <span class="nav-text">正向连接和反向连接</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AD%A3%E5%90%91%E8%BF%9E%E6%8E%A5"><span class="nav-number">15.1.</span> <span class="nav-text">正向连接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%8D%E5%90%91%E8%BF%9E%E6%8E%A5"><span class="nav-number">15.2.</span> <span class="nav-text">反向连接</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%80%86%E5%90%91%E6%96%B9%E5%90%91"><span class="nav-number">16.</span> <span class="nav-text">逆向方向</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90-%E6%8A%93%E5%8C%85%E5%88%86%E6%9E%90"><span class="nav-number">16.1.</span> <span class="nav-text">代码分析&amp;抓包分析</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B7%A5%E5%85%B7"><span class="nav-number">17.</span> <span class="nav-text">工具</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%86%85%E5%9C%A8%E6%90%9C%E7%B4%A2%EF%BC%9A"><span class="nav-number">17.1.</span> <span class="nav-text">内在搜索：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#appinfoScanner%E8%87%AA%E5%8A%A8%E5%8F%8D%E7%BC%96%E8%AF%91"><span class="nav-number">17.1.1.</span> <span class="nav-text">appinfoScanner自动反编译</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#idea%E6%89%8B%E5%8A%A8%E5%8F%8D%E7%BC%96%E8%AF%91%E5%86%85%E5%9C%A8%E6%90%9C%E7%B4%A2"><span class="nav-number">17.1.2.</span> <span class="nav-text">idea手动反编译内在搜索</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E5%8D%93%E4%BF%AE%E6%94%B9%E5%A4%A7%E5%B8%88"><span class="nav-number">17.1.3.</span> <span class="nav-text">安卓修改大师</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" target="_blank" rel="noopener" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" target="_blank" rel="noopener" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
