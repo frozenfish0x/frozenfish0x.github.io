@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="en">
+<html class="theme-next pisces use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -98,12 +98,12 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="解决Sourcetree推github不停弹登录窗Logon failed, use ctrl+c to cancel basi">
 <meta property="og:url" content="http://example.com/2023/11/27/%E8%A7%A3%E5%86%B3Sourcetree%E6%8E%A8github%E4%B8%8D%E5%81%9C%E5%BC%B9%E7%99%BB%E5%BD%95%E7%AA%97Logon-failed-use-ctrl-c-to-cancel-basi/index.html">
-<meta property="og:site_name" content="Hexo">
+<meta property="og:site_name" content="frozenfish&#39;blog">
 <meta property="og:description" content="最近有一段时间没用 GitHub，新建了一个仓库，打开 Sourcetree → + → Clone → 填入git地址，顺利拉取了仓库分支。分支一个 → 提交 → 推送，忽然弹出了GitHub登录窗口，记得以前曾经弹过一次，忘记什么情况了，那就填写用户名、密码，login吧： 红色闪眼啊，报错啊！~git -c diff.mnemonicprefix&#x3D;false -c core.quo">
-<meta property="og:locale" content="en_US">
+<meta property="og:locale">
 <meta property="article:published_time" content="2023-11-26T23:49:11.000Z">
 <meta property="article:modified_time" content="2023-12-24T17:38:28.415Z">
-<meta property="article:author" content="John Doe">
+<meta property="article:author" content="frozenfish">
 <meta name="twitter:card" content="summary">
 
 
@@ -112,14 +112,14 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '',
-    scheme: 'Muse',
+    scheme: 'Pisces',
     sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: true,
     duoshuo: {
       userId: '0',
-      author: 'Author'
+      author: '博主'
     },
     algolia: {
       applicationID: '',
@@ -139,7 +139,7 @@
 
 
 
-  <title>解决Sourcetree推github不停弹登录窗Logon failed, use ctrl+c to cancel basi | Hexo</title>
+  <title>解决Sourcetree推github不停弹登录窗Logon failed, use ctrl+c to cancel basi | frozenfish'blog</title>
   
 
 
@@ -157,7 +157,7 @@
 
 <meta name="generator" content="Hexo 6.3.0"></head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
   
@@ -175,7 +175,7 @@
     <div class="custom-logo-site-title">
       <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Hexo</span>
+        <span class="site-title">frozenfish'blog</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -205,7 +205,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            首页
           </a>
         </li>
       
@@ -215,17 +215,67 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
           </a>
         </li>
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
+          <a href="/%E6%A0%87%E7%AD%BE" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
-            Tags
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-search">
+          <a href="/search/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-something">
+          <a href="/%E6%9C%89%E6%96%99" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            menu.something
           </a>
         </li>
       
@@ -267,11 +317,11 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/head.webp">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
+      <meta itemprop="name" content="frozenfish'blog">
     </span>
 
     
@@ -289,9 +339,9 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2023-11-27T07:49:11+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2023-11-27T07:49:11+08:00">
                 2023-11-27
               </time>
             
@@ -332,7 +382,7 @@
         <p>最近有一段时间没用 GitHub，新建了一个仓库，打开 Sourcetree → + → Clone → 填入git地址，顺利拉取了仓库分支。分支一个 → 提交 → 推送，忽然弹出了GitHub登录窗口，记得以前曾经弹过一次，忘记什么情况了，那就填写用户名、密码，login吧：</p>
 <p>红色闪眼啊，报错啊！~<br>git -c diff.mnemonicprefix&#x3D;false -c core.quotepath&#x3D;false –no-optional-locks push -v –tags origin main:main<br>Logon failed, use ctrl+c to cancel basic credential prompt.</p>
 <span id="more"></span>
-<p>“Logon failed…” 大概是手快，密码输错了吧，再来一遍，什么？还是失败，估计是密码自己也记错了。赶紧上官网登录试一下，实在不行重置。。。咦？还是刚才的用户名、密码，官网顺利登录，没问题啊。回来 Sourcetree 再试一遍，错误照常。看来八成 Sourcetree 出毛病了。baidu 吧，哦，有人说到什么 Git 软件更新了，什么登录机制变了，不能再用登录框的方式登录了，更新后就不会出现登陆框了，会自动连接到 GitHub 官网验证。。。云云。嗯，和我的情况符合，赶紧点击文章中给的官方 Git 链接，下载了最新版本的 Git，安装。保险起见重启电脑，打开 Sourcetree，提交，哇，居然还是有弹窗啊，稳定情绪，说不定这次登录就可以了，输入用户名、密码 → login，报错依旧。看来这方法不行。继续baidu，又试了在仓库设置中修改 git 地址为 <a href="mailto:&#117;&#115;&#x65;&#x72;&#78;&#97;&#x6d;&#101;&#64;&#x67;&#x69;&#116;&#x68;&#x75;&#x62;&#x2e;&#x63;&#x6f;&#109;">&#117;&#115;&#x65;&#x72;&#78;&#97;&#x6d;&#101;&#64;&#x67;&#x69;&#116;&#x68;&#x75;&#x62;&#x2e;&#x63;&#x6f;&#109;</a>&#x2F;xxx&#x2F;xx.git 的格式，还是不行。是最后这个提示帮助了我，有网友说需要“使用OAuth进行身份验证”，翻了翻 Sourcetree 菜单，最后终于在 工具 → 选项 中找到答案。选项 → 验证 选项卡。看到现在的 gitHub 登录验证为 Basic ， 直接编辑用户，输入密码，好像无反应。新建一个吧，右上角“添加”，服务商: GitHub, 验证一定选择 OAuth，这时，下面的用户名会是禁用状态：</p>
+<p>“Logon failed…” 大概是手快，密码输错了吧，再来一遍，什么？还是失败，估计是密码自己也记错了。赶紧上官网登录试一下，实在不行重置。。。咦？还是刚才的用户名、密码，官网顺利登录，没问题啊。回来 Sourcetree 再试一遍，错误照常。看来八成 Sourcetree 出毛病了。baidu 吧，哦，有人说到什么 Git 软件更新了，什么登录机制变了，不能再用登录框的方式登录了，更新后就不会出现登陆框了，会自动连接到 GitHub 官网验证。。。云云。嗯，和我的情况符合，赶紧点击文章中给的官方 Git 链接，下载了最新版本的 Git，安装。保险起见重启电脑，打开 Sourcetree，提交，哇，居然还是有弹窗啊，稳定情绪，说不定这次登录就可以了，输入用户名、密码 → login，报错依旧。看来这方法不行。继续baidu，又试了在仓库设置中修改 git 地址为 <a href="mailto:&#117;&#x73;&#x65;&#114;&#78;&#x61;&#x6d;&#101;&#x40;&#103;&#105;&#116;&#x68;&#x75;&#x62;&#46;&#99;&#111;&#109;">&#117;&#x73;&#x65;&#114;&#78;&#x61;&#x6d;&#101;&#x40;&#103;&#105;&#116;&#x68;&#x75;&#x62;&#46;&#99;&#111;&#109;</a>&#x2F;xxx&#x2F;xx.git 的格式，还是不行。是最后这个提示帮助了我，有网友说需要“使用OAuth进行身份验证”，翻了翻 Sourcetree 菜单，最后终于在 工具 → 选项 中找到答案。选项 → 验证 选项卡。看到现在的 gitHub 登录验证为 Basic ， 直接编辑用户，输入密码，好像无反应。新建一个吧，右上角“添加”，服务商: GitHub, 验证一定选择 OAuth，这时，下面的用户名会是禁用状态：</p>
 <!--more-->
 
 <p>直接点击下面的按钮“刷新 OAuth 令牌”，奇迹出现了，自动跳转到浏览器打开了 GitHub 登录界面：</p>
@@ -432,7 +482,7 @@
       <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
-               src="/images/avatar.gif"
+               src="/images/head.webp"
                alt="" />
           <p class="site-author-name" itemprop="name"></p>
            
@@ -445,7 +495,7 @@
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
                 <span class="site-state-item-count">41</span>
-                <span class="site-state-item-name">posts</span>
+                <span class="site-state-item-name">日志</span>
               </a>
             </div>
           
@@ -494,18 +544,18 @@
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">John Doe</span>
+  <span class="author" itemprop="copyrightHolder">frozenfish</span>
 </div>
 
 
 <div class="powered-by">
-  Powered by <a class="theme-link" target="_blank" rel="noopener" href="https://hexo.io">Hexo</a>
+  由 <a class="theme-link" target="_blank" rel="noopener" href="https://hexo.io">Hexo</a> 强力驱动
 </div>
 
 <div class="theme-info">
-  Theme -
+  主题 -
   <a class="theme-link" target="_blank" rel="noopener" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Muse
+    NexT.Pisces
   </a>
 </div>
 
@@ -584,6 +634,13 @@
 
   
   
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
 
   
   <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
