@@ -102,7 +102,7 @@
 <meta property="og:description" content="Web Cache欺骗攻击简介网站通常都会通过如CDN、负载均衡器、或者反向代理来实现Web缓存功能。通过缓存频繁访问的文件，降低服务器响应延迟。 例如，网站 htttp:&#x2F;&#x2F;www.example.com 配置了反向代理。对于那些包含用户个人信息的页面，如 http:&#x2F;&#x2F;www.example.com&#x2F;home.php ，由于每个用户返回的内容有所不同，因此这类页面通常是动态生成，并不会在缓存服">
 <meta property="og:locale">
 <meta property="article:published_time" content="2023-12-25T18:01:50.000Z">
-<meta property="article:modified_time" content="2023-12-27T13:48:31.991Z">
+<meta property="article:modified_time" content="2024-01-21T16:44:04.568Z">
 <meta property="article:author" content="frozenfish">
 <meta name="twitter:card" content="summary">
 
@@ -372,6 +372,8 @@
         <h1 id="Web-Cache欺骗攻击"><a href="#Web-Cache欺骗攻击" class="headerlink" title="Web Cache欺骗攻击"></a>Web Cache欺骗攻击</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>网站通常都会通过如CDN、负载均衡器、或者反向代理来实现Web缓存功能。通过缓存频繁访问的文件，降低服务器响应延迟。</p>
 <p>例如，网站 <code>htttp://www.example.com</code> 配置了反向代理。对于那些包含用户个人信息的页面，如 <code>http://www.example.com/home.php</code> ，由于每个用户返回的内容有所不同，因此这类页面通常是动态生成，并不会在缓存服务器中进行缓存。通常缓存的主要是可公开访问的静态文件，如css文件、js文件、txt文件、图片等等。此外，很多最佳实践类的文章也建议，对于那些能公开访问的静态文件进行缓存，并且忽略HTTP缓存头。</p>
 <p>Web cache攻击类似于RPO相对路径重写攻击，都依赖于浏览器与服务器对URL的解析方式。当访问不存在的URL时，如 <code>http://www.example.com/home.php/non-existent.css</code> ，浏览器发送get请求，依赖于使用的技术与配置，服务器返回了页面 <code>http://www.example.com/home.php</code> 的内容，同时URL地址仍然是 <code>http://www.example.com/home.php/non-existent.css</code>，http头的内容也与直接访问 <code>http://www.example.com/home.php</code> 相同，cacheing header、content-type（此处为text&#x2F;html）也相同。</p>
+<span id="more"></span>
+
 <h2 id="漏洞成因"><a href="#漏洞成因" class="headerlink" title="漏洞成因"></a>漏洞成因</h2><p>当代理服务器设置为缓存静态文件并忽略这类文件的caching header时，访问 <code>http://www.example.com/home.php/no-existent.css</code> 时，会发生什么呢？整个响应流程如下：</p>
 <ol>
 <li>浏览器请求 <code>http://www.example.com/home.php/no-existent.css</code> ;</li>

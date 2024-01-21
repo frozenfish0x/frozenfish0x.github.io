@@ -94,15 +94,15 @@
 
 
 
-<meta name="description" content="xss  [TOC] xss分类1.反射型XSS1234567反射型XSS是比较常见和广泛的一类，举例来说，当一个网站的代码中包含类似下面的语句：&lt;?php echo &quot;&lt;p&gt;hello, $_GET[&amp;#x27;user&amp;#x27;]&lt;&#x2F;p&gt;&quot;;?&gt; ，那么在访问时设置 	&#x2F;?user&#x3D;&lt;&#x2F;p&gt;&lt;script&gt;ale">
+<meta name="description" content="xss  [TOC]">
 <meta property="og:type" content="article">
 <meta property="og:title" content="xss">
 <meta property="og:url" content="http://example.com/2023/12/26/xss/index.html">
 <meta property="og:site_name" content="frozenfish&#39;blog">
-<meta property="og:description" content="xss  [TOC] xss分类1.反射型XSS1234567反射型XSS是比较常见和广泛的一类，举例来说，当一个网站的代码中包含类似下面的语句：&lt;?php echo &quot;&lt;p&gt;hello, $_GET[&amp;#x27;user&amp;#x27;]&lt;&#x2F;p&gt;&quot;;?&gt; ，那么在访问时设置 	&#x2F;?user&#x3D;&lt;&#x2F;p&gt;&lt;script&gt;ale">
+<meta property="og:description" content="xss  [TOC]">
 <meta property="og:locale">
 <meta property="article:published_time" content="2023-12-25T18:01:50.000Z">
-<meta property="article:modified_time" content="2023-12-27T13:48:18.773Z">
+<meta property="article:modified_time" content="2024-01-21T16:44:37.443Z">
 <meta property="article:author" content="frozenfish">
 <meta name="twitter:card" content="summary">
 
@@ -372,6 +372,8 @@
         <p>xss</p>
 <hr>
 <p>[TOC]</p>
+<span id="more"></span>
+
 <h1 id="xss分类"><a href="#xss分类" class="headerlink" title="xss分类"></a>xss分类</h1><h2 id="1-反射型XSS"><a href="#1-反射型XSS" class="headerlink" title="1.反射型XSS"></a>1.反射型XSS</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">反射型XSS是比较常见和广泛的一类，举例来说，当一个网站的代码中包含类似下面的语句：</span><br><span class="line">&lt;?php echo &quot;&lt;p&gt;hello, $_GET[&#x27;user&#x27;]&lt;/p&gt;&quot;;?&gt; ，</span><br><span class="line">那么在访问时设置 </span><br><span class="line">	/?user=&lt;/p&gt;&lt;script&gt;alert(&quot;hack&quot;)&lt;/script&gt;&lt;p&gt; ，</span><br><span class="line">    则可执行预设好的JavaScript代码。</span><br><span class="line"></span><br><span class="line">反射型XSS通常出现在搜索等功能中，需要被攻击者点击对应的链接才能触发，且受到XSS Auditor、NoScript等防御手段的影响较大。</span><br></pre></td></tr></table></figure>
 
 <h2 id="2-储存型xss"><a href="#2-储存型xss" class="headerlink" title="2.储存型xss"></a>2.储存型xss</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">储存型XSS相比反射型来说危害较大，在这种漏洞中，攻击者能够把攻击载荷存入服务器的数据库中，造成持久化的攻击。</span><br></pre></td></tr></table></figure>
