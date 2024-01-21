@@ -300,278 +300,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/12/26/%E9%80%BB%E8%BE%91%E6%BC%8F%E6%B4%9E/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/head.webp">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="frozenfish'blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2023/12/26/%E9%80%BB%E8%BE%91%E6%BC%8F%E6%B4%9E/" itemprop="url">逻辑漏洞/业务漏洞</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2023-12-26T02:01:50+08:00">
-                2023-12-26
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="逻辑漏洞-业务漏洞"><a href="#逻辑漏洞-业务漏洞" class="headerlink" title="逻辑漏洞 &#x2F; 业务漏洞"></a>逻辑漏洞 &#x2F; 业务漏洞</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>逻辑漏洞是指由于程序逻辑不严导致一些逻辑分支处理错误造成的漏洞。</p>
-<p>在实际开发中，因为开发者水平不一没有安全意识，而且业务发展迅速内部测试没有及时到位，所以常常会出现类似的漏洞。</p>
-<h2 id="安装逻辑"><a href="#安装逻辑" class="headerlink" title="安装逻辑"></a>安装逻辑</h2><ul>
-<li>查看能否绕过判定重新安装</li>
-<li>查看能否利用安装文件获取信息</li>
-<li>看能否利用更新功能获取信息</li>
-</ul>
-<h2 id="交易"><a href="#交易" class="headerlink" title="交易"></a>交易</h2><h3 id="购买"><a href="#购买" class="headerlink" title="购买"></a>购买</h3><ul>
-<li>修改支付的价格</li>
-<li>修改支付的状态</li>
-<li>修改购买数量为负数</li>
-<li>修改金额为负数</li>
-<li>重放成功的请求</li>
-<li>并发数据库锁处理不当</li>
-</ul>
-<h3 id="业务风控"><a href="#业务风控" class="headerlink" title="业务风控"></a>业务风控</h3><ul>
-<li>刷优惠券</li>
-<li>套现</li>
-</ul>
-<h2 id="账户"><a href="#账户" class="headerlink" title="账户"></a>账户</h2><h3 id="注册"><a href="#注册" class="headerlink" title="注册"></a>注册</h3><ul>
-<li>覆盖注册</li>
-<li>尝试重复用户名</li>
-<li>注册遍历猜解已有账号</li>
-</ul>
-<h3 id="密码"><a href="#密码" class="headerlink" title="密码"></a>密码</h3><ul>
-<li>密码未使用哈希算法保存</li>
-<li>没有验证用户设置密码的强度</li>
-</ul>
-<h3 id="邮箱用户名"><a href="#邮箱用户名" class="headerlink" title="邮箱用户名"></a>邮箱用户名</h3><ul>
-<li>前后空格</li>
-<li>大小写变换</li>
-</ul>
-<h3 id="Cookie"><a href="#Cookie" class="headerlink" title="Cookie"></a>Cookie</h3><ul>
-<li>包含敏感信息</li>
-<li>未验证合法性可伪造</li>
-</ul>
-<h3 id="手机号用户名"><a href="#手机号用户名" class="headerlink" title="手机号用户名"></a>手机号用户名</h3><ul>
-<li>前后空格</li>
-<li>+86</li>
-</ul>
-<h3 id="登录"><a href="#登录" class="headerlink" title="登录"></a>登录</h3><ul>
-<li><ul>
-<li><p>撞库</p>
-<p>设置异地登录检查等机制</p>
-</li>
-</ul>
-</li>
-<li><p>账号劫持</p>
-</li>
-<li><ul>
-<li><p>恶意尝试帐号密码锁死账户</p>
-<p>需要设置锁定机制与解锁机制</p>
-</li>
-</ul>
-</li>
-<li><p>不安全的传输信道</p>
-</li>
-<li><p>登录凭证存储在不安全的位置</p>
-</li>
-</ul>
-<h3 id="找回密码"><a href="#找回密码" class="headerlink" title="找回密码"></a>找回密码</h3><ul>
-<li>重置任意用户密码</li>
-<li>密码重置后新密码在返回包中</li>
-<li>Token验证逻辑在前端</li>
-<li>X-Forwarded-Host处理不正确</li>
-<li>找回密码功能泄露用户敏感信息</li>
-</ul>
-<h3 id="修改密码"><a href="#修改密码" class="headerlink" title="修改密码"></a>修改密码</h3><ul>
-<li>越权修改密码</li>
-<li>修改密码没有旧密码验证</li>
-</ul>
-<h3 id="申诉"><a href="#申诉" class="headerlink" title="申诉"></a>申诉</h3><ul>
-<li>身份伪造</li>
-<li>逻辑绕过</li>
-</ul>
-<h3 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h3><ul>
-<li>ORM更新操作不当可更新任意字段</li>
-<li>权限限制不当可以越权修改</li>
-</ul>
-<h3 id="信息查询"><a href="#信息查询" class="headerlink" title="信息查询"></a>信息查询</h3><ul>
-<li>权限限制不当可以越权查询</li>
-<li>用户信息ID可以猜测导致遍历</li>
-</ul>
-<h2 id="2FA"><a href="#2FA" class="headerlink" title="2FA"></a>2FA</h2><ul>
-<li>重置密码后自动登录没有2FA</li>
-<li>OAuth登录没有启用2FA</li>
-<li>2FA可爆破</li>
-<li>2FA有条件竞争</li>
-<li>修改返回值绕过</li>
-<li>激活链接没有启用2FA</li>
-<li>可通过CSRF禁用2FA</li>
-</ul>
-<h2 id="验证码"><a href="#验证码" class="headerlink" title="验证码"></a>验证码</h2><ul>
-<li>验证码可重用</li>
-<li>验证码可预测</li>
-<li>验证码强度不够</li>
-<li>验证码无时间限制或者失效时间长</li>
-<li>验证码无猜测次数限制</li>
-<li>验证码传递特殊的参数或不传递参数绕过</li>
-<li>验证码可从返回包中直接获取</li>
-<li>验证码不刷新或无效</li>
-<li>验证码数量有限</li>
-<li>验证码在数据包中返回</li>
-<li>修改Cookie绕过</li>
-<li>修改返回包绕过</li>
-<li>验证码在客户端生成或校验</li>
-<li>验证码可OCR或使用机器学习识别</li>
-<li>验证码用于手机短信&#x2F;邮箱轰炸</li>
-</ul>
-<h2 id="Session"><a href="#Session" class="headerlink" title="Session"></a>Session</h2><ul>
-<li>Session机制</li>
-<li>Session猜测 &#x2F; 爆破</li>
-<li>Session伪造</li>
-<li>Session泄漏</li>
-<li>Session Fixation</li>
-</ul>
-<h2 id="越权"><a href="#越权" class="headerlink" title="越权"></a>越权</h2><ul>
-<li><ul>
-<li><p>未授权访问</p>
-<p>静态文件通过特定url来防止被访问</p>
-</li>
-</ul>
-</li>
-<li><ul>
-<li><p>水平越权</p>
-<p>攻击者可以访问与他拥有相同权限的用户的资源权限类型不变，ID改变</p>
-</li>
-</ul>
-</li>
-<li><ul>
-<li><p>垂直越权</p>
-<p>低级别攻击者可以访问高级别用户的资源权限ID不变，类型改变</p>
-</li>
-</ul>
-</li>
-<li><ul>
-<li><p>交叉越权</p>
-<p>权限ID改变，类型改变</p>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="随机数安全"><a href="#随机数安全" class="headerlink" title="随机数安全"></a>随机数安全</h2><ul>
-<li>使用不安全的随机数发生器</li>
-<li>使用时间等易猜解的因素作为随机数种子</li>
-</ul>
-<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><ul>
-<li>用户&#x2F;订单&#x2F;优惠券等ID生成有规律，可枚举</li>
-<li>接口无权限、次数限制</li>
-<li>加密算法实现误用</li>
-<li>执行顺序</li>
-<li>敏感信息泄露</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://example.com/2023/12/26/%E9%85%8D%E7%BD%AE%E4%B8%8E%E7%AD%96%E7%95%A5%E5%AE%89%E5%85%A8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2983,6 +2711,132 @@ VLAN 就是虚拟局域网。
 
 
     
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/11/16/ospf%E8%AF%A6%E8%A7%A3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/head.webp">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="frozenfish'blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2022/11/16/ospf%E8%AF%A6%E8%A7%A3/" itemprop="url">ospf</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2022-11-16T00:01:03+08:00">
+                2022-11-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>开放最短路径优先<br>Open Shortest Path First</p>
+<p>开放最短路径优先，是一个开放标准的链路状态路由协议（an open-standard Link State routing protocol）。所有链路状态路由协议都是对链路状态进行通告。当链路状态路由器开始在某条网络链路上运作时，逻辑网络的相关信息就被添加到路由器的本地链路状态数据库(Link State Database, LSDB)中。该本地路由器此时在其运作链路上，发出Hello数据包，以确定出是否有其它链路状态路由器也在其各自接口上运行着链路状态路由协议。OSPF直接运行在 IP 协议上，使用 IP 下编号为89号的协议。</p>
+<p>OSPF概述及基础知识<br>OSPF Overview and Fundamentals</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2022/11/16/ospf%E8%AF%A6%E8%A7%A3/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
   </section>
 
   
@@ -3033,7 +2887,7 @@ VLAN 就是虚拟局域网。
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">45</span>
+                <span class="site-state-item-count">44</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

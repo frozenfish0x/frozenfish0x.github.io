@@ -881,357 +881,18 @@
 
       
         
-          
-            <h1 id="最近在折腾服务部署公网的事情"><a href="#最近在折腾服务部署公网的事情" class="headerlink" title="最近在折腾服务部署公网的事情"></a>最近在折腾服务部署公网的事情</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">本来想着360t7刷成wrt以为能在线涮实际上是要烧录</span><br><span class="line">他自带的防火墙挡我的服务却没有关闭的地方。这个就很难受</span><br><span class="line">因为一时半会没有办法整一台拥有wrt的硬路由</span><br><span class="line">又听虚拟机kvm和vbox。选择kvm虚拟机</span><br><span class="line">之前用docker结果夺舍宿主机，。这个我不太了解dockers技术等以后会研究一下他的虚拟化技术！！</span><br><span class="line"></span><br><span class="line">服务器环境是arch。kvm。docker，ddns，反向代理还有https以后会考虑搞！</span><br></pre></td></tr></table></figure>
+          <h1 id="最近在折腾服务部署公网的事情"><a href="#最近在折腾服务部署公网的事情" class="headerlink" title="最近在折腾服务部署公网的事情"></a>最近在折腾服务部署公网的事情</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">本来想着360t7刷成wrt以为能在线涮实际上是要烧录</span><br><span class="line">他自带的防火墙挡我的服务却没有关闭的地方。这个就很难受</span><br><span class="line">因为一时半会没有办法整一台拥有wrt的硬路由</span><br><span class="line">又听虚拟机kvm和vbox。选择kvm虚拟机</span><br><span class="line">之前用docker结果夺舍宿主机，。这个我不太了解dockers技术等以后会研究一下他的虚拟化技术！！</span><br><span class="line"></span><br><span class="line">服务器环境是arch。kvm。docker，ddns，反向代理还有https以后会考虑搞！</span><br></pre></td></tr></table></figure>
 
 <p>搬运自：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/suxiuf/p/17586593.html">archlinux 安装KVM,QEMU - 掰断曲别针 - 博客园 (cnblogs.com)</a></p>
 <p>KVM是Linux世界中最常用的虚拟化软件之一。事实上，大多数云提供商都使用KVM作为他们的虚拟机管理程序。包括OpenStack在内的大型项目都使用KVM作为默认虚拟化工具。</p>
 <p>以下是如何在Arch Linux和Manjaro上安装KVM、QEMU和Virt Manager的完整指南。</p>
-<h1 id="安装KVM包"><a href="#安装KVM包" class="headerlink" title="安装KVM包"></a>安装KVM包</h1><p>第一步是安装运行KVM所需的所有软件包：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -Syy</span><br><span class="line">sudo pacman -S archlinux-keyring</span><br><span class="line">sudo pacman -S qemu virt-manager virt-viewer dnsmasq vde2 bridge-utils openbsd-netcat dmidecode</span><br></pre></td></tr></table></figure>
-
-<p>同时安装ebtbles和iptables软件包。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S ebtables iptables</span><br></pre></td></tr></table></figure>
-
-<h1 id="安装其他工具"><a href="#安装其他工具" class="headerlink" title="安装其他工具"></a>安装其他工具</h1><p>libguestfs是一组用于访问和修改虚拟机（VM）磁盘映像的工具。作用如下：</p>
-<ul>
-<li>查看和编辑来宾中的文件</li>
-<li>编写对虚拟机的更改脚本</li>
-<li>监视磁盘使用&#x2F;可用统计信息</li>
-<li>创建来宾</li>
-<li>P2V （物理机到虚拟机的迁移）</li>
-<li>V2V （虚拟机到虚拟机的迁移）</li>
-<li>执行备份及其他</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S libguestfs</span><br></pre></td></tr></table></figure>
-
-<h1 id="启动KVM-libvirt服务"><a href="#启动KVM-libvirt服务" class="headerlink" title="启动KVM libvirt服务"></a>启动KVM libvirt服务</h1><ul>
-<li>启用服务并设置开机自启动</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl enable libvirtd.service</span><br><span class="line">sudo systemctl start libvirtd.service</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>查看运行状态</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl status libvirtd.service</span><br></pre></td></tr></table></figure>
-
-<h1 id="配置普通用户可以使用KVM"><a href="#配置普通用户可以使用KVM" class="headerlink" title="配置普通用户可以使用KVM"></a>配置普通用户可以使用KVM</h1><ul>
-<li>打开&#x2F;etc&#x2F;libvirt&#x2F;libvirtd.conf文件进行编辑。</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S vim</span><br><span class="line">sudo vim /etc/libvirt/libvirtd.conf</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>将UNIX域套接字组所有权设置为libvirt（第85行左右）</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">unix_sock_group = &quot;libvirt&quot;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>为R&#x2F;W套接字设置UNIX套接字权限（第102行附近）</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">unix_sock_rw_perms = &quot;0770&quot;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>将当前用户帐户添加到libvirt组</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo usermod -a -G libvirt $(whoami)</span><br><span class="line">newgrp libvirt</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>重新启动libvirt守护进程。</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl restart libvirtd.service</span><br></pre></td></tr></table></figure>
-
-<h1 id="启用嵌套虚拟化（可选）"><a href="#启用嵌套虚拟化（可选）" class="headerlink" title="启用嵌套虚拟化（可选）"></a>启用嵌套虚拟化（可选）</h1><ul>
-<li>嵌套虚拟化就是在虚拟机中运行虚拟机。<br>如图所示，通过启用内核模块为kvm_intel &#x2F; kvm_amd启用嵌套虚拟化。</li>
-</ul>
-<p>一般不会这样搞。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment">## Intel Processor ###</span></span></span><br><span class="line">sudo modprobe -r kvm_intel</span><br><span class="line">sudo modprobe kvm_intel nested=1</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment">## AMD Processor ###</span></span></span><br><span class="line">sudo modprobe -r kvm_amd</span><br><span class="line">sudo modprobe kvm_amd nested=1</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>要使此配置持久化，请运行：</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo &quot;options kvm-intel nested=1&quot; | sudo tee /etc/modprobe.d/kvm-intel.conf</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>确认“嵌套虚拟化”设置为“yes”：</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># Intel Processor ###</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">systool -m kvm_intel -v | grep nested</span></span><br><span class="line">    nested              = &quot;Y&quot;</span><br><span class="line">    nested_early_check  = &quot;N&quot;</span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">cat</span> /sys/module/kvm_intel/parameters/nested</span> </span><br><span class="line">Y</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment">## AMD Processor ###</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">systool -m kvm_amd -v | grep nested</span></span><br><span class="line">    nested              = &quot;Y&quot;</span><br><span class="line">    nested_early_check  = &quot;N&quot;</span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">cat</span> /sys/module/kvm_amd/parameters/nested</span> </span><br><span class="line">Y</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-<h1 id="kvm介绍"><a href="#kvm介绍" class="headerlink" title="kvm介绍"></a>kvm介绍</h1><p>转载：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/nwnusun/p/16574336.html">KVM的基本使用 - 匿名者nwnu - 博客园 (cnblogs.com)</a></p>
-<p>虚拟化是云计算的基础。简单的说，虚拟化使得在一台物理的服务器上可以跑多台虚拟机，虚拟机共享物理机的 CPU、内存、IO 硬件资源，但逻辑上虚拟机之间是相互隔离的。</p>
-<p>物理机我们一般称为宿主机（Host），宿主机上面的虚拟机称为客户机（Guest）。</p>
-<p>那么 Host 是如何将自己的硬件资源虚拟化，并提供给 Guest 使用的呢？ 这个主要是通过一个叫做 Hypervisor 的程序实现的。</p>
-<p>根据 Hypervisor 的实现方式和所处的位置，虚拟化又分为两种：</p>
-<ul>
-<li>全虚拟化- 半虚拟化<br><strong>全虚拟化：</strong> Hypervisor 直接安装在物理机上，多个虚拟机在 Hypervisor 上运行。Hypervisor 实现方式一般是一个特殊定制的 Linux 系统。Xen 和 VMWare 的 ESXi 都属于这个类型</li>
-</ul>
-<p><a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/20190314132441934.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzY5NTEwNA==,size_16,color_FFFFFF,t_70"><img src="https://img-blog.csdnimg.cn/20190314132441934.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzY5NTEwNA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></a> <strong>半虚拟化：</strong></p>
-<p><a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/20190314132539401.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzY5NTEwNA==,size_16,color_FFFFFF,t_70"><img src="https://img-blog.csdnimg.cn/20190314132539401.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzY5NTEwNA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></a></p>
-<p><strong>理论上讲：</strong></p>
-<p>全虚拟化一般对硬件虚拟化功能进行了特别优化，性能上比半虚拟化要高； 半虚拟化因为基于普通的操作系统，会比较灵活，比如支持虚拟机嵌套。<strong>嵌套意味着可以在KVM虚拟机中再运行KVM。</strong></p>
-<p>*<strong>2*</strong>|***0***<strong>2. kvm介绍</strong></p>
-<p>kVM 全称是 Kernel-Based Virtual Machine。也就是说 KVM 是基于 Linux 内核实现的。 KVM有一个内核模块叫 kvm.ko，只用于管理虚拟 CPU 和内存。</p>
-<p>那 IO 的虚拟化，比如存储和网络设备则是由 Linux 内核与Qemu来实现。</p>
-<p>作为一个 Hypervisor，KVM 本身只关注虚拟机调度和内存管理这两个方面。IO 外设的任务交给 Linux 内核和 Qemu。</p>
-<p>大家在网上看 KVM 相关文章的时候肯定经常会看到 Libvirt 这个东西。</p>
-<p>Libvirt 就是 KVM 的管理工具。</p>
-<p>其实，Libvirt 除了能管理 KVM 这种 Hypervisor，还能管理 Xen，VirtualBox 等。</p>
-<p>Libvirt 包含 3 个东西：后台 daemon 程序 libvirtd、API 库和命令行工具 virsh</p>
-<ul>
-<li>libvirtd是服务程序，接收和处理 API 请求；</li>
-<li>API 库使得其他人可以开发基于 Libvirt 的高级工具，比如 virt-manager，这是个图形化的 KVM 管理工具；</li>
-<li>virsh 是我们经常要用的 KVM 命令行工具</li>
-</ul>
-<p>*<strong>3*</strong>|***0***<strong>3. kvm部署</strong></p>
-<p><strong>环境说明：</strong></p>
-<p>IP：192.168.157.99</p>
-<p>*<strong>3*</strong>|***1***<strong>3.1 kvm安装</strong></p>
-<p>部署前请确保你的CPU虚拟化功能已开启。分为两种情况：</p>
-<ul>
-<li>虚拟机要关机设置CPU虚拟化- 物理机要在BIOS里开启CPU虚拟化<br><strong>&#x2F;&#x2F;关闭防火墙与selinux</strong></li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">systemctl stop firewalld</span><br><span class="line">systemctl disable firewalld</span><br><span class="line">setenforce 0</span><br><span class="line">sed -ri &#x27;s/^(SELINUX=).*/\1disabled/g&#x27; /etc/selinux/config</span><br><span class="line">//这一步十分重要！！！</span><br></pre></td></tr></table></figure>
-
-<p><strong>&#x2F;&#x2F;配置网络源</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">curl -o /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo</span><br><span class="line">wget -O /etc/yum.repos.d/epel.repo http://mirrors.aliyun.com/repo/epel-7.repo</span><br><span class="line">yum makecache</span><br><span class="line">yum -y install epel-release vim wget net-tools unzip zip gcc gcc-c++</span><br></pre></td></tr></table></figure>
-
-<p><strong>&#x2F;&#x2F;验证CPU是否支持KVM；如果结果中有vmx（Intel）或svm(AMD)字样，就说明CPU的支持的</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">egrep -o &#x27;vmx|svm&#x27; /proc/cpuinfo</span><br></pre></td></tr></table></figure>
-
-<p><strong>&#x2F;&#x2F;安装KVM依赖包及管理工具</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># kvm属于内核态，不需要安装。但是需要一些管理工具包</span><br><span class="line">yum install -y qemu-kvm libvirt libvirt-python libguestfs-tools virt-install virt-manager python-virtinst libvirt-client virt-viewer qemu-kvm-tool</span><br></pre></td></tr></table></figure>
-
-<p><strong>&#x2F;&#x2F;因为虚拟机中网络，我们一般都是和公司的其他服务器是同一个网段，所以我们需要把 KVM服务器的网卡配置成桥接模式。这样的话KVM的虚拟机就可以通过该桥接网卡和公司内部 其他服务器处于同一网段</strong></p>
-<p><strong>&#x2F;&#x2F;此处我的网卡是ens32，所以用br0来桥接ens32网卡</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">//对应修改或者添加以下内容即可</span><br><span class="line">[root@mp ~]# vim /etc/sysconfig/network-scripts/ifcfg-br0 </span><br><span class="line">TYPE=Bridge</span><br><span class="line">DEVICE=br0</span><br><span class="line">NM_CONTROLLED=no</span><br><span class="line">BOOTPROTO=static</span><br><span class="line">NAME=br0</span><br><span class="line">ONBOOT=yes</span><br><span class="line">IPADDR=192.168.157.99</span><br><span class="line">NETMASK=255.255.255.0</span><br><span class="line">GATEWAY=192.168.157.2</span><br><span class="line">DNS1=8.8.8.8</span><br><span class="line"></span><br><span class="line">//保留以下内容即可</span><br><span class="line">[root@mp ~]# vim /etc/sysconfig/network-scripts/ifcfg-ens32 </span><br><span class="line">TYPE=Ethernet</span><br><span class="line">BOOTPROTO=static</span><br><span class="line">NAME=ens33</span><br><span class="line">DEVICE=ens33</span><br><span class="line">ONBOOT=yes</span><br><span class="line">BRIDGE=br0</span><br><span class="line">NM_CONTROLLED=no</span><br><span class="line">[root@mp ~]# systemctl restart network</span><br></pre></td></tr></table></figure>
-
-<p><strong>&#x2F;&#x2F;启动服务</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl start libvirtd</span><br><span class="line">systemctl enable libvirtd</span><br></pre></td></tr></table></figure>
-
-<p><strong>&#x2F;&#x2F;验证安装结果</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@mp ~]# lsmod|grep kvm</span><br><span class="line">kvm_intel             170086  0 </span><br><span class="line">kvm                   566340  1 kvm_intel</span><br><span class="line">irqbypass              13503  1 kvm</span><br></pre></td></tr></table></figure>
-
-<p><strong>&#x2F;&#x2F;测试并验证安装结果</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">[root@mp ~]# virsh -c qemu:///system list</span><br><span class="line"> Id    名称                         状态</span><br><span class="line">----------------------------------------------------</span><br><span class="line">[root@mp ~]# virsh --version</span><br><span class="line">4.5.0</span><br><span class="line">[root@mp ~]# virt-install --version</span><br><span class="line">1.5.0</span><br><span class="line">[root@mp ~]# ln -s /usr/libexec/qemu-kvm /usr/bin/qemu-kvm</span><br><span class="line">[root@mp ~]# ll /usr/bin/qemu-kvm </span><br><span class="line">lrwxrwxrwx. 1 root root 21 3月  14 14:17 /usr/bin/qemu-kvm -&amp;  /usr/libexec/qemu-kvm</span><br><span class="line">	</span><br><span class="line">[root@mp ~]# lsmod |grep kvm</span><br><span class="line">kvm_intel             170086  0 </span><br><span class="line">kvm                   566340  1 kvm_intel</span><br><span class="line">irqbypass              13503  1 kvm</span><br></pre></td></tr></table></figure>
-
-<p><strong>&#x2F;&#x2F;查看网桥信息</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@mp ~]# brctl show</span><br><span class="line">bridge name	bridge id		STP enabled	interfaces</span><br><span class="line">br0		8000.000c2993a66c	no		ens32</span><br><span class="line">virbr0		8000.5254009df26a	yes		virbr0-nic</span><br></pre></td></tr></table></figure>
-
-<p>*<strong>3*</strong>|***2***<strong>3.2 kvm web管理界面安装</strong></p>
-<p>kvm 的 web 管理界面是由 webvirtmgr 程序提供的。</p>
-<p><strong>&#x2F;&#x2F;安装依赖包</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 管理端安装</span><br><span class="line">yum -y install git python-pip libvirt-python libxml2-python python-websockify supervisor gcc python-devel</span><br><span class="line"># 使用pip安装Python扩展程序库</span><br><span class="line">pip install numpy -i http://pypi.douban.com/simple/ --trusted-host pypi.douban.com</span><br></pre></td></tr></table></figure>
-
-<p><strong>&#x2F;&#x2F;升级pip</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install --upgrade pip</span><br></pre></td></tr></table></figure>
-
-<p><strong>&#x2F;&#x2F;git克隆配置并运行WebVirMgr</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"># 创建data目录，将WebVirtMgr移动到data目录，同时创建KVM存储目录</span><br><span class="line">mkdir /data/kvm -pv</span><br><span class="line"># 克隆项目</span><br><span class="line">cd /data</span><br><span class="line">git clone git://github.com/retspen/webvirtmgr.git</span><br><span class="line">cd webvirtmgr</span><br><span class="line">pip install -r requirements.txt  -i http://pypi.douban.com/simple/ --trusted-host pypi.douban.com</span><br><span class="line"># 说明:requirements.txt主要是用于记录所有依赖包及其精确的版本号。以便新环境部署</span><br><span class="line"># 初始化环境</span><br><span class="line">./manage.py syncdb</span><br><span class="line">## 这里需要我们输入Yes，配置管理员用户</span><br><span class="line">配置信息如下</span><br><span class="line">Would you like to create one now? (yes/no): yes         #是否现在创建管理员用户</span><br><span class="line">Username (leave blank to use &#x27;root&#x27;): root              #用户名称</span><br><span class="line">Email address:                                          #邮箱地址 (可以不填)</span><br><span class="line">Password:                                               #管理员用户密码</span><br><span class="line">Password (again):                                       #重复输入密码</span><br><span class="line">Superuser created successfully.                         #创建成功</span><br><span class="line"># 配置Django 静态页面</span><br><span class="line">./manage.py collectstatic </span><br><span class="line">输入Yes即可</span><br><span class="line"># 如果还想继续添加管理员用户，可以执行下面的命令</span><br><span class="line">./manage.py createsuperuser</span><br></pre></td></tr></table></figure>
-
-<p>&#x2F;&#x2F;<strong>启动WebVirMgr</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">前台启动WebVirMgr，默认是Debug模式同时日志打印在前台</span><br><span class="line">./manage.py runserver 0:8000</span><br></pre></td></tr></table></figure>
-
-<p>访问:<a target="_blank" rel="noopener" href="http://192.168.209.134:8000/">http://192.168.209.134:8000</a></p>
-<p><strong>&#x2F;&#x2F;安装Nginx</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">1.安装依赖</span><br><span class="line">yum install -y gcc glibc gcc-c++ prce-devel openssl-devel pcre-devel</span><br><span class="line">2.安装编译Nginx</span><br><span class="line">cd /root/</span><br><span class="line">wget http://nginx.org/download/nginx-1.16.1.tar.gz</span><br><span class="line">useradd -s /sbin/nologin nginx -M </span><br><span class="line">tar xf nginx-1.16.1.tar.gz &amp;&amp; cd nginx-1.16.1.tar.gz</span><br><span class="line">./configure --prefix=/usr/local/nginx-1.16.1 --user=nginx --group=nginx --with-http_ssl_module --with-http_stub_status_module</span><br><span class="line">make &amp;&amp; make install</span><br><span class="line">ln -s /usr/local/nginx-1.16.1 /usr/local/nginx</span><br><span class="line"># 修改配置文件</span><br><span class="line">cd /usr/local/nginx/conf</span><br><span class="line">vim nginx.conf</span><br><span class="line"></span><br><span class="line">worker_processes  1;</span><br><span class="line">user nginx;</span><br><span class="line">events &#123;</span><br><span class="line">    worker_connections  1024;</span><br><span class="line">&#125;</span><br><span class="line">http &#123;</span><br><span class="line">    include       mime.types;</span><br><span class="line">    default_type  application/octet-stream;</span><br><span class="line">    sendfile        on;</span><br><span class="line">    keepalive_timeout  65;</span><br><span class="line">    server &#123;</span><br><span class="line">        listen       80;</span><br><span class="line">        server_name  kvm.i4t.com;</span><br><span class="line">      </span><br><span class="line">        location / &#123;</span><br><span class="line">        proxy_pass http://127.0.0.1:8000;</span><br><span class="line">        proxy_set_header X-Real-IP $remote_addr;</span><br><span class="line">		proxy_set_header X-Forwarded-for $proxy_add_x_forwarded_for;</span><br><span class="line">        proxy_set_header Host $host:$server_port;</span><br><span class="line">        proxy_set_header X-Forwarded-Proto $remote_addr;</span><br><span class="line">        proxy_connect_timeout 600;</span><br><span class="line">        proxy_read_timeout 600;</span><br><span class="line">        proxy_send_timeout 600;</span><br><span class="line">        client_max_body_size 5120M;</span><br><span class="line">          &#125;</span><br><span class="line">    location /static/ &#123;</span><br><span class="line">        root /data/webvirtmgr;</span><br><span class="line">        expires max;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"># 启动Nginx</span><br><span class="line">/usr/local/nginx/sbin/nginx -t</span><br><span class="line">/usr/local/nginx/sbin/nginx </span><br></pre></td></tr></table></figure>
-
-<p><strong>&#x2F;&#x2F;配置nginx</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">1.安装依赖</span><br><span class="line">yum install -y gcc glibc gcc-c++ prce-devel openssl-devel pcre-devel</span><br><span class="line">2.安装编译Nginx</span><br><span class="line">cd /root/</span><br><span class="line">wget http://nginx.org/download/nginx-1.16.1.tar.gz</span><br><span class="line">useradd -s /sbin/nologin nginx -M </span><br><span class="line">tar xf nginx-1.16.1.tar.gz &amp;&amp; cd nginx-1.16.1.tar.gz</span><br><span class="line">./configure --prefix=/usr/local/nginx-1.16.1 --user=nginx --group=nginx --with-http_ssl_module --with-http_stub_status_module</span><br><span class="line">make &amp;&amp; make install</span><br><span class="line">ln -s /usr/local/nginx-1.16.1 /usr/local/nginx</span><br><span class="line"># 修改配置文件</span><br><span class="line">cd /usr/local/nginx/conf</span><br><span class="line">vim nginx.conf</span><br><span class="line"></span><br><span class="line">worker_processes  1;</span><br><span class="line">user nginx;</span><br><span class="line">events &#123;</span><br><span class="line">    worker_connections  1024;</span><br><span class="line">&#125;</span><br><span class="line">http &#123;</span><br><span class="line">    include       mime.types;</span><br><span class="line">    default_type  application/octet-stream;</span><br><span class="line">    sendfile        on;</span><br><span class="line">    keepalive_timeout  65;</span><br><span class="line">    server &#123;</span><br><span class="line">        listen       80;</span><br><span class="line">        server_name  kvm.i4t.com;</span><br><span class="line">      </span><br><span class="line">        location / &#123;</span><br><span class="line">        proxy_pass http://127.0.0.1:8000;</span><br><span class="line">        proxy_set_header X-Real-IP $remote_addr;</span><br><span class="line">		proxy_set_header X-Forwarded-for $proxy_add_x_forwarded_for;</span><br><span class="line">        proxy_set_header Host $host:$server_port;</span><br><span class="line">        proxy_set_header X-Forwarded-Proto $remote_addr;</span><br><span class="line">        proxy_connect_timeout 600;</span><br><span class="line">        proxy_read_timeout 600;</span><br><span class="line">        proxy_send_timeout 600;</span><br><span class="line">        client_max_body_size 5120M;</span><br><span class="line">          &#125;</span><br><span class="line">    location /static/ &#123;</span><br><span class="line">        root /data/webvirtmgr;</span><br><span class="line">        expires max;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"># 启动Nginx</span><br><span class="line">/usr/local/nginx/sbin/nginx -t</span><br><span class="line">/usr/local/nginx/sbin/nginx </span><br></pre></td></tr></table></figure>
-
-<p><strong>&#x2F;&#x2F;创建supervisor配置文件</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">WebVirtMgr默认使用supervisor进行管理(启动停止服务)</span><br><span class="line"></span><br><span class="line">cat &gt; /etc/supervisord.d/webvirtmgr.ini &lt;&lt; EOF</span><br><span class="line">[program:webvirtmgr]</span><br><span class="line">command=/usr/bin/python /data/webvirtmgr/manage.py run_gunicorn -c /data/webvirtmgr/conf/gunicorn.conf.py</span><br><span class="line">directory=/data/webvirtmgr</span><br><span class="line">autostart=true</span><br><span class="line">autorestart=true</span><br><span class="line">logfile=/var/log/supervisor/webvirtmgr.log</span><br><span class="line">log_stderr=true</span><br><span class="line">user=root</span><br><span class="line"></span><br><span class="line">[program:webvirtmgr-console]</span><br><span class="line">command=/usr/bin/python /data/webvirtmgr/console/webvirtmgr-console</span><br><span class="line">directory=/data/webvirtmgr</span><br><span class="line">autostart=true</span><br><span class="line">autorestart=true</span><br><span class="line">stdout_logfile=/var/log/supervisor/webvirtmgr-console.log</span><br><span class="line">redirect_stderr=true</span><br><span class="line">user=root</span><br><span class="line">EOF</span><br><span class="line"># 启动</span><br><span class="line">systemctl start supervisord </span><br><span class="line">systemctl enable supervisord</span><br><span class="line"># 检查</span><br><span class="line">supervisorctl status</span><br><span class="line"># 重启所以（非执行）</span><br><span class="line">supervisorctl restart all</span><br></pre></td></tr></table></figure>
-
-<p><strong>&#x2F;&#x2F;重启nginx</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/nginx/sbin/nginx -s reload</span><br></pre></td></tr></table></figure>
-
-<p>*<strong>4*</strong>|***0***<strong>4. kvm web界面管理</strong></p>
-<p>通过ip地址在浏览器上访问kvm，例如我这里就是：</p>
-<p><a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/20190314192444173.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzY5NTEwNA==,size_16,color_FFFFFF,t_70"><img src="https://img-blog.csdnimg.cn/20190314192444173.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzY5NTEwNA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></a>此处的用户为：root 密码为：执行python manage syncdb时设置的超级管理员密码</p>
-<p><a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/20190314193031866.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzY5NTEwNA==,size_16,color_FFFFFF,t_70"><img src="https://img-blog.csdnimg.cn/20190314193031866.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzY5NTEwNA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></a>此处的Label要与下面的FQDN &#x2F; IP一致！</p>
-<p><a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/20190314193543699.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzY5NTEwNA==,size_16,color_FFFFFF,t_70"><img src="https://img-blog.csdnimg.cn/20190314193543699.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzY5NTEwNA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></a>点击上方的IP地址，不是点击Host：192.168.157.99</p>
-<p><strong>3.3.2 kvm存储管理</strong></p>
-<p><strong>&#x2F;&#x2F;创建存储</strong></p>
-<p><a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/20190314193925599.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzY5NTEwNA==,size_16,color_FFFFFF,t_70"><img src="https://img-blog.csdnimg.cn/20190314193925599.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzY5NTEwNA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></a>点击New Storage</p>
-<p><a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/20190314194036367.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzY5NTEwNA==,size_16,color_FFFFFF,t_70"><img src="https://img-blog.csdnimg.cn/20190314194036367.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzY5NTEwNA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></a>****</p>
-<p><strong>进入存储</strong> <a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/20190314194133477.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzY5NTEwNA==,size_16,color_FFFFFF,t_70"><img src="https://img-blog.csdnimg.cn/20190314194133477.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzY5NTEwNA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></a>点击default</p>
-<p><a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/20190314194253161.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzY5NTEwNA==,size_16,color_FFFFFF,t_70"><img src="https://img-blog.csdnimg.cn/20190314194253161.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzY5NTEwNA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></a>池路径 &#x2F;var&#x2F;lib&#x2F;libvirt&#x2F;images：磁盘镜像ISO文件存储的位置</p>
-<p><strong>&#x2F;&#x2F;通过远程连接软件上传ISO镜像文件至存储目录&#x2F;var&#x2F;lib&#x2F;libvirt&#x2F;images&#x2F;</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@mp ~]# cd /var/lib/libvirt/images/</span><br><span class="line">[root@mp images]# ll</span><br><span class="line">总用量 3963904</span><br><span class="line">-rw-r--r-- 1 root root 4059037696 3月  15 03:50 rhel-server-7.4-x86_64-dvd.iso</span><br></pre></td></tr></table></figure>
-
-<p><strong>&#x2F;&#x2F;在web界面查看ISO镜像文件是否存在</strong> <a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/20190314195305198.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzY5NTEwNA==,size_16,color_FFFFFF,t_70"><img src="https://img-blog.csdnimg.cn/20190314195305198.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzY5NTEwNA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></a></p>
-<p><strong>&#x2F;&#x2F;创建系统安装镜像</strong> <a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/20190314195505238.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzY5NTEwNA==,size_16,color_FFFFFF,t_70"><img src="https://img-blog.csdnimg.cn/20190314195505238.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzY5NTEwNA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></a></p>
-<p><strong>&#x2F;&#x2F;添加成功如下图</strong> <a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/20190314195604723.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzY5NTEwNA==,size_16,color_FFFFFF,t_70"><img src="https://img-blog.csdnimg.cn/20190314195604723.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzY5NTEwNA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></a></p>
-<p><strong>3.3.3 kvm网络管理</strong></p>
-<p><a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/20190314195711201.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzY5NTEwNA==,size_16,color_FFFFFF,t_70"><img src="https://img-blog.csdnimg.cn/20190314195711201.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzY5NTEwNA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></a>点击New Network</p>
-<p><a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/2019031419593859.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzY5NTEwNA==,size_16,color_FFFFFF,t_70"><img src="https://img-blog.csdnimg.cn/2019031419593859.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzY5NTEwNA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></a><strong>3.3.4 实例管理</strong></p>
-<p><strong>实例（虚拟机的创建）</strong> <a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/20190314200516947.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzY5NTEwNA==,size_16,color_FFFFFF,t_70"><img src="https://img-blog.csdnimg.cn/20190314200516947.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzY5NTEwNA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></a></p>
-<p><strong>&#x2F;&#x2F;虚拟机插入光盘</strong></p>
-<p><a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/20190314200608305.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzY5NTEwNA==,size_16,color_FFFFFF,t_70"><img src="https://img-blog.csdnimg.cn/20190314200608305.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzY5NTEwNA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></a></p>
-<p><strong>&#x2F;&#x2F;设置在web上访问虚拟机的密码</strong></p>
-<p><a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/20190314200729314.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzY5NTEwNA==,size_16,color_FFFFFF,t_70"><img src="https://img-blog.csdnimg.cn/20190314200729314.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzY5NTEwNA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></a></p>
-<p><strong>&#x2F;&#x2F;启动虚拟机</strong></p>
-<p><a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/20190314200838724.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzY5NTEwNA==,size_16,color_FFFFFF,t_70"><img src="https://img-blog.csdnimg.cn/20190314200838724.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzY5NTEwNA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></a><a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/20190314200917131.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzY5NTEwNA==,size_16,color_FFFFFF,t_70"><img src="https://img-blog.csdnimg.cn/20190314200917131.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzY5NTEwNA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></a></p>
-<p><strong>&#x2F;&#x2F;虚拟机安装</strong></p>
-<p><a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/2019031420163376.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzY5NTEwNA==,size_16,color_FFFFFF,t_70"><img src="https://img-blog.csdnimg.cn/2019031420163376.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzY5NTEwNA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></a>此步骤为虚拟机的安装步骤，不再阐述</p>
-<p>*<strong>5*</strong>|<strong>*0**<em><strong>4. 所遇问题</strong></em>**5*</strong>|***1***<strong>4.1 故障一</strong></p>
-<p>第一次通过web访问kvm时可能会一直访问不了，一直转圈，而命令行界面一直报错(too many open files)</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">永久生效方法：</span><br><span class="line">	修改/etc/security/limits.conf，在文件底部添加：</span><br><span class="line">	* soft nofile 655360</span><br><span class="line">	* hard nofile 655360</span><br><span class="line">	星号代表全局， soft为软件，hard为硬件，nofile为这里指可打开文件数。</span><br><span class="line"> </span><br><span class="line">另外，要使limits.conf文件配置生效，必须要确保 pam_limits.so 文件被加入到启动文件中。</span><br><span class="line">查看 /etc/pam.d/login 文件中有：</span><br><span class="line">session required /lib/security/pam_limits.so</span><br></pre></td></tr></table></figure>
-
-<p>*<strong>5*</strong>|***2***<strong>4.2 故障二</strong></p>
-<p>web界面配置完成后可能会出现以下错误界面 <a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/20190318150017680.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzY5NTEwNA==,size_16,color_FFFFFF,t_70"><img src="https://img-blog.csdnimg.cn/20190318150017680.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzY5NTEwNA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></a> 解决方法是安装novnc并通过novnc_server启动一个vnc</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">[root@mp ~]# ll /etc/rc.local</span><br><span class="line">lrwxrwxrwx. 1 root root 13 Aug  6  2018 /etc/rc.local -&amp;gt; rc.d/rc.local</span><br><span class="line">[root@mp ~]# ll /etc/rc.d/rc.local</span><br><span class="line">-rw-r--r-- 1 root root 513 Mar 11 22:35 /etc/rc.d/rc.local</span><br><span class="line">[root@mp ~]# chmod +x /etc/rc.d/rc.local</span><br><span class="line">[root@mp ~]# ll /etc/rc.d/rc.local</span><br><span class="line">-rwxr-xr-x 1 root root 513 Mar 11 22:35 /etc/rc.d/rc.local</span><br><span class="line"></span><br><span class="line">[root@mp ~]# vim /etc/rc.d/rc.local</span><br><span class="line">......此处省略N行</span><br><span class="line"># that this script will be executed during boot.</span><br><span class="line"></span><br><span class="line">touch /var/lock/subsys/local</span><br><span class="line">nohup novnc_server 172.16.12.128:5920 &amp;amp;</span><br><span class="line"></span><br><span class="line">[root@mp ~]# . /etc/rc.d/rc.local</span><br></pre></td></tr></table></figure>
-
-<h1 id="安装yay-aur包管理器"><a href="#安装yay-aur包管理器" class="headerlink" title="安装yay aur包管理器"></a>安装yay aur包管理器</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">git <span class="built_in">clone</span> https://aur.archlinux.org/yay-bin.git</span><br><span class="line"><span class="built_in">cd</span> yay-bin</span><br><span class="line">makepkg -si </span><br></pre></td></tr></table></figure>
-
-<h1 id="通过aur安装"><a href="#通过aur安装" class="headerlink" title="通过aur安装"></a>通过aur安装</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yay -S webvirtmgr-git</span><br><span class="line">yaourt -S webvirtmgr-git</span><br></pre></td></tr></table></figure>
-
-<h1 id="如果连接失败"><a href="#如果连接失败" class="headerlink" title="如果连接失败"></a>如果连接失败</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">可以使用wattlk也就是steam++</span><br><span class="line">命令如下</span><br><span class="line">curl -sSL https://steampp.net/Install/Linux.sh | bash</span><br><span class="line">然后在尝试</span><br></pre></td></tr></table></figure>
-
-<h1 id="采用命令行自带的管理进行安装虚拟机"><a href="#采用命令行自带的管理进行安装虚拟机" class="headerlink" title="采用命令行自带的管理进行安装虚拟机"></a>采用命令行自带的管理进行安装虚拟机</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">这steam++速度也不是很行</span><br></pre></td></tr></table></figure>
-
-<p>centos debian</p>
-<h1 id="archlinux牵扯问题："><a href="#archlinux牵扯问题：" class="headerlink" title="archlinux牵扯问题："></a>archlinux牵扯问题：</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">内核加载等，我不想折腾了。于是选择更换稳定的发行版。</span><br><span class="line">用<span class="built_in">arch</span>做服务器是我今年做过最愚蠢的事情之一了</span><br></pre></td></tr></table></figure>
-
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/12/26/csrf/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/head.webp">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="frozenfish'blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2023/12/26/csrf/" itemprop="url">csrf</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2023-12-26T02:01:50+08:00">
-                2023-12-26
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="csrf"><a href="#csrf" class="headerlink" title="csrf"></a>csrf</h1><p>[TOC]</p>
-<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>跨站请求伪造 (Cross-Site Request Forgery, CSRF)，也被称为 One Click Attack 或者 Session Riding ，通常缩写为CSRF，是一种对网站的恶意利用。尽管听起来像XSS，但它与XSS非常不同，XSS利用站点内的信任用户，而CSRF则通过伪装来自受信任用户的请求来利用受信任的网站。</p>
-<h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><h3 id="资源包含"><a href="#资源包含" class="headerlink" title="资源包含"></a>资源包含</h3><p>资源包含是在大多数介绍CSRF概念的演示或基础课程中可能看到的类型。这种类型归结为控制HTML标签（例如<image>、<audio>、<video>、<object>、<script>等）所包含的资源的攻击者。如果攻击者能够影响URL被加载的话，包含远程资源的任何标签都可以完成攻击。</p>
-<p>由于缺少对Cookie的源点检查，如上所述，此攻击不需要XSS，可以由任何攻击者控制的站点或站点本身执行。此类型仅限于GET请求，因为这些是浏览器对资源URL唯一的请求类型。这种类型的主要限制是它需要错误地使用安全的HTTP请求方式。</p>
-<h3 id="基于表单"><a href="#基于表单" class="headerlink" title="基于表单"></a>基于表单</h3><p>通常在正确使用安全的请求方式时看到。攻击者创建一个想要受害者提交的表单; 其包含一个JavaScript片段，强制受害者的浏览器提交。</p>
-<p>该表单可以完全由隐藏的元素组成，以致受害者很难发现它。</p>
-<p>如果处理cookies不当，攻击者可以在任何站点上发动攻击，只要受害者使用有效的cookie登录，攻击就会成功。如果请求是有目的性的，成功的攻击将使受害者回到他们平时正常的页面。该方法对于攻击者可以将受害者指向特定页面的网络钓鱼攻击特别有效。</p>
-<h3 id="XMLHttpRequest"><a href="#XMLHttpRequest" class="headerlink" title="XMLHttpRequest"></a>XMLHttpRequest</h3><p>XMLHttpRequest可能是最少看到的方式，由于许多现代Web应用程序依赖XHR，许多应用花费大量的时间来构建和实现这一特定的对策。</p>
-<p>基于XHR的CSRF通常由于SOP而以XSS有效载荷的形式出现。没有跨域资源共享策略 (Cross-Origin Resource Sharing, CORS)，XHR仅限于攻击者托管自己的有效载荷的原始请求。</p>
-<p>这种类型的CSRF的攻击有效载荷基本上是一个标准的XHR，攻击者已经找到了一些注入受害者浏览器DOM的方式。</p>
-<h2 id="防御"><a href="#防御" class="headerlink" title="防御"></a>防御</h2><ul>
-<li>通过CSRF-token或者验证码来检测用户提交</li>
-<li>验证 Referer/Content-Type</li>
-<li>对于用户修改删除等操作最好都使用POST操作</li>
-<li>避免全站通用的Cookie，严格设置Cookie的域</li>
-</ul>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2024/01/08/kvm%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85wrt/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -3928,6 +3589,278 @@
 
 
     
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/12/26/%E9%80%BB%E8%BE%91%E6%BC%8F%E6%B4%9E/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/head.webp">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="frozenfish'blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2023/12/26/%E9%80%BB%E8%BE%91%E6%BC%8F%E6%B4%9E/" itemprop="url">逻辑漏洞/业务漏洞</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2023-12-26T02:01:50+08:00">
+                2023-12-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="逻辑漏洞-业务漏洞"><a href="#逻辑漏洞-业务漏洞" class="headerlink" title="逻辑漏洞 &#x2F; 业务漏洞"></a>逻辑漏洞 &#x2F; 业务漏洞</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>逻辑漏洞是指由于程序逻辑不严导致一些逻辑分支处理错误造成的漏洞。</p>
+<p>在实际开发中，因为开发者水平不一没有安全意识，而且业务发展迅速内部测试没有及时到位，所以常常会出现类似的漏洞。</p>
+<h2 id="安装逻辑"><a href="#安装逻辑" class="headerlink" title="安装逻辑"></a>安装逻辑</h2><ul>
+<li>查看能否绕过判定重新安装</li>
+<li>查看能否利用安装文件获取信息</li>
+<li>看能否利用更新功能获取信息</li>
+</ul>
+<h2 id="交易"><a href="#交易" class="headerlink" title="交易"></a>交易</h2><h3 id="购买"><a href="#购买" class="headerlink" title="购买"></a>购买</h3><ul>
+<li>修改支付的价格</li>
+<li>修改支付的状态</li>
+<li>修改购买数量为负数</li>
+<li>修改金额为负数</li>
+<li>重放成功的请求</li>
+<li>并发数据库锁处理不当</li>
+</ul>
+<h3 id="业务风控"><a href="#业务风控" class="headerlink" title="业务风控"></a>业务风控</h3><ul>
+<li>刷优惠券</li>
+<li>套现</li>
+</ul>
+<h2 id="账户"><a href="#账户" class="headerlink" title="账户"></a>账户</h2><h3 id="注册"><a href="#注册" class="headerlink" title="注册"></a>注册</h3><ul>
+<li>覆盖注册</li>
+<li>尝试重复用户名</li>
+<li>注册遍历猜解已有账号</li>
+</ul>
+<h3 id="密码"><a href="#密码" class="headerlink" title="密码"></a>密码</h3><ul>
+<li>密码未使用哈希算法保存</li>
+<li>没有验证用户设置密码的强度</li>
+</ul>
+<h3 id="邮箱用户名"><a href="#邮箱用户名" class="headerlink" title="邮箱用户名"></a>邮箱用户名</h3><ul>
+<li>前后空格</li>
+<li>大小写变换</li>
+</ul>
+<h3 id="Cookie"><a href="#Cookie" class="headerlink" title="Cookie"></a>Cookie</h3><ul>
+<li>包含敏感信息</li>
+<li>未验证合法性可伪造</li>
+</ul>
+<h3 id="手机号用户名"><a href="#手机号用户名" class="headerlink" title="手机号用户名"></a>手机号用户名</h3><ul>
+<li>前后空格</li>
+<li>+86</li>
+</ul>
+<h3 id="登录"><a href="#登录" class="headerlink" title="登录"></a>登录</h3><ul>
+<li><ul>
+<li><p>撞库</p>
+<p>设置异地登录检查等机制</p>
+</li>
+</ul>
+</li>
+<li><p>账号劫持</p>
+</li>
+<li><ul>
+<li><p>恶意尝试帐号密码锁死账户</p>
+<p>需要设置锁定机制与解锁机制</p>
+</li>
+</ul>
+</li>
+<li><p>不安全的传输信道</p>
+</li>
+<li><p>登录凭证存储在不安全的位置</p>
+</li>
+</ul>
+<h3 id="找回密码"><a href="#找回密码" class="headerlink" title="找回密码"></a>找回密码</h3><ul>
+<li>重置任意用户密码</li>
+<li>密码重置后新密码在返回包中</li>
+<li>Token验证逻辑在前端</li>
+<li>X-Forwarded-Host处理不正确</li>
+<li>找回密码功能泄露用户敏感信息</li>
+</ul>
+<h3 id="修改密码"><a href="#修改密码" class="headerlink" title="修改密码"></a>修改密码</h3><ul>
+<li>越权修改密码</li>
+<li>修改密码没有旧密码验证</li>
+</ul>
+<h3 id="申诉"><a href="#申诉" class="headerlink" title="申诉"></a>申诉</h3><ul>
+<li>身份伪造</li>
+<li>逻辑绕过</li>
+</ul>
+<h3 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h3><ul>
+<li>ORM更新操作不当可更新任意字段</li>
+<li>权限限制不当可以越权修改</li>
+</ul>
+<h3 id="信息查询"><a href="#信息查询" class="headerlink" title="信息查询"></a>信息查询</h3><ul>
+<li>权限限制不当可以越权查询</li>
+<li>用户信息ID可以猜测导致遍历</li>
+</ul>
+<h2 id="2FA"><a href="#2FA" class="headerlink" title="2FA"></a>2FA</h2><ul>
+<li>重置密码后自动登录没有2FA</li>
+<li>OAuth登录没有启用2FA</li>
+<li>2FA可爆破</li>
+<li>2FA有条件竞争</li>
+<li>修改返回值绕过</li>
+<li>激活链接没有启用2FA</li>
+<li>可通过CSRF禁用2FA</li>
+</ul>
+<h2 id="验证码"><a href="#验证码" class="headerlink" title="验证码"></a>验证码</h2><ul>
+<li>验证码可重用</li>
+<li>验证码可预测</li>
+<li>验证码强度不够</li>
+<li>验证码无时间限制或者失效时间长</li>
+<li>验证码无猜测次数限制</li>
+<li>验证码传递特殊的参数或不传递参数绕过</li>
+<li>验证码可从返回包中直接获取</li>
+<li>验证码不刷新或无效</li>
+<li>验证码数量有限</li>
+<li>验证码在数据包中返回</li>
+<li>修改Cookie绕过</li>
+<li>修改返回包绕过</li>
+<li>验证码在客户端生成或校验</li>
+<li>验证码可OCR或使用机器学习识别</li>
+<li>验证码用于手机短信&#x2F;邮箱轰炸</li>
+</ul>
+<h2 id="Session"><a href="#Session" class="headerlink" title="Session"></a>Session</h2><ul>
+<li>Session机制</li>
+<li>Session猜测 &#x2F; 爆破</li>
+<li>Session伪造</li>
+<li>Session泄漏</li>
+<li>Session Fixation</li>
+</ul>
+<h2 id="越权"><a href="#越权" class="headerlink" title="越权"></a>越权</h2><ul>
+<li><ul>
+<li><p>未授权访问</p>
+<p>静态文件通过特定url来防止被访问</p>
+</li>
+</ul>
+</li>
+<li><ul>
+<li><p>水平越权</p>
+<p>攻击者可以访问与他拥有相同权限的用户的资源权限类型不变，ID改变</p>
+</li>
+</ul>
+</li>
+<li><ul>
+<li><p>垂直越权</p>
+<p>低级别攻击者可以访问高级别用户的资源权限ID不变，类型改变</p>
+</li>
+</ul>
+</li>
+<li><ul>
+<li><p>交叉越权</p>
+<p>权限ID改变，类型改变</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="随机数安全"><a href="#随机数安全" class="headerlink" title="随机数安全"></a>随机数安全</h2><ul>
+<li>使用不安全的随机数发生器</li>
+<li>使用时间等易猜解的因素作为随机数种子</li>
+</ul>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><ul>
+<li>用户&#x2F;订单&#x2F;优惠券等ID生成有规律，可枚举</li>
+<li>接口无权限、次数限制</li>
+<li>加密算法实现误用</li>
+<li>执行顺序</li>
+<li>敏感信息泄露</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
   </section>
 
   
@@ -3978,7 +3911,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">45</span>
+                <span class="site-state-item-count">44</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
