@@ -94,15 +94,15 @@
 
 
 
-<meta name="description" content="Xpath注入 [TOC] Xpath定义XPath注入攻击是指利用XPath解析器的松散输入和容错特性，能够在 URL、表单或其它信息上附带恶意的XPath 查询代码，以获得权限信息的访问权并更改这些信息。XPath注入攻击是针对Web服务应用新的攻击方法，它允许攻击者在事先不知道XPath查询相关知识的情况下，通过XPath查询得到一个XML文档的完整内容。">
-<meta property="og:type" content="article">
-<meta property="og:title" content="xpath注入">
-<meta property="og:url" content="http://example.com/2023/12/26/xpath/index.html">
+<meta name="description" content="categories:  linux web安全 编译 英语 网络 数据结构与算法">
+<meta property="og:type" content="website">
+<meta property="og:title" content="tool">
+<meta property="og:url" content="http://example.com/tool/index.html">
 <meta property="og:site_name" content="frozenfish&#39;blog">
-<meta property="og:description" content="Xpath注入 [TOC] Xpath定义XPath注入攻击是指利用XPath解析器的松散输入和容错特性，能够在 URL、表单或其它信息上附带恶意的XPath 查询代码，以获得权限信息的访问权并更改这些信息。XPath注入攻击是针对Web服务应用新的攻击方法，它允许攻击者在事先不知道XPath查询相关知识的情况下，通过XPath查询得到一个XML文档的完整内容。">
+<meta property="og:description" content="categories:  linux web安全 编译 英语 网络 数据结构与算法">
 <meta property="og:locale">
-<meta property="article:published_time" content="2023-12-25T18:01:50.000Z">
-<meta property="article:modified_time" content="2024-01-21T16:44:27.095Z">
+<meta property="article:published_time" content="2024-01-28T09:58:16.000Z">
+<meta property="article:modified_time" content="2024-01-28T09:59:58.222Z">
 <meta property="article:author" content="frozenfish">
 <meta name="twitter:card" content="summary">
 
@@ -133,13 +133,13 @@
 
 
 
-  <link rel="canonical" href="http://example.com/2023/12/26/xpath/"/>
+  <link rel="canonical" href="http://example.com/tool/"/>
 
 
 
 
 
-  <title>xpath注入 | frozenfish'blog</title>
+  <title>tool | frozenfish'blog</title>
   
 
 
@@ -314,156 +314,42 @@
 
   <div id="posts" class="posts-expand">
     
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/12/26/xpath/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/head.webp">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="frozenfish'blog">
-    </span>
-
     
+    
+    <div class="post-block page">
       <header class="post-header">
 
-        
-        
-          <h1 class="post-title" itemprop="name headline">xpath注入</h1>
-        
+	<h1 class="post-title" itemprop="name headline">tool</h1>
 
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2023-12-26T02:01:50+08:00">
-                2023-12-26
-              </time>
-            
 
-            
 
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
+</header>
 
       
       
-
       
-        <h1 id="Xpath注入"><a href="#Xpath注入" class="headerlink" title="Xpath注入"></a>Xpath注入</h1><hr>
-<p>[TOC]</p>
-<h2 id="Xpath定义"><a href="#Xpath定义" class="headerlink" title="Xpath定义"></a>Xpath定义</h2><p>XPath注入攻击是指利用XPath解析器的松散输入和容错特性，能够在 URL、表单或其它信息上附带恶意的XPath 查询代码，以获得权限信息的访问权并更改这些信息。XPath注入攻击是针对Web服务应用新的攻击方法，它允许攻击者在事先不知道XPath查询相关知识的情况下，通过XPath查询得到一个XML文档的完整内容。</p>
-<span id="more"></span>
+      <div class="post-body">
+        
+        
+          <p>categories:</p>
+<ul>
+<li>linux</li>
+<li>web安全</li>
+<li>编译</li>
+<li>英语</li>
+<li>网络</li>
+<li>数据结构与算法</li>
+</ul>
 
-<h2 id="Xpath注入攻击原理"><a href="#Xpath注入攻击原理" class="headerlink" title="Xpath注入攻击原理"></a>Xpath注入攻击原理</h2><blockquote>
-<p>XPath注入攻击主要是通过构建特殊的输入，这些输入往往是XPath语法中的一些组合，这些输入将作为参数传入Web 应用程序，通过执行XPath查询而执行入侵者想要的操作，下面以登录验证中的模块为例，说明 XPath注入攻击的实现原理。</p>
-</blockquote>
-<p>在Web 应用程序的登录验证程序中，一般有用户名（username）和密码（password） 两个参数，程序会通过用户所提交输入的用户名和密码来执行授权操作。若验证数据存放在XML文件中，其原理是通过查找user表中的用户名 （username）和密码（password）的结果来进行授权访问，</p>
-<p>例存在user.xml文件如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;users&gt;</span><br><span class="line">     &lt;user&gt;</span><br><span class="line">         &lt;firstname&gt;Ben&lt;/firstname&gt;</span><br><span class="line">         &lt;lastname&gt;Elmore&lt;/lastname&gt;</span><br><span class="line">         &lt;loginID&gt;abc&lt;/loginID&gt;</span><br><span class="line">         &lt;password&gt;test123&lt;/password&gt;</span><br><span class="line">     &lt;/user&gt;</span><br><span class="line">     &lt;user&gt;</span><br><span class="line">         &lt;firstname&gt;Shlomy&lt;/firstname&gt;</span><br><span class="line">         &lt;lastname&gt;Gantz&lt;/lastname&gt;</span><br><span class="line">         &lt;loginID&gt;xyz&lt;/loginID&gt;</span><br><span class="line">         &lt;password&gt;123test&lt;/password&gt;</span><br><span class="line">     &lt;/user&gt;</span><br></pre></td></tr></table></figure>
-
-<p>则在XPath中其典型的查询语句为： <code>//users/user[loginID/text()=&#39;xyz&#39;and password/text()=&#39;123test&#39;]</code></p>
-<p>但是，可以采用如下的方法实施注入攻击，绕过身份验证。如果用 户传入一个 login 和 password，例如 <code>loginID = &#39;xyz&#39; 和 password = &#39;123test&#39;</code> ，则该查询语句将返回 true。但如果用户传入类似 <code>&#39; or 1=1 or &#39;&#39;=&#39;</code> 的值，那么该查询语句也会得到 true 返回值，因为 XPath 查询语句最终会变成如下代码：<code>//users/user[loginID/text()=&#39;&#39;or 1=1 or &#39;&#39;=&#39;&#39; and password/text()=&#39;&#39; or 1=1 or &#39;&#39;=&#39;&#39;]</code></p>
-<p>这个字符串会在逻辑上使查询一直返回 true 并将一直允许攻击者访问系统。攻击者可以利用 XPath 在应用程序中动态地操作 XML 文档。攻击完成登录可以再通过XPath盲入技术获取最高权限帐号和其它重要文档信息。</p>
-
+        
+      </div>
+      
+      
       
     </div>
     
     
     
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2023/12/26/xss/" rel="next" title="xss">
-                <i class="fa fa-chevron-left"></i> xss
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2023/12/26/xee/" rel="prev" title="xxe">
-                xxe <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-
-    <div class="post-spread">
-      
-    </div>
   </div>
 
 
@@ -496,17 +382,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/head.webp"
@@ -550,22 +427,6 @@
 
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Xpath%E6%B3%A8%E5%85%A5"><span class="nav-number">1.</span> <span class="nav-text">Xpath注入</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Xpath%E5%AE%9A%E4%B9%89"><span class="nav-number">1.1.</span> <span class="nav-text">Xpath定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Xpath%E6%B3%A8%E5%85%A5%E6%94%BB%E5%87%BB%E5%8E%9F%E7%90%86"><span class="nav-number">1.2.</span> <span class="nav-text">Xpath注入攻击原理</span></a></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
@@ -686,10 +547,10 @@
 
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
 <script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
 
-
+  
 
   
 
