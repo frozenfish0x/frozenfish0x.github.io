@@ -94,15 +94,15 @@
 
 
 
-<meta name="description" content="[TOC] bug服务器：2024.1.29：防火墙1234567891011121314151617openwrt之前的时候自动挂载出了问题，于是重新吧u盘里的系统进行重装并导入之前的备份。但是防火墙规则不在内，于是又是经典ipv6防火墙问题：防火墙wan——&gt;     ：可以都不放行防火墙规则那里是优先于这个规则的openwrt默认是ipv4目标区域：如果你的想给路由器开放外网访问，那么">
+<meta name="description" content="[TOC] bughexo：2024.2.1：github问题github把密码验证换成token登陆github 连接不上不妨换成443端口试试 有时，防火墙会完全拒绝SSH连接。 如果无法使用带凭据缓存的HTTPS克隆，则可以尝试使用通过HTTPS端口建立的SSH连接进行克隆。 大多数防火墙规则应该允许这样做，但代理服务器可能会干扰。 To test if SSH over the HTTPS">
 <meta property="og:type" content="website">
 <meta property="og:title" content="bug">
 <meta property="og:url" content="http://example.com/bug/index.html">
 <meta property="og:site_name" content="frozenfish&#39;blog">
-<meta property="og:description" content="[TOC] bug服务器：2024.1.29：防火墙1234567891011121314151617openwrt之前的时候自动挂载出了问题，于是重新吧u盘里的系统进行重装并导入之前的备份。但是防火墙规则不在内，于是又是经典ipv6防火墙问题：防火墙wan——&gt;     ：可以都不放行防火墙规则那里是优先于这个规则的openwrt默认是ipv4目标区域：如果你的想给路由器开放外网访问，那么">
+<meta property="og:description" content="[TOC] bughexo：2024.2.1：github问题github把密码验证换成token登陆github 连接不上不妨换成443端口试试 有时，防火墙会完全拒绝SSH连接。 如果无法使用带凭据缓存的HTTPS克隆，则可以尝试使用通过HTTPS端口建立的SSH连接进行克隆。 大多数防火墙规则应该允许这样做，但代理服务器可能会干扰。 To test if SSH over the HTTPS">
 <meta property="og:locale">
 <meta property="article:published_time" content="2024-01-29T21:36:59.000Z">
-<meta property="article:modified_time" content="2024-01-29T22:04:13.477Z">
+<meta property="article:modified_time" content="2024-01-31T21:16:57.879Z">
 <meta property="article:author" content="frozenfish">
 <meta name="twitter:card" content="summary">
 
@@ -342,7 +342,17 @@
         
         
           <p>[TOC]</p>
-<h1 id="bug"><a href="#bug" class="headerlink" title="bug"></a>bug</h1><h2 id="服务器："><a href="#服务器：" class="headerlink" title="服务器："></a>服务器：</h2><h3 id="2024-1-29：防火墙"><a href="#2024-1-29：防火墙" class="headerlink" title="2024.1.29：防火墙"></a>2024.1.29：防火墙</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">openwrt之前的时候自动挂载出了问题，于是重新吧u盘里的系统进行重装并导入之前的备份。</span><br><span class="line">但是防火墙规则不在内，于是又是经典ipv6防火墙问题：</span><br><span class="line">防火墙wan——&gt;     ：可以都不放行</span><br><span class="line">防火墙规则那里是优先于这个规则的</span><br><span class="line">openwrt默认是ipv4</span><br><span class="line">目标区域：如果你的想给路由器开放外网访问，那么就目标区域保持默认，如果想给路由器下的其他设备比如NAS、服务器等开放防火墙就选择lan。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">目标地址：任意就是所有的设备均可被外网访问，建议单独设置，不过默认的一般只支持ipv4，这时需要选择自定义。有两种填写方式，都是填写ipv6的后四段。均需要在末尾加入&quot;::ffff:ffff:ffff:ffff&quot;  如::1234:abcd:abcd:abcd/::ffff:ffff:ffff:ffff  或者  ::b64/::ffff:ffff:ffff:ffff</span><br><span class="line"></span><br><span class="line">或者2408::/16   or   2408::/64</span><br><span class="line">前缀为运营商。这是联通的。电信移动前缀则不同</span><br><span class="line">上此是2408/::ffff:ffff:ffff:ffff可以</span><br><span class="line">上上次是2408::/64</span><br><span class="line">这次则是2408::/16</span><br><span class="line">我的ipv6从来没变过，目前不知道怎么产生的如上问题</span><br></pre></td></tr></table></figure>
+<h1 id="bug"><a href="#bug" class="headerlink" title="bug"></a>bug</h1><h2 id="hexo："><a href="#hexo：" class="headerlink" title="hexo："></a>hexo：</h2><h3 id="2024-2-1：github问题"><a href="#2024-2-1：github问题" class="headerlink" title="2024.2.1：github问题"></a>2024.2.1：github问题</h3><p>github把密码验证换成token登陆<br>github 连接不上不妨换成443端口试试</p>
+<p>有时，防火墙会完全拒绝SSH连接。 如果无法使用带凭据缓存的HTTPS克隆，则可以尝试使用通过HTTPS端口建立的SSH连接进行克隆。 大多数防火墙规则应该允许这样做，但代理服务器可能会干扰。</p>
+<p>To test if SSH over the HTTPS port is possible, run this SSH command:<br>要测试HTTPS端口上的SSH是否可行，请运行以下SSH命令：</p>
+<p>$ ssh -T -p 443 <a href="mailto:&#103;&#x69;&#116;&#64;&#115;&#115;&#x68;&#46;&#103;&#105;&#116;&#104;&#117;&#98;&#46;&#99;&#111;&#109;">&#103;&#x69;&#116;&#64;&#115;&#115;&#x68;&#46;&#103;&#105;&#116;&#104;&#117;&#98;&#46;&#99;&#111;&#109;</a></p>
+<blockquote>
+<p>Hi USERNAME! You’ve successfully authenticated, but GitHub does not<br>provide shell access.</p>
+</blockquote>
+<p>要在SSH配置文件中设置此设置，请编辑文件~&#x2F;.ssh&#x2F;config，并添加以下部分：</p>
+<p>Host github.com<br>    Hostname ssh.github.com<br>    Port 443<br>    User git</p>
+<p><a target="_blank" rel="noopener" href="https://docs.github.com/en/authentication/troubleshooting-ssh/using-ssh-over-the-https-port">https://docs.github.com/en/authentication/troubleshooting-ssh/using-ssh-over-the-https-port</a></p>
+<h2 id="服务器："><a href="#服务器：" class="headerlink" title="服务器："></a>服务器：</h2><h3 id="2024-1-29：防火墙"><a href="#2024-1-29：防火墙" class="headerlink" title="2024.1.29：防火墙"></a>2024.1.29：防火墙</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">openwrt之前的时候自动挂载出了问题，于是重新吧u盘里的系统进行重装并导入之前的备份。</span><br><span class="line">但是防火墙规则不在内，于是又是经典ipv6防火墙问题：</span><br><span class="line">防火墙wan——&gt;     ：可以都不放行</span><br><span class="line">防火墙规则那里是优先于这个规则的</span><br><span class="line">openwrt默认是ipv4</span><br><span class="line">目标区域：如果你的想给路由器开放外网访问，那么就目标区域保持默认，如果想给路由器下的其他设备比如NAS、服务器等开放防火墙就选择lan。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">目标地址：任意就是所有的设备均可被外网访问，建议单独设置，不过默认的一般只支持ipv4，这时需要选择自定义。有两种填写方式，都是填写ipv6的后四段。均需要在末尾加入&quot;::ffff:ffff:ffff:ffff&quot;  如::1234:abcd:abcd:abcd/::ffff:ffff:ffff:ffff  或者  ::b64/::ffff:ffff:ffff:ffff</span><br><span class="line"></span><br><span class="line">或者2408::/16   or   2408::/64</span><br><span class="line">前缀为运营商。这是联通的。电信移动前缀则不同</span><br><span class="line">上此是2408/::ffff:ffff:ffff:ffff可以</span><br><span class="line">上上次是2408::/64</span><br><span class="line">这次则是2408::/16</span><br><span class="line">我的ipv6从来没变过，目前不知道怎么产生的如上问题</span><br></pre></td></tr></table></figure>
 
 <h3 id="2024-1-29：配置永久变量"><a href="#2024-1-29：配置永久变量" class="headerlink" title="2024.1.29：配置永久变量"></a>2024.1.29：配置永久变量</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">debian没有ifconfig命令，安装后在/sbin/目录下。但是环境变量中没有于是配置</span><br><span class="line">vim /etc/environment</span><br><span class="line">加入如下:</span><br><span class="line">	PATH=$PATH:/sbin</span><br><span class="line"></span><br><span class="line">然后加载 source /etc/environment</span><br></pre></td></tr></table></figure>
 
@@ -430,7 +440,25 @@
           
 
           
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
 
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
           
 
         </nav>
@@ -462,7 +490,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#bug"><span class="nav-number">1.</span> <span class="nav-text">bug</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%8D%E5%8A%A1%E5%99%A8%EF%BC%9A"><span class="nav-number">1.1.</span> <span class="nav-text">服务器：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2024-1-29%EF%BC%9A%E9%98%B2%E7%81%AB%E5%A2%99"><span class="nav-number">1.1.1.</span> <span class="nav-text">2024.1.29：防火墙</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2024-1-29%EF%BC%9A%E9%85%8D%E7%BD%AE%E6%B0%B8%E4%B9%85%E5%8F%98%E9%87%8F"><span class="nav-number">1.1.2.</span> <span class="nav-text">2024.1.29：配置永久变量</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux"><span class="nav-number">1.2.</span> <span class="nav-text">Linux</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#problem"><span class="nav-number">2.</span> <span class="nav-text">problem</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#web%E5%AE%89%E5%85%A8"><span class="nav-number">2.1.</span> <span class="nav-text">web安全</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#bug"><span class="nav-number">1.</span> <span class="nav-text">bug</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#hexo%EF%BC%9A"><span class="nav-number">1.1.</span> <span class="nav-text">hexo：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2024-2-1%EF%BC%9Agithub%E9%97%AE%E9%A2%98"><span class="nav-number">1.1.1.</span> <span class="nav-text">2024.2.1：github问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%8D%E5%8A%A1%E5%99%A8%EF%BC%9A"><span class="nav-number">1.2.</span> <span class="nav-text">服务器：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2024-1-29%EF%BC%9A%E9%98%B2%E7%81%AB%E5%A2%99"><span class="nav-number">1.2.1.</span> <span class="nav-text">2024.1.29：防火墙</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2024-1-29%EF%BC%9A%E9%85%8D%E7%BD%AE%E6%B0%B8%E4%B9%85%E5%8F%98%E9%87%8F"><span class="nav-number">1.2.2.</span> <span class="nav-text">2024.1.29：配置永久变量</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux"><span class="nav-number">1.3.</span> <span class="nav-text">Linux</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#problem"><span class="nav-number">2.</span> <span class="nav-text">problem</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#web%E5%AE%89%E5%85%A8"><span class="nav-number">2.1.</span> <span class="nav-text">web安全</span></a></li></ol></li></ol></div>
             
 
           </div>
