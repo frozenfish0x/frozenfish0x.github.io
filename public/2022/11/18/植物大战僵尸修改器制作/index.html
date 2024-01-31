@@ -1,0 +1,1839 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="基址偏移表部分参考: 公布我所找到的所有基址及各种功能实现方法 12345678910111213141516基址 0x00355E0C阳光 +868 +5578金钱 +950 +50花肥 +950 +220巧克力 +950 +250树肥 +950 +258树高 +950 +11C杀虫剂 +950 +224卡槽数 +868 +15C +24卡槽栏 +868 +15C +5C 此后每个植物栏相隔0x">
+<meta property="og:type" content="article">
+<meta property="og:title" content="植物大战僵尸修改器制作">
+<meta property="og:url" content="http://example.com/2022/11/18/%E6%A4%8D%E7%89%A9%E5%A4%A7%E6%88%98%E5%83%B5%E5%B0%B8%E4%BF%AE%E6%94%B9%E5%99%A8%E5%88%B6%E4%BD%9C/index.html">
+<meta property="og:site_name" content="frozenfish&#39;blog">
+<meta property="og:description" content="基址偏移表部分参考: 公布我所找到的所有基址及各种功能实现方法 12345678910111213141516基址 0x00355E0C阳光 +868 +5578金钱 +950 +50花肥 +950 +220巧克力 +950 +250树肥 +950 +258树高 +950 +11C杀虫剂 +950 +224卡槽数 +868 +15C +24卡槽栏 +868 +15C +5C 此后每个植物栏相隔0x">
+<meta property="og:locale">
+<meta property="article:published_time" content="2022-11-17T16:01:03.000Z">
+<meta property="article:modified_time" content="2023-12-02T12:31:03.882Z">
+<meta property="article:author" content="frozenfish">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Gemini',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://example.com/2022/11/18/植物大战僵尸修改器制作/"/>
+
+
+
+
+
+  <title>植物大战僵尸修改器制作 | frozenfish'blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">frozenfish'blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tool">
+          <a href="/tool/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-toolbox"></i> <br />
+            
+            menu.tool
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-bug">
+          <a href="/bug/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            menu.bug
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/11/18/%E6%A4%8D%E7%89%A9%E5%A4%A7%E6%88%98%E5%83%B5%E5%B0%B8%E4%BF%AE%E6%94%B9%E5%99%A8%E5%88%B6%E4%BD%9C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="frozenfish'blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">植物大战僵尸修改器制作</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2022-11-18T00:01:03+08:00">
+                2022-11-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>基址偏移表<br>部分参考: 公布我所找到的所有基址及各种功能实现方法</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">基址 0x00355E0C</span><br><span class="line">阳光 +868 +5578</span><br><span class="line">金钱 +950 +50</span><br><span class="line">花肥 +950 +220</span><br><span class="line">巧克力 +950 +250</span><br><span class="line">树肥 +950 +258</span><br><span class="line">树高 +950 +11C</span><br><span class="line">杀虫剂 +950 +224</span><br><span class="line">卡槽数 +868 +15C +24</span><br><span class="line">卡槽栏 +868 +15C +5C 此后每个植物栏相隔0x50</span><br><span class="line">植物当前冷却值 +868 +15C +4C 此后每个植物冷却相隔0x50</span><br><span class="line">植物冷却值上限 +868 +15C +50 此后每个植物冷却上限相隔0x50</span><br><span class="line">植物当前数量 +868 +D4</span><br><span class="line">植物种植函数EBP +868</span><br><span class="line">僵尸当前数量 +868 +B8</span><br><span class="line">僵尸种植函数EBP +868 +178</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+
+<p>常规项目<br>根据变量的变化使用CE寻找,找到之后再通过指针扫描寻找可用的基址</p>
+<p>阳光 内存实际值&#x3D;游戏显示值</p>
+<p>智慧树高度 内存实际值&#x3D;游戏显示值</p>
+<p>金钱 内存实际值&#x3D;游戏显示值&#x2F;10</p>
+<p>花肥,杀虫剂,巧克力,树肥  内存实际值&#x3D;游戏显示值+1000</p>
+<p>关键函数和变量</p>
+<p> 复制代码 隐藏代码<br>enum Type {<br>    Sunlight, Money, TreeHeight, Chocolate, TreeFood, FlowerFood, Insecticide<br>};</p>
+<p>&#x2F;&#x2F;定义映射表用于保存各项偏移值<br>unsigned int offsetTable[10] &#x3D; { 0x5578,0x50,0x11c,0x250,0x258,0x220,0x224 };</p>
+<p>&#x2F;&#x2F;获取某些项目的值<br>unsigned int getSomething(HANDLE handle, DWORD BaseAddr,unsigned int type) {<br>    unsigned int num &#x3D; 0;<br>    DWORD addr &#x3D; BaseAddr + 0x00355E0C;<br>    ReadProcessMemory(handle, addr, &amp;addr, sizeof(DWORD), NULL);<br>    if (type &#x3D;&#x3D; Sunlight)<br>        addr +&#x3D; 0x868;<br>    else<br>        addr +&#x3D; 0x950;<br>    ReadProcessMemory(handle, (LPVOID)addr, &amp;addr, sizeof(DWORD), NULL);<br>    addr +&#x3D; offsetTable[type];<br>    ReadProcessMemory(handle, (LPVOID)addr, &amp;num, sizeof(DWORD), 0);<br>    return num;<br>}</p>
+<p>&#x2F;&#x2F;设置某些项目的值<br>void setSomething(HANDLE handle, DWORD BaseAddr,unsigned int type, unsigned int num) {<br>    DWORD addr &#x3D; BaseAddr + 0x00355E0C;<br>    ReadProcessMemory(handle, addr, &amp;addr, sizeof(DWORD), NULL);<br>    if (type &#x3D;&#x3D; Sunlight)<br>        addr +&#x3D; 0x868;<br>    else<br>        addr +&#x3D; 0x950;<br>    ReadProcessMemory(handle, (LPVOID)addr, &amp;addr, sizeof(DWORD), NULL);<br>    addr +&#x3D; offsetTable[type];<br>    WriteProcessMemory(handle, (LPVOID)addr, &amp;num, sizeof(DWORD), 0);<br>}<br>卡槽植物<br>十个卡槽,每个卡槽对应一个植物,可以在坚果保龄球2中根据卡槽1(最左边的卡槽)的坚果变化来找到卡槽的地址,之后再寻找基址</p>
+<p>具体方法: 初值未知,如果卡槽1的植物和新的卡槽1(原卡槽2)的植物相同,则扫不变的值,否则扫变化的值</p>
+<p>卡槽之间的偏移可以通过浏览卡槽1内存区域看出,为0x50</p>
+<p>坚果植物卡槽编号:</p>
+<p>普通坚果 3</p>
+<p>爆炸坚果 49</p>
+<p>巨型坚果 50</p>
+<p>设置卡槽植物函数</p>
+<p> 复制代码 隐藏代码<br>&#x2F;&#x2F;设置卡槽植物<br>BOOL SetPlantCard(HANDLE hProcess,DWORD BaseAddr,DWORD nCard,DWORD plantType) {<br>    DWORD cardAddr &#x3D; BaseAddr + 0x355E0C;<br>    ReadProcessMemory(hProcess, cardAddr, &amp;cardAddr, sizeof(DWORD), NULL);<br>    cardAddr +&#x3D; 0x868;<br>    ReadProcessMemory(hProcess, cardAddr, &amp;cardAddr, sizeof(DWORD), NULL);<br>    cardAddr +&#x3D; 0x15C;<br>    ReadProcessMemory(hProcess, cardAddr, &amp;cardAddr, sizeof(DWORD), NULL);<br>    cardAddr +&#x3D; 0x5C+nCard*0x50;&#x2F;&#x2F;卡槽偏移<br>    return WriteProcessMemory(hProcess, cardAddr, &amp;plantType, sizeof(DWORD), NULL);<br>}<br>种植无冷却<br>具体方法: 仅针对一个卡槽,初始值未知,种植后持续变化,冷却完毕后不变,反复扫描并查找基址,查看对应内存区域再对照植物编号可以发现卡槽间的偏移为0x50</p>
+<p>冷却特点: 可种植状态冷却值为0,种植后冷却值持续增长,到达冷却上限后,冷却值清零,植物重新可种植</p>
+<p>注意: 直接将冷却值置0会导致无法种植</p>
+<p>修改方法:</p>
+<p>修改冷却结束后恢复的速度,将inc指令修改为mov一个较大值 这个<br>直接跳转到冷却值和冷却上限比较成功的函数<br>以方法2为例</p>
+<p>7E 16 对应汇编指令为  jle   0x18</p>
+<p>修改为jmp $+2 即  eb 00  (相对当前指令2字节后的指令)</p>
+<p>直接执行冷却值达到冷却上限后的函数(冷却值清零,植物冷却完毕可种植)</p>
+<p>附上汇编代码转换网站</p>
+<p>关键代码</p>
+<p> 复制代码 隐藏代码<br>&#x2F;&#x2F;修改进程代码区代码 参数: 进程句柄 修改代码起始地址 硬编码指针 代码字节数<br>BOOL WriteProcessCodeMemory(HANDLE hProcess, LPVOID lpStartAddress, LPCVOID lpBuffer, SIZE_T nSize) {<br>    DWORD dwOldProtect;<br>    &#x2F;&#x2F;取消页保护<br>    if (!VirtualProtectEx(hProcess, lpStartAddress, nSize, PAGE_EXECUTE_READWRITE, &amp;dwOldProtect)) {<br>        return FALSE;<br>    }<br>    BOOL bResult &#x3D; WriteProcessMemory(hProcess, lpStartAddress, lpBuffer, nSize, NULL);&#x2F;&#x2F;写入代码<br>    VirtualProtectEx(hProcess, lpStartAddress, nSize, dwOldProtect, &amp;dwOldProtect);&#x2F;&#x2F;开启页保护<br>    return bResult;<br>}</p>
+<p>&#x2F;&#x2F;无限冷却<br>BOOL Uncooled(HANDLE hProcess, DWORD BaseAddr) {<br>    unsigned char code[2] &#x3D; { 0xeb,0x00 };<br>    return WriteProcessCodeMemory(hProcess, BaseAddr + 0x9ce02, code, 2);&#x2F;&#x2F;jle 0x18修改为jmp $+2<br>}</p>
+<p>&#x2F;&#x2F;恢复冷却<br>BOOL RecoveryCooling(HANDLE hProcess, DWORD BaseAddr) {<br>    unsigned char OriginalCode[2] &#x3D; { 0x7E ,0x16 };&#x2F;&#x2F;jmp $+2恢复为jle 0x18<br>    return WriteProcessCodeMemory(hProcess, BaseAddr + 0x9ce02, OriginalCode, 2);<br>}<br>无限阳光<br>前文已经给出了阳光的地址 基址为0x355E0C 偏移+868 +5578</p>
+<p>查找对阳光修改的代码即可</p>
+<p>阳光减少代码</p>
+<p>阳光增加代码</p>
+<p>基本过程:</p>
+<p>设置阳光值为9999</p>
+<p>修改阳光减少代码使得种植物不消耗阳光</p>
+<p>修改阳光增加代码使得阳光不变化(防止阳光过多导致溢出)</p>
+<p> 复制代码 隐藏代码<br>&#x2F;&#x2F;修改进程代码区代码 参数: 进程句柄 修改代码起始地址 硬编码指针 代码字节数<br>BOOL WriteProcessCodeMemory(HANDLE hProcess, LPVOID lpStartAddress, LPCVOID lpBuffer, SIZE_T nSize) {<br>    DWORD dwOldProtect;<br>    &#x2F;&#x2F;取消页保护<br>    if (!VirtualProtectEx(hProcess, lpStartAddress, nSize, PAGE_EXECUTE_READWRITE, &amp;dwOldProtect)) {<br>        return FALSE;<br>    }<br>    BOOL bResult &#x3D; WriteProcessMemory(hProcess, lpStartAddress, lpBuffer, nSize, NULL);&#x2F;&#x2F;写入代码<br>    VirtualProtectEx(hProcess, lpStartAddress, nSize, dwOldProtect, &amp;dwOldProtect);&#x2F;&#x2F;开启页保护<br>    return bResult;<br>}<br>&#x2F;&#x2F;无限阳光,锁定阳光为9999<br>BOOL UnlimitedSun(HANDLE hProcess, DWORD BaseAddr) {<br>    unsigned char Code[3] &#x3D; { 0x29,0xdb,0 };&#x2F;&#x2F;cmp ebx,eax 修改为sub ebx,ebx   and ecx,0x32修改为and ecx,0<br>    BOOL flag;<br>    flag &#x3D; setSomething(hProcess, BaseAddr, Sunlight, 9999);&#x2F;&#x2F;修改阳光<br>    flag &amp;&#x3D; WriteProcessCodeMemory(hProcess, BaseAddr + 0x27690, Code, 2);&#x2F;&#x2F;修改阳光减少代码<br>    flag &amp;&#x3D; WriteProcessCodeMemory(hProcess, BaseAddr + 0x3C0AB, &amp;Code[2], 1);&#x2F;&#x2F;修改阳光增加代码<br>    return flag;<br>}</p>
+<p>&#x2F;&#x2F;恢复阳光消耗<br>BOOL RecoverySunConsume(HANDLE hProcess, DWORD BaseAddr) {<br>    unsigned char OriginalCode[3] &#x3D; { 0x3B,0xD8,0x32 };&#x2F;&#x2F;sub ebx,ebx恢复为cmp ebx,eax and ecx,0恢复为and ecx,0x32<br>    BOOL flag &#x3D; WriteProcessCodeMemory(hProcess, BaseAddr + 0x27690, OriginalCode, 2);&#x2F;&#x2F;恢复阳光减少代码<br>    flag &amp;&#x3D; WriteProcessCodeMemory(hProcess, BaseAddr + 0x3C0AB, &amp;OriginalCode[2], 1);&#x2F;&#x2F;恢复阳光增加代码<br>    return flag;<br>}<br>浓雾透视<br>基本原理<br>具体方法: 在生存模式浓雾进行,初值未知,通过在雾区种植和铲除路灯花引起的变化来判断,最终可以发现是4字节数据,数值代表雾的浓度,255代表浓雾,0代表没雾,再查找修改雾值的代码</p>
+<p>寻找浓雾地址</p>
+<p>浓雾修改代码</p>
+<p>mov [ecx],edx这行代码修改了雾值,可以改为mov [ecx],0</p>
+<p>注意硬编码为0xc7,0x01,0x00,0x00,0x00,0x00 由于较长无法直接修改代码,所以这里选择使用hook技术</p>
+<p>HOOK<br>hook的基本过程</p>
+<p>读取并保存目的地址原始代码<br>申请空间(PVZ游戏进程空间)用于存储原始代码 hook代码 jmp返回代码<br>向申请的空间中写入原始代码 hook代码 jmp返回代码<br>修改目的地址的代码为jmp HookCode<br>返回HookCode首地址 用于解除hook<br>值得一提的是jmp指令后跟的偏移值是以jmp的下一条指令首地址计算</p>
+<p>jmp指令偏移值&#x3D;目的地址-(jmp指令首地址+5)  这里的5是jmp指令本身的长度 +5便是下一条指令</p>
+<p>offset&#x3D;desAddr-(jmpAddr+5)</p>
+<p> 复制代码 隐藏代码<br>&#x2F;&#x2F;修改进程代码区代码 参数: 进程句柄 修改代码起始地址 硬编码指针 代码字节数<br>BOOL WriteProcessCodeMemory(HANDLE hProcess, LPVOID lpStartAddress, LPCVOID lpBuffer, SIZE_T nSize) {<br>    DWORD dwOldProtect;<br>    &#x2F;&#x2F;取消页保护<br>    if (!VirtualProtectEx(hProcess, lpStartAddress, nSize, PAGE_EXECUTE_READWRITE, &amp;dwOldProtect)) {<br>        return FALSE;<br>    }<br>    BOOL bResult &#x3D; WriteProcessMemory(hProcess, lpStartAddress, lpBuffer, nSize, NULL);&#x2F;&#x2F;写入代码<br>    VirtualProtectEx(hProcess, lpStartAddress, nSize, dwOldProtect, &amp;dwOldProtect);&#x2F;&#x2F;开启页保护<br>    return bResult;<br>}</p>
+<p>&#x2F;&#x2F;hook指定地址,申请新空间保存原始代码并写入hookcode,返回申请空间的地址<br>LPVOID SetHook(HANDLE hProcess, LPVOID desAddr, LPCVOID hookCode, SIZE_T hookCodeSize, SIZE_T origCodeSize) {<br>    BYTE origCode[10] &#x3D; { 0 }, jmpCode[5] &#x3D; { 0xE9,0,0,0,0 };<br>    &#x2F;&#x2F;1. 读取并保存原始代码<br>    if (!ReadProcessMemory(hProcess, desAddr, origCode, origCodeSize, NULL))<br>        return NULL;</p>
+<pre><code>//2. 申请空间用于存储原始代码,hook代码,jmp返回代码
+LPVOID allocAddr = VirtualAllocEx(hProcess, NULL, hookCodeSize + origCodeSize + 5, MEM_COMMIT | MEM_RESERVE, PAGE_EXECUTE_READWRITE);
+if (!allocAddr)
+    return NULL;
+
+//3. 向申请空间写入原始代码,hook代码,jmp返回代码  jmp xxx 偏移为目的地址-jmp下一条指令地址
+*(DWORD*)(jmpCode + 1) = (DWORD)desAddr + 5 - ((DWORD)allocAddr + hookCodeSize + origCodeSize + 5);//hook返回地址的偏移
+if (!WriteProcessCodeMemory(hProcess, allocAddr, origCode, origCodeSize)                      //写入原始代码
+    || !WriteProcessCodeMemory(hProcess, (DWORD)allocAddr + origCodeSize, hookCode, hookCodeSize)//写入hook代码
+    || !WriteProcessCodeMemory(hProcess, (DWORD)allocAddr + origCodeSize + hookCodeSize, jmpCode, 5))//写入jmpcode
+&#123;
+    VirtualFreeEx(hProcess, allocAddr, 0, MEM_RELEASE);//写入失败则释放空间
+    return NULL;
+&#125;
+
+//4. 修改目的地址处的代码  jmp xxx偏移 原始代码后才是需要执行的hook代码
+*(DWORD*)(jmpCode + 1) = ((DWORD)allocAddr + origCodeSize) - ((DWORD)desAddr + 5);
+WriteProcessCodeMemory(hProcess, desAddr, jmpCode, 5);//在源地址处写入跳转代码
+if (origCodeSize &gt; 5)//原始代码长度大于5时nop多余字节
+&#123;
+    BYTE nopCode[5] = &#123; 0x90,0x90,0x90,0x90,0x90 &#125;;
+    if (!WriteProcessCodeMemory(hProcess, (DWORD)desAddr + 5, nopCode, origCodeSize - 5))
+    &#123;
+        VirtualFreeEx(hProcess, allocAddr, 0, MEM_RELEASE);//写入nopcode失败则释放空间并返回
+        return NULL;
+    &#125;
+&#125;
+
+//5. hook成功则返回hookCode所在地址
+return allocAddr;
+</code></pre>
+<p>}</p>
+<p>&#x2F;&#x2F;取消hook指定地址,写回原始代码并释放申请空间<br>BOOL UnHook(HANDLE hProcess, LPVOID desAddr, SIZE_T origCodeSize, LPVOID allocAddr) {<br>    BYTE origCode[10] &#x3D; { 0 };<br>    &#x2F;&#x2F;1. 从申请空间中读出原始代码<br>    if (!ReadProcessMemory(hProcess, allocAddr, origCode, origCodeSize, NULL))<br>        return FALSE;<br>    &#x2F;&#x2F;2. 将原始代码写回目的地址<br>    if (!WriteProcessCodeMemory(hProcess, desAddr, origCode, origCodeSize))<br>        return FALSE;<br>    &#x2F;&#x2F;3. 释放申请空间<br>    if (!VirtualFreeEx(hProcess, allocAddr, 0, MEM_RELEASE))<br>        return FALSE;<br>    return TRUE;<br>}<br>除雾代码<br> 复制代码 隐藏代码<br>&#x2F;&#x2F;除雾 注意保留hook代码首地址<br>LPVOID DeFogByHook(HANDLE hProcess, LPVOID BaseAddr) {</p>
+<pre><code>unsigned char hookCode[9] = &#123;
+    0xc7,0x01,0x00,0x00,0x00,0x00,  //mov [ecx],0
+    0x83,0xc1,0x04                  //add ecx,0x4
+&#125;;
+//写入hook代码进行hook
+return SetHook(hProcess, (DWORD)BaseAddr + 0x26173, hookCode, sizeof(hookCode), 5);
+</code></pre>
+<p>}</p>
+<p>&#x2F;&#x2F;恢复雾<br>BOOL RecoveryFogByUnHook(HANDLE hProcess, LPVOID BaseAddr, LPVOID allocAddr) {<br>    return UnHook(hProcess, (DWORD)BaseAddr + 0x26173, 5, allocAddr);<br>}<br>hook前 指令为mov [ecx],edx add ecx,04</p>
+<p>hook后 指令被修改为jmp</p>
+<p>hookcode 新分配空间前5个字节正是原始代码 之后是hook代码和jmp返回代码</p>
+<p>种植植物<br>基本原理<br>程序是执行种植植物的函数后再执行增加植物数量的功能</p>
+<p>首先查找草坪上的植物数量,初值0,随着种植个数增加 基址0x355E0C 偏移+868 +D4</p>
+<p>再查找是什么修改了植物数量,下断点之后再种植一个植物</p>
+<p>断下后查看调用堆栈中的返回地址,即可找到种植函数</p>
+<p>![9.1 找到种植call函数](9.1 找到种植call函数.png)</p>
+<p>这个功能最初使用远程线程注入dll来实现,注入dll虽然比较简单但是却并不通用,在此仅做介绍,比较推荐使用远程代码注入的方式实现</p>
+<p>远程线程注入dll函数<br>远程线程是当前进程在目标进程中创建一个线程并执行特定代码(这段代码必须在目标进程中而不是当前进程中)</p>
+<p>注入dll是因为dll在被进程或线程加载时执行dll的DllMain函数,通过这一特点我们可以实现一些特殊功能</p>
+<p>优点: 便于实现</p>
+<p>缺点: dll注入容易被检测到</p>
+<p>基本过程:</p>
+<p>打开进程获取进程句柄<br>在目标进程中申请空间用于存储dll路径名<br>将dll路径名写入申请的空间中<br>创建远程线程,执行LoadLibrary函数(加载dll)<br>目标进程加载dll后自动执行dll的DllMain函数<br> 复制代码 隐藏代码<br>&#x2F;&#x2F;创建远程线程方式向指定进程注入dll<br>BOOL InjectDllByRemoteThread(DWORD desProcId,WCHAR* dllPath) {<br>    &#x2F;&#x2F;打开进程获取进程句柄<br>    HANDLE hProcess &#x3D; OpenProcess(PROCESS_ALL_ACCESS, FALSE, desProcId);<br>    if (!hProcess)<br>        return FALSE;</p>
+<pre><code>//申请空间
+DWORD pathSize = (wcslen(dllPath) + 1) * 2; 
+LPVOID newMemAddr = VirtualAllocEx(hProcess, 0, pathSize, MEM_COMMIT, PAGE_READWRITE);
+if (!newMemAddr)
+    return FALSE;
+
+//写入dll路径
+if (!WriteProcessMemory(hProcess, newMemAddr, dllPath, pathSize, NULL))
+&#123;
+    VirtualFreeEx(hProcess, newMemAddr, 0, MEM_RELEASE);
+    return FALSE;
+&#125;
+
+//创建远程线程
+HANDLE hThread = CreateRemoteThread(hProcess, NULL, 0, (LPTHREAD_START_ROUTINE)LoadLibraryW, newMemAddr, 0, NULL);
+if (!hThread)
+&#123;
+    VirtualFreeEx(hProcess, newMemAddr, 0, MEM_RELEASE);
+    return FALSE;
+&#125;
+
+WaitForSingleObject(hThread, INFINITE);//等待线程信号,保证成功注入
+
+//回收资源
+VirtualFreeEx(hProcess, newMemAddr, 0, MEM_RELEASE);
+CloseHandle(hThread);
+CloseHandle(hProcess);
+
+//返回成功
+return TRUE;
+</code></pre>
+<p>}<br>远程线程卸载dll函数<br>很多教程只给出了如何注入dll,没有演示如何卸载</p>
+<p>如果只注入不卸载会导致下次再注入时不会执行特定函数(由于dll已经被加载过) 不方便实时调试更新dll等问题</p>
+<p>基本过程:</p>
+<p>在目标进程申请内存,将需要卸载的dll模块名称写入该内存<br>通过枚举模块来查找指定模块<br>成功查找到dll模块则创建远程线程执行FreeLibrary函数卸载dll<br> 复制代码 隐藏代码<br>BOOL UnLoadDllByRemoteThread(DWORD dwProcessId, LPCWSTR lpDllName)<br>{<br>    HANDLE hProcess &#x3D; OpenProcess(PROCESS_ALL_ACCESS, FALSE, dwProcessId);<br>    if (hProcess &#x3D;&#x3D; NULL)<br>        return FALSE;</p>
+<pre><code>// 在目标进程中申请一块内存，并将需要卸载的DLL模块的名称写入该内存
+LPVOID lpRemoteDllName = VirtualAllocEx(hProcess, NULL, (wcslen(lpDllName) + 1) * sizeof(WCHAR), MEM_COMMIT | MEM_RESERVE, PAGE_READWRITE);
+if (lpRemoteDllName == NULL)
+&#123;
+    CloseHandle(hProcess);
+    return FALSE;
+&#125;
+if (!WriteProcessMemory(hProcess, lpRemoteDllName, lpDllName, (wcslen(lpDllName) + 1) * sizeof(WCHAR), NULL))
+&#123;
+    VirtualFreeEx(hProcess, lpRemoteDllName, 0, MEM_RELEASE);
+    CloseHandle(hProcess);
+    return FALSE;
+&#125;
+
+//查找dll模块
+HMODULE hModules[1024],DesModule=NULL;
+DWORD dwSize = 0;
+if (!EnumProcessModules(hProcess, hModules, sizeof(hModules), &amp;dwSize))
+&#123;
+    VirtualFreeEx(hProcess, lpRemoteDllName, 0, MEM_RELEASE);
+    CloseHandle(hProcess);
+    return FALSE;
+&#125;
+
+// 遍历模块列表，查找需要卸载的DLL模块
+for (DWORD i = 0; i &lt; (dwSize / sizeof(HMODULE)); i++)
+&#123;
+    WCHAR szModuleName[MAX_PATH] = &#123; 0 &#125;;
+    if (GetModuleFileNameExW(hProcess, hModules[i], szModuleName, MAX_PATH) &gt; 0)
+    &#123;
+        // 获取模块句柄
+        if (wcsicmp(szModuleName, lpDllName) == 0)
+        &#123;
+            DesModule = hModules[i];
+        &#125;
+    &#125;
+&#125;
+//没有查找到模块
+if (!DesModule) &#123;
+    VirtualFreeEx(hProcess, lpRemoteDllName, 0, MEM_RELEASE);
+    CloseHandle(hProcess);
+    return FALSE;
+&#125;
+// 在目标进程中创建远程线程，执行FreeLibrary函数
+HANDLE hThread = CreateRemoteThread(hProcess, NULL, 0, (LPTHREAD_START_ROUTINE)FreeLibrary, DesModule, 0, NULL);
+if (hThread == NULL)
+&#123;
+    VirtualFreeEx(hProcess, lpRemoteDllName, 0, MEM_RELEASE);
+    CloseHandle(hProcess);
+    return FALSE;
+&#125;
+
+// 等待线程执行完成
+WaitForSingleObject(hThread, INFINITE);
+
+// 关闭句柄
+CloseHandle(hThread);
+VirtualFreeEx(hProcess, lpRemoteDllName, 0, MEM_RELEASE);
+CloseHandle(hProcess);
+
+return TRUE;
+</code></pre>
+<p>}<br>关键dll函数<br>这里使用了三种方法</p>
+<p>注意: 不要将代码写入switch(reason)之外,否则可能会导致多次执行</p>
+<p> 复制代码 隐藏代码<br>#include&lt;windows.h&gt;<br>#include&lt;stdio.h&gt;</p>
+<p>&#x2F;&#x2F;调用函数<br>BOOL GrowPlant(DWORD BaseAddr, DWORD x, DWORD y, DWORD TypePlant) {<br>    LPVOID PlantFunc &#x3D; BaseAddr + 0x18D70;<br>    __asm {<br>        pushad<br>        push -1         &#x2F;&#x2F;-1<br>        push TypePlant   &#x2F;&#x2F;植物类型<br>        mov eax, y       &#x2F;&#x2F;y<br>        push x           &#x2F;&#x2F;x<br>        mov ecx, BaseAddr<br>        mov ecx, [ecx+0x355E0C]<br>        mov ecx, [ecx + 0x868]<br>        push ecx                &#x2F;&#x2F;植物种植ebp<br>        call PlantFunc<br>        popad<br>    }<br>    return TRUE;<br>}</p>
+<p>BOOL WINAPI DllMain(HMODULE hInstance, DWORD fdwReason, LPVOID lpReserved) {<br>    DWORD BaseAddr &#x3D; GetModuleHandle(NULL);<br>    DWORD pid &#x3D; GetCurrentProcessId();<br>    HANDLE hProcess &#x3D; OpenProcess(PROCESS_ALL_ACCESS, FALSE, pid);<br>    LPVOID PlantFunc &#x3D; BaseAddr + 0x18D70;<br>    DWORD ebpAddr &#x3D; BaseAddr+0x355E0C,num&#x3D;0;<br>    ReadProcessMemory(hProcess, ebpAddr, &amp;ebpAddr, sizeof(DWORD), NULL);<br>    ebpAddr +&#x3D; 0x868;<br>    ReadProcessMemory(hProcess, ebpAddr, &amp;ebpAddr, sizeof(DWORD), NULL);&#x2F;&#x2F;必须使用带hProcess参数的才能正确读取到地址,NULL不可以<br>    DWORD x &#x3D; 1, y &#x3D; 1, TypePlant &#x3D; 16;</p>
+<pre><code>//注意不要写到switch外,否则可能会一次种多株植物,猜测是dll被多个线程加载导致的
+switch (fdwReason)
+&#123;
+case DLL_PROCESS_ATTACH:    //当进程加载dll模块时执行
+    //MessageBoxW(0, L&quot;ProcessAttach!&quot;, L&quot;window2&quot;, 0);
+    //1.直接通过使用ReadProcessMemory函数读取内存获取ebp参数
+    __asm &#123;
+        pushad
+        push - 1         //-1
+        push TypePlant   //植物类型
+        mov eax, y       //y
+        push x           //x
+        push  ebpAddr    //ebp
+        call PlantFunc   
+        popad
+    &#125;
+
+    //2.通过利用寄存器获取ebp(推荐)
+    x = 3, y = 2, TypePlant = 18;
+    __asm &#123;
+        pushad
+        push - 1         //-1
+        push TypePlant   //植物类型
+        mov eax, y       //y
+        push x           //x
+        mov ecx, BaseAddr
+        mov ecx, [ecx+0x355E0C]
+        mov ecx, [ecx + 0x868]
+        push ecx
+        call PlantFunc
+        popad
+    &#125;
+   //3. 通过调用函数(推荐)     
+    GrowPlant(BaseAddr,7,3,23);         
+
+    break;
+//case DLL_THREAD_ATTACH:        
+//    printf(&quot;ThreadAttach!\n&quot;);
+//    break;
+//case DLL_THREAD_DETACH:       
+//  if (lpReserved == NULL)
+//    &#123;
+//        FreeLibrary(hInstance);
+//    &#125;
+    break;
+case DLL_PROCESS_DETACH:        //当进程卸载dll模块时执行
+    MessageBoxW(0, L&quot;ProcessDeTachDll!&quot;, L&quot;window2&quot;, 0);
+    break;
+&#125;
+return TRUE; 
+</code></pre>
+<p>}<br>执行结果</p>
+<p>失败代码<br>这是写dll函数时遇到的问题 如果直接用 mov ecx,[BaseAddr+0x355E0C]会导致代码执行失败,推测是这条指令访存过慢所以无效</p>
+<p>建议mov ecx,BaseAddr之后通过对寄存器操作达到目的</p>
+<p> 复制代码 隐藏代码<br>__asm {<br>        pushad<br>        push - 1         &#x2F;&#x2F;-1<br>        push TypePlant   &#x2F;&#x2F;植物类型<br>        mov eax, y       &#x2F;&#x2F;y<br>        push x           &#x2F;&#x2F;x<br>        mov ecx,[BaseAddr+ 0x355E0C]&#x2F;&#x2F;这样不行,推测是访存过慢<br>        mov ecx,[ecx+0x868]<br>        mov num, ecx<br>        push ecx<br>        call PlantFunc<br>        popad<br>    }<br>远程线程代码注入(推荐)<br>和远程线程dll注入类似,CreateRemoteThread函数要求的函数原型是</p>
+<p> 复制代码 隐藏代码<br>DWORD WINAPI ThreadProc(<br>  <em>In</em> LPVOID lpParameter&#x2F;&#x2F;使用CreateThread函数传递的参数 该参数是一个指向其他数据的指针,当然也可以强转为其他类型直接使用<br>);<br>基本过程:</p>
+<p>打开进程<br>定义注入代码(函数)<br>在目标进程中申请空间并写入注入代码<br>创建远程线程执行注入代码(函数)<br>执行完毕释放空间<br> 复制代码 隐藏代码<br>&#x2F;&#x2F;以创建远程线程方式种植植物<br>BOOL GrowPlantByInjectCode(DWORD dwProcessId,DWORD BaseAddr,DWORD x,DWORD y,DWORD PlantType)<br>{<br>    BOOL bSuccess &#x3D; FALSE;<br>    &#x2F;&#x2F;1. 打开进程<br>    HANDLE hProcess &#x3D; OpenProcess(PROCESS_ALL_ACCESS, FALSE, dwProcessId);<br>    if (hProcess !&#x3D; NULL)<br>    {<br>        &#x2F;&#x2F;2. 定义注入代码(函数)</p>
+<pre><code>    BYTE InjectCode[50] = &#123;                     //汇编指令              //修正点偏移
+        0x55,                                   //0 push ebp
+        0x89, 0xE5,                             //1 mov ebp,esp
+        0x60,                                   //3 pushad                
+        0x68, 0xFF, 0xFF, 0xFF, 0xFF,           //4 push -1           
+        0x68, 0x00, 0x00, 0x00, 0x00,           //9 push PlantType        //10     
+        0xB8, 0x00, 0x00, 0x00, 0x00,           //14 mov eax,y             //15
+        0x68, 0x00, 0x00, 0x00, 0x00,           //19 push x                //20
+        0xB9, 0x00, 0x00, 0x00, 0x00,           //24 mov ecx,BaseAddr      //25
+        0x8B, 0x89, 0x0C, 0x5E, 0x35, 0x00,     //29 mov ecx,[ecx+0x355E0C]
+        0x8B, 0x89, 0x68, 0x08, 0x00, 0x00,     //35 mov ecx,[ecx+0x868]
+        0x51,                                   //41 push ecx
+        0xE8, 0x00, 0x00, 0x00, 0x00,           //42 call PlantFunc        //43     //被调方平栈
+        0x61,                                   //47 popad
+        0xC9,                                   //48 leave
+        0xC3                                    //49 ret
+    &#125;;
+
+    //3. 申请空间用于存储代码
+    DWORD  dwCodeSize = 50, desFunc = BaseAddr + 0x18D70;
+    LPVOID lpRemoteCodeMem = VirtualAllocEx(hProcess, NULL, dwCodeSize, MEM_COMMIT | MEM_RESERVE, PAGE_EXECUTE_READWRITE);
+
+    //4. 修正参数
+    *(DWORD*)&amp;InjectCode[10] = PlantType;
+    *(DWORD*)&amp;InjectCode[15] = y;
+    *(DWORD*)&amp;InjectCode[20] = x;
+    *(DWORD*)&amp;InjectCode[25] = BaseAddr;
+    *(DWORD*)&amp;InjectCode[43] = desFunc-((DWORD)lpRemoteCodeMem+42+5) ;
+    //call指令与jmp类似,相对于当前指令的下一条指令计算偏移,offset=des-(source+5),减去call自身长度5
+
+    if (lpRemoteCodeMem != NULL)
+    &#123;
+        SIZE_T dwBytesWritten = 0;
+        //5. 注入代码
+        if (WriteProcessMemory(hProcess, lpRemoteCodeMem, InjectCode, dwCodeSize, &amp;dwBytesWritten) &amp;&amp;
+            dwBytesWritten == dwCodeSize)
+        &#123;
+            //6. 创建远程线程执行代码
+            HANDLE hThread = CreateRemoteThread(hProcess, NULL, 0, (LPTHREAD_START_ROUTINE)lpRemoteCodeMem,NULL, 0, NULL);
+            if (hThread != NULL)
+            &#123;
+                //7. 等待线程信号
+                WaitForSingleObject(hThread, INFINITE);
+                CloseHandle(hThread);
+                bSuccess = TRUE;
+            &#125;
+        &#125;
+        //8. 执行完后释放空间
+        VirtualFreeEx(hProcess, lpRemoteCodeMem, 0, MEM_RELEASE);
+    &#125;
+    CloseHandle(hProcess);
+&#125;
+
+return bSuccess;
+</code></pre>
+<p>}<br>种植僵尸<br>基本原理<br>与种植植物思路类似</p>
+<p>首先在头脑风暴中通过种植僵尸来找到僵尸数量地址</p>
+<p>然后找到僵尸数量增加代码</p>
+<p>再通过查看调用堆栈和参数找到种植僵尸call</p>
+<p>参数应该也是x y type ebp (注意没有-1)</p>
+<p>僵尸种植函数的x值在一个call上方,这个call是个switch结构,没有参数,所以x值也没被修改</p>
+<p>种植僵尸函数–dll注入版<br> 复制代码 隐藏代码<br>BOOL GrowZombie(DWORD BaseAddr, DWORD x, DWORD y, DWORD ZombieType) {<br>    LPVOID PlantZombieFunc &#x3D; BaseAddr + 0x35390;<br>    __asm {<br>        pushad<br>        push x<br>        push ZombieType<br>        mov eax,y<br>        mov ecx,BaseAddr<br>        mov ecx,[ecx+0x355E0C]<br>        mov ecx,[ecx+0x868]<br>        mov ecx,[ecx+0x178]    &#x2F;&#x2F;ebp<br>        call PlantZombieFunc<br>        popad<br>    }<br>    return TRUE;<br>}<br>远程代码注入版<br> 复制代码 隐藏代码<br>&#x2F;&#x2F;以创建远程线程方式种植僵尸<br>BOOL GrowZombieByRemoteThread(DWORD dwProcessId,DWORD BaseAddr, DWORD x, DWORD y, DWORD ZombieType) {</p>
+<pre><code>BOOL bSuccess = FALSE;
+//1. 打开进程
+HANDLE hProcess = OpenProcess(PROCESS_ALL_ACCESS, FALSE, dwProcessId);
+if (hProcess != NULL)
+&#123;
+    //2. 定义注入代码(函数)
+
+    BYTE InjectCode[50] = &#123;
+        0x55,                                       //0 push ebp
+        0x89, 0xE5,                                 //1 mov ebp,esp
+        0x60,                                       //3 pushad
+        0x68, 0x00, 0x00, 0x00, 0x00,               //4 push x
+        0x68, 0x00, 0x00, 0x00, 0x00,               //9 push ZombieType
+        0xB8, 0x00, 0x00, 0x00, 0x00,               //14 mov eax,y
+        0xB9, 0x00, 0x00, 0x00, 0x00,               //19 mov ecx,BaseAddr
+        0x8B, 0x89, 0x0C, 0x5E, 0x35, 0x00,         //24 mov ecx,[ecx+0x355E0C]
+        0x8B, 0x89, 0x68, 0x08, 0x00, 0x00,         //30 mov ecx,[ecx+0x868]
+        0x8B, 0x89, 0x78, 0x01, 0x00, 0x00,         //36 mov ecx,[ecx+0x178]
+        0xE8, 0x00, 0x00, 0x00, 0x00,               //42 call PlantZombieFunc
+        0x61,                                       //47 popad
+        0xC9,                                       //48 leave 
+        0xC3                                        //49 ret
+    &#125;;
+
+    //3. 申请空间用于存储代码
+    DWORD  dwCodeSize = 50, desFunc = BaseAddr + 0x35390; //种植僵尸函数
+    LPVOID lpRemoteCodeMem = VirtualAllocEx(hProcess, NULL, dwCodeSize, MEM_COMMIT | MEM_RESERVE, PAGE_EXECUTE_READWRITE);
+
+    //4. 修正参数
+    *(DWORD*)&amp;InjectCode[5] = x;
+    *(DWORD*)&amp;InjectCode[10] = ZombieType;
+    *(DWORD*)&amp;InjectCode[15] = y;
+    *(DWORD*)&amp;InjectCode[20] = BaseAddr;
+    *(DWORD*)&amp;InjectCode[43] = desFunc - ((DWORD)lpRemoteCodeMem + 42 + 5);//call指令与jmp类似,相对于当前指令的下一条指令计算偏移,要减去call长度5
+
+    if (lpRemoteCodeMem != NULL)
+    &#123;
+        SIZE_T dwBytesWritten = 0;
+        //5. 注入代码
+        if (WriteProcessMemory(hProcess, lpRemoteCodeMem, InjectCode, dwCodeSize, &amp;dwBytesWritten) &amp;&amp;
+            dwBytesWritten == dwCodeSize)
+        &#123;
+            //6. 创建远程线程执行代码
+            HANDLE hThread = CreateRemoteThread(hProcess, NULL, 0, (LPTHREAD_START_ROUTINE)lpRemoteCodeMem, NULL, 0, NULL);
+            if (hThread != NULL)
+            &#123;
+                //7. 等待线程信号
+                WaitForSingleObject(hThread, INFINITE);
+                CloseHandle(hThread);
+                bSuccess = TRUE;
+            &#125;
+        &#125;
+        //8. 执行完后释放空间
+        VirtualFreeEx(hProcess, lpRemoteCodeMem, 0, MEM_RELEASE);
+    &#125;
+    CloseHandle(hProcess);
+&#125;
+
+return bSuccess;
+</code></pre>
+<p>}<br>完整代码<br> 复制代码 隐藏代码<br>#include&lt;stdio.h&gt;<br>#include&lt;windows.h&gt;<br>#include &lt;tlhelp32.h&gt;<br>#include &lt;string.h&gt;<br>#include &lt;shlwapi.h&gt;<br>#include &lt;psapi.h&gt;</p>
+<p>enum Type {<br>    Sunlight, Money, TreeHeight, Chocolate, TreeFood, FlowerFood, Insecticide<br>};<br>unsigned int offsetTable[10] &#x3D; { 0x5578,0x50,0x11c,0x250,0x258,0x220,0x224 };</p>
+<p>&#x2F;&#x2F; 根据进程名获取进程ID<br>DWORD GetProcessIdByName(const wchar_t* processName) {</p>
+<pre><code>HANDLE snapshot = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0);// 创建一个进程快照
+if (snapshot == INVALID_HANDLE_VALUE) &#123;
+    return 0;// 如果创建失败，返回 0
+&#125;
+
+// 定义一个 PROCESSENTRY32 结构体，用于存储进程信息
+PROCESSENTRY32 processEntry = &#123; 0 &#125;;
+processEntry.dwSize = sizeof(PROCESSENTRY32);   //必须初始化,否则调用Process32First会失败
+if (!Process32First(snapshot, &amp;processEntry)) &#123;
+    CloseHandle(snapshot);
+    return 0;// 如果获取第一个进程信息失败，关闭进程快照句柄并返回 0
+&#125;
+
+// 遍历进程列表
+do &#123;
+    wchar_t currentProcessName[MAX_PATH];                           // 获取当前进程的名称
+    wcscpy_s(currentProcessName, MAX_PATH, processEntry.szExeFile); //szExeFile存储了进程对应可执行文件的名称
+    if (wcscmp(currentProcessName, processName) == 0) &#123;
+        CloseHandle(snapshot);                                  // 如果当前进程名称和指定的进程名称相同，返回进程 ID
+        return processEntry.th32ProcessID;
+    &#125;
+&#125; while (Process32Next(snapshot, &amp;processEntry));               //获取快照中下一个进程的信息
+
+// 如果遍历完整个进程列表都没有找到指定进程，关闭进程快照句柄并返回 0
+CloseHandle(snapshot);
+return 0;
+</code></pre>
+<p>}</p>
+<p>&#x2F;&#x2F;根据进程模块名获取基址<br>LPVOID GetModuleBaseAddress(DWORD processId, LPCWSTR moduleName) {<br>    LPVOID lpBaseAddress &#x3D; NULL;</p>
+<pre><code>HANDLE hProcess = OpenProcess(PROCESS_ALL_ACCESS, FALSE, processId); // 打开进程句柄
+if (hProcess != NULL) &#123;
+    // 枚举进程中的所有模块
+    HMODULE hMods[1024];
+    DWORD cbNeeded;
+    if (EnumProcessModules(hProcess, hMods, sizeof(hMods), &amp;cbNeeded)) &#123;
+        DWORD dwModuleCount = cbNeeded / sizeof(HMODULE);// 计算模块数量
+        // 获取指定模块的信息
+        for (DWORD i = 0; i &lt; dwModuleCount; i++) &#123;
+            TCHAR szModName[MAX_PATH];
+            //获取指定模块的完整路径名
+            if (GetModuleFileNameEx(hProcess, hMods[i], szModName, MAX_PATH)) &#123;//函数成功返回字符串长度,注意第四个参数的单位为字符而非字节
+                if (wcsstr(szModName, moduleName)) &#123;//查找模块名,若成功则返回子串第一次出现的指针
+                    MODULEINFO modInfo = &#123; 0 &#125;;
+                    if (GetModuleInformation(hProcess, hMods[i], &amp;modInfo, sizeof(MODULEINFO))) &#123;//获取模块信息并保存到modInfo中
+                        lpBaseAddress = modInfo.lpBaseOfDll;//模块基地址
+                        break;
+                    &#125;
+                &#125;
+            &#125;
+        &#125;
+    &#125;
+    CloseHandle(hProcess); // 关闭进程句柄
+&#125;
+
+return lpBaseAddress;
+</code></pre>
+<p>}</p>
+<p>&#x2F;&#x2F;修改进程代码区代码 参数: 进程句柄 修改代码起始地址 硬编码指针 代码字节数<br>BOOL WriteProcessCodeMemory(HANDLE hProcess, LPVOID lpStartAddress, LPCVOID lpBuffer, SIZE_T nSize) {<br>    DWORD dwOldProtect;<br>    &#x2F;&#x2F;取消页保护<br>    if (!VirtualProtectEx(hProcess, lpStartAddress, nSize, PAGE_EXECUTE_READWRITE, &amp;dwOldProtect)) {<br>        return FALSE;<br>    }<br>    BOOL bResult &#x3D; WriteProcessMemory(hProcess, lpStartAddress, lpBuffer, nSize, NULL);&#x2F;&#x2F;写入代码<br>    VirtualProtectEx(hProcess, lpStartAddress, nSize, dwOldProtect, &amp;dwOldProtect);&#x2F;&#x2F;开启页保护<br>    return bResult;<br>}</p>
+<p>&#x2F;&#x2F;hook指定地址,申请新空间保存原始代码并写入hookcode,返回申请空间的地址<br>LPVOID SetHook(HANDLE hProcess, LPVOID desAddr, LPCVOID hookCode, SIZE_T hookCodeSize, SIZE_T origCodeSize) {<br>    BYTE origCode[10] &#x3D; { 0 }, jmpCode[5] &#x3D; { 0xE9,0,0,0,0 };<br>    &#x2F;&#x2F;1. 读取并保存原始代码<br>    if (!ReadProcessMemory(hProcess, desAddr, origCode, origCodeSize, NULL))<br>        return NULL;</p>
+<pre><code>//2. 申请空间用于存储原始代码,hook代码,jmp返回代码
+LPVOID allocAddr = VirtualAllocEx(hProcess, NULL, hookCodeSize + origCodeSize + 5, MEM_COMMIT | MEM_RESERVE, PAGE_EXECUTE_READWRITE);
+if (!allocAddr)
+    return NULL;
+
+//3. 向申请空间写入原始代码,hook代码,jmp返回代码  jmp xxx 偏移为目的地址-jmp下一条指令地址
+*(DWORD*)(jmpCode + 1) = (DWORD)desAddr + 5 - ((DWORD)allocAddr + hookCodeSize + origCodeSize + 5);//hook返回地址的偏移
+if (!WriteProcessCodeMemory(hProcess, allocAddr, origCode, origCodeSize)                      //写入原始代码
+    || !WriteProcessCodeMemory(hProcess, (DWORD)allocAddr + origCodeSize, hookCode, hookCodeSize)//写入hook代码
+    || !WriteProcessCodeMemory(hProcess, (DWORD)allocAddr + origCodeSize + hookCodeSize, jmpCode, 5))//写入jmpcode
+&#123;
+    VirtualFreeEx(hProcess, allocAddr, 0, MEM_RELEASE);//写入失败则释放空间
+    return NULL;
+&#125;
+
+//4. 修改目的地址处的代码  jmp xxx偏移 原始代码后才是需要执行的hook代码
+*(DWORD*)(jmpCode + 1) = ((DWORD)allocAddr + origCodeSize) - ((DWORD)desAddr + 5);
+WriteProcessCodeMemory(hProcess, desAddr, jmpCode, 5);//在源地址处写入跳转代码
+if (origCodeSize &gt; 5)//原始代码长度大于5时nop多余字节
+&#123;
+    BYTE nopCode[5] = &#123; 0x90,0x90,0x90,0x90,0x90 &#125;;
+    if (!WriteProcessCodeMemory(hProcess, (DWORD)desAddr + 5, nopCode, origCodeSize - 5))
+    &#123;
+        VirtualFreeEx(hProcess, allocAddr, 0, MEM_RELEASE);//写入nopcode失败则释放空间并返回
+        return NULL;
+    &#125;
+&#125;
+
+//5. hook成功则返回hookCode所在地址
+return allocAddr;
+</code></pre>
+<p>}</p>
+<p>&#x2F;&#x2F;取消hook指定地址,写回原始代码并释放申请空间<br>BOOL UnHook(HANDLE hProcess, LPVOID desAddr, SIZE_T origCodeSize, LPVOID allocAddr) {<br>    BYTE origCode[10] &#x3D; { 0 };<br>    &#x2F;&#x2F;1. 从申请空间中读出原始代码<br>    if (!ReadProcessMemory(hProcess, allocAddr, origCode, origCodeSize, NULL))<br>        return FALSE;<br>    &#x2F;&#x2F;2. 将原始代码写回目的地址<br>    if (!WriteProcessCodeMemory(hProcess, desAddr, origCode, origCodeSize))<br>        return FALSE;<br>    &#x2F;&#x2F;3. 释放申请空间<br>    if (!VirtualFreeEx(hProcess, allocAddr, 0, MEM_RELEASE))<br>        return FALSE;<br>    return TRUE;<br>}</p>
+<p>&#x2F;&#x2F;获取某些项目的值<br>unsigned int getSomething(HANDLE handle, DWORD BaseAddr, unsigned int type) {<br>    unsigned int num &#x3D; 0;<br>    DWORD addr &#x3D; BaseAddr + 0x00355E0C;<br>    ReadProcessMemory(handle, (LPVOID)addr, &amp;addr, sizeof(DWORD), NULL);<br>    if (type &#x3D;&#x3D; Sunlight)<br>        addr +&#x3D; 0x868;<br>    else<br>        addr +&#x3D; 0x950;<br>    ReadProcessMemory(handle, (LPVOID)addr, &amp;addr, sizeof(DWORD), NULL);<br>    addr +&#x3D; offsetTable[type];<br>    ReadProcessMemory(handle, (LPVOID)addr, &amp;num, sizeof(DWORD), 0);<br>    return num;<br>}</p>
+<p>&#x2F;&#x2F;设置某些项目的值<br>BOOL setSomething(HANDLE handle, DWORD BaseAddr, unsigned int type, unsigned int num) {<br>    DWORD addr &#x3D; BaseAddr + 0x00355E0C;<br>    ReadProcessMemory(handle, addr, &amp;addr, sizeof(DWORD), NULL);<br>    if (type &#x3D;&#x3D; Sunlight)<br>        addr +&#x3D; 0x868;<br>    else<br>        addr +&#x3D; 0x950;<br>    ReadProcessMemory(handle, (LPVOID)addr, &amp;addr, sizeof(DWORD), NULL);<br>    addr +&#x3D; offsetTable[type];<br>    return WriteProcessMemory(handle, (LPVOID)addr, &amp;num, sizeof(DWORD), 0);<br>}</p>
+<p>&#x2F;&#x2F;无限冷却<br>BOOL Uncooled(HANDLE hProcess, DWORD BaseAddr) {<br>    unsigned char code[2] &#x3D; { 0xeb,0x00 };<br>    return WriteProcessCodeMemory(hProcess, BaseAddr + 0x9ce02, code, 2);&#x2F;&#x2F;jle 0x18修改为jmp $+2<br>}</p>
+<p>&#x2F;&#x2F;恢复冷却<br>BOOL RecoveryCooling(HANDLE hProcess, DWORD BaseAddr) {<br>    unsigned char OriginalCode[2] &#x3D; { 0x7E ,0x16 };&#x2F;&#x2F;jmp $+2修改为jle 0x18<br>    return WriteProcessCodeMemory(hProcess, BaseAddr + 0x9ce02, OriginalCode, 2);<br>}</p>
+<p>&#x2F;&#x2F;无限阳光,锁定阳光为9999<br>BOOL UnlimitedSun(HANDLE hProcess, DWORD BaseAddr) {<br>    unsigned char Code[3] &#x3D; { 0x29,0xdb,0 };&#x2F;&#x2F;cmp ebx,eax 修改为sub ebx,ebx   and ecx,0x32修改为and ecx,0<br>    BOOL flag;<br>    flag &#x3D; setSomething(hProcess, BaseAddr, Sunlight, 9999);&#x2F;&#x2F;修改阳光<br>    flag &amp;&#x3D; WriteProcessCodeMemory(hProcess, BaseAddr + 0x27690, Code, 2);&#x2F;&#x2F;修改阳光减少代码<br>    flag &amp;&#x3D; WriteProcessCodeMemory(hProcess, BaseAddr + 0x3C0AB, &amp;Code[2], 1);&#x2F;&#x2F;修改阳光增加代码<br>    return flag;<br>}</p>
+<p>&#x2F;&#x2F;恢复阳光消耗<br>BOOL RecoverySunConsume(HANDLE hProcess, DWORD BaseAddr) {<br>    unsigned char OriginalCode[3] &#x3D; { 0x3B,0xD8,0x32 };&#x2F;&#x2F;sub ebx,ebx恢复为cmp ebx,eax and ecx,0恢复为and ecx,0x32<br>    BOOL flag &#x3D; WriteProcessCodeMemory(hProcess, BaseAddr + 0x27690, OriginalCode, 2);&#x2F;&#x2F;恢复阳光减少代码<br>    flag &amp;&#x3D; WriteProcessCodeMemory(hProcess, BaseAddr + 0x3C0AB, &amp;OriginalCode[2], 1);&#x2F;&#x2F;恢复阳光增加代码<br>    return flag;<br>}</p>
+<p>&#x2F;&#x2F;除雾<br>LPVOID DeFogByHook(HANDLE hProcess, LPVOID BaseAddr) {</p>
+<pre><code>unsigned char hookCode[9] = &#123;
+    0xc7,0x01,0x00,0x00,0x00,0x00,  //mov [ecx],0
+    0x83,0xc1,0x04                  //add ecx,0x4
+&#125;;
+//写hook代码进行hook
+return SetHook(hProcess, (DWORD)BaseAddr + 0x26173, hookCode, sizeof(hookCode), 5);
+</code></pre>
+<p>}</p>
+<p>&#x2F;&#x2F;恢复雾<br>BOOL RecoveryFogByUnHook(HANDLE hProcess, LPVOID BaseAddr, LPVOID allocAddr) {<br>    return UnHook(hProcess, (DWORD)BaseAddr + 0x26173, 5, allocAddr);<br>}</p>
+<p>&#x2F;&#x2F;创建远程线程向指定进程注入dll<br>BOOL InjectDllByRemoteThread(DWORD desProcId,WCHAR* dllPath) {<br>    &#x2F;&#x2F;打开进程获取进程句柄<br>    HANDLE hProcess &#x3D; OpenProcess(PROCESS_ALL_ACCESS, FALSE, desProcId);<br>    if (!hProcess)<br>        return FALSE;</p>
+<pre><code>//申请空间
+DWORD pathSize = (wcslen(dllPath) + 1) * 2; 
+LPVOID newMemAddr = VirtualAllocEx(hProcess, 0, pathSize, MEM_COMMIT, PAGE_READWRITE);
+if (!newMemAddr)
+    return FALSE;
+
+//写入dll路径
+if (!WriteProcessMemory(hProcess, newMemAddr, dllPath, pathSize, NULL))
+&#123;
+    VirtualFreeEx(hProcess, newMemAddr, 0, MEM_RELEASE);
+    return FALSE;
+&#125;
+
+//创建远程线程
+HANDLE hThread = CreateRemoteThread(hProcess, NULL, 0, (LPTHREAD_START_ROUTINE)LoadLibraryW, newMemAddr, 0, NULL);
+if (!hThread)
+&#123;
+    VirtualFreeEx(hProcess, newMemAddr, 0, MEM_RELEASE);
+    return FALSE;
+&#125;
+
+WaitForSingleObject(hThread, INFINITE);//等待线程信号,保证成功注入
+
+//回收资源
+VirtualFreeEx(hProcess, newMemAddr, 0, MEM_RELEASE);
+CloseHandle(hThread);
+CloseHandle(hProcess);
+
+//返回成功
+return TRUE;
+</code></pre>
+<p>}</p>
+<p>&#x2F;&#x2F;创建远程线程释放指定进程dll<br>BOOL UnLoadDllByRemoteThread(DWORD dwProcessId, LPCWSTR lpDllName)<br>{<br>    HANDLE hProcess &#x3D; OpenProcess(PROCESS_ALL_ACCESS, FALSE, dwProcessId);<br>    if (hProcess &#x3D;&#x3D; NULL)<br>        return FALSE;</p>
+<pre><code>// 在目标进程中申请一块内存，并将需要卸载的DLL模块的名称写入该内存
+LPVOID lpRemoteDllName = VirtualAllocEx(hProcess, NULL, (wcslen(lpDllName) + 1) * sizeof(WCHAR), MEM_COMMIT | MEM_RESERVE, PAGE_READWRITE);
+if (lpRemoteDllName == NULL)
+&#123;
+    CloseHandle(hProcess);
+    return FALSE;
+&#125;
+if (!WriteProcessMemory(hProcess, lpRemoteDllName, lpDllName, (wcslen(lpDllName) + 1) * sizeof(WCHAR), NULL))
+&#123;
+    VirtualFreeEx(hProcess, lpRemoteDllName, 0, MEM_RELEASE);
+    CloseHandle(hProcess);
+    return FALSE;
+&#125;
+
+//查找dll模块
+HMODULE hModules[1024],DesModule=NULL;
+DWORD dwSize = 0;
+if (!EnumProcessModules(hProcess, hModules, sizeof(hModules), &amp;dwSize))
+&#123;
+    VirtualFreeEx(hProcess, lpRemoteDllName, 0, MEM_RELEASE);
+    CloseHandle(hProcess);
+    return FALSE;
+&#125;
+
+// 遍历模块列表，查找需要卸载的DLL模块
+for (DWORD i = 0; i &lt; (dwSize / sizeof(HMODULE)); i++)
+&#123;
+    WCHAR szModuleName[MAX_PATH] = &#123; 0 &#125;;
+    if (GetModuleFileNameExW(hProcess, hModules[i], szModuleName, MAX_PATH) &gt; 0)
+    &#123;
+        // 获取模块句柄
+        if (wcsicmp(szModuleName, lpDllName) == 0)
+        &#123;
+            DesModule = hModules[i];
+        &#125;
+    &#125;
+&#125;
+//没有查找到模块
+if (!DesModule) &#123;
+    VirtualFreeEx(hProcess, lpRemoteDllName, 0, MEM_RELEASE);
+    CloseHandle(hProcess);
+    return FALSE;
+&#125;
+// 在目标进程中创建远程线程，执行FreeLibrary函数
+HANDLE hThread = CreateRemoteThread(hProcess, NULL, 0, (LPTHREAD_START_ROUTINE)FreeLibrary, DesModule, 0, NULL);
+if (hThread == NULL)
+&#123;
+    VirtualFreeEx(hProcess, lpRemoteDllName, 0, MEM_RELEASE);
+    CloseHandle(hProcess);
+    return FALSE;
+&#125;
+
+// 等待线程执行完成
+WaitForSingleObject(hThread, INFINITE);
+
+// 关闭句柄
+CloseHandle(hThread);
+VirtualFreeEx(hProcess, lpRemoteDllName, 0, MEM_RELEASE);
+CloseHandle(hProcess);
+
+return TRUE;
+</code></pre>
+<p>}</p>
+<p>&#x2F;&#x2F;以创建远程线程方式种植植物<br>BOOL GrowPlantByInjectCode(DWORD dwProcessId,DWORD BaseAddr,DWORD x,DWORD y,DWORD PlantType)<br>{<br>    BOOL bSuccess &#x3D; FALSE;<br>    &#x2F;&#x2F;1. 打开进程<br>    HANDLE hProcess &#x3D; OpenProcess(PROCESS_ALL_ACCESS, FALSE, dwProcessId);<br>    if (hProcess !&#x3D; NULL)<br>    {<br>        &#x2F;&#x2F;2. 定义注入代码(函数)</p>
+<pre><code>    BYTE InjectCode[50] = &#123;                     //汇编指令              //修正点偏移
+        0x55,                                   //0 push ebp
+        0x89, 0xE5,                             //1 mov ebp,esp
+        0x60,                                   //3 pushad                
+        0x68, 0xFF, 0xFF, 0xFF, 0xFF,           //4 push -1           
+        0x68, 0x00, 0x00, 0x00, 0x00,           //9 push PlantType        //10     
+        0xB8, 0x00, 0x00, 0x00, 0x00,           //14 mov eax,y             //15
+        0x68, 0x00, 0x00, 0x00, 0x00,           //19 push x                //20
+        0xB9, 0x00, 0x00, 0x00, 0x00,           //24 mov ecx,BaseAddr      //25
+        0x8B, 0x89, 0x0C, 0x5E, 0x35, 0x00,     //29 mov ecx,[ecx+0x355E0C]
+        0x8B, 0x89, 0x68, 0x08, 0x00, 0x00,     //35 mov ecx,[ecx+0x868]
+        0x51,                                   //41 push ecx
+        0xE8, 0x00, 0x00, 0x00, 0x00,           //42 call PlantFunc        //43     //被调方平栈
+        0x61,                                   //47 popad
+        0xC9,                                   //48 leave
+        0xC3                                    //49 ret
+    &#125;;
+
+    //3. 申请空间用于存储代码
+    DWORD  dwCodeSize = 50, desFunc = BaseAddr + 0x18D70;
+    LPVOID lpRemoteCodeMem = VirtualAllocEx(hProcess, NULL, dwCodeSize, MEM_COMMIT | MEM_RESERVE, PAGE_EXECUTE_READWRITE);
+
+    //4. 修正参数
+    *(DWORD*)&amp;InjectCode[10] = PlantType;
+    *(DWORD*)&amp;InjectCode[15] = y;
+    *(DWORD*)&amp;InjectCode[20] = x;
+    *(DWORD*)&amp;InjectCode[25] = BaseAddr;
+    *(DWORD*)&amp;InjectCode[43] = desFunc-((DWORD)lpRemoteCodeMem+42+5) ;
+    //call指令与jmp类似,相对于当前指令的下一条指令计算偏移,offset=des-(source+5),减去call自身长度5
+
+    if (lpRemoteCodeMem != NULL)
+    &#123;
+        SIZE_T dwBytesWritten = 0;
+        //5. 注入代码
+        if (WriteProcessMemory(hProcess, lpRemoteCodeMem, InjectCode, dwCodeSize, &amp;dwBytesWritten) &amp;&amp;
+            dwBytesWritten == dwCodeSize)
+        &#123;
+            //6. 创建远程线程执行代码
+            HANDLE hThread = CreateRemoteThread(hProcess, NULL, 0, (LPTHREAD_START_ROUTINE)lpRemoteCodeMem,NULL, 0, NULL);
+            if (hThread != NULL)
+            &#123;
+                //7. 等待线程信号
+                WaitForSingleObject(hThread, INFINITE);
+                CloseHandle(hThread);
+                bSuccess = TRUE;
+            &#125;
+        &#125;
+        //8. 执行完后释放空间
+        VirtualFreeEx(hProcess, lpRemoteCodeMem, 0, MEM_RELEASE);
+    &#125;
+    CloseHandle(hProcess);
+&#125;
+
+return bSuccess;
+</code></pre>
+<p>}</p>
+<p>&#x2F;&#x2F;以创建远程线程方式种植僵尸<br>BOOL GrowZombieByInjectCode(DWORD dwProcessId,DWORD BaseAddr, DWORD x, DWORD y, DWORD ZombieType) {</p>
+<pre><code>BOOL bSuccess = FALSE;
+//1. 打开进程
+HANDLE hProcess = OpenProcess(PROCESS_ALL_ACCESS, FALSE, dwProcessId);
+if (hProcess != NULL)
+&#123;
+    //2. 定义注入代码(函数)
+
+    BYTE InjectCode[50] = &#123;
+        0x55,                                       //0 push ebp
+        0x89, 0xE5,                                 //1 mov ebp,esp
+        0x60,                                       //3 pushad
+        0x68, 0x00, 0x00, 0x00, 0x00,               //4 push x
+        0x68, 0x00, 0x00, 0x00, 0x00,               //9 push ZombieType
+        0xB8, 0x00, 0x00, 0x00, 0x00,               //14 mov eax,y
+        0xB9, 0x00, 0x00, 0x00, 0x00,               //19 mov ecx,BaseAddr
+        0x8B, 0x89, 0x0C, 0x5E, 0x35, 0x00,         //24 mov ecx,[ecx+0x355E0C]
+        0x8B, 0x89, 0x68, 0x08, 0x00, 0x00,         //30 mov ecx,[ecx+0x868]
+        0x8B, 0x89, 0x78, 0x01, 0x00, 0x00,         //36 mov ecx,[ecx+0x178]
+        0xE8, 0x00, 0x00, 0x00, 0x00,               //42 call PlantZombieFunc
+        0x61,                                       //47 popad
+        0xC9,                                       //48 leave 
+        0xC3                                        //49 ret
+    &#125;;
+
+    //3. 申请空间用于存储代码
+    DWORD  dwCodeSize = 50, desFunc = BaseAddr + 0x35390; //种植僵尸函数
+    LPVOID lpRemoteCodeMem = VirtualAllocEx(hProcess, NULL, dwCodeSize, MEM_COMMIT | MEM_RESERVE, PAGE_EXECUTE_READWRITE);
+
+    //4. 修正参数
+    *(DWORD*)&amp;InjectCode[5] = x;
+    *(DWORD*)&amp;InjectCode[10] = ZombieType;
+    *(DWORD*)&amp;InjectCode[15] = y;
+    *(DWORD*)&amp;InjectCode[20] = BaseAddr;
+    *(DWORD*)&amp;InjectCode[43] = desFunc - ((DWORD)lpRemoteCodeMem + 42 + 5);//call指令与jmp类似,相对于当前指令的下一条指令计算偏移,要减去call长度5
+
+    if (lpRemoteCodeMem != NULL)
+    &#123;
+        SIZE_T dwBytesWritten = 0;
+        //5. 注入代码
+        if (WriteProcessMemory(hProcess, lpRemoteCodeMem, InjectCode, dwCodeSize, &amp;dwBytesWritten) &amp;&amp;
+            dwBytesWritten == dwCodeSize)
+        &#123;
+            //6. 创建远程线程执行代码
+            HANDLE hThread = CreateRemoteThread(hProcess, NULL, 0, (LPTHREAD_START_ROUTINE)lpRemoteCodeMem, NULL, 0, NULL);
+            if (hThread != NULL)
+            &#123;
+                //7. 等待线程信号
+                WaitForSingleObject(hThread, INFINITE);
+                CloseHandle(hThread);
+                bSuccess = TRUE;
+            &#125;
+        &#125;
+        //8. 执行完后释放空间
+        VirtualFreeEx(hProcess, lpRemoteCodeMem, 0, MEM_RELEASE);
+    &#125;
+    CloseHandle(hProcess);
+&#125;
+
+return bSuccess;
+</code></pre>
+<p>}</p>
+<p>&#x2F;&#x2F;设置卡槽植物<br>BOOL SetPlantCard(HANDLE hProcess,DWORD BaseAddr,DWORD nCard,DWORD plantType) {<br>    DWORD cardAddr &#x3D; BaseAddr + 0x355E0C;<br>    ReadProcessMemory(hProcess, cardAddr, &amp;cardAddr, sizeof(DWORD), NULL);<br>    cardAddr +&#x3D; 0x868;<br>    ReadProcessMemory(hProcess, cardAddr, &amp;cardAddr, sizeof(DWORD), NULL);<br>    cardAddr +&#x3D; 0x15C;<br>    ReadProcessMemory(hProcess, cardAddr, &amp;cardAddr, sizeof(DWORD), NULL);<br>    cardAddr +&#x3D; 0x5C+nCard*0x50;&#x2F;&#x2F;卡槽偏移<br>    return WriteProcessMemory(hProcess, cardAddr, &amp;plantType, sizeof(DWORD), NULL);<br>}</p>
+<p>&#x2F;&#x2F;选择菜单<br>void choiceMenu(HANDLE hProcess,DWORD Pid, LPVOID BaseAddr) {<br>    DWORD choice &#x3D; 0;<br>    unsigned int num &#x3D; 0;<br>    DWORD fogAddr &#x3D; 0;<br>    unsigned int x, y, Type;<br>   while(1) {<br>        system(“cls”);<br>        printf(“\t\t\t\tWelcome to PVZ Modifier!\n”);<br>        printf(“\t\t\t\t\t0.退出\n”);<br>        printf(“\t\t\t\t\t1.修改阳光数\n”);<br>        printf(“\t\t\t\t\t2.修改金钱数\n”);<br>        printf(“\t\t\t\t\t3.修改智慧树高\n”);<br>        printf(“\t\t\t\t\t4.修改巧克力数\n”);<br>        printf(“\t\t\t\t\t5.修改树肥\n”);<br>        printf(“\t\t\t\t\t6.修改花肥\n”);<br>        printf(“\t\t\t\t\t7.修改杀虫剂\n”);<br>        printf(“\t\t\t\t\t8.无限冷却\n”);<br>        printf(“\t\t\t\t\t9.恢复冷却\n”);<br>        printf(“\t\t\t\t\t10.无限阳光\n”);<br>        printf(“\t\t\t\t\t11.恢复阳光消耗\n”);<br>        printf(“\t\t\t\t\t12.除雾\n”);<br>        printf(“\t\t\t\t\t13.恢复雾\n”);<br>        printf(“\t\t\t\t\t14.种植植物\n”);<br>        printf(“\t\t\t\t\t15.生成僵尸\n”);</p>
+<pre><code>    printf(&quot;\t\t\t\tPlease choose your option:[ ]\b\b&quot;);
+    scanf(&quot;%d&quot;, &amp;choice);
+
+    switch(choice)&#123;
+    case 0:
+        return;
+    case 1:
+    case 2:
+    case 3:
+    case 4:
+    case 5:
+    case 6:
+    case 7:
+        printf(&quot;\t\t\t\tPlease input Num:&quot;);
+        scanf(&quot;%d&quot;, &amp;num);
+        setSomething(hProcess, BaseAddr, choice - 1, num);
+        break;
+    case 8:
+        Uncooled(hProcess, BaseAddr);
+        break;
+    case 9:
+        RecoveryCooling(hProcess, BaseAddr);
+        break;
+    case 10:
+        UnlimitedSun(hProcess,BaseAddr);
+        break;
+    case 11:
+        RecoverySunConsume(hProcess, BaseAddr);
+        break;
+    case 12:
+        fogAddr=(DWORD)DeFogByHook(hProcess, BaseAddr);
+        break;
+    case 13:
+        RecoveryFogByUnHook(hProcess, BaseAddr,fogAddr );
+        break;
+    case 14:
+        printf(&quot;请输入X Y PlantType: &quot;);
+        scanf(&quot;%d%d%d&quot;, &amp;x, &amp;y, &amp;Type);
+        GrowPlantByInjectCode(Pid, BaseAddr,x,y,Type );
+        break;
+    case 15:
+        printf(&quot;请输入X Y ZombieType: &quot;);
+        scanf(&quot;%d%d%d&quot;, &amp;x, &amp;y, &amp;Type);
+        GrowZombieByInjectCode(Pid, BaseAddr, x, y, Type);
+        break;
+    &#125;
+&#125;
+</code></pre>
+<p>}</p>
+<p>int main() {</p>
+<pre><code>    //获取进程pid
+DWORD Pid = GetProcessIdByName(L&quot;PlantsVsZombies.exe&quot;);
+    //打开进程,获取进程句柄
+    HANDLE hProcess = OpenProcess(PROCESS_ALL_ACCESS, FALSE,Pid);
+//获取进程基址
+DWORD BaseAddr=GetModuleBaseAddress(Pid, L&quot;PlantsVsZombies.exe&quot;);
+
+choiceMenu(hProcess, Pid, BaseAddr);
+
+//dll注入
+//InjectDllByRemoteThread(Pid, L&quot;E:\\MyProject\\vsProjects\\Project1\\Debug\\DllPlant3.dll&quot;);
+//int op = 1;
+//printf(&quot;输入0卸载dll:&quot;);
+//scanf(&quot;%d&quot;, &amp;op);
+//if(op==0)
+//    UnLoadDllByRemoteThread(Pid, L&quot;E:\\MyProject\\vsProjects\\Project1\\Debug\\DllPlant3.dll&quot;);//加载完dll之后释放掉
+
+CloseHandle(hProcess);
+return 0;
+</code></pre>
+<p>}<br>DLL代码</p>
+<p> 复制代码 隐藏代码<br>#include&lt;windows.h&gt;<br>#include&lt;stdio.h&gt;</p>
+<p>&#x2F;&#x2F;调用函数<br>BOOL GrowPlant(DWORD BaseAddr, DWORD x, DWORD y, DWORD TypePlant) {<br>    LPVOID PlantFunc &#x3D; BaseAddr + 0x18D70;<br>    __asm {<br>        pushad<br>        push -1         &#x2F;&#x2F;-1<br>        push TypePlant   &#x2F;&#x2F;植物类型<br>        mov eax, y       &#x2F;&#x2F;y<br>        push x           &#x2F;&#x2F;x<br>        mov ecx, BaseAddr<br>        mov ecx, [ecx+0x355E0C]<br>        mov ecx, [ecx + 0x868]<br>        push ecx<br>        call PlantFunc<br>        popad<br>    }<br>    return TRUE;<br>}</p>
+<p>BOOL GrowZombie(DWORD BaseAddr, DWORD x, DWORD y, DWORD ZombieType) {<br>    LPVOID PlantZombieFunc &#x3D; BaseAddr + 0x35390;<br>    __asm {<br>        pushad<br>        push x<br>        push ZombieType<br>        mov eax,y<br>        mov ecx,BaseAddr<br>        mov ecx,[ecx+0x355E0C]<br>        mov ecx,[ecx+0x868]<br>        mov ecx,[ecx+0x178]    &#x2F;&#x2F;ebp<br>        call PlantZombieFunc<br>        popad<br>    }<br>    return TRUE;<br>}</p>
+<p>BOOL WINAPI DllMain(HMODULE hInstance, DWORD fdwReason, LPVOID lpReserved) {<br>    DWORD BaseAddr &#x3D; GetModuleHandle(NULL);<br>    DWORD pid &#x3D; GetCurrentProcessId();<br>    HANDLE hProcess &#x3D; OpenProcess(PROCESS_ALL_ACCESS, FALSE, pid);</p>
+<pre><code>switch (fdwReason)
+&#123;
+case DLL_PROCESS_ATTACH:    
+    MessageBoxW(0, L&quot;ProcessAttachDll!&quot;, L&quot;window2&quot;, 0);
+
+    GrowPlant(BaseAddr,5,3,23);        
+    GrowZombie(BaseAddr, 6, 2, 23);
+
+    break;
+</code></pre>
+<p>   &#x2F;* case DLL_THREAD_ATTACH:<br>        printf(“ThreadAttach!\n”);<br>        break;<br>    case DLL_THREAD_DETACH:<br>        if (lpReserved &#x3D;&#x3D; NULL)<br>        {<br>            FreeLibrary(hInstance);<br>        }<br>        break;*&#x2F;<br>    case DLL_PROCESS_DETACH:<br>        MessageBoxW(0, L”ProcessDeTachDll!”, L”window2”, 0);<br>        break;<br>    }<br>    return TRUE;<br>}</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2022/11/16/ospf%E8%AF%A6%E8%A7%A3/" rel="next" title="ospf">
+                <i class="fa fa-chevron-left"></i> ospf
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2022/12/01/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3dll%E6%B3%A8%E5%85%A5/" rel="prev" title="深入理解dll注入">
+                深入理解dll注入 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="" />
+          <p class="site-author-name" itemprop="name"></p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">45</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">frozenfish</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" target="_blank" rel="noopener" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" target="_blank" rel="noopener" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Gemini
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

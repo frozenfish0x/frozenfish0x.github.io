@@ -1,0 +1,190 @@
+---
+title: Next主题使用
+date: 2024-01-23 23:08:48
+tags:
+---
+这里罗列的是 NexT Issues 中用户提问最频繁的问题。若你在这里无法找到问题的答案， 请访问 [NexT Issues](https://github.com/iissnan/hexo-theme-next/issues)， 提交你的问题。
+
+## 如何设置「阅读全文」？
+
+在首页显示一篇文章的部分内容，并提供一个链接跳转到全文页面是一个常见的需求。 NexT 提供三种方式来控制文章在首页的显示方式。 也就是说，在首页显示文章的摘录并显示 **阅读全文** 按钮，可以通过以下方法：
+
+1. 在文章中使用 `<!-- more -->` 手动进行截断，Hexo 提供的方式 **推荐**
+
+2. 在文章的 [front-matter](https://hexo.io/docs/front-matter.html) 中添加 `description`，并提供文章摘录
+
+3. 自动形成摘要，在 **主题配置文件** 中添加：
+
+   ```
+   auto_excerpt:
+     enable: true
+     length: 150
+   ```
+
+   默认截取的长度为 `150` 字符，可以根据需要自行设定
+
+建议使用 `<!-- more -->`（即第一种方式），除了可以精确控制需要显示的摘录内容以外， 这种方式也可以让 Hexo 中的插件更好的识别。
+
+## Favicon 设置后没有生效？
+
+将你的 `favicon` 放置到 **站点** 的 `source` 目录下，与站点的配置文件同级。 若你发现设置的 Favicon 并未生效，请先清除浏览器的缓存后直接访问 Favicon 的地址，这个地址通常是 `http://your-domain.com/favicon.ico`。
+
+如果你的站点是放在子目录下，请设置为：`favicon: favicon.ico`
+
+## 如何更改字体？
+
+NexT 从 **5.0.1** 版本开始提供一个 [字体定制特性](https://theme-next.iissnan.com/theme-settings.html#fonts-customization)， 请先查看此特性是否能满足你的需求。以下的修改将覆盖 字体定制 的特性。 编辑主题下的 `source/css/_variables/custom.styl` 文件，新增两个变量：
+
+```
+// 标题，修改成你期望的字体族
+$font-family-headings = Georgia, sans
+
+// 修改成你期望的字体族
+$font-family-base = "Microsoft YaHei", Verdana, sans-serif
+
+// 代码字体
+$code-font-family = "Input Mono", "PT Mono", Consolas, Monaco, Menlo, monospace
+
+// 正文字体的大小
+$font-size-base = 16px
+
+// 代码字体的大小
+$code-font-size = 13px
+```
+
+## 如何更改内容区域的宽度？
+
+NexT 对于内容的宽度的设定如下：
+
+- 700px，当屏幕宽度 < 1600px
+- 900px，当屏幕宽度 >= 1600px
+- 移动设备下，宽度自适应
+
+如果你需要修改内容的宽度，同样需要编辑样式文件。 编辑主题的 `source/css/_variables/custom.styl` 文件，新增变量：
+
+```
+// 修改成你期望的宽度
+$content-desktop = 700px
+
+// 当视窗超过 1600px 后的宽度
+$content-desktop-large = 900px
+```
+
+此方法不适用于 Pisces Scheme，关于如何修改 Pisces Scheme 的宽度请参看 [这个 Issue](https://github.com/iissnan/hexo-theme-next/issues/759#issuecomment-202242848)
+
+## 为何新增的菜单项显示 Menu.xxx
+
+NexT 使用了 Hexo 提供的国际化功能，因此在 Menu 部分配置的值并非直接用于界面的展示，而是作为一个名称。 当渲染的时候，NexT 去寻找对应的语言文件，并替换这个键所定义的文本后展示。
+
+以 `home` 为例，在 **主题配置文件** 中配置为 `home: /`， 此处的键即是 `home`，在不同的语言中，这个键所对应的文本都不同：
+
+```
+# 简体中文
+# 语言文件 languages/zh-Hans.yml
+menu:
+  home: 首页
+
+# 英文
+# 语言文件 languages/en.yml
+menu:
+  home: Home
+```
+
+因此，当新增一个项时，必须在 **所使用的语言** 中添加对应的翻译文本。
+
+关于菜单的配置，请参考 [菜单的配置](https://theme-next.iissnan.com/getting-started.html#menu-settings)
+
+## 标签/分类数量统计不准确？
+
+因为 Hexo 有缓存的功能，因此有时候你会发现在 标签 和 分类 页面中的数量统计并不准确。 出现这个问题时，可以按照以下步骤重新生成站点的内容：
+
+1. 删除站点目录下的 `db.json` 文件
+2. 在站点目录下执行命令 `hexo clean`
+3. 在站点目录下执行命令，重新生成 `hexo generate`
+
+当执行完以上步骤后，可以在本地启动服务器来验证下是否已经解决问题。
+
+## 为何语言显示不正确？
+
+若没有设定 `language` 的值或者 `language: default`，会出现语言选择不正确的情况。 因此为了确保语言正确显示，请明确指定需要使用的语言。 编辑 **站点配置文件**， 将 `language` 字段设置成明确的语言代码。 例如，设置语言为简体中文：
+
+```
+language: zh-Hans
+```
+
+| 语言     | 对应值          |
+| :------- | :-------------- |
+| English  | `en`            |
+| 简体中文 | `zh-Hans`       |
+| 法语     | `fr-FR`         |
+| 繁体中文 | `zh-hk`/`zh-tw` |
+| 俄语     | `ru`            |
+| 德语     | `de`            |
+| 葡萄牙语 | `pt`            |
+| 日语     | `ja`            |
+
+## 如何关闭新建页面的评论功能？
+
+当集成了评论系统，如 Disqus，所有新建的页面都将自动开启评论。若你不需要评论，请在页面的 Front-matter 里添加 `comments` 字段，并将值设置为 `false`。如下所示：
+
+```
+title: All tags
+date: 2015-12-16 17:05:24
+type: "tags"
+comments: false
+---
+```
+
+## 如何设置页面文章的篇数？
+
+在 Hexo 里可以为首页和归档页面设置不同的文章篇数，但可能需要安装 Hexo 插件。详细步骤如下。
+
+1. 使用 `npm install --save` 命令来安装需要的 Hexo 插件。
+
+   ```
+   npm install --save hexo-generator-index
+   npm install --save hexo-generator-archive
+   npm install --save hexo-generator-tag
+   ```
+
+2. 等待扩展全部安装完成后，在 **站点配置文章** 中，设定如下选项：
+
+   ```
+   index_generator:
+     per_page: 5
+   
+   archive_generator:
+     per_page: 20
+     yearly: true
+     monthly: true
+   
+   tag_generator:
+     per_page: 10
+   ```
+
+   ```
+   per_page
+   ```
+
+    
+
+   即文章的数量。
+
+需要注意的是，Hexo 3.2 版本不允许配置文件中存在重复的选项设置。 因此，最好检查下 **站点配置文件** 中是否有存在上述同名的配置。 如果存在，请将两者配置在一起。
+
+## 如何优化 NexT 主题？
+
+NexT 并未对 HTML、JavaScript 以及 CSS 做压缩处理。如果你比较在意这点，可以在 NexT 的 Issues 列表搜索 [他人共享的优化方案 ](https://github.com/iissnan/hexo-theme-next/issues?utf8=✓&q=+label%3AOptimization)。
+
+## Cannot find module XXX
+
+NexT 提供的标签插件引用了 Hexo 模块中的一些子模块，例如 `hexo-util`。 NPM 在版本 3 中引入了新的模块安装机制， NexT 将使用这种机制，意味着如果是旧的 NPM 将会碰到这个错误。 因此，如果您碰到 "Cannot find module XXX" 的错误时，请首先使用 `npm -v` 确认您的 NPM 版本。
+
+- 版本 > 3 依然报错： 请先删除 `node_module` 目录，然后使用 `npm install` 重新安装一下模块。
+- 版本 < 3： 您可以选择升级您的 NPM； 或者在站点目录下明确指定模块依赖 `npm install --save hexo-util`。 其中 `hexo-util` 仅是示例，请替换成错误中
+- 提示的模块名称。
+
+
+
+文章来自[常见问题 - NexT 使用文档 (iissnan.com)](https://theme-next.iissnan.com/faqs.html)
+

