@@ -102,7 +102,7 @@
 <meta property="og:description" content="[TOC] vue两种语法风格选项式1234567891011121314151617181920212223242526272829&lt;script&gt;export default &amp;#123;  &#x2F;&#x2F; data() 返回的属性将会成为响应式的状态  &#x2F;&#x2F; 并且暴露在 &#96;this&#96; 上  data() &amp;#123;    return &amp;#123;      count: 0    &amp;#">
 <meta property="og:locale">
 <meta property="article:published_time" content="2024-02-19T05:50:07.000Z">
-<meta property="article:modified_time" content="2024-02-20T10:57:03.298Z">
+<meta property="article:modified_time" content="2024-02-20T12:09:44.437Z">
 <meta property="article:author" content="frozenfish">
 <meta name="twitter:card" content="summary">
 
@@ -231,7 +231,7 @@
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
+          <a href="/tags/%20%7C%7C" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
@@ -255,7 +255,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-toolbox"></i> <br />
             
-            menu.tool
+            工具
           </a>
         </li>
       
@@ -265,7 +265,17 @@
             
               <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
             
-            menu.bug
+            遇到问题
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-share">
+          <a href="/share/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            资源分享
           </a>
         </li>
       
@@ -449,6 +459,11 @@
 
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- `greet` 是上面定义过的方法名 --&gt;</span><br><span class="line">&lt;button @click=&quot;greet&quot;&gt;Greet&lt;/button&gt;</span><br></pre></td></tr></table></figure>
 
+<h2 id="event"><a href="#event" class="headerlink" title="event"></a>event</h2><h2 id="事件传参"><a href="#事件传参" class="headerlink" title="事件传参"></a>事件传参</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">&lt;div v-for=&quot;(item,index) in names&quot; @click=&quot;getname(item,$event)&quot;&gt;</span><br><span class="line">    &#123;&#123; item &#125;&#125;&lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    export default&#123;</span><br><span class="line">        data()&#123;</span><br><span class="line">            return&#123;</span><br><span class="line">                names: [&quot;hhh&quot;,&quot;ok&quot;,&quot;tses&quot;]</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        methods:&#123;</span><br><span class="line">        getname(item,e)&#123;</span><br><span class="line">            console.log(name,e);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="事件修饰符"><a href="#事件修饰符" class="headerlink" title="事件修饰符"></a>事件修饰符</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
+
       
     </div>
     
@@ -596,7 +611,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#vue%E4%B8%A4%E7%A7%8D%E8%AF%AD%E6%B3%95%E9%A3%8E%E6%A0%BC"><span class="nav-number">1.</span> <span class="nav-text">vue两种语法风格</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%89%E9%A1%B9%E5%BC%8F"><span class="nav-number">1.1.</span> <span class="nav-text">选项式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%84%E5%90%88%E5%BC%8F"><span class="nav-number">1.2.</span> <span class="nav-text">组合式</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#vue2-0%E5%B0%8F%E5%AD%A6%E4%B8%80%E6%89%8B"><span class="nav-number">2.</span> <span class="nav-text">vue2.0小学一手</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%A1%E6%9D%BF%E6%8F%92%E5%80%BC"><span class="nav-number">2.1.</span> <span class="nav-text">模板插值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B1%9E%E6%80%A7%E7%BB%91%E5%AE%9A"><span class="nav-number">2.2.</span> <span class="nav-text">属性绑定</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Class-%E4%B8%8E-Style-%E7%BB%91%E5%AE%9A-Vue-js-vuejs-org"><span class="nav-number">2.3.</span> <span class="nav-text">Class 与 Style 绑定 | Vue.js (vuejs.org)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9D%A1%E4%BB%B6%E6%B8%B2%E6%9F%93"><span class="nav-number">2.4.</span> <span class="nav-text">条件渲染</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#v-if-vs-v-show"><span class="nav-number">2.4.1.</span> <span class="nav-text">v-if vs. v-show</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">2.5.</span> <span class="nav-text"></span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%97%E8%A1%A8%E6%B8%B2%E6%9F%93"><span class="nav-number">2.6.</span> <span class="nav-text">列表渲染</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#v-for"><span class="nav-number">2.6.1.</span> <span class="nav-text">v-for</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#key"><span class="nav-number">2.6.2.</span> <span class="nav-text">key</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86"><span class="nav-number">2.7.</span> <span class="nav-text">事件处理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%86%85%E8%81%94%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86%E5%99%A8"><span class="nav-number">2.7.1.</span> <span class="nav-text">内联事件处理器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86%E5%99%A8"><span class="nav-number">2.7.2.</span> <span class="nav-text">方法事件处理器</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#vue%E4%B8%A4%E7%A7%8D%E8%AF%AD%E6%B3%95%E9%A3%8E%E6%A0%BC"><span class="nav-number">1.</span> <span class="nav-text">vue两种语法风格</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%89%E9%A1%B9%E5%BC%8F"><span class="nav-number">1.1.</span> <span class="nav-text">选项式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%84%E5%90%88%E5%BC%8F"><span class="nav-number">1.2.</span> <span class="nav-text">组合式</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#vue2-0%E5%B0%8F%E5%AD%A6%E4%B8%80%E6%89%8B"><span class="nav-number">2.</span> <span class="nav-text">vue2.0小学一手</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%A1%E6%9D%BF%E6%8F%92%E5%80%BC"><span class="nav-number">2.1.</span> <span class="nav-text">模板插值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B1%9E%E6%80%A7%E7%BB%91%E5%AE%9A"><span class="nav-number">2.2.</span> <span class="nav-text">属性绑定</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Class-%E4%B8%8E-Style-%E7%BB%91%E5%AE%9A-Vue-js-vuejs-org"><span class="nav-number">2.3.</span> <span class="nav-text">Class 与 Style 绑定 | Vue.js (vuejs.org)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9D%A1%E4%BB%B6%E6%B8%B2%E6%9F%93"><span class="nav-number">2.4.</span> <span class="nav-text">条件渲染</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#v-if-vs-v-show"><span class="nav-number">2.4.1.</span> <span class="nav-text">v-if vs. v-show</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">2.5.</span> <span class="nav-text"></span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%97%E8%A1%A8%E6%B8%B2%E6%9F%93"><span class="nav-number">2.6.</span> <span class="nav-text">列表渲染</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#v-for"><span class="nav-number">2.6.1.</span> <span class="nav-text">v-for</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#key"><span class="nav-number">2.6.2.</span> <span class="nav-text">key</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86"><span class="nav-number">2.7.</span> <span class="nav-text">事件处理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%86%85%E8%81%94%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86%E5%99%A8"><span class="nav-number">2.7.1.</span> <span class="nav-text">内联事件处理器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86%E5%99%A8"><span class="nav-number">2.7.2.</span> <span class="nav-text">方法事件处理器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#event"><span class="nav-number">2.8.</span> <span class="nav-text">event</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8B%E4%BB%B6%E4%BC%A0%E5%8F%82"><span class="nav-number">2.9.</span> <span class="nav-text">事件传参</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8B%E4%BB%B6%E4%BF%AE%E9%A5%B0%E7%AC%A6"><span class="nav-number">2.10.</span> <span class="nav-text">事件修饰符</span></a></li></ol></li></ol></div>
             
 
           </div>
